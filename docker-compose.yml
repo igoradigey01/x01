@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+
+  adminpage:
+    image: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./dist/x01:/var/www/html
+    ports:
+     - "8080:8080"

@@ -1,0 +1,28 @@
+@import './../styles/variables';
+
+$nav-color:  $c5;
+ $color-hover: #bec3c4;
+
+.footer {
+ // display: flex;
+  padding: 20px;
+  background: $bg-footer-color;
+  min-height: 60px;
+  color: $nav-color;
+  align-items: center;
+  p{
+    color: $nav-color;
+  }
+}
+
+
+.nav_link {
+
+  color: $nav-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-hover;
+  }
+}
+

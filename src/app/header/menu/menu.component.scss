@@ -1,0 +1,164 @@
+ /* .navbar header{
+
+  text-align: center;
+
+
+} */
+//---------------------------------------------------
+@import "../../../styles/variables";
+
+
+$bg-color: $bg-header-color;  // background-color: #d1c2c2; // #284074;
+//$bg-footer-color: #f05e25;  // #445477;
+//$color-logo: #ffbd35;
+$nav-color: $c5;
+$color-hover: #dfe6e7;
+._container_nav {
+  min-height: 95px;
+  padding: 0;
+  display: flex;
+  background-color: $bg-color;
+  justify-content: space-between;
+}
+
+
+.col_inner {
+  display: flex;
+}
+
+.nav_link {
+  display: flex;
+  align-items: center;
+  color: $nav-color;
+  text-decoration: none;  // test host!!!
+  background-color: $bg-color;
+  &:hover {
+    color: $color-hover;
+  }
+}
+.mat-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button{
+  display: flex;
+  justify-content: center;
+}
+
+.logo_inner-img {
+  // position: relative;
+  height: 60px;;
+  // width: 70px;
+  display: flex;
+  border-radius: 20%;
+  vertical-align: middle ;
+  margin-left: 0.9rem;
+  margin-right: 0.2rem;
+}
+.logo_inner-name {
+  //argin-top: 10px;
+  margin-left: 0.4rem;
+  display: none;
+  color: $color-logo;
+  &:hover {
+    color: $color-hover;
+  }
+}
+.logo_inner-name-2 {
+  //argin-top: 10px;
+  display: none;
+  color: $bg-footer-color;
+  &:hover {
+    color: $color-hover;
+  }
+}
+.logo-position-name{
+  display: flex;
+  color: $color-logo;
+  &:hover {
+    color: $color-hover;
+  }
+}
+.logo-column{
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-lg {
+  display: none;
+
+  span {
+    padding-left: 1rem;
+  }
+}
+.menu-md {
+  display: flex;
+  width: 100%;
+}
+.mobile-nav{
+  display: block;
+  position: relative;
+}
+.app-navbar{
+  padding-left: 1rem;
+    min-width: 10rem;
+
+  background-color:$c7 ; //#fafafa
+}
+.app-nav-link{
+  color: $c3;
+  &:hover {
+    color: $c6;
+  }
+
+}
+
+
+.img-social-apps{
+  height: 26px;
+  margin-left: 0.5rem;
+}
+//-------------------------------
+@media (min-width: 450px){
+
+  .menu-lg {
+    display: none;
+  }
+  .menu-md {
+    display: flex;
+    width: 100%;
+  }
+
+  ._container_nav {
+    min-height: 80px;
+  }
+  .logo_inner-name {
+    //argin-top: 10px;
+    display: flex;
+
+  }
+  .logo_inner-name-2 {
+    //argin-top: 10px;
+    display: flex;
+
+  }
+  .logo-position-name{
+
+    display: none;
+
+  }
+  .logo_inner-img{
+    margin-left: 0.2rem;
+
+  }
+
+}
+
+@media (min-width: 960px) {
+  .menu-lg {
+    display: flex;
+    margin-right: 0.5rem;
+  }
+  .menu-md {
+    display: none;
+  }
+  ._container {
+    padding: 0 20px;
+  }
+}

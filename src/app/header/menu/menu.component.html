@@ -1,0 +1,94 @@
+<mat-toolbar class="_container_nav">
+  <div class="col_inner">
+    <a routerLink="" class="nav_link">
+      <span class="logo_inner-name" >{{company_name_1}}</span>
+
+      <img
+        class="logo_inner-img"
+        src="./../../../assets/logo.png"  alt="logo company X-01"
+      />
+      <span class="logo_inner-name-2">{{ company_name_2}}</span>
+    </a>
+  </div>
+  <div class="col_inner logo-column">
+    <div class="logo-position-name"> <span > {{company_name_1}}</span><span> </span> <span style="color: black;"> {{company_name_2}}</span></div>
+    <div class="commutation"></div>
+    <a class="nav_link"  href="tel:+79002440328">  ( +7-900-244-03-28 ) </a>
+
+    <div class="conteiner-social-apps">
+      <button type="button" class="btn btn-link">
+        <a href="https://www.instagram.com/x_01.ru/">
+      <img src="./../../../assets/massager_social/Instagram_64_2.png" class="img-social-apps" alt="instagram">
+    </a>
+    </button>
+      <button type="button" class="btn btn-link">
+        <a href=" https://wa.me/+79002440328?text=Здравствуйте%20(x-01)%20Меня%20интересует%20информация%20о%20 ">
+      <img src="./../../../assets/massager_social/Whatsapp_64.png" class="img-social-apps" alt="whatsapp" >
+    </a>
+      </button>
+
+    </div>
+  </div>
+
+  <div class="col_inner">
+    <!------------ start button menu-->
+    <div class="mobile-nav">
+      <!---       statr -->
+      <div class="menu-md">
+        <button mat-icon-button (click)="drawer.toggle()" class="nav_link">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <!---------/-->
+    </div>
+
+    <div class="menu-lg">
+      <span>
+        <a class="nav_link" routerLink="menu/kak-zakazat">Как заказать?</a>
+      </span>
+      <span>
+        <a class="nav_link" routerLink="menu/oplata-i-dostavka">Оплата и Доставка</a>
+      </span>
+      <span>
+        <a class="nav_link" routerLink="menu/garantiya">Гарантии</a>
+      </span>
+
+      <span>
+        <a class="nav_link" routerLink="menu/about">онас</a>
+      </span>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-drawer-container>
+    <!------------ start button menu-->
+  <mat-drawer #drawer class="app-navbar">
+    <ul class="navbar-nav me-auto my-2 pe-2">
+      <li class="nav-item py-1" >
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="">Home</a>
+      </li>
+
+      <li class="nav-item py-1" >
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/kak-zakazat">Как заказать?</a>
+      </li>
+      <li class="nav-item py-1" >
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/oplata-i-dostavka">Оплата и Доставка</a>
+      </li>
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/garantiya">Гарантии</a>
+      </li>
+
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/about">онас</a>
+      </li>
+
+
+    </ul>
+
+  </mat-drawer>
+   <!---------/-->
+  <mat-drawer-content>
+    <div class="_body"></div>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+
