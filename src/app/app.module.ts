@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './header/menu/menu.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {BgContentComponent} from './content/bg-content/bg-content.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    BgContentComponent,
     PageNotFoundComponent
   ],
   imports: [

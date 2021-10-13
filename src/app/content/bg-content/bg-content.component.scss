@@ -1,0 +1,58 @@
+@import "./../../../styles/variables";
+
+._container {
+  min-height: 400px;
+}
+.form-check-label {
+  margin-left: 0.3rem;
+  color: white;
+}
+.bg-carusel-container {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.carousel-indicators {
+  position: relative;
+  align-content: center;
+  margin-bottom: 0px;
+}
+
+.carousel-indicators [data-bs-target] {
+  height: 5px;
+  margin-top: 2px;
+}
+.carousel-control-prev-icon {
+  cursor: pointer;
+}
+.carousel-control-next-icon {
+  cursor: pointer;
+}
+.carusel-button {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 5px;
+  padding: 0;
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-top: 2px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: hsl(0deg 0% 100%);
+  background-clip: padding-box;
+  border: 0;
+  border-top: 10px solid hsl(0deg 0% 0% / 0%);
+  border-bottom: 10px solid hsl(0deg 0% 0% / 0%);
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+}
+
+.bg {
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $bg-color;// #bcc8c3;
+
+}

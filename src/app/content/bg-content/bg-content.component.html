@@ -1,0 +1,32 @@
+<div class="bg _container" style="background-image:url({{_imgScr}});">
+  <!-- close 04.05.2020 start
+    <button (click)="onClick()">Trigger change detection</button>
+ end 04.50.2020-->
+  <!----x_01 карусель  background-image:url   из _listImg start -->
+
+
+  <div class="bg-carusel-container">
+    <div >
+      <input class="form-check-input" type="checkbox" (click)="changedTheme()" checked
+        id="flexCheckDefault" />
+      <label class="form-check-label"  for="flexCheckDefault">
+        Фон
+      </label>
+    </div>
+    <div class="carousel-indicators">
+      <span class="carousel-control-prev-icon" (click)="onback()" aria-hidden="true"></span>
+      <span  data-bs-target="#carouselCaptions" [ngClass]="{'active': _i==0}"  (click)="changedPozition(0)" data-bs-target="#carouselCaptions"></span>
+      <span data-bs-target="#carouselCaptions" [ngClass]="{'active': _i==1}" (click)="changedPozition(1)" ></span>
+      <span data-bs-target="#carouselCaptions" [ngClass]="{'active': _i==2}" (click)="changedPozition(2)" ></span>
+      <span data-bs-target="#carouselCaptions" [ngClass]="{'active': _i==3}" (click)="changedPozition(3)" ></span>
+      <span data-bs-target="#carouselCaptions" [ngClass]="{'active': _i==4}" (click)="changedPozition(4)" ></span>
+
+
+      <span class="carousel-control-next-icon" (click)="onnext()" aria-hidden="true"></span>
+    </div>
+
+  </div>
+  <!-- --x_01 карусель  background-image:url   из _listImg end -->
+
+  <!-- test использование css стилей в компонентах-->
+</div>
