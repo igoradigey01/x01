@@ -1,8 +1,6 @@
-@import "./../../../styles/variables";
+@import "./../../../styles/content-styles.scss";
 
-._container {
-  min-height: 400px;
-}
+
 .form-check-label {
   margin-left: 0.3rem;
   color: white;
@@ -20,19 +18,23 @@
 
 .carousel-indicators [data-bs-target] {
   height: 5px;
-  margin-top: 2px;
+ // margin-top: 2px;
 }
 .carousel-control-prev-icon {
   cursor: pointer;
+  width: 1.5rem;
+    height: 1.5rem;
 }
 .carousel-control-next-icon {
   cursor: pointer;
+  width: 1.5rem;
+    height: 1.5rem;
 }
 .carusel-button {
   box-sizing: content-box;
   flex: 0 1 auto;
   width: 30px;
-  height: 5px;
+  height: 4px;
   padding: 0;
   margin-right: 3px;
   margin-left: 3px;
@@ -53,6 +55,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: $bg-color;// #bcc8c3;
+  background-color: #f1f0f0; //#d3e6df//#8c989b;  // $bg-color;// #bcc8c3;
 
 }

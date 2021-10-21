@@ -1,0 +1,59 @@
+@import "./../../../styles/content-styles.scss";
+/*----------------------------------------------------*/
+.grid-container {
+  display: grid;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+@media (max-width: 960px) {
+  .grid-container {
+    display: grid;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    display: grid;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid-container {
+    display: grid;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    grid-template-columns: 1fr;
+  }
+}
+
+/*----------------------------------------------*/
+
+
+h4 {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+div {
+  /* background-color: darkgrey; */
+  background-color: #d2ddd8;
+  color: #656565;
+}
+
+.card div {
+  background-color: #e3eee9;
+  background-image: url(./../../../assets/images/bg_img/menuDropBG.png) repeat;
+}

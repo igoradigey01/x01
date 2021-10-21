@@ -1,0 +1,35 @@
+<div class="h4 text-center mb-0">{{ _katalogName }}</div>
+<div class="container-fluid">
+  <div
+    name="outputError"
+    [style.display]="_errorUotput ? 'block' : 'none'"
+    class="alert alert-danger p-1"
+    role="alert"
+  >
+    {{ _error }}
+  </div>
+
+  <!-- Grid table-->
+  <div class="grid-container">
+    <div class="card m-1 p-1 border-info" *ngFor="let item of _products">
+      <div class="card-body">
+        <h4 class="card-title text-info">{{ item.name }}</h4>
+        <img class="card-img-top" src="{{ _url_img }}{{ item.image }}" />
+
+        <p></p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{ item.description }}</li>
+          <li class="list-group-item">
+            Цена:{{ item.price * (item.markup / 100) + item.price }}р
+          </li>
+        </ul>
+
+        <a class="btn btn-primary"
+          >Подробней</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--    ////////-->
