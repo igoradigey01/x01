@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Image } from 'src/app/shared/_interfaces/image.model';
+import { ImageDelatil } from 'src/app/shared/_interfaces/image-delatil.model';
 import { ContentModule } from './../../content.module';
 
-@Injectable({ providedIn: ContentModule })
+@Injectable()
 export class ProductDetailsDataService {
   readonly path_productDetails: string = 'ProductItem'; // default controllerProductDetailsPath
   readonly path_Product: string = 'product';
@@ -18,50 +18,55 @@ export class ProductDetailsDataService {
   readonly action_GetItemProduct: string = 'GetItemProducts';
   //----------------------------
 
+  get RootUrlImg(): string {
+    // return this.http.get(src,{responseType: 'blob'});
 
-
-
-
-
+    return environment.serverRoot + 'images/';
+  }
 
   constructor(private http: HttpClient) { }
 
-  GetImages(idProduct: number): Observable<Image[]> {
 
+  GetImages(idProduct: number): Observable<ImageDelatil[]> {
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
 
-     let url: string = this.createCompleteRoute(
-      environment.serverRoot ,
-      this.path_productDetails,this.action_GetImages
-    )+ '/' + idProduct;
+    let url: string =
+      this.createCompleteRoute(
+        environment.serverRoot,
+        this.path_productDetails,
+        this.action_GetImages
+      ) +
+      '/' +
+      idProduct;
 
-    return this.http.get<Image[]>(url,{headers});
+    return this.http.get<ImageDelatil[]>(url, { headers });
   }
 
   GetBlobIMG(name: string): Observable<Blob> {
-
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-     let url: string = this.createCompleteRoute(
-      environment.serverRoot ,
-      this.path_BlobImage,''
-    )+ '/' + name;
-
+    let url: string =
+      this.createCompleteRoute(
+        environment.serverRoot,
+        this.path_BlobImage,
+        ''
+      ) +
+      '/' +
+      name;
 
     return this.http.get(url, { headers, responseType: 'blob' });
   }
 
-
-
-  private createCompleteRoute = (envAddress: string, controller: string,action:string) => {
+  private createCompleteRoute = (
+    envAddress: string,
+    controller: string,
+    action: string
+  ) => {
     return `${envAddress}api/${controller}/${action}`;
   };
-
-
-
 }

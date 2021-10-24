@@ -1,4 +1,7 @@
-<div class="h4 text-center mb-0">{{ _selectedItemProduct.product.name }}</div>
+<div>
+  <p> {{selectedDetailProduct.product|json}}</p>
+</div>
+<div class="h4 text-center mb-0">{{ selectedDetailProduct.product.name }}</div>
 <div class="container-fluid p-1">
   <div
     name="outputError"
@@ -11,7 +14,7 @@
   <!-- Caruosel begin-->
   <div id="carousel" class="carousel slide">
     <ol class="carousel-indicators">
-      <ng-container *ngFor="let item of _selectedItemProduct.image; index as i">
+      <ng-container *ngFor="let item of selectedDetailProduct.image; index as i">
         <li
           *ngIf="i == 0; else elseBlok"
           (click)="changeImg(i)"

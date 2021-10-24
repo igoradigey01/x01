@@ -1,0 +1,20 @@
+//For example, the following command generates an NgModule
+// that can use routing.
+
+ng generate module my-module --routing
+//------------------------------------------
+
+export class SecuredImageComponent implements OnChanges  {
+  ...
+  // inject the domSanitizer here as well
+  constructor(private httpClient: HttpClient, private domSanitizer: DomSanitizer) {
+  }
+
+  private loadImage(url: string): Observable<any> {
+    return this.httpClient
+      // load the image as a blob
+      .get(url, {responseType: 'blob'})
+      // pass the url through the domSanitizer so angular knows he can parse it
+      .map(e => this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(e)))
+  }
+}

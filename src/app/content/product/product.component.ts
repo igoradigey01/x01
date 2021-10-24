@@ -13,9 +13,9 @@ import { Product } from '../../shared/_interfaces/product.model';
  // providers: [ProductDataService],
 })
 export class ProductComponent implements OnInit {
+
   _errorUotput: boolean = false;
   _error: any;
-
   _products: Product[] | null = null; //
   _katalogName: string = '';
   _url_img: string = '';
@@ -35,13 +35,13 @@ export class ProductComponent implements OnInit {
     });
   //  this._katalogName = '';
 
-    this.load(id);
+    this.Load(id);
 
     console.log('katalogs------' + this._katalogName);
   }
 
   // загрузить данные подКаталога по id
-  private load(idKatalog: number) {
+  private Load(idKatalog: number):void {
     this._repository.Products(idKatalog).subscribe(
       (d) => {
         this._products = d;

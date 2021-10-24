@@ -6,9 +6,9 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 
 
 const routes: Routes = [
-  
-  {path:"katalog/:id",component:ProductComponent},
-//  {path:"product/:id",component:ProductDetailsComponent}
+
+  {path:"katalog/:id",component:ProductComponent},  // перепделать на сервере- katalog(id)
+  {path:"product/:id",component:ProductDetailsComponent}
 
 ];
 
