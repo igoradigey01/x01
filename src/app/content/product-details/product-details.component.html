@@ -1,0 +1,55 @@
+<div class="h4 text-center mb-0">{{ _selectedItemProduct.product.name }}</div>
+<div class="container-fluid p-1">
+  <div
+    name="outputError"
+    [style.display]="_errorUotput ? 'block' : 'none'"
+    class="alert alert-danger p-1"
+    role="alert"
+  >
+    {{ _error }}
+  </div>
+  <!-- Caruosel begin-->
+  <div id="carousel" class="carousel slide">
+    <ol class="carousel-indicators">
+      <ng-container *ngFor="let item of _selectedItemProduct.image; index as i">
+        <li
+          *ngIf="i == 0; else elseBlok"
+          (click)="changeImg(i)"
+        >
+
+      </li>
+        <ng-template #elseBlok>
+          <li
+            (click)="changeImg(i)"
+
+
+          >  </li>
+        </ng-template>
+      </ng-container>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          class="d-block w-100"
+
+          src="{{ _url_img }}{{ _currentImage.name }}"
+          alt="First slide"
+        />
+      </div>
+    </div>
+    <!---- end --class carousel-inner-->
+    <a class="carousel-control-prev" (click)="Prev()" role="button">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" (click)="Next()" role="button">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <p>Здесь прланируется выбор ткани если каталог связан с тканью</p>
+  <p>Здесь прланируется выбор ламината если каталог связан с ламинатом</p>
+  <p>**********</p>
+  <!-- Carousel end-->
+</div>

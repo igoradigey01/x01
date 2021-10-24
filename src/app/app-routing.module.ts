@@ -11,7 +11,7 @@ const routes: Routes = [
       import('./header/header.module').then((m) => m.HeaderModule),
   },
   {
-     path: 'katalog/:id',loadChildren:()=>import('./content/content.module').then((m)=>m.ContentModule)
+     path: 'content',loadChildren:()=>import('./content/content.module').then((m)=>m.ContentModule)
   },
 
   { path: '**', component: PageNotFoundComponent }

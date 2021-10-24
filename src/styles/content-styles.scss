@@ -1,5 +1,7 @@
 @import './styles.scss';
-
+//$bg-color:#f1f0f0;
 ._container {
   min-height: 400px;
+  background-color: #fff;
+  color: $color;
 }

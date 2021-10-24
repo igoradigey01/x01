@@ -10,9 +10,7 @@ import {
 import { environment } from '../../../../environments/environment';
 import { ContentModule } from './../../content.module';
 
-@Injectable(
-  { providedIn: ContentModule }
-)
+@Injectable()
 export class ProductDataService {
 
 
@@ -23,25 +21,7 @@ export class ProductDataService {
   _nameKatalog: any = '';
   //readonly _url:string="Type";
 
-  /* private get  GetUrl(): string {
-     return environment.apiLocalHost + '/' + this._controllerPath;
-   }
 
-   public get GetUrlImg():string{
-     return environment.imgHost;
-   }
-
-   private get GetUrlBlobImag():string{
-     return environment.apiLocalHost + '/' + this._controllerImage;
-   }
-
-   private get GetUrlKatalog(): string {
-     return environment.apiLocalHost + '/' + this._controllerKatalogPath;
-   }
-
-   private get GetUrlTypeProduct():string{
-     return environment.apiLocalHost+'/'+this._controllerTypeProduct;
-   } */
 
   constructor(private http: HttpClient) { }
 
@@ -80,7 +60,7 @@ export class ProductDataService {
     return this.http.get<Product[]>(url + '/' + idKatalog, { headers });
   }
 
-  get UrlImg(): string {
+  get RootUrlImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
     return environment.serverRoot+'images/';
@@ -90,7 +70,7 @@ export class ProductDataService {
 
 
 
-  private createCompleteRoute = (envAddress: string, route: string) => {
-    return `${envAddress}api/${route}`;
+  private createCompleteRoute = (envAddress: string, controller: string) => {
+    return `${envAddress}api/${controller}`;
   };
 }

@@ -31,7 +31,7 @@ export class KatalogService {
     return this._http.get(url, { headers });
   };
 
-  private createCompleteRoute = (  envAddress: string ,route: string) => {
-    return `${envAddress}api/${route}`;
+  private createCompleteRoute = (  envAddress: string ,controller: string) => {
+    return `${envAddress}api/${controller}`;
   };
 }

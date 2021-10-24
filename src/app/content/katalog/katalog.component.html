@@ -1,9 +1,9 @@
 <div class="container-fluid">
   <div class="grid-container" >
     <div *ngFor="let item of katalogs"   >
-    <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}"  >
-      <a  [routerLink]="['katalog',item.id]" [queryParams]="{'katalog':item.name}" >
-       {{ item.name }}</a> </button>
+    <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}" [routerLink]="['/content/katalog',item.id]" [queryParams]="{'katalog':item.name}"  >
+
+       {{ item.name }}</button>
     </div>
   </div>
 </div>
