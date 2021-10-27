@@ -9,7 +9,7 @@ import { ContentModule } from './../../content.module';
 
 @Injectable()
 export class ProductDataService {
-  readonly _controllerPath: string = 'product';
+  readonly _controllerBase: string = 'product';
   readonly _controllerTypeProduct: string = 'typeProduct';
   readonly _controllerImage: string = 'image';
 
@@ -21,7 +21,7 @@ export class ProductDataService {
   //-----------------------
 
   //-----------------------
-  GetTypeProduct(): Observable<TypeProduct[]> {
+  TypeProducts(): Observable<TypeProduct[]> {
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
@@ -42,13 +42,13 @@ export class ProductDataService {
     });
     let url: string = this.createCompleteRoute(
       environment.serverRoot,
-      this._controllerPath
+      this._controllerBase
     );
 
     return this.http.get<Product[]>(url + '/' + idKatalog, { headers });
   }
 
-  get RootUrlImg(): string {
+  get RootSrcImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
     return environment.serverRoot + 'images/';

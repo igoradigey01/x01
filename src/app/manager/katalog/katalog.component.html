@@ -1,0 +1,95 @@
+
+
+<!---------------->
+<div class="grid-container-menu" style="background-color: blueviolet">
+  <div class="btn-danger text-center item-menu-1" routerLink="/admin">
+    модуль admin
+  </div>
+
+  <div class="btn-warning text-center item-menu-2" (click)="cancel()">
+    id(
+    <span class="text-primary"> {{ _selectedKagalog.id }}</span
+    >)
+    {{ _selectedKagalog.name }} <span class="title">(Товар)</span>
+  </div>
+
+  <div
+    class="btn item-menu-3"
+    (click)="addItem()"
+    [style.display]="_flagDisplayAddButton ? 'block' : 'none'"
+  >
+    <img src="./../../../assets/icon/add-button.png" height="25" />
+  </div>
+</div>
+<!--- Output Error-->
+
+<!------------------->
+<div [ngSwitch]="_flagViewMode">
+  <ng-template ngSwitchDefault>
+    <div class="container-fluid">
+      <div class="grid-container">
+        <button
+          *ngFor="let item of _katalogs"
+          class="btn"
+          [class.active]="item == _selectedKagalog"
+          (click)="changeCategory(item)"
+        >
+          <span class="text-primary rounded-circle bg-warning p-2">{{
+            item.id
+          }}</span>
+          {{ item.name }}
+        </button>
+
+      </div>
+    </div>
+  </ng-template>
+  <!--  Create template -->
+  <ng-template ngSwitchCase="create">
+    <div class="create">
+      <p>Создать Элемент</p>
+
+      <input
+        type="text"
+        class="form-control"
+        #idCreate
+        [(ngModel)]="_selectedKagalog.name"
+       autofocus
+      />
+      {{idCreate.focus()}}
+
+      <div class="btn-group" role="group">
+        <button class="btn btn-sm btn-success" (click)="saveItem()">
+          Сохранить
+        </button>
+        <button class="btn btn-sm btn-warning" (click)="cancel()">
+          Отмена
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+  <!--  Edit -Delete template -->
+  <ng-template ngSwitchCase="edit">
+    <div class="edit">
+      
+      <p>Редактировать Элемент</p>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="_selectedKagalog.name"
+
+      />
+      <div class="btn-group" role="group">
+        <button class="btn btn-sm btn-success" (click)="saveItem()">
+          Сохранить
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="deleteItem()">
+          Удалить
+        </button>
+        <button class="btn btn-sm btn-warning" (click)="cancel()">
+          Отмена
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

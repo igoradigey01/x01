@@ -1,0 +1,37 @@
+<div class="container">
+  <div>
+    <div class="row" [hidden]="_unhidden">
+      <input type="file" (change)="fileChangeEvent($event)" />
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="form-check" style="margin-left: auto;">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        (click)="showImg()"
+      /><label>Выбрать</label>
+    </div>
+
+    <div [style.display]="_hidden ? 'block' : 'none'">
+      <div style="height: 350px">
+        <image-cropper
+          [imageChangedEvent]="imageChangedEvent"
+          [maintainAspectRatio]="false"
+          [resizeToHeight]="700"
+          format="png"
+          (imageCropped)="imageCropped($event)"
+        >
+        </image-cropper>
+      </div>
+    </div>
+  </div>
+  <div [style.display]="_unhidden ? 'block' : 'none'">
+    <div style="height: 350">
+      <img [src]="croppedImage" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,241 @@
+
+<div class="grid-container-menu" style="background-color: blueviolet">
+  <div class="btn-danger text-center item-menu-1" routerLink="/admin">
+    модуль admin
+  </div>
+
+  <div class="btn-warning text-center item-menu-2" (click)="cancel()">
+    id(
+    <span class="text-primary"> {{ _selectedKagalog.id }}</span
+    >)
+    {{ _selectedKagalog.name }}<span class="title">(Состав)</span>
+  </div>
+
+  <div
+    class="btn item-menu-3"
+    (click)="addImg()"
+    [style.display]="_flagDisplayAddImgButton ? 'block' : 'none'"
+  >
+    <img src="./../../../assets/icon/add-button.png" height="25" />
+  </div>
+</div>
+<!--- Output Error-->
+
+<div
+  name="outputError"
+  [style.display]="_errorUotput ? 'block' : 'none'"
+  class="alert alert-danger p-1"
+  role="alert"
+>
+  {{ _error }}
+</div>
+
+<!-- template ngSwitch  ----------->
+
+<div [ngSwitch]="_flagViewMode">
+  <ng-template ngSwitchDefault>
+    <div
+      [ngClass]="{
+        'grid-container2': _flagPanel2,
+        'grid-container1': _flagPanel1
+      }"
+    >
+      <div class="bg-primary" (click)="ViwePanel()">
+        <div class="bg-warning" [ngClass]="{ hiden: _flagKatalogHiden }">
+          <ul class="nav flex-column">
+            <li
+              *ngFor="let item of _katalogs"
+              [class.active]="item == _selectedKagalog"
+              class="nav-item"
+              (click)="changeKagalog(item)"
+            >
+              {{ item.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid-sub-container-ms grid-sub-container">
+        <div>id</div>
+        <div>Name</div>
+        <div>Price</div>
+        <div class="hiden-description">descripstion</div>
+        <div>images</div>
+
+        <!-- start model view-->
+        <ng-template ngFor let-product [ngForOf]="_products" let-i="index">
+          <div
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeItemProduct(product)"
+          >
+            {{ product.id }}
+          </div>
+
+          <div
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeItemProduct(product)"
+          >
+            {{ product.name }}
+          </div>
+          <div
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeItemProduct(product)"
+          >
+            {{ product.price }}
+          </div>
+          <div
+            class="hiden-description"
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeItemProduct(product)"
+          >
+            {{ product.description }}
+          </div>
+          <div [ngClass]="{ 'row-grid': i % 2 == 0 }" *ngIf="product.image">
+            <img height="38" src="{{ _url_img }}{{ product.image }}" />
+          </div>
+          <div [ngClass]="{ 'row-grid': i % 2 == 0 }" *ngIf="!product.image">
+            <img height="38" src="{{ _url_img }}not_found.png" />
+          </div>
+        </ng-template>
+        <!-- end  model view-->
+      </div>
+    </div>
+
+    <!----------------- create end-->
+  </ng-template>
+
+  <ng-template ngSwitchCase="edit">
+    <div class="edit">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-center">Редактировать элемент</h4>
+
+
+          <!-- begin CKedit5------------------------------------->
+
+          <!-- end --  CKedit5------------------------------------->
+
+          <!-- begin edit  card ------------------------------------->
+
+          <!--------------          -->
+
+          <!-- idTypeProduct begin -->
+
+          <!--------------------------->
+
+          <div>
+            <span class="input-group-text">{{ _selectedItemProduct.product.name }}</span>
+          </div>
+
+          <!-- Caruosel begin-->
+          <div
+            id="carousel"
+            class="carousel slide"
+            [style.display]="_flagCarouselHiden == true ? 'none' : 'block'"
+          >
+            <ol class="carousel-indicators">
+              <ng-container *ngFor="let item of _selectedItemProduct.image; index as i">
+                <li
+                  *ngIf="i == 0; else elseBlok"
+                  (click)="changeImg(i)"
+                  [ngClass]="{ active: i == _currentIndex }"
+                ></li>
+                <ng-template #elseBlok>
+                  <li
+                    (click)="changeImg(i)"
+                    [ngClass]="{ active: i == _currentIndex }"
+                  ></li>
+                </ng-template>
+              </ng-container>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  class="d-block w-100"
+                   src="{{ _url_img }}{{ _currentImage.name }}"
+                  alt="First slide"
+                />
+
+              </div>
+            </div>
+            <!---- end --class carousel-inner-->
+            <a class="carousel-control-prev" (click)="Prev()" role="button">
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" (click)="Next()" role="button">
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <!-- Carousel end-->
+
+          <!---------------------Image Photo Begin-- send  server data --------------------01.05.21---------->
+
+          <div *ngIf="_flag_sendServerData; else elseBlock">
+           <div>
+          <div class="form-group"  [style.display]="_flag_crop_upload_files ? 'block' : 'none'" >
+            <div [style.height]="_flag_ng_template ? '50px' : '350px'">
+              <app-crop-upload-files
+                (getCropImg)="onSetFilePhoto($event)"
+              ></app-crop-upload-files>
+            </div>
+          </div>
+        </div>
+          <div [style.display]="_flagPhoto ? 'block' : 'none'">
+            <div class="d-flex justify-content-center">
+              <!-----creat _flagBase64---------------------------------->
+
+              <img
+                [src]="_selectedCropImage"
+
+                class="img-wrap mb-3"
+              />
+            </div>
+
+          </div>
+
+
+          <!---------------   Imge Photo end       -->
+
+          <div class="d-flex justify-content-center">
+            <div class="btn-group text-center" role="group">
+              <button class="btn btn-sm btn-success" (click)="addImg()">
+               Сохранить
+              </button>
+
+              <button class="btn btn-sm btn-danger" (click)="deleteImg()">
+                Удалить
+              </button>
+              <button class="btn btn-sm btn-warning" (click)="cancel()">
+                Отмена
+              </button>
+            </div>
+          </div>
+          <!--- 18.05-->
+          <!-- end 18.05-->
+        </div>  <!-- end  _flag_sendServerData-->
+        <ng-template #elseBlock>
+          <div class="progress" >
+            <div class="progress-bar" role="progressbar" [style.width.%]="_progress"   ></div>
+          </div>
+          <div class="row"  style="text-align: center;">
+            <p>({{_progress}})</p>
+          <button class="btn btn-sm btn-warning" (click)="undo()">
+            Отмена
+          </button>
+          </div>
+        </ng-template>
+        </div> <!--end card-body-->
+      </div> <!--edn card -->
+    </div> <!-- div end edit-->
+    <!-- end edit template ------------------->
+  </ng-template>
+</div>
+<!-- Caruosel Beging-->

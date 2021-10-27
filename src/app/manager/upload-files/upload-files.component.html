@@ -1,0 +1,9 @@
+<!-------------------------------------------------------------->
+
+    <input type="file" (change)="changeFale($event)" />
+
+    <div class="image-preview mb-3" *ngIf="_previewUrl">
+      <img [src]="_previewUrl" height="300" class="img-wrap" />
+    </div>
+
+

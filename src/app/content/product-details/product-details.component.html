@@ -1,7 +1,8 @@
-<div>
+
+<div class="_container">
   <p> {{selectedDetailProduct.product|json}}</p>
-</div>
-<div class="h4 text-center mb-0">{{ selectedDetailProduct.product.name }}</div>
+
+<h4 class="h4 text-center mb-0">{{ selectedDetailProduct.product.name }}</h4>
 <div class="container-fluid p-1">
   <div
     name="outputError"
@@ -35,7 +36,7 @@
         <img
           class="d-block w-100"
 
-          src="{{ _url_img }}{{ _currentImage.name }}"
+          src="{{ rootSrc }}{{ _currentImage.name }}"
           alt="First slide"
         />
       </div>
@@ -56,3 +57,5 @@
   <p>**********</p>
   <!-- Carousel end-->
 </div>
+</div>
+

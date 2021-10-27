@@ -1,34 +1,26 @@
+@import "./../../../styles/content-styles.scss";
+
 .carousel {
-  width: 300px;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
-}
-h4 {
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-div {
-  /* background-color: darkgrey; */
-  background-color: #d2ddd8;
-  color: #656565;
-}
-
-.card div {
-  background-color: #e3eee9;
 
 }
+
+
+
+
+
 .active {
-  width: 20rem;
+
 }
 
-@media (max-width: 768px) {
+@media (min-width: 560px) {
   .carousel {
-    width: 90%;
-
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
+
   }
+
 }

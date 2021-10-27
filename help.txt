@@ -18,3 +18,7 @@ export class SecuredImageComponent implements OnChanges  {
       .map(e => this.domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(e)))
   }
 }
+//-----------------------------------------
+npm install ngx-image-cropper --save
+https://www.npmjs.com/package/ngx-image-cropper
+install-- ok ---
