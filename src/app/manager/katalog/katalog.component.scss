@@ -1,4 +1,24 @@
-.grid-container-menu{
+@import "./../../../styles/manager-styles.scss";
+
+.badge-btn {
+  display: inline-block;
+
+  font-size: small;
+  // color: white;
+  padding: 1em 0.5em 1em 0.5em;
+  background-color: #e2e20b; // #ffff00;// #cdb6e8;
+  line-height: 1em;
+  position: relative;
+  //left: -1px;
+  // top: -4px;
+  //height: 1.8em;
+  margin-right: 3em;
+  margin-left: 0px;
+  margin-top: 0px;
+  border-radius: 4px 0 0 4px;
+}
+
+.grid-container-menu {
   display: grid;
   width: 100%;
   margin-left: 0;
@@ -6,27 +26,27 @@
   grid-template-columns: 25% auto;
   grid-template-rows: 1fr 1fr;
 }
-.title{
+.title {
   color: white;
 }
-.item-menu-1{
+.item-menu-1 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
-    grid-row-end: 2;
+  grid-row-end: 2;
 }
 
-.item-menu-2{
+.item-menu-2 {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
-    grid-row-end: 3;
+  grid-row-end: 3;
 }
-.item-menu-3{
+.item-menu-3 {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
-    grid-row-end: 3;
+  grid-row-end: 3;
 }
 
 /*------------------------------------------*/
@@ -38,22 +58,21 @@
   grid-template-columns: 1fr 1fr;
 }
 
- .edit{
+.edit {
   text-align: center;
   display: grid;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  grid-template-columns:  1fr;
-
+  grid-template-columns: 1fr;
 }
-.create{
+.create {
   text-align: center;
   display: grid;
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  grid-template-columns:  1fr;
+  grid-template-columns: 1fr;
 }
 
 .grid-container button {
@@ -74,18 +93,17 @@
 
   background-color: #00978e;
 }
- .grid-container .active{
-   background-color: hotpink;
- }
+.grid-container .active {
+  background-color: hotpink;
+}
 @media (max-width: 768px) {
-  .grid-container-menu{
+  .grid-container-menu {
     display: grid;
     width: 100%;
     margin-left: 0;
     margin-right: 0;
     grid-template-columns: 45% auto;
   }
-
 
   .grid-container {
     display: grid;
@@ -95,22 +113,21 @@
     grid-template-columns: 1fr;
   }
 
-  .edit{
+  .edit {
     text-align: center;
     display: grid;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    grid-template-columns:  1fr;
-
+    grid-template-columns: 1fr;
   }
 
-  .create{
+  .create {
     text-align: center;
     display: grid;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    grid-template-columns:  1fr;
+    grid-template-columns: 1fr;
   }
 }

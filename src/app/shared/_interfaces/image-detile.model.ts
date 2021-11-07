@@ -1,4 +1,4 @@
-export interface ImageDelatil {
+export interface ImageDetile {
   id: number;
   productId: number;
   name: string;

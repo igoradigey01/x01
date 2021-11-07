@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,Input,EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -8,34 +8,37 @@ import { Component, OnInit,Output,Input,EventEmitter} from '@angular/core';
 })
 export class UploadFilesComponent implements OnInit {
 
-  _previewUrl:any = null;
+  _previewUrl: any = null;
 
- @Input() _selectFile:File=null;
- @Output() _onSelectFile=new EventEmitter<File>();
+  @Input() _selectFile: File = <File>{};
+  @Output() _onSelectFile = new EventEmitter<File>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  changeFale(event:any){
-    const target =event.target as HTMLInputElement;
-  const files = target.files;
- // console.log("fale name upload-file.component --------undefined");
+  changeFale(event: any) {
+    const target = event.target as HTMLInputElement;
+
+    const files = target.files;
+    // console.log("fale name upload-file.component --------undefined");
 
     //   if (files[0] as  undefined)
-   // return;
-      // устраняет ошибку
-      //core.js:6210 ERROR TypeError: Cannot read property '0' of undefined
-  if(files.length>0){
-      this._selectFile=files[0];
-    this.preview();
+    // return;
+    // устраняет ошибку
+    //core.js:6210 ERROR TypeError: Cannot read property '0' of undefined
+    if (files) {
+      if (files.length > 0) {
+        this._selectFile = files[0];
+        this.preview();
 
-    // console.log("fale name upload-file.component --"+ this._selectFile.name);
-     this._onSelectFile.emit(this._selectFile);
+        // console.log("fale name upload-file.component --"+ this._selectFile.name);
+        this._onSelectFile.emit(this._selectFile);
 
-     //console.log("changeFale--_selectFile--update-file--"+this._selectFile.name);
-  }
+        //console.log("changeFale--_selectFile--update-file--"+this._selectFile.name);
+      }
+    }
 
   }
 
@@ -51,6 +54,6 @@ export class UploadFilesComponent implements OnInit {
     reader.onload = (_event) => {
       this._previewUrl = reader.result;
     }
-}
+  }
 
 }

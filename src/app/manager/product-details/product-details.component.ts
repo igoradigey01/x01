@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { throwError } from 'rxjs';
-import {
-  CorpImgFile,
-  Image,
-  ItemProduct,
-  Katalog,
-  Product,
-} from 'src/app/data-model/class-data.model';
-import { ProductDetailsDataService } from 'src/app/data-model/product-details-data.service';
+import { CorpImgFile } from './../shared/_interfaces/crop-img.model';
+import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
+import { ProductDetile } from 'src/app/shared/_interfaces/product-detile.model';
+import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
+import { Product } from 'src/app/shared/_interfaces/product.model';
+
+import { ProductDetailsService } from './../shared/sevices/product-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 
@@ -17,6 +16,20 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
+  private defaultImage: ImageDetile = <ImageDetile>{
+    id: -1,
+    name: 'not_found.png',
+    productId: -1,
+  };
+  private defaultProduct: Product = <Product>{
+    id: -1,
+    name: '',
+    katalogId: -1,
+  };
+  private defaultProuctDetaile: ProductDetile = <ProductDetile>{
+    product: this.defaultProduct,
+    image: [this.defaultImage],
+  };
   _flagDisplayAddImgButton: boolean = false;
 
   //-- begin katalog panel pole
@@ -24,18 +37,14 @@ export class ProductDetailsComponent implements OnInit {
   _flagPanel2: boolean = false;
   _flagKatalogHiden = false;
 
-  _katalogs: Katalog[];
-  _selectedKagalog: Katalog = new Katalog(-1, '');
+  _katalogs: Katalog[] = [];
+  _selectedKagalog: Katalog = <Katalog>{ id: -1, name: '' }; // new Katalog(-1, '');
   // --end katalog panel pole
 
   //---- product panel pole begin
 
-  _selectedItemProduct: ItemProduct = new ItemProduct(
-    new Product(-1, '', 0, -1, -1, -1, '', null),
-    [new Image(-1, 'not_found.png', -1)],
-    null
-  );
-  _products: Product[] = [new Product(-1, '', 0, -1, -1, -1, '', null)];
+  _selectedItemProduct: ProductDetile = this.defaultProuctDetaile;
+  _products: Product[] = [this.defaultProduct];
 
   //-- product panel pole end
 
@@ -43,8 +52,8 @@ export class ProductDetailsComponent implements OnInit {
   //--------- begin Carousel pole ------
   // _images: Image[] = [new Image(-1, '', -1)];  17.05.21
 
-  _notFoundImage: Image = new Image(-1, 'not_found.png', -1);
-  _currentImage: Image;
+  _notFoundImage: ImageDetile = this.defaultImage;
+  _currentImage: ImageDetile = this.defaultImage;
   _currentIndex: number = 0;
   _flagCarouselHiden: boolean = false;
 
@@ -65,21 +74,22 @@ export class ProductDetailsComponent implements OnInit {
   _flag_sendServerData: boolean = true;
   _progress: number = 0;
   //-----------------------------
-  _url_img = this._repository.GetUrlImg;
+  _url_img = this._repository.RootSrcImg;
 
   constructor(
-    private _repository: ProductDetailsDataService,
+    private _repository: ProductDetailsService,
     private _activateRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this._repository.GetKatalogs().subscribe((d) => (this._katalogs = d));
+    this._repository.Katalogs.subscribe((d) => (this._katalogs = d));
 
     /* 25.04.20.21
     this._idProduct = parseInt(this._activateRoute.snapshot.params['id']);
     this._nameProduct=this._activateRoute.snapshot.params['name'];
     */
   }
+
   // carousel medod
   Prev() {
     this._error = '';
@@ -88,10 +98,15 @@ export class ProductDetailsComponent implements OnInit {
     --this._currentIndex;
 
     if (this._currentIndex >= 0) {
-      this._currentImage = this._selectedItemProduct.image[this._currentIndex];
+      if (this._selectedItemProduct.image)
+        this._currentImage =
+          this._selectedItemProduct.image[this._currentIndex];
     } else {
-      this._currentIndex = this._selectedItemProduct.image.length - 1;
-      this._currentImage = this._selectedItemProduct.image[this._currentIndex];
+      if (this._selectedItemProduct.image) {
+        this._currentIndex = this._selectedItemProduct.image.length - 1;
+        this._currentImage =
+          this._selectedItemProduct.image[this._currentIndex];
+      }
     }
     // console.log("Click Prev button---index--"+this._currentIndex);
   }
@@ -99,12 +114,15 @@ export class ProductDetailsComponent implements OnInit {
   Next() {
     this._error = '';
     ++this._currentIndex;
-
-    if (this._currentIndex < this._selectedItemProduct.image.length) {
-      this._currentImage = this._selectedItemProduct.image[this._currentIndex];
-    } else {
-      this._currentIndex = 0;
-      this._currentImage = this._selectedItemProduct.image[this._currentIndex];
+    if (this._selectedItemProduct.image) {
+      if (this._currentIndex < this._selectedItemProduct.image.length) {
+        this._currentImage =
+          this._selectedItemProduct.image[this._currentIndex];
+      } else {
+        this._currentIndex = 0;
+        this._currentImage =
+          this._selectedItemProduct.image[this._currentIndex];
+      }
     }
     // console.log("Click Next button---index--"+this._currentIndex);
   }
@@ -127,30 +145,37 @@ export class ProductDetailsComponent implements OnInit {
     }
     this._flag_sendServerData = false; //23.05.21
 
-    let img: Image = new Image(
+    let img: ImageDetile = <ImageDetile>{
+      id: -1,
+      name: 'temp.png',
+      productId: this._selectedItemProduct.product.id,
+      image: this._selectedCropImage,
+    };
+    /*  new ImageDetile(
       -1,
       'temp.png',
       this._selectedItemProduct.product.id,
       this._selectedCropImage
-    );
+    ); */
     this._progress = 0;
     this._repository.AddImage(img).subscribe(
-      (data: HttpEvent<Image>) => {
+      (data: HttpEvent<ImageDetile>) => {
         switch (data.type) {
           case HttpEventType.Sent:
             // console.log('Sent-- запрос отправлен--CreateProduct--'); // запрос отправлен
             break;
           case HttpEventType.UploadProgress:
             // do something
+            if(data.loaded&&data.total)
             this._progress = Math.round((100 * data.loaded) / data.total);
             //  console.log('HttpEventType.UploadProgress--' + this._progress);
             break;
           case HttpEventType.Response:
             //  console.log('Finished');
             // do someting -- response ok---
-            let d = data.body as Image;
+            let d = data.body as ImageDetile;
             // console.log('cteateProuct metod-- d.name--' + d.name);
-            this._selectedItemProduct.image.push(d);
+            this._selectedItemProduct.image?.push(d);
             this._error = '';
 
             this._errorUotput = false;
@@ -163,7 +188,7 @@ export class ProductDetailsComponent implements OnInit {
             break;
         }
       },
-      (err) => {
+      (err: any) => {
         this._error = err.error;
         console.log(err);
         this._errorUotput = true;
@@ -182,12 +207,12 @@ export class ProductDetailsComponent implements OnInit {
     }
     this._repository.DeleteImage(this._currentImage.id).subscribe(
       (d) => {
-        let index = this._selectedItemProduct.image.findIndex((d) => {
+        let index = this._selectedItemProduct.image?.findIndex((d) => {
           d.id == this._currentImage.id;
         });
         if (index !== -1) {
           this._selectedItemProduct.image =
-            this._selectedItemProduct.image.slice(index, 1);
+            this._selectedItemProduct.image?.slice(index, 1);
         }
       },
       (err) => {
@@ -202,14 +227,14 @@ export class ProductDetailsComponent implements OnInit {
   cancel() {
     this._flagViewMode = 'default';
     // this._products=null;//25.04.21
-    this._selectedItemProduct = null; //25.04.21
+    this._selectedItemProduct =this.defaultProuctDetaile; //25.04.21
     this._flag_sendServerData = true; //23.05.21
     this._error = '';
 
     // this._images = null; //25.04.21
-    this._currentImage = null;
+    this._currentImage = this.defaultImage;
     this._currentIndex = 0;
-    this._selectedCropImage = null; //5.05.21
+    this._selectedCropImage = ""; //5.05.21
 
     //this._dataFile=null;   19.12.20       ------------&&&????
     this._flagPhoto = false;
@@ -218,6 +243,7 @@ export class ProductDetailsComponent implements OnInit {
     // this.IsVisible(); // 18.05.21
   }
 
+
   undo() {
     this._flag_sendServerData = true;
     this._error = '';
@@ -225,26 +251,28 @@ export class ProductDetailsComponent implements OnInit {
 
   // колекция фото продукта []
 
-  changeKagalog(item?: Katalog) {
+  changeKagalog(item: Katalog) {
     this._selectedKagalog = item;
     // this._flagDisplayAddButton = true;
     // this._repository.GetModel(item.id).subscribe((d) => (this._models = d));
     this.GetProducts(item.id);
   }
 
-  changeItemProduct(item?: Product) {
-    this._selectedItemProduct = new ItemProduct(
+  changeItemProduct(item: Product) {
+    this._selectedItemProduct =this.defaultProuctDetaile;
+     /* new ProductDetile(
       item,
-      [new Image(-1, item.image, item.id)],
+      [new ImageDetile(-1, item.image, item.id)],
       null
-    );
+    ); */
     this._flag_crop_upload_files = true;
     // this._currentImage=this._notFoundImage;
     this._flag_ng_template = true;
     // this._selectedProduct = item;
 
     this.GetImages(item.id, this._selectedItemProduct);
-    this._currentImage = this._selectedItemProduct.image[0];
+    if(this._selectedItemProduct.image)
+        this._currentImage = this._selectedItemProduct.image[0];
     this._selectedCropImage = '';
     this._flagViewMode = 'edit';
     // this._flagPhoto = true;
@@ -256,7 +284,8 @@ export class ProductDetailsComponent implements OnInit {
   changeImg(i: number) {
     this._error = '';
     this._currentIndex = i;
-    this._currentImage = this._selectedItemProduct.image[this._currentIndex];
+    if(this._selectedItemProduct.image)
+         this._currentImage = this._selectedItemProduct.image[this._currentIndex];
     console.log('UpdateImgs()--_currentIndex--' + this._currentIndex);
   }
   // crarousel isVisible показать скрыть если нет Photo
@@ -275,7 +304,7 @@ export class ProductDetailsComponent implements OnInit {
 
   // загрузить данные подКаталога по id
   GetProducts(idKatalog: number) {
-    this._repository.GetProducts(idKatalog).subscribe(
+    this._repository.Products(idKatalog).subscribe(
       (d) => {
         this._products = d;
         this._error = '';
@@ -305,6 +334,7 @@ export class ProductDetailsComponent implements OnInit {
       // console.log( 'onSetFilePhoto- flag true -event.fileBase64--' + event.fileBase64  );
 
       // event генерируется в дочернем компоненте (задается тип и значение переменной)
+       if(event.fileBase64)
       this._selectedCropImage = event.fileBase64; //this._imgBase64 = event;
       //this. _selectedCropImage.name = 'temp.png';
       this._flagPhoto = true;
@@ -320,12 +350,12 @@ export class ProductDetailsComponent implements OnInit {
     //-----end 17.05
   }
 
-  private GetImages(idProduct: number, item: ItemProduct) {
+  private GetImages(idProduct: number, item: ProductDetile) {
     this._repository.GetImages(idProduct).subscribe(
       (d) => {
         if (d.length > 0) {
-          d.forEach((i: Image) => {
-            item.image.push(i);
+          d.forEach((i: ImageDetile) => {
+            item.image?.push(i);
           });
           // item.image = d;
           //  if(d.length>0)

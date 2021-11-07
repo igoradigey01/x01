@@ -1,6 +1,5 @@
 export interface Katalog {
-  id: string;
+  id: number;
   name: string;
-  description?: string;
-  image?:any;
+  
 }

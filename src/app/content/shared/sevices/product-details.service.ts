@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ImageDelatil } from 'src/app/shared/_interfaces/image-delatil.model';
-import { ContentModule } from './../../content.module';
+import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
+import { ContentModule } from '../../content.module';
 
 @Injectable()
-export class ProductDetailsDataService {
+export class ProductDetailsService {
   readonly path_productDetails: string = 'ProductItem'; // default controllerProductDetailsPath
   readonly path_Product: string = 'product';
   readonly path_KatalogPath: string = 'katalog';
@@ -27,7 +27,7 @@ export class ProductDetailsDataService {
   constructor(private http: HttpClient) { }
 
 
-  GetImages(idProduct: number): Observable<ImageDelatil[]> {
+  GetImages(idProduct: number): Observable<ImageDetile[]> {
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
@@ -42,7 +42,7 @@ export class ProductDetailsDataService {
       '/' +
       idProduct;
 
-    return this.http.get<ImageDelatil[]>(url, { headers });
+    return this.http.get<ImageDetile[]>(url, { headers });
   }
 
   GetBlobIMG(name: string): Observable<Blob> {

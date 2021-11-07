@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-nomenclature',
   templateUrl: './nomenclature.component.html',
-  styleUrls: ['./nomenclature.component.css']
+  styleUrls: ['./nomenclature.component.scss']
 })
 export class NomenclatureComponent implements OnInit {
 

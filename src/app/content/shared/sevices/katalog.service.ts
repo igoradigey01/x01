@@ -12,26 +12,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class KatalogService {
-  readonly path: string = 'Katalog';
+  readonly controller: string = 'Katalog';
 
   constructor(private _http: HttpClient) { }
 
 
 
   public Katalogs = ():Observable<any> => {
+    let action="get"
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
      let url: string = this.createCompleteRoute(
       environment.serverRoot ,
-      this.path
+      this.controller,
+      action
     );
 
     return this._http.get(url, { headers });
   };
 
-  private createCompleteRoute = (  envAddress: string ,controller: string) => {
-    return `${envAddress}api/${controller}`;
+  private createCompleteRoute = (  envAddress: string ,controller: string,action:string) => {
+    return `${envAddress}api/${controller}/${action}`;
   };
 }

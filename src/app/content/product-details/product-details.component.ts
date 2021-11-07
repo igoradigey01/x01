@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
-import { ImageDelatil } from 'src/app/shared/_interfaces/image-delatil.model';
-import { ProductDetail } from 'src/app/shared/_interfaces/product-deatil.model';
+import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
+import { ProductDetile } from 'src/app/shared/_interfaces/product-detile.model';
 import { Nomenclature } from 'src/app/shared/_interfaces/nomenclature.model';
 import { Product } from 'src/app/shared/_interfaces/product.model';
-import { ProductDetailsDataService } from '../shared/sevices/product-details-data.service';
+import { ProductDetailsService } from '../shared/sevices/product-details.service';
 
 @Component({
   selector: 'app-product-details.',
@@ -29,19 +29,19 @@ export class ProductDetailsComponent implements OnInit {
     price: -1,
   };
 
-  selectedDetailProduct: ProductDetail = <ProductDetail>{
+  selectedDetailProduct: ProductDetile = <ProductDetile>{
     image: [{ id: -1, name: '', productId: -1, image: '' }],
     product: this.defaultProduct,
     //nomenclature:
   };
 
   // _images: Image[] = [new Image(-1, 'not_found.png', -1)];
-  _currentImage: ImageDelatil = <ImageDelatil>{
+  _currentImage: ImageDetile = <ImageDetile>{
     id: -1,
     name: 'not_found.png',
     productId: -1,
   };
-  _notFoundImage: ImageDelatil = <ImageDelatil>{
+  _notFoundImage: ImageDetile = <ImageDetile>{
     id: -1,
     name: 'not_found.png',
     productId: -1,
@@ -51,7 +51,7 @@ export class ProductDetailsComponent implements OnInit {
   rootSrc = '';
 
   constructor(
-    private repository: ProductDetailsDataService,
+    private repository: ProductDetailsService,
     private router: Router
   ) {
     // console.log(this.router.getCurrentNavigation()?.extras.state);
@@ -113,7 +113,7 @@ export class ProductDetailsComponent implements OnInit {
   }
   // crarousel isVisible показать скрыть если нет Photo
 
-  private Load(item: ProductDetail): void {
+  private Load(item: ProductDetile): void {
     //  if(item.image)
     this._currentImage.name =  item.image![0].name = item.product.image || this._notFoundImage.name; // 'not_found.png';
     console.log('Load()--item.image![0].name=' + item.image![0].name);
@@ -122,7 +122,7 @@ export class ProductDetailsComponent implements OnInit {
         if (d.length > 0) {
           //  let arr=new Array();
 
-          d.forEach((i: ImageDelatil) => {
+          d.forEach((i: ImageDetile) => {
             item.image?.push(i);
             console.log('item.image?.push(i)--' + i.name);
           });

@@ -1,9 +1,9 @@
-import {ImageDelatil} from  './image-delatil.model';
+import {ImageDetile} from  './image-detile.model';
 import { Product } from "./product.model";
 import {Nomenclature} from './nomenclature.model'
 
-export interface ProductDetail {
+export interface ProductDetile {
   product:Product;
-  image?:ImageDelatil[];
+  image?:ImageDetile[];
   nomenclature?:Nomenclature[];
 }

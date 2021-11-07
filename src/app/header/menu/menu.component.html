@@ -63,6 +63,9 @@
     <!------------ start button menu-->
   <mat-drawer #drawer class="app-navbar">
     <ul class="navbar-nav me-auto my-2 pe-2">
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="manager">Maneger</a>
+      </li>
       <li class="nav-item py-1" >
         <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="">Home</a>
       </li>

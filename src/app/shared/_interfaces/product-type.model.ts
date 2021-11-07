@@ -1,5 +1,5 @@
 export interface TypeProduct {
-  id: string;
+  id: number;
   name: string;
-  description: string;
+  description?: string;
 }

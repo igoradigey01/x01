@@ -13,6 +13,9 @@ const routes: Routes = [
   {
      path: 'content',loadChildren:()=>import('./content/content.module').then((m)=>m.ContentModule)
   },
+  {
+    path: 'manager',loadChildren:()=>import('./manager/manager.module').then((m)=>m.ManagerModule)
+ },
 
   { path: '**', component: PageNotFoundComponent }
 ];

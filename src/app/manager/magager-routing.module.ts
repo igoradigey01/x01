@@ -11,7 +11,7 @@ import {NomenclatureComponent} from './nomenclature/nomenclature.component'
 import { from } from 'rxjs';
 
 const routes: Routes = [
-  {path:'content',component:ContentComponent},
+  {path:'',component:ContentComponent},
   {path:'katalog',component:KatalogComponent},
   {path:'product',component:ProductComponent},
   {path:'item-product',component:ProductDetailsComponent},

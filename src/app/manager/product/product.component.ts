@@ -1,45 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductDataService } from '../../data-model/product-data.servisce';
-import {
-  Katalog,
-  Product,
-  TypeProduct,
-  CorpImgFile
-} from '../../data-model/class-data.model';
+import { ProductService } from './../shared/sevices/product.servisce';
+import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
+import { Product } from 'src/app/shared/_interfaces/product.model';
+import { TypeProduct } from 'src/app/shared/_interfaces/product-type.model';
+import { CorpImgFile } from './../shared/_interfaces/crop-img.model';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css'],
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
   // jwt statrt
   private readonly accessTokenName: string = 'access_token';
   // Получить
-  GetJwt(): string {
+  GetJwt(): string|null {
     return localStorage.getItem(this.accessTokenName);
   }
 
   //jwt end--
-
-  _katalogs: Katalog[];
-  _typeProducts: TypeProduct[];
+   defaulImg={id:-1,name:'not_found.png'};
+  _katalogs: Katalog[]|null=null;
+  _typeProducts: TypeProduct[]|null=null;
   _error: any;
   _errorUotput: boolean = false; //09.04.21 (true)
   _flagInvalid: boolean = true;
 
-  _products: Product[] = [new Product(-1, '', -1, -1, -1, -1, '', null)];
+  _products: Product[] = [<Product>{id:-1,name:'',katalogId:-1,typeProductId:-1}];                //[new Product(-1, '', -1, -1, -1, -1, '', null)];
   _flagPanel1: boolean = true;
   _flagPanel2: boolean = false;
   _flagKatalogHiden = false;
   _flagViewMode: string = 'default';
   _flagDisplayAddButton: boolean = false;
 
-  _selectedKagalog: Katalog = new Katalog(-1, '');
-  _selectedTypeProduct: TypeProduct = new TypeProduct(-1, '', null);
-  _selectedProduct: Product = new Product(-1, '', -1, -1, null, null, null);
+  _selectedKagalog: Katalog =  <Katalog>{id:-1,name:''}; //new Katalog(-1, '');
+  _selectedTypeProduct: TypeProduct =<TypeProduct>{id:-1,name:''};         //new TypeProduct(-1, '', null);
+  _selectedProduct: Product =  <Product>{id:-1,name:'',katalogId:-1,typeProductId:-1};          // new Product(-1, '', -1, -1, null, null, null);
 
   _flagPhoto: boolean = false;
   _flagButton: boolean = true;
@@ -47,15 +44,15 @@ export class ProductComponent implements OnInit {
   _flag_sendServerData: boolean = true;
   _progress: number = 0;
 
-  _url_img = this._repository.GetUrlImg;
+  _url_img = this._repository.RootSrcImg;
 
-  constructor(private _repository: ProductDataService) {}
+  constructor(private _repository: ProductService) {}
 
   ngOnInit(): void {
     this._flagDisplayAddButton = true;
-    this._repository.GetKatalogs().subscribe((d) => (this._katalogs = d));
+    this._repository.Katalogs().subscribe((d) => (this._katalogs = d));
     this._repository
-      .GetTypeProduct()
+      .TypeProducts()
       .subscribe((d) => (this._typeProducts = d));
   }
   // ngClass flags
@@ -65,14 +62,14 @@ export class ProductComponent implements OnInit {
     this._flagKatalogHiden = !this._flagKatalogHiden;
   }
 
-  changeKagalog(item?: Katalog) {
+  changeKagalog(item: Katalog) {
     this._selectedKagalog = item;
     this._flagDisplayAddButton = true;
     // this._repository.GetModel(item.id).subscribe((d) => (this._models = d));
     this.load(item.id);
   }
 
-  changeTypeProduct(item?: TypeProduct) {
+  changeTypeProduct(item: TypeProduct) {
     //  this._selectedProduct.idTypeProduct=item.id;
     console.log(item.id + '----' + item.name);
     this._selectedTypeProduct = item;
@@ -83,7 +80,7 @@ export class ProductComponent implements OnInit {
     console.log('EditProduct ----onchange--event ---');
   }
 
-  changeProduct(item?: Product) {
+  changeProduct(item: Product) {
     // console.log(item.idTypeProduct+'--'+item.idKatalog+'--'+item.id+'--'+item.image+'--'+item.photo);
     this._selectedProduct = item;
     this._flag_sendServerData = true;
@@ -98,9 +95,9 @@ export class ProductComponent implements OnInit {
       // console.log("_selectedProduct--"+this._selectedProduct.id+'---TypeProd'+this._selectedProduct.typeProductId);
       this._error = '';
       this._errorUotput = false;
-      this._selectedTypeProduct = this._typeProducts.find(
+      this._selectedTypeProduct = this._typeProducts?.find(
         (x) => x.id == this._selectedProduct.typeProductId
-      );
+      )||<TypeProduct>{id:-1,name:""};
 
       this._flagViewMode = 'edit';
       this._flagPhoto = true;
@@ -109,7 +106,7 @@ export class ProductComponent implements OnInit {
       // let url=  this._url_img + this._selectedProduct.image;
       // this.getPhotoBase64(this._selectedProduct.image);
       //  this.previewOld();
-      this.getBlobImg(this._selectedProduct.image);
+      this.getBlobImg(this._selectedProduct.image||this.defaulImg.name);
 
       this._flagDisplayAddButton = false;
       // this._selectedProduct.idTypeProduct-------------------------------------
@@ -117,7 +114,7 @@ export class ProductComponent implements OnInit {
   }
 
   addProduct() {
-    this._selectedProduct = new Product(-1, '', -1, null, null, null);
+    this._selectedProduct = <Product>{id:-1,name:'',katalogId:-1};       //new Product(-1, '', -1, null, null, null);
     this._flag_sendServerData = true;
 
     this._flagViewMode = 'create';
@@ -147,7 +144,7 @@ export class ProductComponent implements OnInit {
     if (this._flagViewMode === 'create') {
       //------------------------- 28.04.21---------------------
 
-      this._repository.CreateProduct(this._selectedProduct).subscribe(
+      this._repository.Create(this._selectedProduct).subscribe(
         (data: HttpEvent<Product>) => {
           //progress bar
           if (data.type === HttpEventType.UploadProgress) {
@@ -158,8 +155,10 @@ export class ProductComponent implements OnInit {
               break;
             case HttpEventType.UploadProgress:
               // do something
+              if (data.total){
               this._progress = Math.round((100 * data.loaded) / data.total);
               console.log('HttpEventType.UploadProgress--' + this._progress);
+              }
               break;
             case HttpEventType.Response:
               console.log('Finished');
@@ -189,7 +188,7 @@ export class ProductComponent implements OnInit {
     } else {
       // ---------SEND DATA TO SERVER----------------
 
-      this._repository.UpdateProduct(this._selectedProduct).subscribe(
+      this._repository.Update(this._selectedProduct).subscribe(
         (data: HttpEvent<any>) => {
           //progress bar
           switch (data.type) {
@@ -198,8 +197,10 @@ export class ProductComponent implements OnInit {
               break;
             case HttpEventType.UploadProgress:
               // do something
+              if (data.total){
               this._progress = Math.round((100 * data.loaded) / data.total);
               console.log('HttpEventType.UploadProgress--' + this._progress);
+              }
               break;
             case HttpEventType.Response:
               console.log('---Finished-----');
@@ -229,7 +230,7 @@ export class ProductComponent implements OnInit {
   }
 
   deleteModel() {
-    this._repository.DeleteProduct(this._selectedProduct.id).subscribe(
+    this._repository.Delete(this._selectedProduct.id).subscribe(
       () => {
         console.log('delet prodict item ok__' + this._selectedProduct.name);
         //---------------------------
@@ -258,7 +259,7 @@ export class ProductComponent implements OnInit {
     this._error = '';
     this._errorUotput = false;
 
-    this._selectedProduct = null; //05.05.21
+    this._selectedProduct =<Product>{id:-1,name:'',katalogId:-1}; //05.05.21
     //this._dataFile=null;   19.12.20       ------------&&&????
     this._flagDisplayAddButton = true;
     this._flagPhoto = false;
@@ -275,7 +276,7 @@ export class ProductComponent implements OnInit {
 
   // перезагрузить данные подКаталога по id
   load(idKatalog: number) {
-    this._repository.GetProducts(idKatalog).subscribe(
+    this._repository.Products(idKatalog).subscribe(
       (d) => {
         this._products = d;
         this._error = '';

@@ -1,23 +1,16 @@
-
-
 <!---------------->
-<div class="grid-container-menu" style="background-color: blueviolet">
-  <div class="btn-danger text-center item-menu-1" routerLink="/admin">
-    модуль admin
+<div class="grid-container-menu bg-tools2 ">
+  <div class="bg-tools text-center item-menu-1" routerLink="/manager">
+    модуль manager
   </div>
 
-  <div class="btn-warning text-center item-menu-2" (click)="cancel()">
+  <div class="bg-tools3 text-center item-menu-2" (click)="cancel()">
     id(
-    <span class="text-primary"> {{ _selectedKagalog.id }}</span
-    >)
-    {{ _selectedKagalog.name }} <span class="title">(Товар)</span>
+    <span class="text-primary"> {{ _selectedKagalog.id }}</span>)
+    {{ _selectedKagalog.name }} <span class="title">(katalog)</span>
   </div>
 
-  <div
-    class="btn item-menu-3"
-    (click)="addItem()"
-    [style.display]="_flagDisplayAddButton ? 'block' : 'none'"
-  >
+  <div class="btn item-menu-3" (click)="addItem()" [style.display]="_flagDisplayAddButton ? 'block' : 'none'">
     <img src="./../../../assets/icon/add-button.png" height="25" />
   </div>
 </div>
@@ -28,16 +21,15 @@
   <ng-template ngSwitchDefault>
     <div class="container-fluid">
       <div class="grid-container">
-        <button
-          *ngFor="let item of _katalogs"
-          class="btn"
-          [class.active]="item == _selectedKagalog"
-          (click)="changeCategory(item)"
-        >
-          <span class="text-primary rounded-circle bg-warning p-2">{{
+
+        <button *ngFor="let item of _katalogs" class="btn" style="text-align: justify;padding: 0px;" [class.active]="item == _selectedKagalog"
+          (click)="changeCategory(item)">
+          <span class=" badge-btn ">{{
             item.id
-          }}</span>
-          {{ item.name }}
+            }}</span>
+          <span style="padding: 1em;;">
+            {{ item.name }}</span>
+
         </button>
 
       </div>
@@ -48,13 +40,7 @@
     <div class="create">
       <p>Создать Элемент</p>
 
-      <input
-        type="text"
-        class="form-control"
-        #idCreate
-        [(ngModel)]="_selectedKagalog.name"
-       autofocus
-      />
+      <input type="text" class="form-control" #idCreate [(ngModel)]="_selectedKagalog.name" autofocus />
       {{idCreate.focus()}}
 
       <div class="btn-group" role="group">
@@ -71,14 +57,9 @@
   <!--  Edit -Delete template -->
   <ng-template ngSwitchCase="edit">
     <div class="edit">
-      
-      <p>Редактировать Элемент</p>
-      <input
-        type="text"
-        class="form-control"
-        [(ngModel)]="_selectedKagalog.name"
 
-      />
+      <p>Редактировать Элемент</p>
+      <input type="text" class="form-control" [(ngModel)]="_selectedKagalog.name" />
       <div class="btn-group" role="group">
         <button class="btn btn-sm btn-success" (click)="saveItem()">
           Сохранить
