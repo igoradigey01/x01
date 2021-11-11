@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
 import { KatalogService } from './katalog.service';
+import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 
 @Injectable({
   providedIn: ManagerServiceModule,
@@ -28,7 +29,8 @@ export class ProductService {
 
   constructor(
     private http: HttpClient,
-    private katalogServise: KatalogService
+    private katalogServise: KatalogService,
+    private url: RouteApiService
   ) {}
 
   //-----------------------

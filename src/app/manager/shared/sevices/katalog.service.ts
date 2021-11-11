@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { Observable } from 'rxjs';
+import {TokenService} from 'src/app/shared/sevices/token.service';
+import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 
 @Injectable({
   providedIn: ManagerServiceModule
@@ -14,7 +16,11 @@ import { Observable } from 'rxjs';
 export class KatalogService {
   readonly controller: string = 'Katalog';
 
-  constructor(private _http: HttpClient) { }
+  constructor(
+    private _http: HttpClient,
+    private token:TokenService,
+    private url: RouteApiService
+    ) { }
 
 
 
@@ -22,7 +28,7 @@ export class KatalogService {
     let action='get';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      //  Authorization: 'Bearer ' + token,
+       Authorization: 'Bearer ' + this.token.AccessToken,
     });
     let url: string = this.createCompleteRoute(
       environment.serverRoot,
@@ -36,12 +42,11 @@ export class KatalogService {
   //------------------------------------------------
 
   public Create = (item: Katalog): Observable<any> => {
-    // throw new Error("not implemint exeption");
-    let token='';
+
     let action='Post';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      Authorization: 'Bearer ' + token,
+      Authorization: 'Bearer ' + this.token.AccessToken,
     });
     let url: string = this.createCompleteRoute(
       environment.serverRoot,
@@ -55,11 +60,11 @@ export class KatalogService {
 
   public Update = (item: Katalog): Observable<any> => {
    // throw new Error("not implemint exeption");
-   let token='';
+
    let action='put'
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      Authorization: 'Bearer ' + token,
+      Authorization: 'Bearer ' + this.token.AccessToken,
     });
     let url: string = this.createCompleteRoute(
       environment.serverRoot,
@@ -71,11 +76,11 @@ export class KatalogService {
   //-------------------
 
   public Delete = (id: number): Observable<any> => {
-    let token='';
+
     let action='delete'
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      Authorization: 'Bearer ' + token,
+      Authorization: 'Bearer ' + this.token.AccessToken,
     });
     let url: string = this.createCompleteRoute(
       environment.serverRoot,

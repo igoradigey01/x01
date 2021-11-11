@@ -1,60 +1,51 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { Product } from '../../../shared/_interfaces/product.model';
 import { TypeProduct } from '../../../shared/_interfaces/product-type.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
-import { ContentModule } from './../../content.module';
+import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 
 @Injectable()
 export class ProductDataService {
-  readonly _controllerBase: string = 'product';
-  readonly _controllerTypeProduct: string = 'typeProduct';
-  readonly _controllerImage: string = 'image';
-
-  _nameKatalog: any = '';
   //readonly _url:string="Type";
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private url: RouteApiService
+    ) {
+    url.Controller = 'product';
+  }
 
   //-----------------------
 
   //-----------------------
-  TypeProducts(): Observable<TypeProduct[]> {
+  public TypeProducts(): Observable<TypeProduct[]> {
+    this.url.Controller = 'typeProduct';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this._controllerTypeProduct
-    );
 
-    return this.http.get<TypeProduct[]>(url, { headers });
+    return this.http.get<TypeProduct[]>(this.url.Url, { headers });
   }
 
   //-------------------
-  Products(idKatalog: number): Observable<Product[]> {
+  public Products(idKatalog: number): Observable<Product[]> {
+    this.url.Controller = 'product';
+
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this._controllerBase
-    );
 
-    return this.http.get<Product[]>(url + '/' + idKatalog, { headers });
+    return this.http.get<Product[]>(this.url.Url + '/' + idKatalog, {
+      headers,
+    });
   }
 
-  get RootSrcImg(): string {
+  public get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return environment.serverRoot + 'images/';
+    return this.url.RootImage;
   }
-
-  private createCompleteRoute = (envAddress: string, controller: string) => {
-    return `${envAddress}api/${controller}`;
-  };
 }

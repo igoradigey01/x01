@@ -1,0 +1,63 @@
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  padding: 0;
+
+  font-size: 16px;
+}
+.note-login{
+  background-color: #f1c40f;
+}
+
+.form-social {
+  background-color: #fff;
+}
+
+.btn-social {
+  background-color: #fff;
+  border: none;
+}
+
+.dot {
+height: 3rem;
+width: 3rem;
+//background-color: #ad63b9;
+border-radius: 50%;
+display: inline-flex;
+justify-content: center;
+align-self: center;
+align-items: center;
+}
+
+.social-icons {
+list-style: none;
+display: inline-flex;
+right: 16px;
+position: relative;
+}
+
+.social-icons li {
+padding: 10px;
+}
+
+.goole {
+background-color: #ea4335;
+color: #fff;
+}
+
+.facebook {
+background-color: #3b5998;
+color: #fff;
+}
+
+.vk {
+background-color: #2787f5;
+color: #fff;
+}
+.instagram {
+color: #fff;
+background-color: #ad63b9;
+}

@@ -5,12 +5,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
 import { VertionInfo } from 'src/app/shared/_interfaces/vertion-info.model';
+import {TokenService} from 'src/app/shared/sevices/token.service';
+import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 
 @Injectable({ providedIn: ManagerServiceModule })
+
 export class InfoService {
   readonly _controllerBase: string = 'Version';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private token:TokenService,
+    private url: RouteApiService
+    ) {}
   //----------------------------
 
   get Vertion(): Observable<VertionInfo> {

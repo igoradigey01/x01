@@ -1,0 +1,74 @@
+<div  class="text-right"  >
+
+
+    <button    class="btn btn-success m-1"   > Заказы</button>
+
+
+<button  class="btn btn-danger m-1 "  routerLink="/auth/sing-off" name="ВЫХОД">Выйти</button>
+</div>
+<!------------------------------------------------------->
+
+<div class="container" style="margin: auto;">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-xs-12">
+      <div class="card">
+        <div class="card-header" style="text-align: center;">Личный Кабинет</div>
+        <div class="card-body">
+      <!--Error messages Server output start-->
+
+
+       <!--Error messages Server output end-->
+
+
+
+            <div class="form-group">
+              <label for="name"> Ваше Имя:</label>
+              <label type="name" class="form-control" id="name" >{{_user.name}}</label>
+
+            </div>
+
+            <div class="form-group">
+              <label for="phone"> Телефон:</label>
+              <label type="phone" class="form-control" id="phone" >{{_user.phone}}</label>
+
+            </div>
+
+
+
+            <div class="form-group">
+              <label for="email"> Адрес электронной почты:</label>
+              <label type="email" class="form-control" id="email">{{_user.email}}</label>
+
+            </div>
+
+            <div class="form-group">
+              <label for="address"> Адрес доставки заказа:</label>
+              <label type="address" class="form-control" id="address" >{{_user.address}}</label>
+
+            </div>
+
+            <div class="form-group">
+              <label for="password">Пароль:</label>
+              <label type="password" class="form-control" id="password" >{{_user.password}}</label>
+
+            </div>
+
+
+
+            <div>
+            <button  (click)="onEditButton()"  class="btn btn-primary" style="width: 100%;">Редактировать</button>
+          </div>
+          <div>
+            <button  (click)="onDeleteButton()"  class="btn mt-1 btn-danger" style="width: 100%;">Удалить Профиль</button>
+          </div>
+
+          <div >
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

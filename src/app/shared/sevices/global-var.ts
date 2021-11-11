@@ -1,6 +1,6 @@
 
 import { Injectable } from "@angular/core";
-import { User } from './../_interfaces/user.model';
+import { User } from '../../account/shared/_interfaces/user.model';
 
 @Injectable({ providedIn: "root"})
 export class GlobalVar {

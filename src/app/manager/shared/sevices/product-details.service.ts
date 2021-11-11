@@ -9,6 +9,8 @@ import { ManagerServiceModule } from '../../shared/sevices/maneger-service.modul
 import { KatalogService } from './katalog.service';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import {Product} from 'src/app/shared/_interfaces/product.model';
+import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+
 @Injectable({ providedIn: ManagerServiceModule })
 export class ProductDetailsService {
   readonly path_productDetails: string = 'ProductItem'; // default controllerProductDetailsPath
@@ -20,6 +22,7 @@ export class ProductDetailsService {
   readonly action_AddImage: string = 'CreateImage';
   readonly action_DeleteImage: string = 'Delete';
   readonly action_GetItemProduct: string = 'GetItemProducts';
+
   //----------------------------
 
   public get RootSrcImg(): string {
@@ -39,7 +42,8 @@ export class ProductDetailsService {
 
   constructor(
     private http: HttpClient,
-    private katalogServise: KatalogService
+    private katalogServise: KatalogService,
+    private url: RouteApiService
   ) {}
 
   GetImages(idProduct: number): Observable<ImageDetile[]> {
