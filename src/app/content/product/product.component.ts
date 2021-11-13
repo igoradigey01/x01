@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._url_img = this._repository.RootSrcImg;
+    this._url_img = this._repository.RootImg;
     const katalogId: string | null = this.route.snapshot.paramMap.get('id');
 
     const id: number = Number(katalogId) || 0;

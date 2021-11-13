@@ -12,16 +12,18 @@ export class KatalogService {
     private _http: HttpClient,
     private url: RouteApiService
   ) {
-    url.Controller = 'Katalog';
+   // url.Controller = 'Katalog';
+   // console.log("test -- Katalog Servises - init ok")
   }
 
-  public Katalogs = (): Observable<Katalog> => {
+  public Katalogs = (): Observable<Katalog[]> => {
+    this.url.Controller = 'Katalog';
     this.url.Action = 'get';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
 
-    return this._http.get<Katalog>(this.url.Url, { headers });
+    return this._http.get<Katalog[]>(this.url.Url, { headers });
   };
 }

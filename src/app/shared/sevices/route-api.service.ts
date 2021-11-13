@@ -17,7 +17,7 @@ export class RouteApiService {
     this._controller = name;
   }
 
-  public set Action(name: string) {
+  public set Action(name: string|null) {
     this._action = name;
   }
 

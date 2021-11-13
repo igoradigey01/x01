@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
-import { GlobalVar } from '../../globalVar';
+
 import { HttpErrorResponse } from '@angular/common/http';
-import { JwtToken } from '../jwt-token';
+
 import { tap } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
-import {TokenManagerService} from './../shared/services/tokenManager.services';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -87,7 +86,7 @@ export class SignInComponent implements OnInit {
     // this.router.navigate(['/auth/sing-off']);
   }
 
-  onFileInput(event) {
+  onFileInput(event:any) {
     let data = event.target.files[0];
 
     let fr = new FileReader();

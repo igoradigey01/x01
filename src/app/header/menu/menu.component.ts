@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import {GlobalVar} from '../../globalVar';
+import {UserManagerService} from 'src/app/shared/sevices/user-manager.service';
 
 
 @Component({
@@ -16,18 +16,18 @@ import { Component, OnInit } from '@angular/core';
   company_name_2:string=''; //First Site
 
   constructor(
- //   private globlVar:GlobalVar
+    private userManager:UserManagerService
     ) {}
 
   ngOnInit(): void {
         }
-  public getUsrAuht():boolean{
-  //  return this.globlVar.userAuth;
-  throw new Error("not impliment exeption");
+  public get InvalidLogin():boolean{
+    return   this.userManager.invalidLogin;
+ // throw new Error("not impliment exeption");
   }
 
   public getUsrAdmin():boolean{
- //   return this.globlVar.isAdimin;
+ //   return this.userManager.isAdimin;
  throw new Error("not impliment exeption");
 
   }

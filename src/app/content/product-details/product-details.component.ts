@@ -69,7 +69,7 @@ export class ProductDetailsComponent implements OnInit {
       this.selectedDetailProduct.product= data as Product;
   }) */
 
-    this.rootSrc = this.repository.RootUrlImg;
+    this.rootSrc = this.repository.RootImg;
   }
   Prev() {
     // console.log("Click Prev button");

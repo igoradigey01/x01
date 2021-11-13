@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
 import {TokenService} from 'src/app/shared/sevices/token.service';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
@@ -12,17 +11,11 @@ export class ContentService {
     private url: RouteApiService
   ) {}
 
-  get RootSrcImg(): string {
+  get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return environment.serverRoot + 'images/';
+    return this.url.RootImage;
   }
 
-  private createCompleteRoute = (
-    envAddress: string,
-    controller: string,
-    action: string
-  ) => {
-    return `${envAddress}api/${controller}/${action}`;
-  };
+
 }

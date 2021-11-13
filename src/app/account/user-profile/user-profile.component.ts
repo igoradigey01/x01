@@ -1,59 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService} from './../auth.service'
-import { User } from './../../data-model/class-data.model';
-import { GlobalVar} from '../../globalVar';
+
+import { UserManagerService } from 'src/app/shared/sevices/user-manager.service';
+import { ProfileService } from './../shared/services/profile.service';
+import { User } from 'src/app/shared/_interfaces/user.model';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
- private   _authServece:AuthService;
- public _user:User={name:'',password:'',phone:'',address:'',email:''} ;
+  public _user: User = <User>{
+    name: '',
+    password: '',
+    phone: '',
+    address: '',
+    email: '',
+  };
 
-/**Вывод профиля пользователя (возможно его заказы???-не раализовано) */
+  /**Вывод профиля пользователя (возможно его заказы???-не раализовано) */
   constructor(
-    private authServece:AuthService,
-    private globalVal:GlobalVar,
+    private profileServece: ProfileService,
+    private userMangagerService: UserManagerService,
     private router: Router
-
-    ) {
-    this._authServece=authServece;
-   }
+  ) {}
 
   ngOnInit(): void {
-    this._authServece.getUserProfile().subscribe(
+    this.profileServece.Get().subscribe(
+      (data: User) => {
+        this._user = data;
 
-      (data:User)=>{this._user=data;
-
-     //   console.log("getUserProfile() next:"+ data.name);
-    },
-      (error)=>{
-        console.log("getUserProfile() error:"+error);
-    }
-      );
-
-
-
+        //   console.log("getUserProfile() next:"+ data.name);
+      },
+      (error) => {
+        console.log('getUserProfile() error:' + error);
+      }
+    );
   }
 
-  onEditButton(){
+  onEditButton() {
     //throwError("Not implement exepthion");
-  this.globalVal.userSerialize=this._user;
-//  console.log('test button user-profile');
- this.router.navigateByUrl('auth/user-profile-edit');
-
+    this.userMangagerService.user = this._user;
+    //  console.log('test button user-profile');
+    this.router.navigateByUrl('auth/user-profile-edit');
   }
 
-  onDeleteButton(){
-    throwError("Not implement exepthion");
-    this.globalVal.userSerialize=this._user;
-//  console.log('test button user-profile');
- this.router.navigateByUrl('auth/user-profile-delete');
-
+  onDeleteButton() {
+    throwError('Not implement exepthion');
+    this.userMangagerService.user = this._user;
+    //  console.log('test button user-profile');
+    this.router.navigateByUrl('auth/user-profile-delete');
   }
-
 }

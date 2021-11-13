@@ -13,7 +13,7 @@ export class ProductDataService {
     private http: HttpClient,
     private url: RouteApiService
     ) {
-    url.Controller = 'product';
+  //  url.Controller = 'product';
   }
 
   //-----------------------
@@ -32,6 +32,7 @@ export class ProductDataService {
   //-------------------
   public Products(idKatalog: number): Observable<Product[]> {
     this.url.Controller = 'product';
+    this.url.Action=''
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -42,7 +43,7 @@ export class ProductDataService {
       headers,
     });
   }
-
+    /** src root for  images */
   public get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 

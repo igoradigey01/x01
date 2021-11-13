@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <div class="grid-container" >
+    
     <div *ngFor="let item of katalogs"   >
     <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}" [routerLink]="['/content/katalog',item.id]" [queryParams]="{'katalog':item.name}"  >
 

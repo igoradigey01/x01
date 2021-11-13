@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+
 import { ManagerServiceModule } from './maneger-service.module';
 import { VertionInfo } from 'src/app/shared/_interfaces/vertion-info.model';
 import {TokenService} from 'src/app/shared/sevices/token.service';
@@ -11,27 +11,27 @@ import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 @Injectable({ providedIn: ManagerServiceModule })
 
 export class InfoService {
-  readonly _controllerBase: string = 'Version';
+
 
   constructor(
     private http: HttpClient,
     private token:TokenService,
     private url: RouteApiService
-    ) {}
+    ) {
+     // url.Controller='Version';-
+    }
   //----------------------------
 
   get Vertion(): Observable<VertionInfo> {
+     this.url.Controller='Version';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this._controllerBase
-    );
+
 
     //  console.log('Info-servise-getVertion()---------');
-    return this.http.get<VertionInfo>(url, { headers }).pipe(
+    return this.http.get<VertionInfo>(this.url.Url, { headers }).pipe(
       map((obj: any) => {
       //  let obj = data['VertionInfo'];
         return obj.map(function (obj: any): VertionInfo {
@@ -41,13 +41,11 @@ export class InfoService {
     );
   }
 
-  get RootSrcImg(): string {
+  get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return environment.serverRoot + 'images/';
+    return this.url.RootImage;
   }
 
-  private createCompleteRoute = (envAddress: string, controller: string) => {
-    return `${envAddress}api/${controller}`;
-  };
+
 }

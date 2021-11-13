@@ -10,10 +10,11 @@ export class ProductDetailsService {
     private http: HttpClient,
     private url: RouteApiService
   ) {
-    url.Controller = 'ProductItem';
+    //url.Controller = 'ProductItem';
   }
 
-  GetImages(idProduct: number): Observable<ImageDetile[]> {
+  public  GetImages(idProduct: number): Observable<ImageDetile[]> {
+    this.url.Controller = 'ProductItem';
     this.url.Action = 'GetImages';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -25,7 +26,14 @@ export class ProductDetailsService {
     return this.http.get<ImageDetile[]>(url, { headers });
   }
 
-  GetBlobIMG(name: string): Observable<Blob> {
+  /** src root for  images */
+  public get RootImg(): string {
+    // return this.http.get(src,{responseType: 'blob'});
+
+    return this.url.RootImage;
+  }
+
+  public GetBlobIMG(name: string): Observable<Blob> {
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,

@@ -22,13 +22,13 @@
       </div>
        <!--Error messages Server output end-->
 
-          <form [formGroup]="_form" (ngSubmit)="submitForm()">
+          <form ![formGroup]="_form" (ngSubmit)="submitForm()">
 
             <div class="form-group">
               <label for="name"> Ваше Имя:</label>
               <input type="name" class="form-control" id="name" formControlName="name" />
               <div class="alert alert-danger"
-                            *ngIf="_form.controls['name'].invalid && _form.controls['name'].touched">
+                            *ngIf="_form!.controls['name'].invalid && _form!.controls['name'].touched">
                             Некорректное Имя
                         </div>
             </div>
@@ -37,7 +37,7 @@
               <label for="phone"> Телефон:</label>
               <input type="phone" class="form-control" id="phone" formControlName="phone" />
               <div class="alert alert-danger"
-                            *ngIf="_form.controls['phone'].invalid && _form.controls['phone'].touched">
+                            *ngIf="_form!.controls['phone'].invalid && _form!.controls['phone'].touched">
                             Некорректный телефон
                         </div>
             </div>
@@ -48,7 +48,7 @@
               <label for="email"> Адрес электронной почты:</label>
               <input type="email" class="form-control" id="email" formControlName="email" />
               <div class="alert alert-danger"
-                            *ngIf="_form.controls['email'].invalid && _form.controls['email'].touched">
+                            *ngIf="_form!.controls['email'].invalid && _form!.controls['email'].touched">
                             Некорректный email
                         </div>
             </div>
@@ -63,7 +63,7 @@
               <label for="password">Пароль:</label>
               <input type="password" class="form-control" id="password" formControlName="password" />
               <div class="alert alert-danger"
-                            *ngIf="_form.controls['password'].invalid && _form.controls['password'].touched">
+                            *ngIf="_form!.controls['password'].invalid && _form!.controls['password'].touched">
                             Некорректный Пароль
                         </div>
             </div>
@@ -72,7 +72,7 @@
               <label for="password_confirmation">Подтверждение пароля:</label>
               <input type="password_confirmation" class="form-control" id="password_confirmation" formControlName="password_confirmation" />
               <div class="alert alert-danger"
-                            *ngIf="_form.controls['password_confirmation'].invalid && _form.controls['password_confirmation'].touched">
+                            *ngIf="_form!.controls['password_confirmation'].invalid && _form!.controls['password_confirmation'].touched">
                             Пароли не совпадают
                         </div>
             </div>

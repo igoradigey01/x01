@@ -4,7 +4,7 @@ import { TokenService } from 'src/app/shared/sevices/token.service';
 import { AccoutServiceModule } from './accout-service.module';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
-import { User } from './../_interfaces/user.model';
+import { User } from '../../../shared/_interfaces/user.model';
 
 @Injectable({
   providedIn: AccoutServiceModule,

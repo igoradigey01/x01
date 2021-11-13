@@ -16,6 +16,9 @@ const routes: Routes = [
   {
     path: 'manager',loadChildren:()=>import('./manager/manager.module').then((m)=>m.ManagerModule)
  },
+ {
+  path: 'account',loadChildren:()=>import('./account/account.module').then((m)=>m.AuthModule)
+},
 
   { path: '**', component: PageNotFoundComponent }
 ];

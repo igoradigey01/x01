@@ -1,32 +1,30 @@
 <mat-toolbar class="_container_nav">
   <div class="col_inner">
     <a routerLink="" class="nav_link">
-      <span class="logo_inner-name" >{{company_name_1}}</span>
+      <span class="logo_inner-name">{{ company_name_1 }}</span>
 
-      <img
-        class="logo_inner-img"
-        src="./../../../assets/logo.png"  alt="logo company X-01"
-      />
-      <span class="logo_inner-name-2">{{ company_name_2}}</span>
+      <img class="logo_inner-img" src="./../../../assets/logo.png" alt="logo company X-01" />
+      <span class="logo_inner-name-2">{{ company_name_2 }}</span>
     </a>
   </div>
   <div class="col_inner logo-column">
-    <div class="logo-position-name"> <span > {{company_name_1}}</span><span> </span> <span style="color: black;"> {{company_name_2}}</span></div>
+    <div class="logo-position-name">
+      <span> {{ company_name_1 }}</span><span> </span> <span style="color: black"> {{ company_name_2 }}</span>
+    </div>
     <div class="commutation"></div>
-    <a class="nav_link"  href="tel:+79002440328">  ( +7-900-244-03-28 ) </a>
+    <a class="nav_link" href="tel:+79002440328"> ( +7-900-244-03-28 ) </a>
 
     <div class="conteiner-social-apps">
       <button type="button" class="btn btn-link">
         <a href="https://www.instagram.com/x_01.ru/">
-      <img src="./../../../assets/massager_social/Instagram_64_2.png" class="img-social-apps" alt="instagram">
-    </a>
-    </button>
+          <img src="./../../../assets/massager_social/Instagram_64_2.png" class="img-social-apps" alt="instagram" />
+        </a>
+      </button>
       <button type="button" class="btn btn-link">
         <a href=" https://wa.me/+79002440328?text=Здравствуйте%20(x-01)%20Меня%20интересует%20информация%20о%20 ">
-      <img src="./../../../assets/massager_social/Whatsapp_64.png" class="img-social-apps" alt="whatsapp" >
-    </a>
+          <img src="./../../../assets/massager_social/Whatsapp_64.png" class="img-social-apps" alt="whatsapp" />
+        </a>
       </button>
-
     </div>
   </div>
 
@@ -56,42 +54,66 @@
       <span>
         <a class="nav_link" routerLink="menu/about">онас</a>
       </span>
+      <div class="nav-item">
+        <div *ngIf="InvalidLogin; then thenBlock; else elseBlock"></div>
+        <ng-template #elseBlock>
+          <button type="button" class="btn  navbar-btn account_botton_ok " routerLink="/account/user-profile">
+            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" /></button>
+        </ng-template>
+        <ng-template #thenBlock>
+          <button type="button" class="btn navbar-btn account_botton_false"  routerLink="/account">
+            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД"  /></button>
+        </ng-template>
+      </div>
     </div>
   </div>
 </mat-toolbar>
 <mat-drawer-container>
-    <!------------ start button menu-->
+  <!------------ start button menu-->
   <mat-drawer #drawer class="app-navbar">
     <ul class="navbar-nav me-auto my-2 pe-2">
       <li class="nav-item py-1">
-        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="manager">Maneger</a>
-      </li>
-      <li class="nav-item py-1" >
-        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="">Home</a>
-      </li>
+        <div class="nav-item">
+          <div *ngIf="InvalidLogin; then falseAccout_md; else okAccount_md"></div>
+          <ng-template #okAccount_md>
+            <button type="button" class="btn  navbar-btn account_botton_ok " routerLink="/account/user-profile">
+              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" /></button>
+          </ng-template>
+          <ng-template #falseAccout_md>
+            <button type="button" class="btn navbar-btn account_botton_false"  routerLink="/account">
+              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД" /></button>
+          </ng-template>
+        </div>
 
-      <li class="nav-item py-1" >
-        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/kak-zakazat">Как заказать?</a>
-      </li>
-      <li class="nav-item py-1" >
-        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/oplata-i-dostavka">Оплата и Доставка</a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/garantiya">Гарантии</a>
+
+        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()"  routerLink="manager">Maneger-1</a>
+      </li>
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()" routerLink="" routerLinkActive="active" >Home</a>
       </li>
 
       <li class="nav-item py-1">
-        <a class="nav-link body-2 app-nav-link " (click)="drawer.toggle()" routerLink="menu/about">онас</a>
+        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()" routerLink="menu/kak-zakazat">Как
+          заказать?</a>
+      </li>
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()" routerLink="menu/oplata-i-dostavka">Оплата и
+          Доставка</a>
+      </li>
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()" routerLink="menu/garantiya">Гарантии</a>
       </li>
 
-
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()" routerLink="menu/about">онас</a>
+      </li>
     </ul>
-
   </mat-drawer>
-   <!---------/-->
+  <!---------/-->
   <mat-drawer-content>
     <div class="_body"></div>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
-
