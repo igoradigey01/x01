@@ -1,11 +1,13 @@
-
-<div class="container" style="margin: auto;">
+<div class="container" style="margin: auto">
   <div class="row">
     <div class="col-md-6 offset-md-3 col-xs-12">
-      <div class="card">
-        <div class="card-header" style="text-align: center;">РЕГИСТРАЦИЯ</div>
-        <div class="card-body">
-      <!--Error messages Server output start-->
+<div class="card">
+  <div class="card-body">
+
+      <div class="card-header" style="text-align: center;">РЕГИСТРАЦИЯ</div>
+
+     <div  class="card-body _body">
+       <!--Error messages Server output start-->
 
       <div class="alert alert-danger" role="alert" *ngIf="_errorMgs?.length">
 
@@ -18,75 +20,62 @@
 
       </div>
       <div class="alert alert-success" role="alert" *ngIf="_successfulSave">
-       Пользователь Успешно Зарегистрирован!
+       Пользователь Успешно Зарегистрирован!<br>
+       Необходимо подтвердить введённый адрес электронной почты.<br>
+       Нажав на ссылку которую мы вам отправили
       </div>
        <!--Error messages Server output end-->
-
-          <form ![formGroup]="_form" (ngSubmit)="submitForm()">
-
-            <div class="form-group">
-              <label for="name"> Ваше Имя:</label>
-              <input type="name" class="form-control" id="name" formControlName="name" />
-              <div class="alert alert-danger"
-                            *ngIf="_form!.controls['name'].invalid && _form!.controls['name'].touched">
-                            Некорректное Имя
-                        </div>
-            </div>
-
-            <div class="form-group">
-              <label for="phone"> Телефон:</label>
-              <input type="phone" class="form-control" id="phone" formControlName="phone" />
-              <div class="alert alert-danger"
-                            *ngIf="_form!.controls['phone'].invalid && _form!.controls['phone'].touched">
-                            Некорректный телефон
-                        </div>
-            </div>
-
-
-
-            <div class="form-group">
-              <label for="email"> Адрес электронной почты:</label>
-              <input type="email" class="form-control" id="email" formControlName="email" />
-              <div class="alert alert-danger"
-                            *ngIf="_form!.controls['email'].invalid && _form!.controls['email'].touched">
-                            Некорректный email
-                        </div>
-            </div>
-
-            <div class="form-group">
-              <label for="address"> Адрес доставки заказа:</label>
-              <input type="address" class="form-control" id="address" formControlName="address" />
-
-            </div>
-
-            <div class="form-group">
-              <label for="password">Пароль:</label>
-              <input type="password" class="form-control" id="password" formControlName="password" />
-              <div class="alert alert-danger"
-                            *ngIf="_form!.controls['password'].invalid && _form!.controls['password'].touched">
-                            Некорректный Пароль
-                        </div>
-            </div>
-
-            <div class="form-group">
-              <label for="password_confirmation">Подтверждение пароля:</label>
-              <input type="password_confirmation" class="form-control" id="password_confirmation" formControlName="password_confirmation" />
-              <div class="alert alert-danger"
-                            *ngIf="_form!.controls['password_confirmation'].invalid && _form!.controls['password_confirmation'].touched">
-                            Пароли не совпадают
-                        </div>
-            </div>
-
-            <div>
-            <button type="submit" [disabled]="_flagButoon" class="btn btn-primary" style="width: 100%;">Зарегистрироваться</button>
+      <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="registerUser(registerForm.value)">
+          <div class="form-group row">
+              <label for="firstName" class="col-form-label  "> Ваше Имя:</label>
+              <div >
+                  <input type="text" id="firstName" formControlName="firstName" class="form-control" />
+              </div>
           </div>
-          </form>
-          <div >
-
+          <div class="form-group row">
+              <label for="lastName" class="col-form-label "> Ваше Отчество:</label>
+              <div >
+                  <input type="text" id="lastName" formControlName="lastName" class="form-control" />
+              </div>
           </div>
-        </div>
-      </div>
+          <div class="form-group row">
+              <label for="email" class="col-form-label ">Email:</label>
+              <div >
+                  <input type="email" id="email" formControlName="email" class="form-control" />
+              </div>
+              <div >
+                  <em *ngIf="validateControl('email') && hasError('email', 'email')">Пожалуйста, предоставьте действительный адрес электронной почты</em>
+                  <em *ngIf="validateControl('email') && hasError('email', 'required')">Электронная почта обязательна</em>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="password" class="col-form-label ">Пароль:</label>
+              <div >
+                  <input type="password" id="password" formControlName="password" class="form-control" />
+              </div>
+              <div >
+                  <em *ngIf="validateControl('password') && hasError('password', 'required')">необходим пароль</em>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="confirm" class="col-form-label">Подтверждение пароля:</label>
+              <div >
+                  <input type="password" id="confirm" formControlName="confirm" class="form-control" />
+              </div>
+              <div >
+                <em *ngIf="validateControl('confirm') && hasError('confirm', 'required')">необходимо подтверждение пароля</em>
+                <em *ngIf="hasError('confirm', 'mustMatch')">Пароли должны совпадать</em>
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+              <div class="col-md-1  offset-md-3">
+                  <button type="submit" class="btn btn-info" [disabled]="!registerForm.valid">Зарегистрироваться</button>
+              </div>
+          </div>
+      </form>
     </div>
   </div>
 </div>
-
+</div></div>
+</div>

@@ -12,6 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {AccoutServiceModule} from './shared/services/accout-service.module';
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
 import { UserProfileDeleteComponent } from './user-profile-delete/user-profile-delete.component';
+import { EmailConfirmationComponent } from './email-confirmation/email-confirmation.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+
 
 
 
@@ -21,7 +25,8 @@ import { UserProfileDeleteComponent } from './user-profile-delete/user-profile-d
         AuthRoutingModule,
        FormsModule,
        ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        AccoutServiceModule
     ],
     declarations: [
         SignInComponent,
@@ -30,10 +35,13 @@ import { UserProfileDeleteComponent } from './user-profile-delete/user-profile-d
         UserProfileComponent,
         UserProfileEditComponent,
         UserProfileDeleteComponent,
+        EmailConfirmationComponent,
+        ForgotPasswordComponent,
+        ResetPasswordComponent,
 
     ],
     providers:[
-     AccoutServiceModule
+
     ]
 })
 export class AuthModule {

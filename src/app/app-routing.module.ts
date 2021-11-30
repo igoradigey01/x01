@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {BgContentComponent} from './content/bg-content/bg-content.component';
+import {ForbiddenComponent} from './forbidden/forbidden.component';
 
 const routes: Routes = [
   {path:"",component:BgContentComponent},
+  { path: 'forbidden', component: ForbiddenComponent },
   {
     path: 'menu',
     loadChildren: () =>

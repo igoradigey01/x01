@@ -35,16 +35,16 @@
           <form class="form-signin" #myForm='ngForm' novalidate (ngSubmit)="submitForm(myForm)">
             <div class="form-group">
               <label for="email"> Адрес электронной почты:</label>
-              <input type="email"   name="email" value={{email}} ngModel class="form-control" placeholder="email" required autofocus>
+              <input type="email"   name="email" [(ngModel)]="email"   class="form-control" placeholder="email" required autofocus>
             </div>
             <div class="form-group">
               <label for="password">Пароль:</label>
-              <input type="password" name="password" value={{password}} ngModel class="form-control" placeholder="Password" required>
+              <input type="password" name="password" [(ngModel)]="password"   class="form-control" placeholder="Password" required>
             </div>
 
             <div class="d-flex justify-content-end">
             <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" ngModel name="rememberMe">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="rememberme" e name="rememberMe">
               <label class="form-check-label" for="rememberMe">запомнить меня </label>
             </div>
           </div>
@@ -63,7 +63,7 @@
                 Войти
               </button>
 
-              <button class="btn  text-white btn-secondary" style="width: 100% ;" name="login_button"
+              <button class="btn   text-white btn-secondary"  (click)="onUserChenged()" style="width: 100% ;" name="login_button"
                 value="cancel">
               Cancel
             </button>

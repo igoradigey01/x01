@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { TokenService } from 'src/app/shared/sevices/token.service';
+import {UserManagerService} from 'src/app/shared/sevices/user-manager.service'
 
 @Component({
   selector: 'app-log-off',
@@ -12,11 +13,14 @@ export class LogOffComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private token: TokenService
+    private tokenSevice: TokenService,
+    private userMangagerService:UserManagerService
+
   ) {}
 
   ngOnInit(): void {
-    this.token.Clear();
+    this.tokenSevice.Clear();
+    this.userMangagerService.setInvalidLogin$(true);
     this.router.navigate(['']);
   }
 }

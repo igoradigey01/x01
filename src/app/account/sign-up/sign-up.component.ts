@@ -1,78 +1,93 @@
+import { UserRegistrationDto } from '../shared/_interfaces/user-registrationDto.model';
+import { AccountService } from '../shared/services/account.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl, ValidatorFn } from '@angular/forms';
-
-import { Router } from '@angular/router';
-import { ProfileService } from './../shared/services/profile.service';
-import { User } from 'src/app/shared/_interfaces/user.model';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {RegistrationResponseDto} from '../shared/_interfaces/registration-responseDto.model'
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { environment } from 'src/environments/environment';
+import { PasswordConfirmationValidatorService} from './../shared/services/password-confirmation-validator.service'
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent implements OnInit {
+export class  SignUpComponent implements OnInit {
 
-  _form: FormGroup|null=null;
+  public registerForm: FormGroup ;
+
   _successfulSave: boolean = false;// пользователь успешно сохранен
   _errorMgs: string[] = [];
   _flagButoon: boolean = false;
 
-  /**Начальная регистрация пользователья - ref-(Зарегитрироваться) */
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private profileServece: ProfileService
-  ) {
+    private _authService: AccountService,
+    private _passConfValidator: PasswordConfirmationValidatorService
 
-  }
+    ) {
+
+      this.registerForm  =  new FormGroup({
+        firstName: new FormControl(''),
+        lastName: new FormControl(''),
+        email: new FormControl('', [Validators.required, Validators.email]),
+        password: new FormControl('', [Validators.required]),
+        confirm: new FormControl(''),
+      });
+
+
+     }
 
   ngOnInit(): void {
-    this._form = new FormGroup(
-      {
-
-        "name": new FormControl("", Validators.required),
-        "email": new FormControl("", [
-          Validators.required,
-          Validators.email
-        ]),
-        "address": new FormControl(), //----------12.09.20
-        "phone": new FormControl("+7", Validators.pattern("[+0-9]{12}")),
-        "password": new FormControl("", Validators.required),
-        "password_confirmation": new FormControl("", [Validators.required, this.equalto('password')])
-
-      }
-    );
+    let pass=this.registerForm.get('password');
+    if(pass)
+    this.registerForm.get('confirm')!.setValidators([Validators.required,
+      this._passConfValidator.validateConfirmPassword(pass)]);
 
   }
-  submitForm() {
-    //  throw new Error("not Impliment Exeption");
-    this._flagButoon = true;
-    /* let user: User = new User(this._form.value.name, this._form.value.password, this._form.value.email,
-      this._form.value.phone, this._form.value.address); */
 
-    let user: User = <User>{
-      id: -1, name: this._form?.value.name, address: this._form?.value.address,
-      description: '', email: this._form?.value.email, password: this._form?.value.password, image: null,
-      phone: this._form?.value.phone
-    }
-    this._errorMgs = [];
+  public validateControl(controlName: string)  {
+    return (
+      this.registerForm!.controls[controlName].invalid &&
+      this.registerForm!.controls[controlName].touched
+    );
+  };
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.registerForm!.controls[controlName].hasError(errorName);
+  };
+
+  public registerUser = (registerFormValue: any) => {
+
+    const formValues = {    // let array1 = ['h', 'e', 'l', 'l', 'o'];
+      ...registerFormValue,  //  let array2 = [...array1];
+    };                        //console.log(array2);
+     //  ['h', 'e', 'l', 'l', 'o'] // вывод
 
 
 
-    this.profileServece.Create(user).subscribe(
-      data => {
-        this._successfulSave = true;
-        this.router.navigateByUrl('/auth');
+    const user: UserRegistrationDto = {
+      firstName: formValues.firstName,
+      lastName: formValues.lastName,
+      email: formValues.email,
+      password: formValues.password,
+      confirmPassword: formValues.confirm,
+      clientURI: environment.clientRoot + 'account/email-confirmation'
+    };
+    this._errorMgs.length=0;
 
+    this._authService.registerUser( user).subscribe(
+
+      (_) => {
+        console.log('Successful registration');
+        this._successfulSave=true;
+        this._flagButoon=true;
       },
       (error: HttpErrorResponse) => {
+       // console.log();
+        //this._errorMgs=error.console.error;
+
         this._successfulSave = false;
         this._flagButoon = false;
-        //   this._errorMgs=error.error;// error может быть и 400 и 500 -- если err===400 то можно setValidationErrors(this.form, error)
-        let body: string = JSON.stringify(error.error);
         if (error.ok) {
           console.log("error statys ok");
 
@@ -82,44 +97,23 @@ export class SignUpComponent implements OnInit {
         if (error.status == 400) {
 
 
-          console.log("error consoll----" + body);
-
-
-          let validationErrorDictionary = JSON.parse(body);
+          let validationErrorDictionary =error.error.errors ;
           for (var fieldName in validationErrorDictionary) {
             if (validationErrorDictionary.hasOwnProperty(fieldName)) {
-              this._errorMgs.push(validationErrorDictionary[fieldName]);
+             this._errorMgs.push(validationErrorDictionary[fieldName]);
             }
           }
           return;
         }
 
-        body = "Ошибка соединения с сервером -Сообщиете Администаратору ресурса";
-        console.log("error consoll----" + body);
+        let body = "Ошибка соединения с сервером -Сообщиете Администаратору ресурса";
+
 
         this._errorMgs.push(body);
 
 
+
       }
     );
-    //console.log('User',this._form.value as User);
-    //console.log('password',this._form.value.password)
-    //throw new Error("---Metod не задан --onchengFlag()--body-shop.component.ts")
-
-  }
-
-    equalto(field_name: string): ValidatorFn {
-     return (control: AbstractControl): { [key: string]: any }|null => {
-       let input = control.value;
-       let isValid = control.root.value[field_name] == input;
-       if (!isValid)
-         return { 'equalTo': { isValid } };
-       else
-         return null;
-     };
-   }
-
-
-
-
+  };
 }

@@ -7,7 +7,7 @@ import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 import { User } from '../../../shared/_interfaces/user.model';
 
 @Injectable({
-  providedIn: AccoutServiceModule,
+  providedIn: AccoutServiceModule
 })
 export class ProfileService {
   readonly _controller: string = 'Account';
@@ -23,6 +23,7 @@ export class ProfileService {
   }
 
   public Get(): Observable<User> {
+    this.url.Controller=this._controller;
     this.url.Action = 'Profile';
 
     let headers: HttpHeaders = new HttpHeaders({
@@ -35,12 +36,12 @@ export class ProfileService {
     }); //
   }
 
-  public Create(user: User): Observable<any> {
+/*   public Create(user: User): Observable<any> {
     // throw new Error("Not implict");
     this.url.Action = 'Register';
 
     return this.http.post<any>(this.url.Url, user);
-  }
+  } */
   public Update(user: User): Observable<any> {
     // throw new Error("Not implict");
     this.url.Action = 'Edit';

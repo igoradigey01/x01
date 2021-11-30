@@ -1,2 +1,27 @@
 input.ng-touched.ng-invalid {border:solid red 2px;}
 input.ng-touched.ng-valid {border:solid green 2px;}
+em{
+  color: #e71515;
+  font-weight: bold;
+}
+.ng-invalid.ng-touched{
+  border-color: red;
+}
+.card{
+  margin-top: 10px;
+  background-color: #fff;
+  box-shadow: 1px 1px 1px #cabcbc;
+}
+._body{
+  width: 100%;
+}
+@media (min-width: 450px){
+  ._body{
+   // width: 90%;
+  }
+}
+@media (min-width: 960px){
+  ._body{
+  //   width: 70%;
+  }
+}

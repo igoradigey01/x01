@@ -57,43 +57,7 @@ export class TokenService {
     localStorage.removeItem(this.refresh_token);
   }
 
-  public IsAdmin(): boolean {
-    if (this.Role === 'admin') {
-      return true;
-    }
-    return false;
-  }
 
-  public IsManager(): boolean {
-    // throw new Error("not impliment exeption");
 
-    if (this.Role === 'manager') {
-      return true;
-    }
-    return false;
-  }
-
-  public IsShopper(): boolean {
-    if (this.Role === 'shopper') {
-      return true;
-    }
-    return false;
-  }
-
-  private get Role() {
-    let jwt = this.AccessToken;
-
-    if (!this.Exists) {
-      return false;
-    }
-    let dataJwt = jwt?.split('.')[1];
-    if (!dataJwt) {
-      return false;
-    }
-    let decodeData = atob(dataJwt);
-    let data = JSON.parse(decodeData);
-    console.log('decodeData--' + decodeData);
-    console.log('data--' + data.role);
-    return data;
-  }
+  
 }

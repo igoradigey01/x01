@@ -3,6 +3,8 @@
 
 ng generate module my-module --routing
 //------------------------------------------
+   ng g c forbidden --skipTests    (not test component)
+//---------------------------------
 
 export class SecuredImageComponent implements OnChanges  {
   ...

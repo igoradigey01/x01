@@ -12,7 +12,7 @@ export const environment = {
 
   },
 
-   clientRoot:'http://localhost:4200', //  Host client
+   clientRoot:'http://localhost:4200/', //  Host client
    serverRoot:'http://localhost:5010/',
    serverAuthority:'http://localhost:5010/',
    clientId:'angular-client'

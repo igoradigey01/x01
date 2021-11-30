@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import {BgContentComponent} from './content/bg-content/bg-content.component';
 import {KatalogComponent} from './content/katalog/katalog.component'
 import { HttpClientModule } from '@angular/common/http';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
     MenuComponent,
     BgContentComponent,
     KatalogComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ForbiddenComponent
+
   ],
   imports: [
     BrowserModule,

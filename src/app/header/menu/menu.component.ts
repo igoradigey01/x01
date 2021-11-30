@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserManagerService} from 'src/app/shared/sevices/user-manager.service';
+import { Subscription } from 'rxjs';
+import { UserManagerService } from 'src/app/shared/sevices/user-manager.service';
 
 
 @Component({
@@ -10,25 +11,67 @@ import {UserManagerService} from 'src/app/shared/sevices/user-manager.service';
 //--------------------------
 //not implements in header.module ,implemints in app.module
 //----------------------
- export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit {
 
-  company_name_1:string='';
-  company_name_2:string=''; //First Site
+  private _subscriptions: Subscription[] = [];
+
+  private _invalidLogin: boolean = true;
+  private _isManager: boolean = false;
+  private _isAdmin: boolean = false;
+  private _isShopper: boolean = false;
+
+  company_name_1: string = '';
+  company_name_2: string = ''; //First Site
+
+
 
   constructor(
-    private userManager:UserManagerService
-    ) {}
+    private userManager: UserManagerService
+  ) { }
 
   ngOnInit(): void {
-        }
-  public get InvalidLogin():boolean{
-    return   this.userManager.invalidLogin;
- // throw new Error("not impliment exeption");
+
+    this.userManager.InvalidLogin$.subscribe(
+      d => {
+        this._invalidLogin = d;
+        this._isAdmin = this.userManager.IsAdmin;
+        this._isManager = this.userManager.IsManager;
+        this._isShopper = this.userManager.IsShopper;
+      }
+    )
+
+
   }
 
-  public getUsrAdmin():boolean{
- //   return this.userManager.isAdimin;
- throw new Error("not impliment exeption");
-
+  ngOnDestroy() {
+    this._subscriptions
+      .forEach(s => s.unsubscribe());
   }
+  public get InvalidLogin(): boolean {
+    return this._invalidLogin;
+    // throw new Error("not impliment exeption");
+  }
+
+  public get IsAdmin(): boolean {
+  //  return true;
+     if(this._isAdmin && !this._invalidLogin){
+               return true;
+     }
+    return false;
+  }
+  public get IsManager(): boolean {
+   // return true;
+     if(this._isManager && !this._invalidLogin){
+               return true;
+     }
+    return false;
+  }
+  public get IsShopper(): boolean {
+   // return true;
+     if(this._isShopper && !this._invalidLogin){
+               return true;
+     }
+    return false;
+  }
+
 }

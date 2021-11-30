@@ -54,15 +54,36 @@
       <span>
         <a class="nav_link" routerLink="menu/about">онас</a>
       </span>
+      <!--- start Role ------>
+      <div class="nav-item" *ngIf="IsAdmin">
+        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="admin">
+          Admin
+        </button>
+      </div>
+      <div class="nav-item" *ngIf="IsManager">
+        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="manager">
+          Manager
+        </button>
+      </div>
+
+      <div class="nav-item" *ngIf="IsShopper">
+        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="orders">
+          Заказы
+        </button>
+      </div>
+      <!--end Role  --------------->
+
       <div class="nav-item">
         <div *ngIf="InvalidLogin; then thenBlock; else elseBlock"></div>
         <ng-template #elseBlock>
-          <button type="button" class="btn  navbar-btn account_botton_ok " routerLink="/account/user-profile">
-            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" /></button>
+          <button type="button" class="btn navbar-btn account_botton_ok" routerLink="/account/user-profile">
+            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" />
+          </button>
         </ng-template>
         <ng-template #thenBlock>
-          <button type="button" class="btn navbar-btn account_botton_false"  routerLink="/account">
-            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД"  /></button>
+          <button type="button" class="btn navbar-btn account_botton_false" routerLink="/account">
+            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД" />
+          </button>
         </ng-template>
       </div>
     </div>
@@ -73,25 +94,47 @@
   <mat-drawer #drawer class="app-navbar">
     <ul class="navbar-nav me-auto my-2 pe-2">
       <li class="nav-item py-1">
-        <div class="nav-item">
+        <div style="display: inline-block;">
           <div *ngIf="InvalidLogin; then falseAccout_md; else okAccount_md"></div>
           <ng-template #okAccount_md>
-            <button type="button" class="btn  navbar-btn account_botton_ok " routerLink="/account/user-profile">
-              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" /></button>
+            <button type="button" class="btn navbar-btn account_botton_ok" (click)="drawer.toggle()"
+              routerLink="/account/user-profile">
+              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" />
+            </button>
           </ng-template>
           <ng-template #falseAccout_md>
-            <button type="button" class="btn navbar-btn account_botton_false"  routerLink="/account">
-              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД" /></button>
+            <button type="button" class="btn navbar-btn account_botton_false" (click)="drawer.toggle()"
+              routerLink="/account">
+              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД" />
+            </button>
           </ng-template>
         </div>
 
-      </li>
-      <li class="nav-item py-1">
 
-        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()"  routerLink="manager">Maneger-1</a>
       </li>
       <li class="nav-item py-1">
-        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()" routerLink="" routerLinkActive="active" >Home</a>
+        <!--- start Role ------>
+      <div style="display: inline-block;"  *ngIf="IsAdmin">
+        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="admin">
+          Admin
+        </button>
+      </div>
+      <div  style="display: inline-block;" *ngIf="IsManager">
+        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="manager">
+          Manager
+        </button>
+      </div>
+
+      <div  style="display: inline-block;" *ngIf="IsShopper">
+        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="orders">
+          Заказы
+        </button>
+      </div>
+      <!--end Role  --------------->
+      </li>
+      <li class="nav-item py-1">
+        <a class="nav-link body-2 app-nav-link" (click)="drawer.toggle()" routerLink=""
+          routerLinkActive="active">Home</a>
       </li>
 
       <li class="nav-item py-1">

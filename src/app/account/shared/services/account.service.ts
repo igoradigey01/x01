@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { AccoutServiceModule } from './accout-service.module';
+
 import { TokenService } from 'src/app/shared/sevices/token.service';
 import { TokenModel } from 'src/app/shared/_interfaces/token-model';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { RegistrationResponseDto } from '../_interfaces/registration-responseDto.model';
+import { UserRegistrationDto } from '../_interfaces/user-registrationDto.model';
+import { ForgotPasswordDto } from '../_interfaces/forgot-passwordDto.model';
+import { CustomEncoder } from 'src/app/shared/custom-encoder';
+import { ResetPasswordDto } from './../_interfaces/reset-passwordDto.model';
 
 @Injectable({
   providedIn: AccoutServiceModule,
@@ -18,14 +24,19 @@ export class AccountService {
 
   constructor(
     private http: HttpClient,
-    private token: TokenService,
+    private tokenService: TokenService,
     private url: RouteApiService
   ) {
-    url.Controller = this._controller;
-    url.Action = this._action;
+
   }
+
   /** Get token login pass */
-  public login(credentials: JSON): Observable<any> {
+  public login = (credentials: string): Observable<any> => {
+
+    this.url.Controller = this._controller;
+    this.url.Action = this._action;
+
+    //  console.log('login-credentials = '+credentials);
     return this.http
       .post(this.url.Url, credentials, {
         headers: new HttpHeaders({
@@ -37,8 +48,8 @@ export class AccountService {
           (res) => {
             let token = res as TokenModel;
             if (token) {
-              this.token.AccessToken = token.access_token;
-              this.token.RefreshToken = token.refresh_token;
+              this.tokenService.AccessToken = token.access_token;
+              this.tokenService.RefreshToken = token.refresh_token;
             } else {
               console.log('error---  res as TokenModel = null');
             }
@@ -50,11 +61,46 @@ export class AccountService {
       );
   }
 
-  IsUserValid(): Observable<any> {
+  public registerUser = (body: UserRegistrationDto) => {
+
+    this.url.Controller = this._controller;
+    this.url.Action = 'Registration';     //this._action;
+
+    return this.http.post<RegistrationResponseDto>(this.url.Url, body);
+  }
+
+  public confirmEmail = (token: string, email: string) => {
+
+    this.url.Controller = this._controller;
+    this.url.Action = 'EmailConfirmation';            //this._action;
+
+    let params = new HttpParams({ encoder: new CustomEncoder() })
+    params = params.append('token', token);
+    params = params.append('email', email);
+
+    return this.http.get(this.url.Url, { params: params });
+  }
+
+  public forgotPassword = (body: ForgotPasswordDto) => {
+    this.url.Controller = this._controller;
+    this.url.Action = 'ForgotPassword';
+
+    return this.http.post(this.url.Url, body);
+  }
+
+  public resetPassword = (body: ResetPasswordDto) => {
+    this.url.Controller = this._controller;
+    this.url.Action = 'ResetPassword';
+
+    return this.http.post(this.url.Url, body);
+  }
+
+  public isUserValid(token: string): Observable<any> {
+    this.url.Controller = this._controller;
     this.url.Action = 'IsTokenValid';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      Authorization: 'Bearer ' + this.token.AccessToken,
+      Authorization: 'Bearer ' + token,
     });
 
     return this.http.get(this.url.Url, { headers });
