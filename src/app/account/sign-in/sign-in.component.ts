@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
     private userManagerService: UserManagerService,
     private router: Router,
     private tokenService: TokenService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     let subLogin = this.userManagerService.InvalidLogin$.subscribe();
@@ -69,16 +69,16 @@ export class SignInComponent implements OnInit {
         let body: string;
         this.userManagerService.setInvalidLogin$(true);
         this._flagButoon = false;
-        if (error.status === 401||error.status == 400) {
+        if (error.status === 401 || error.status == 400) {
           //this.userManagerService.invalidLogin = true;
-       //  console.log(  error.message);
-         this._errorMgs.push( error.error);
+          //  console.log(  error.message);
+          this._errorMgs.push(error.error);
 
           return;
 
           //  body = 'Не верный логин или пароль';
         }
-      
+
 
         body =
           'Ошибка соединения с сервером -Сообщиете Администаратору Pесурса';

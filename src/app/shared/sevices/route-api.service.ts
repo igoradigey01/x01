@@ -31,7 +31,7 @@ export class RouteApiService {
 
   public get RootImage(): string {
 
-    return this.createCompleteRoute(this._serverRoot, this._controllerImage, null);
+    return this.createCompleteRoute(this._serverRoot, this._controllerImage, null)+'/';
 
   }
 

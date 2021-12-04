@@ -1,3 +1,7 @@
+ // -------
+    ng build
+    firebase deploy
+
 //For example, the following command generates an NgModule
 // that can use routing.
 

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {AccountService} from './../shared/services/account.service';
 import {ResetPasswordDto} from './../shared/_interfaces/reset-passwordDto.model';
+import { HttpErrorResponse } from '@angular/common/http';
 import {PasswordConfirmationValidatorService} from './../shared/services/password-confirmation-validator.service'
 
 
@@ -14,10 +15,11 @@ import {PasswordConfirmationValidatorService} from './../shared/services/passwor
 export class ResetPasswordComponent implements OnInit {
 
   public resetPasswordForm: FormGroup ;
+  public _flagButoon:boolean=false;
 
   public showSuccess: boolean=false;
   public showError: boolean=false;
-  public errorMessage: string|null=null;
+  _errorMgs: string[] = [];
   private _token: string|null=null;
   private _email: string|null=null;
 
@@ -58,6 +60,7 @@ export class ResetPasswordComponent implements OnInit {
 
   public resetPassword = (resetPasswordFormValue:any) => {
     this.showError = this.showSuccess = false;
+    this._errorMgs=[];
 
     const resetPass = { ... resetPasswordFormValue };
 
@@ -70,11 +73,24 @@ export class ResetPasswordComponent implements OnInit {
 
     this._authService.resetPassword( resetPassDto)
     .subscribe(_ => {
+     this._flagButoon=true;
       this.showSuccess = true;
     },
-    error => {
-      this.showError = true;
-      this.errorMessage = error;
+    (error: HttpErrorResponse) => {
+
+
+      this._flagButoon = false;
+
+      if (error.status === 401 || error.status == 400) {
+        console.log(error.error);
+        if (error.error.errors)
+          this._errorMgs.push(error.error.errors);
+        else
+          this._errorMgs.push(error.error);
+        return;
+      }
+
+      this._errorMgs.push('Ошибка соединения с сервером -Сообщиете Администаратору Pесурса');
     })
   }
 
