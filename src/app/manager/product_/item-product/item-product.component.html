@@ -1,0 +1,186 @@
+<p>item-product works!</p>
+<div *ngIf="!_flag_sendServerData; else elseBlock_2">
+  <!-- begin CKedit5------------------------------------->
+  <div
+    class="input-group float-right input-group-sm d-flex justify-content-end"
+  >
+    <div class="input-group-prepend">
+      <div class="input-group-text">
+        <input type="checkbox" aria-label="CKedit5" />
+      </div>
+    </div>
+    <div class="input-group-prepend">
+      <span class="input-group-text">CKedit5</span>
+    </div>
+  </div>
+  <!-- end --  CKedit5------------------------------------->
+
+  <!-- begin edit  card ------------------------------------->
+
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">id</span>
+    </div>
+    <div class="input-group-prepend">
+      <span class="input-group-text">( {{ _select_Product.id }})</span>
+    </div>
+  </div>
+
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Католог</span>
+    </div>
+    <div class="input-group-prepend">
+      <span class="input-group-text"
+        >({{  _select_Katalog.name }})</span>
+
+
+    </div>
+  </div>
+  <!--------------          -->
+
+  <!-- idTypeProduct begin -->
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Тип</span>
+    </div>
+    <div class="input-group-prepend dropdown">
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+
+        data-toggle="dropdown"
+      >
+        ({{ _select_typeProduct.name }})
+      </button>
+      <div class="dropdown-menu">
+        <li
+          (click)="changeTypeProduct(item)"
+          (change)="onEditFormChange()"
+          *ngFor="let item of _typeProducts"
+        >
+          {{ item.name }}
+        </li>
+      </div>
+    </div>
+  </div>
+  <!--------------------------->
+
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend ">
+      <span class="input-group-text">Название</span>
+    </div>
+    <input
+      type="text"
+      (change)="onEditFormChange()"
+      class="form-control"
+      #nameEdit="ngModel"
+      required
+      [(ngModel)]="_select_Product.name"
+      placeholder="Название"
+    />
+    <div
+    [hidden]="nameEdit.valid || priceEdit.untouched"
+    class="alert alert-danger p-1"
+  >
+    !
+  </div>
+  </div>
+
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Цена</span>
+    </div>
+    <input
+      type="text"
+      #priceEdit="ngModel"
+      (change)="onEditFormChange()"
+      class="form-control"
+      required
+      pattern="[0-9]{1,}"
+      [(ngModel)]="_select_Product.price"
+      placeholder="Цена"
+    />
+    <div
+      [hidden]="priceEdit.valid || priceEdit.untouched"
+      class="alert alert-danger p-1"
+    >
+      !
+    </div>
+  </div>
+
+  <div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Торговая наценка</span>
+    </div>
+    <input
+      type="text"
+      name="markupEdit"
+      (change)="onEditFormChange()"
+      #markupEdit="ngModel"
+      class="form-control"
+      required
+      pattern="[0-9]{1,}"
+      [(ngModel)]="_select_Product.markup"
+      placeholder="Торговая наценка"
+    />
+    <div
+      [hidden]="markupEdit.valid || markupEdit.untouched"
+      class="alert alert-danger p-1"
+    >
+      !
+    </div>
+  </div>
+
+  <!------------------------------------>
+  <div class="form-group">
+    <label>
+      <span class="input-group-text">описание товара</span></label
+    >
+    <textarea
+      [(ngModel)]="_select_Product.description"
+      (change)="onEditFormChange()"
+
+      placeholder="описание товара"
+      class="form-control"
+      rows="3"
+    ></textarea>
+  </div>
+
+  <!-----------img -render------------------------------------------>
+
+   <app-img-render></app-img-render>
+
+  <!---------------  Botton edit start        -->
+
+  <div class="d-flex justify-content-center">
+    <div class="btn-group text-center" role="group">
+      <button
+      class="btn btn-sm btn-success"
+      [disabled]="
+      nameEdit.invalid || priceEdit.invalid || markupEdit.invalid || _flagInvalid
+    "
+      (click)="saveProduct()">
+        Сохранить
+      </button>
+      <button class="btn btn-sm btn-danger" (click)="deleteProduct()">
+        Удалить
+      </button>
+      <button class="btn btn-sm btn-warning" (click)="cancel()">
+        Отмена
+      </button>
+    </div>
+  </div>
+  <!--button edit end-->
+  </div> <!-- end  _flag_sendServerData-->
+  <ng-template #elseBlock_2>
+    <div class="progress" >
+      <div class="progress-bar" role="progressbar" [style.width.%]="_progress"   ></div>
+    </div>
+    <div class="row"  style="text-align: center;">
+      <p>({{_progress}})</p>
+    <button class="btn btn-sm btn-warning" (click)="undo()">
+      Отмена
+    </button>
+    </div>
+  </ng-template>

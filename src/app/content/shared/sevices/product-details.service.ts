@@ -7,39 +7,42 @@ import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 @Injectable()
 export class ProductDetailsService {
   constructor(
-    private http: HttpClient,
-    private url: RouteApiService
+    private _http: HttpClient,
+    private _url: RouteApiService
   ) {
     //url.Controller = 'ProductItem';
   }
 
   public  GetImages(idProduct: number): Observable<ImageDetile[]> {
-    this.url.Controller = 'ProductItem';
-    this.url.Action = 'GetImages';
+    this._url.Controller = 'ProductItem';
+    this._url.Action = 'GetImages';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
 
-    let url: string = this.url.Url + '/' + idProduct;
+    let url: string = this._url.Url + '/' + idProduct;
 
-    return this.http.get<ImageDetile[]>(url, { headers });
+    return this._http.get<ImageDetile[]>(url, { headers });
   }
 
   /** src root for  images */
   public get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return this.url.RootImage;
+    return this._url.RootImage;
   }
 
   public GetBlobIMG(name: string): Observable<Blob> {
+    
+    this._url.Controller = 'image';
+    this._url.Action = '';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let url: string = this.url.UrlImage + '/' + name;
+    let url: string = this._url.Url + '/' + name;
 
-    return this.http.get(url, { headers, responseType: 'blob' });
+    return this._http.get(url, { headers, responseType: 'blob' });
   }
 }

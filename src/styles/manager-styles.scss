@@ -1,5 +1,9 @@
 @import './styles.scss';
 
+._main-container {
+  min-height: 400px;
+}
+
 .bg-tools{
   background-color: #d1e8b6;
 }

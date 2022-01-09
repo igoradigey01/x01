@@ -1,0 +1,20 @@
+<p>img-render works!</p>
+<div class="form-group">
+  <div >
+  <div   [style.height]="_flag_ng_template ? '50px' : '350px'">
+    <app-crop-upload-files
+      (getCropImg)="onSetFilePhoto($event)"
+    ></app-crop-upload-files>
+  </div>
+</div>
+</div>
+<div [style.display]="_flagPhoto ? 'block' : 'none'">
+<div class="d-flex justify-content-center">
+  <!-----creat _flagBase64---------------------------------->
+  <img
+    [src]="this._select_Product.imageBase64"
+
+    class="img-wrap mb-3"
+  />
+</div>
+</div>

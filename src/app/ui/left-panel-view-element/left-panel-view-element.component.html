@@ -1,0 +1,45 @@
+<div class="_main-container">
+  <app-root-view-element
+    (onChangedViewMode)="onChangedView($event)"
+    (onClickKatalog)="sidenav.toggle()"
+    [_selectedKagalog]="_selectedKagalog"
+    [_modul_name]="_modul_name"
+    [_router_link]="_router_link"
+  >
+  </app-root-view-element>
+
+  <!----------------------          start  side-nav   -->
+
+  <mat-drawer-container class="side-nav-container" autosize>
+    <!------------ start button menu-->
+    <mat-drawer #sidenav mode="side" opened class="app-navbar">
+      <div *ngFor="let item of _katalogs">
+        <!---   _katalogs        -->
+        <div
+          *ngIf="
+            breakpointObserver.isMatched(['(min-width: 960px)']);
+            else unsetBreakpoint
+          "
+        >
+          <button class="btn btn-link" (click)="onChecks(item)">
+            {{ item.name }}
+          </button>
+        </div>
+
+        <ng-template #unsetBreakpoint>
+          <button
+            class="btn btn-link"
+            (click)="sidenav.toggle()"
+            (click)="onChecks(item)"
+          >
+            {{ item.name }}
+          </button>
+        </ng-template>
+        <!---   _katalogs        -->
+      </div>
+    </mat-drawer>
+    <ng-content></ng-content>
+  </mat-drawer-container>
+
+  <!---------------------  end side-nav   -->
+</div>

@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { KatalogService } from './../shared/sevices/katalog.service';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-  AbstractControl,
-  ValidatorFn,
-} from '@angular/forms';
+
 
 @Component({
   selector: 'app-katalog',
@@ -41,7 +34,7 @@ export class KatalogComponent implements OnInit {
   changeCategory(item: Katalog) {
 
       this._selectedKagalog = item;
-    
+
     this._flagViewMode = 'edit';
     this._flagDisplayAddButton = false;
   }

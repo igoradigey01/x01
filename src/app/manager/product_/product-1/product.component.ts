@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from './../shared/sevices/product.servisce';
+import { ProductService } from '../../shared/sevices/product.servisce';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { TypeProduct } from 'src/app/shared/_interfaces/product-type.model';
-import { CorpImgFile } from './../shared/_interfaces/crop-img.model';
+import { CorpImgFile } from '../../shared/_interfaces/crop-img.model';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({

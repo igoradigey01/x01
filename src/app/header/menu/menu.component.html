@@ -56,7 +56,7 @@
       </span>
       <!--- start Role ------>
       <div class="nav-item" *ngIf="IsAdmin">
-        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="admin">
+        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="manager">
           Admin
         </button>
       </div>
@@ -115,7 +115,7 @@
       <li class="nav-item py-1">
         <!--- start Role ------>
       <div style="display: inline-block;"  *ngIf="IsAdmin">
-        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="admin">
+        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="manager">
           Admin
         </button>
       </div>

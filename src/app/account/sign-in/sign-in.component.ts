@@ -49,6 +49,12 @@ export class SignInComponent implements OnInit {
     this._subscriptions.forEach((s) => s.unsubscribe());
   }
 
+  externalLogin( name:string){
+    this._errorMgs=[];
+    console.log("---  externalLogin-- " +name);
+    this._errorMgs.push("провайдер авторизации  -"+name+"-временно недоступен");
+  }
+
   submitForm(loginForm: NgForm) {
     // this._form.disable();
     this._errorMgs = [];

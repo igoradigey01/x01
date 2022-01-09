@@ -7,6 +7,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -17,7 +18,8 @@ const material = [
   MatExpansionModule,
   MatDividerModule,
   MatMenuModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatSelectModule
 ];
 
 @NgModule({

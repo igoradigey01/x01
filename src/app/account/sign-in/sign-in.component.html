@@ -73,12 +73,12 @@
           <span class="d-block text-center my-4 text-muted"> или войти через</span>
             <!--------------------------- social-form start-->
 
-          <form asp-controller="Auth" asp-action="ExternalLogin" asp-route-returnUrl=@Model.ReturnUrl>
+          <form   >
 
             <div class="d-flex justify-content-center mt-1">
               <ul class="social-icons">
                 <li>
-                  <button type="submit" name="provider" value="VK" class="btn-link btn-social">
+                  <button (click)="externalLogin('VK')" class="btn-link btn-social">
                     <span class="dot vk">
                       <svg width="24" height="24" viewBox="0 0 24 24"
                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@
                   </button>
                 </li>
                 <li>
-                  <button type="submit" name="provider" value="Facebook" class="btn-link btn-social">
+                  <button (click)="externalLogin('Facebook')"  class="btn-link btn-social">
                     <span class="dot facebook">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16"
                          height="16" fill="currentColor" class="bi bi-facebook"
@@ -100,7 +100,7 @@
                 </li>
 
                 <li>
-                  <button type="submit" name="provider" value="Goole" class="btn-link btn-social">
+                  <button (click)="externalLogin('Google')"  class="btn-link btn-social">
                     <span class="dot goole">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16"
                          height="16" fill="currentColor" class="bi bi-google"
@@ -110,7 +110,7 @@
                     </span>
                   </button>
                 </li>
-                <li>
+                <li style="display: none;" >
                   <button type="submit" name="provider" value="Instagram" class="btn-link btn-social">
                     <span class="dot instagram">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16"

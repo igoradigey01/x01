@@ -1,0 +1,41 @@
+@import './../../../styles/manager-styles.scss';
+
+._main-container{
+  display: block;
+}
+
+.side-nav-container {
+
+  min-height: 700px ;
+}
+.app-navbar{
+  padding-left: 1rem;
+    min-width: 12rem;
+
+
+  background-color:$c7 ; //#fafafa
+}
+
+
+.btn:hover{
+
+  color: #000;
+
+}
+.btn{
+  color: $h-color;
+  text-decoration: none;
+
+
+}
+.btn:focus{
+  text-decoration: underline;
+  color: #000;
+}
+
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Bootstrap 5 tweak: do not underline links unless hovered over */

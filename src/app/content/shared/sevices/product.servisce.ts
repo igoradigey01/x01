@@ -10,8 +10,8 @@ export class ProductDataService {
   //readonly _url:string="Type";
 
   constructor(
-    private http: HttpClient,
-    private url: RouteApiService
+    private _http: HttpClient,
+    private _url: RouteApiService
     ) {
   //  url.Controller = 'product';
   }
@@ -20,33 +20,33 @@ export class ProductDataService {
 
   //-----------------------
   public TypeProducts(): Observable<TypeProduct[]> {
-    this.url.Controller = 'typeProduct';
+    this._url.Controller = 'typeProduct';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
 
-    return this.http.get<TypeProduct[]>(this.url.Url, { headers });
+    return this._http.get<TypeProduct[]>(this._url.Url, { headers });
   }
 
   //-------------------
   public Products(idKatalog: number): Observable<Product[]> {
-    this.url.Controller = 'product';
-    this.url.Action=''
+    this._url.Controller = 'product';
+    this._url.Action=''
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
 
-    return this.http.get<Product[]>(this.url.Url + '/' + idKatalog, {
-      headers,
+    return this._http.get<Product[]>(this._url.Url + '/' + idKatalog, {
+      headers
     });
   }
     /** src root for  images */
   public get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return this.url.RootImage;
+    return this._url.RootImage;
   }
 }

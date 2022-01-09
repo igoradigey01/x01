@@ -9,14 +9,12 @@ import { environment } from '../../../../environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
 import { KatalogService } from './katalog.service';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { TokenService } from 'src/app/shared/sevices/token.service';
 
 @Injectable({
   providedIn: ManagerServiceModule,
 })
 export class ProductService {
-  readonly _controllerBase: string = 'product';
-  readonly _controllerTypeProduct: string = 'typeProduct';
-  readonly _controllerImage: string = 'image';
 
   _nameKatalog: any = '';
   //readonly _url:string="Type";
@@ -24,60 +22,75 @@ export class ProductService {
   get RootSrcImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return environment.serverRoot + 'images/';
+    return   this._url.RootImage                //environment.serverRoot + 'images/';
   }
 
   constructor(
-    private http: HttpClient,
-    private katalogServise: KatalogService,
-    private url: RouteApiService
-  ) {}
+    private _http: HttpClient,
+    private _katalogServise: KatalogService,
+    private _token: TokenService,
+    private _url: RouteApiService
+  ) { }
 
   //-----------------------
 
   //-----------------------
-  TypeProducts(): Observable<TypeProduct[]> {
+  public TypeProducts(): Observable<TypeProduct[]> {
+    this._url.Controller = 'typeProduct';
+    this._url.Action = ''
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this._controllerTypeProduct
-    );
-
-    return this.http.get<TypeProduct[]>(url, { headers });
+    return this._http.get<TypeProduct[]>(this._url.Url, { headers });
   }
+
   //------------- Get all Katalog------------
   public Katalogs = (): Observable<Katalog[]> => {
-    return this.katalogServise.Katalogs();
+    return this._katalogServise.Katalogs();
   };
+
   //------------------- Get all Product--------
-  Products(idKatalog: number): Observable<Product[]> {
+  public Products(idKatalog: number): Observable<Product[]> {
+
+    this._url.Controller = 'product';
+    this._url.Action = ''
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this._controllerBase
-    );
+    let url: string = this._url.Url + '/' + idKatalog;
 
-    return this.http.get<Product[]>(url + '/' + idKatalog, { headers });
+    return this._http.get<Product[]>(url, { headers });
   }
+
   //---------------
   public Create = (item: Product): Observable<any> => {
-    throw new Error('not implemint exeption');
+    // throw new Error('not implemint exeption');
+    this._url.Controller = 'product';
+    this._url.Action = 'Post';
+
+    let headers: HttpHeaders = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + this._token.AccessToken,
+    });
+
+    return this._http.post(this._url.Url, item, { headers });
   };
+
   //--------------
   public Update = (item: Product): Observable<any> => {
     throw new Error('not implemint exeption');
   };
+
   //--------------------------
   public Delete = (id: number): Observable<any> => {
     throw new Error('not implemint exeption');
   };
+
   public GetBlobIMG = (name: string): Observable<Blob> => {
+    this._url.Controller = 'image';
+    this._url.Action = '';
     // return this.http.get(src,{responseType: 'blob'});
 
     let headers: HttpHeaders = new HttpHeaders({
@@ -85,19 +98,16 @@ export class ProductService {
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let url: string =
-      this.createCompleteRoute(environment.serverRoot, this._controllerImage) +
-      '/' +
-      name;
 
-    return this.http.get<Blob>(url, {
+     let url: string =this._url.Url + '/' + name;
+
+
+    return this._http.get<Blob>(url, {
       headers,
       responseType: 'blob' as 'json',
     });
     // return this.http.get<Blob>(url, { headers });
   };
 
-  private createCompleteRoute = (envAddress: string, controller: string) => {
-    return `${envAddress}api/${controller}`;
-  };
+
 }

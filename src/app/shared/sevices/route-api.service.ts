@@ -25,13 +25,16 @@ export class RouteApiService {
   public get Url() {
     return this.createCompleteRoute(this._serverRoot, this._controller, this._action)
   }
-  public UrlImage(name: string): string {
-    return this.createCompleteRoute(this._serverRoot, this._controllerImage, null) + '/' + name;
-  }
 
+ /*  // get image from ImageController
+  public UrlContlrollerImage(name: string): string {
+    return this.createCompleteRoute(this._serverRoot, this._controllerImage, null) + '/' + name;
+  } */
+  
+   /** path server image */
   public get RootImage(): string {
 
-    return this.createCompleteRoute(this._serverRoot, this._controllerImage, null)+'/';
+    return `${this._serverRoot}images/`;;
 
   }
 

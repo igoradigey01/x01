@@ -1,0 +1,16 @@
+
+<div class="grid-container-menu bg-tools2 ">
+  <div class="bg-tools text-center btn btn-link item-menu-1" routerLink={{_router_link}}>
+    модуль {{_modul_name}}
+  </div>
+
+  <div class="bg-tools3 text-center  btn btn-link item-menu-2" style="text-decoration: none;" (click)="cancel()">
+    id(
+    <span class="text-primary"> {{ _selectedKagalog.id }}</span>)
+    {{ _selectedKagalog.name }} <span *ngIf='_selectedKagalog.id==-1' class="title">(katalog)</span>
+  </div>
+
+  <div class="btn item-menu-3" (click)="addItem()" [style.display]="DistplayButton ? 'block' : 'none'">
+    <img src="./../../../assets/icon/add-button.png" height="25" />
+  </div>
+</div>

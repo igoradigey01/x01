@@ -1,0 +1,57 @@
+
+
+
+      <div class="grid-sub-container-ms grid-sub-container">
+        <div>id</div>
+        <div>Name</div>
+        <div>Price</div>
+        <div class="hiden-description">descripstion</div>
+        <div>images</div>
+
+        <!-- start model view-->
+        <ng-template ngFor let-product [ngForOf]="_products" let-i="index">
+          <div
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeProduct(product)"
+          >
+            {{ product.id }}
+          </div>
+
+          <div
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeProduct(product)"
+          >
+            {{ product.name }}
+          </div>
+          <div
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeProduct(product)"
+          >
+            {{ product.price }}
+          </div>
+          <div
+            class="hiden-description"
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            (click)="changeProduct(product)"
+          >
+            {{ product.description }}
+          </div>
+
+          <div
+            [ngClass]="{ 'row-grid': i % 2 == 0 }"
+            *ngIf="product.image; else elseBlock_3"
+          >
+            <img height="38" src="{{ _root_url_img }}{{ product.image }}" />
+          </div>
+          <ng-template #elseBlock_3>
+            <div [ngClass]="{ 'row-grid': i % 2 == 0 }">
+              <img height="38" src="{{ _root_url_img }}not_found.png" />
+            </div>
+          </ng-template>
+
+          <!-- end  model view-->
+        </ng-template>
+      </div>
+
+    <!----------------- create end-->
+

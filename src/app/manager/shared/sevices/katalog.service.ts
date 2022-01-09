@@ -18,79 +18,69 @@ export class KatalogService {
 
   constructor(
     private _http: HttpClient,
-    private token:TokenService,
-    private url: RouteApiService
+    private _token:TokenService,
+    private _url: RouteApiService
     ) { }
 
 
 
   public Katalogs = (): Observable<Katalog[]> => {
-    let action='get';
+    this._url.Controller = 'Katalog';
+    this._url.Action = 'get';
+
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-       Authorization: 'Bearer ' + this.token.AccessToken,
+       Authorization: 'Bearer ' + this._token.AccessToken,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this.controller,
-      action
-    );
 
-    return this._http.get<Katalog[]>(url, { headers });
+
+    return this._http.get<Katalog[]>(this._url.Url, { headers });
   };
 
   //------------------------------------------------
 
   public Create = (item: Katalog): Observable<any> => {
 
-    let action='Post';
+    this._url.Controller = 'Katalog';
+    this._url.Action = 'Post';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      Authorization: 'Bearer ' + this.token.AccessToken,
+      Authorization: 'Bearer ' + this._token.AccessToken,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this.controller,
-      action
-    );
-    return this._http.post(url, item);
+
+
+
+    return this._http.post(this._url.Url, item,{headers});
   }
 
   //-----------------------------------
 
   public Update = (item: Katalog): Observable<any> => {
    // throw new Error("not implemint exeption");
+   this._url.Controller = 'Katalog';
+   this._url.Action = 'put';
 
-   let action='put'
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      Authorization: 'Bearer ' + this.token.AccessToken,
+      Authorization: 'Bearer ' + this._token.AccessToken,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this.controller,
-      action
-    );
-    return this._http.put(url, item);
+
+    return this._http.put(this._url.Url, item,{headers});
   }
   //-------------------
 
   public Delete = (id: number): Observable<any> => {
+    this._url.Controller = 'Katalog';
+    this._url.Action = 'delete';
 
-    let action='delete'
+
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
-      Authorization: 'Bearer ' + this.token.AccessToken,
+      Authorization: 'Bearer ' + this._token.AccessToken,
     });
-    let url: string = this.createCompleteRoute(
-      environment.serverRoot,
-      this.controller,
-      action
-    )+'/'+id;
-    return this._http.delete(url);
+    let url: string = this._url.Url+'/'+id;
+    return this._http.delete(url,{headers});
   }
 
-  private createCompleteRoute = (envAddress: string, controller: string,action:string) => {
-    return `${envAddress}api/${controller}/${action}`;
-  };
+
 }

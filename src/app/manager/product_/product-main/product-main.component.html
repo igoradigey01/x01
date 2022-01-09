@@ -1,0 +1,35 @@
+<app-left-panel-view-element
+  [_katalogs]="_katalogs"
+  [_router_link]="_router_link"
+  [_modul_name]="_modul_name"
+  (_onChangedKatalog)="onChangedKatalog($event)"
+  (_onChangedViewMode)="onChangedViewMode($event)"
+>
+  <!--------------------------------------------------- Start ngSwith-->
+
+  <div [ngSwitch]="_flagViewMode">
+    <ng-template ngSwitchDefault>
+      <app-product-view
+        [_products]="_products"
+        [_root_url_img]="_root_url_img"
+        (_onChangeRow)="onChangeRow($event)"
+      >
+      </app-product-view>
+    </ng-template>
+    <ng-template let-name='editTable' ngSwitchCase="2">
+
+    </ng-template>
+    <ng-template let-name="Edit"   ngSwitchCase="3">
+      <!-- edit template-->
+      <h4 >Редактировать Позицию</h4>
+      <app-item-product [_select_Product]="_select_Product" >
+      </app-item-product>
+    </ng-template>
+    <ng-template let-name="Create" ngSwitchCase="4">
+      <h4 >Создать Позицию</h4>
+      <app-item-product [ _select_Product]="_select_Product" >
+      </app-item-product>
+    </ng-template>
+  </div>
+  <!--------------------------------------------------- End ngSwith-->
+</app-left-panel-view-element>
