@@ -1,20 +1,45 @@
 <p>img-render works!</p>
-<div class="form-group">
-  <div >
-  <div   [style.height]="_flag_ng_template ? '50px' : '350px'">
-    <app-crop-upload-files
-      (getCropImg)="onSetFilePhoto($event)"
-    ></app-crop-upload-files>
-  </div>
-</div>
-</div>
-<div [style.display]="_flagPhoto ? 'block' : 'none'">
-<div class="d-flex justify-content-center">
-  <!-----creat _flagBase64---------------------------------->
-  <img
-    [src]="this._select_Product.imageBase64"
 
-    class="img-wrap mb-3"
-  />
-</div>
-</div>
+<mat-tab-group>
+  <mat-tab label="Фото"  > Content 1
+    <div>
+      <img
+       src="{{SrcImg}}"
+      />
+    </div>
+
+  </mat-tab>
+  <!--------------------------------------------------------- -->
+  <mat-tab label="Изменить"> Content 2
+       <div>
+        <image-cropper
+        [imageChangedEvent]="_imageChangedFromFile"
+        [maintainAspectRatio]="false"
+        [resizeToHeight]="700"
+        format="png"
+
+
+        (imageCropped)="imageCropped($event)"
+
+      >
+      </image-cropper>
+       </div>
+
+
+  </mat-tab>
+  <!------------------------Load file-->
+  <mat-tab label="Загрузить"> Content 3
+  <div style="height: 150px;" >
+
+    <div class="messages-show" >
+    
+    </div>
+
+
+    <input type="file" (change)="onSetFilePhoto($event)" />
+
+  </div>
+  <div *ngIf="loading" class="loader">Loading...</div>
+</mat-tab>
+</mat-tab-group>
+

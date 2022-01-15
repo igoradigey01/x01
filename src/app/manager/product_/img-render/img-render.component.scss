@@ -1,0 +1,10 @@
+@import 'src/styles/manager-styles.scss';
+
+::ng-deep .mat-tab-label-active {
+  background-color:#f0f0f0;
+  color: var(--bs-purple);
+}
+
+.error-show{
+  color: var(--bs-pink)
+}

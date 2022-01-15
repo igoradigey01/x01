@@ -26,6 +26,7 @@ import { DetailsProductComponent } from './product_/details-product/details-prod
 import { ProductMainComponent } from './product_/product-main/product-main.component';
 import { ImgRenderComponent } from './product_/img-render/img-render.component';
 
+
 @NgModule({
   declarations: [
     KatalogComponent,

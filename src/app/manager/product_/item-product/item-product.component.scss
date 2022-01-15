@@ -1,0 +1,34 @@
+@import 'src/styles/manager-styles.scss';
+
+._label{
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+}
+._contaner{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+._input-group{
+  display: block;
+}
+
+._input-full-width {
+  width: 60%;
+}
+._input-price{
+  margin-left: 1rem;
+}
+#discription {
+  width: 100%;
+  padding-right: 2rem;
+}
+@media (min-width: 768px) {
+
+  ._contaner{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

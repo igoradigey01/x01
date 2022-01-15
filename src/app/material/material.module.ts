@@ -8,6 +8,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -19,7 +22,10 @@ const material = [
   MatDividerModule,
   MatMenuModule,
   MatSidenavModule,
-  MatSelectModule
+  MatSelectModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatTabsModule
 ];
 
 @NgModule({
