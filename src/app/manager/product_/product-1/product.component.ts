@@ -106,7 +106,7 @@ export class ProductComponent implements OnInit {
       // let url=  this._url_img + this._selectedProduct.image;
       // this.getPhotoBase64(this._selectedProduct.image);
       //  this.previewOld();
-      this.getBlobImg(this._selectedProduct.image||this.defaulImg.name);
+      this.getBlobImg(this._selectedProduct.imgName||this.defaulImg.name);
 
       this._flagDisplayAddButton = false;
       // this._selectedProduct.idTypeProduct-------------------------------------
@@ -276,7 +276,7 @@ export class ProductComponent implements OnInit {
 
   // перезагрузить данные подКаталога по id
   load(idKatalog: number) {
-    this._repository.Products(idKatalog).subscribe(
+    this._repository.Products(idKatalog,undefined).subscribe(
       (d) => {
         this._products = d;
         this._error = '';

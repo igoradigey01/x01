@@ -1,0 +1,119 @@
+<p>img-render works!</p>
+
+<mat-tab-group (selectedIndexChange)="selectedIndexChangeMatTabGroup($event)">
+  <mat-tab label="Фото">
+    
+    <div class="messages-show" [ngClass]="{error_show:_flagError}" >
+      {{ _messagess_show }}
+    </div>
+
+    <div class="toolbar-box" >
+      <img src="{{ SrcImg }}" class="img-disply" />
+    </div>
+  </mat-tab>
+  <!--------------------------------------------------------- -->
+  <mat-tab label="Изменить"  >
+
+
+    <div class="toolbar-box" >
+      <div class="messages-show" [ngClass]="{error_show:_flagError}" >
+        {{ _messagess_show }}
+      </div>
+      <div *ngIf="_loading" class="loader">Загрузка...</div>
+
+
+      <button type="file" class="btn btn-primary btn-circle" (click)="fileInput.click()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-file-earmark" viewBox="0 0 16 16">
+          <path
+            d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+        </svg>
+        <input #fileInput type="file" (change)="onSetFilePhoto($event)"  style="display: none" />
+      </button>
+
+      <ng-container *ngTemplateOutlet ="toolbarImg"></ng-container>
+
+    </div>
+
+  </mat-tab>
+  <mat-tab label="Reset">
+    <div class="toolbar-box">
+    <button id='reset'  mat-fab (click)="resetImage()" color="warn" aria-label="Сбрость настройки">
+      <mat-icon>settings_backup_restore</mat-icon>
+      </button>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+<!---------------------------------------------------->
+
+
+
+<div  class="img-disply" *ngIf="ShowCroppedTab" >
+  <image-cropper
+    [imageChangedEvent]="_imageChanged"
+
+    [maintainAspectRatio]="_maintainAspectRatio"
+    [aspectRatio]="_aspectRatio"
+    [containWithinAspectRatio]="_containWithinAspectRatio"
+    [autoCrop]="true"
+    [resizeToHeight]="_resizeToHeight"
+    [transform]="_transform"
+    format="png"
+    (imageLoaded)="imageLoaded()"
+    (imageCropped)="imageCropped($event)"
+    (loadImageFailed)="loadImageFailed()"
+    (cropperReady)="cropperReady($event)"
+  >
+  </image-cropper>
+</div>
+<!---------------------------------------------------->
+<ng-template  #toolbarImg >
+<div class="toolbarImg-group">
+  <div class="zoom">
+
+    <button id='zoom' class="botton-zoom" mat-mini-fab (click)="zoomIn()" color="accent" aria-label="Zoom +">
+    <mat-icon>zoom_out_map</mat-icon>
+    </button>
+    <button mat-mini-fab class="botton-zoom"  (click)="zoomOut()"  color="accent" aria-label="Zoom -">
+      <mat-icon>zoom_in_map</mat-icon>
+    </button>
+  </div>
+</div>
+
+ <div class="aspectRatio-group">
+
+  <button id='aspectRatio' class="botton-Ratio" mat-mini-fab [ngClass]="{botton_Ratio_true:_maintainAspectRatio}"  (click)="  toggleMaintainAspectRatio()" color="accent" aria-label="aspect Ratio main toogle">
+
+    <mat-icon>aspect_ratio</mat-icon>
+  </button>
+
+  <button  class="botton-Ratio" mat-mini-fab  (click)="toggleAspectRatio()" color="accent" aria-label="aspect Ratio 4:3">
+    {{_aspectRatio === 4/3 ? '4/3' : '16/5'}}
+   </button>
+
+   <button  class="botton-Ratio" mat-mini-fab [ngClass]="{botton_Ratio_true:_containWithinAspectRatio}" (click)=" toggleContainWithinAspectRatio()" color="accent" aria-label="aspect Ratio 4:3">
+
+      <mat-icon>burst_mode</mat-icon>
+  </button>
+
+ </div>
+ <div class="rotate-group">
+  <button  class="botton-rotate" mat-mini-fab   (click)="rotateLeft()" color="accent" aria-label="rotate Left main toogle">
+
+    <mat-icon>aspect_ratio</mat-icon>
+  </button>
+  <button class="botton-rotate" mat-mini-fab   (click)="flipVertical()" color="accent" aria-label="rotate Right main toogle">
+
+    <mat-icon>aspect_ratio</mat-icon>
+  </button>
+ </div>
+ <div class="size-group">
+ <label for="sizeToHeight" class="label"> ( {{_resizeToHeight}}) </label>
+   <input  #sizeToHeight  style="width: 3rem;" [value]="ResizeToHeight"  > <button (click)="ResizeToHeight= sizeToHeight.value">ok</button>
+  <div style="display: inline-block; "><span>(original)</span>  <span>H-</span>{{_size_h}} | <span>W-</span>{{_size_w}}</div>
+  <div style="display: inline-block; margin-left: 1rem;"><span>h-</span>{{_cropped_size_h}} | <span>w-</span>{{_cropped_size_w}} </div>
+ </div>
+</ng-template>
+
+
+<!---------------------------------------------------->

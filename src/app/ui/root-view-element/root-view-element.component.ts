@@ -18,6 +18,7 @@ export class RootViewElementComponent implements OnInit {
 
   @Output() onChangedViewMode = new EventEmitter<StateView>();
   @Output() onClickKatalog=new EventEmitter();
+
   @Input()  public _selectedKagalog: Katalog = <Katalog>{ id: -1, name: '' }
 
   constructor() { }
@@ -40,6 +41,7 @@ export class RootViewElementComponent implements OnInit {
   }
 
   public get DistplayButton():boolean{
+    if(this._flagViewState==StateView.create)return true;
     return this._flagViewState==StateView.default?true:false;
   }
 

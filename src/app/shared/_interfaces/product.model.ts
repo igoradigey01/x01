@@ -9,8 +9,8 @@ export interface Product {
   price?: number;
   markup?: number; //Торговая наценка
   description?: string;
-  image?: string; // name -- img getServer(wwwroot/image)
-  rootSrc?:string;
+  imgName?: string; // name -- img getServer(wwwroot/image)
+  rootImgSrc?:string; //url for  server-folder wwwroot/
   photo?: any; // именованая ссылка на Blob  window.URL.createObjectURL(d)
   imageBase64?: any;
 }

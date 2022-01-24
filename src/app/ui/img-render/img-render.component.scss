@@ -1,0 +1,67 @@
+@import 'src/styles/manager-styles.scss';
+
+::ng-deep .mat-tab-label-active {
+  background-color:#f0f0f0;
+  color: var(--bs-purple);
+}
+
+.error_show{
+  color: var(--bs-pink)
+}
+
+.messages-show{
+  text-align: center;
+  color: var(--bs-green)
+}
+.lable-zoom{
+  color: var(--bs-purple);
+  padding-left: 0.5rem;
+  font-weight: 400;
+}
+.botton-zoom{
+  color: var(--bs-purple);
+  color: var(--bs-purple);
+}
+
+
+.botton_Ratio_true{
+  background-color: var(--bs-green);
+
+}
+
+
+
+
+.toolbarImg{
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+
+}
+.toolbarImg-group ,.aspectRatio-group{
+  display:inline-block;
+  margin-left: 0.5rem;
+}
+
+.loader{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: white;
+
+}
+.img-disply{
+  max-height: 350px;
+}
+.toolbar-box {
+  min-height: 3rem;
+  margin: 0.5rem;
+  text-align: center;
+
+}

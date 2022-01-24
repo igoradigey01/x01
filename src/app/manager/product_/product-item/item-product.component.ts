@@ -13,7 +13,8 @@ export class ItemProductComponent implements OnInit {
 
   @Input() public _select_Product: Product;
   @Input() public _typeProducts: TypeProduct[] = [];
-  
+  @Input() public _select_katalog:Katalog|undefined;
+
   public _flag_sendServerData: boolean = false;
   public _select_typeProduct: TypeProduct = <TypeProduct>{ id: -1, name: '' };
 
@@ -28,10 +29,14 @@ export class ItemProductComponent implements OnInit {
       typeProductId: -1,
       description: '',
       name: '',
-      image: '',
+      imgName: '',
       markup: 20,
       price: -1,
     };
+    if(this._select_katalog){
+      this._select_Product.katalogId=this._select_katalog.id;
+      this._select_Product.katalogName=this._select_katalog.name;
+    }
   }
 
   ngOnInit(): void {}

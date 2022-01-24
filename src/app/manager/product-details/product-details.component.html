@@ -90,10 +90,10 @@
           >
             {{ product.description }}
           </div>
-          <div [ngClass]="{ 'row-grid': i % 2 == 0 }" *ngIf="product.image">
-            <img height="38" src="{{ _url_img }}{{ product.image }}" />
+          <div [ngClass]="{ 'row-grid': i % 2 == 0 }" *ngIf="product.imgName">
+            <img height="38" src="{{ _url_img }}{{ product.imgName }}" />
           </div>
-          <div [ngClass]="{ 'row-grid': i % 2 == 0 }" *ngIf="!product.image">
+          <div [ngClass]="{ 'row-grid': i % 2 == 0 }" *ngIf="!product.imgName">
             <img height="38" src="{{ _url_img }}not_found.png" />
           </div>
         </ng-template>

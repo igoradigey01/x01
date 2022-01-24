@@ -91,9 +91,9 @@
 
           <div
             [ngClass]="{ 'row-grid': i % 2 == 0 }"
-            *ngIf="product.image; else elseBlock_3"
+            *ngIf="product.imgName; else elseBlock_3"
           >
-            <img height="38" src="{{ _url_img }}{{ product.image }}" />
+            <img height="38" src="{{ _url_img }}{{ product.imgName }}" />
           </div>
           <ng-template #elseBlock_3>
             <div [ngClass]="{ 'row-grid': i % 2 == 0 }">
@@ -181,7 +181,7 @@
             </div>
           </div>
           <!--------------------------->
-          
+
 
 
           <!-- idTypeProduct end-->

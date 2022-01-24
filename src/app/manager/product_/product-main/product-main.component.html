@@ -9,26 +9,32 @@
 
   <div [ngSwitch]="_flagViewMode">
     <ng-template ngSwitchDefault>
-      <app-product-view
+      <app-product-table
         [_products]="_products"
-        [_root_url_img]="_root_url_img"
+        
         (_onChangeRow)="onChangeRow($event)"
       >
-      </app-product-view>
+      </app-product-table>
     </ng-template>
-    <ng-template let-name='editTable' ngSwitchCase="2">
-
-    </ng-template>
-    <ng-template let-name="Edit"   ngSwitchCase="3">
+    <ng-template name="editTable" ngSwitchCase="2"> </ng-template>
+    <ng-template name="Edit" ngSwitchCase="3">
       <!-- edit template-->
-      <h4 >Редактировать Позицию</h4>
+      <h4>Редактировать Позицию</h4>
       <app-item-product
-       [_select_Product]="_select_Product" [_typeProducts]="_typeProducts" >
+        [_select_Product]="_select_Product"
+        [_typeProducts]="_typeProducts"
+
+      >
       </app-item-product>
     </ng-template>
-    <ng-template let-name="Create" ngSwitchCase="4">
-      <h4 >Создать Позицию</h4>
-      <app-item-product [ _select_Product]="_select_Product" >
+    <ng-template name="Create"   ngSwitchCase="4">
+      <h4>Создать Позицию</h4>
+       <div ></div>
+      <app-item-product
+        [_select_Product]="_select_Product"
+        [_typeProducts]="_typeProducts"
+
+      >
       </app-item-product>
     </ng-template>
   </div>

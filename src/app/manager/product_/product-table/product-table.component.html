@@ -39,13 +39,14 @@
 
           <div
             [ngClass]="{ 'row-grid': i % 2 == 0 }"
-            *ngIf="product.image; else elseBlock_3"
+            *ngIf="product.imgName; else elseBlock_3"
           >
-            <img height="38" src="{{ _root_url_img }}{{ product.image }}" />
+            <img height="38" src="{{product.rootImgSrc }}{{ product.imgName }}" />
           </div>
+
           <ng-template #elseBlock_3>
             <div [ngClass]="{ 'row-grid': i % 2 == 0 }">
-              <img height="38" src="{{ _root_url_img }}not_found.png" />
+              <img height="38" src="{{ product.rootImgSrc }}not_found.png" />
             </div>
           </ng-template>
 

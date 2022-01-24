@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './../material/material.module';
-import {UiModule} from './../ui/ui.module'
+import { UiModule } from './../ui/ui.module';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { ManagerRoutingModule } from './magager-routing.module';
 import { KatalogComponent } from './katalog/katalog.component';
@@ -15,17 +16,13 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductTypeComponent } from './product-type/product-type.component';
 import { InfoComponent } from './info/info.component';
 import { ManagerServiceModule } from './shared/sevices/maneger-service.module';
-import { ImageCropperModule } from 'ngx-image-cropper'; //03.05.21
+
 import { CropUploadFilesComponent } from './crop-upload-files/crop-upload-files.component';
-import { ProductViewComponent } from './product_/product-view/product-view.component';
+import { ProductTableComponent } from './product_/product-table/product-table.component';
 
-
-import { TableProductComponent } from './product_/table-product/table-product.component';
-import { ItemProductComponent } from './product_/item-product/item-product.component';
-import { DetailsProductComponent } from './product_/details-product/details-product.component';
+import { ItemProductComponent } from './product_/product-item/item-product.component';
+import { DetailsProductComponent } from './product_/product-details/details-product.component';
 import { ProductMainComponent } from './product_/product-main/product-main.component';
-import { ImgRenderComponent } from './product_/img-render/img-render.component';
-
 
 @NgModule({
   declarations: [
@@ -38,14 +35,10 @@ import { ImgRenderComponent } from './product_/img-render/img-render.component';
     ProductTypeComponent,
     InfoComponent,
     CropUploadFilesComponent,
-    ProductViewComponent,
-
-
-    TableProductComponent,
+    ProductTableComponent,
     ItemProductComponent,
     DetailsProductComponent,
     ProductMainComponent,
-    ImgRenderComponent,
   ],
   imports: [
     CommonModule,
@@ -55,7 +48,7 @@ import { ImgRenderComponent } from './product_/img-render/img-render.component';
     ImageCropperModule,
     MaterialModule,
     UiModule,
-    LayoutModule  //material cdk module
+    LayoutModule, //material cdk module
   ],
 })
 export class ManagerModule {}

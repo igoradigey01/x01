@@ -9,7 +9,7 @@ import { ProductTypeComponent } from './product-type/product-type.component';
 import { InfoComponent } from './info/info.component';
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { ProductMainComponent } from './product_/product-main/product-main.component';
-import {ProductViewComponent} from './product_/product-view/product-view.component'
+import {ProductTableComponent} from './product_/product-table/product-table.component'
 
 // table-product , item-product ,details-product
 

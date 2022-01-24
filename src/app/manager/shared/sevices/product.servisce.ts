@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
@@ -51,7 +52,7 @@ export class ProductService {
   };
 
   //------------------- Get all Product--------
-  public Products(idKatalog: number): Observable<Product[]> {
+  public Products(idKatalog: number,nameKatalog:string|undefined): Observable<Product[]> {
 
     this._url.Controller = 'product';
     this._url.Action = ''
@@ -61,7 +62,35 @@ export class ProductService {
     });
     let url: string = this._url.Url + '/' + idKatalog;
 
-    return this._http.get<Product[]>(url, { headers });
+    return this._http.get<Product[]>(url, { headers }).pipe(
+    map(
+      (data:any)=>{
+
+      //  console.log(JSON.stringify(data))
+      return data.map(
+        (f:any)=>{
+          return <Product>{
+            id:f.id,
+            name:f.name,
+            katalogId:f.katalogId,
+            katalogName:nameKatalog,
+            typeProductId:f.typeProductId,
+            price:f.price,
+            markup:f.markup,
+            description:f.description,
+             //            -------------
+            imgName:f.image,
+            rootImgSrc:this._url.RootImage
+
+          }
+
+        }
+
+      )
+      }
+    )
+
+    );
   }
 
   //---------------

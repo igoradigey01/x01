@@ -65,8 +65,8 @@ export class UserManagerService {
     }
     let decodeData = atob(dataJwt);
     let data = JSON.parse(decodeData);
-    console.log('decodeData--' + decodeData);
-    console.log('data--' + data.role);
+    //console.log('decodeData--' + decodeData);
+   // console.log('data--' + data.role);
     return data.role;
   }
 
