@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute } from '@angular/router';
 
 import { ProductDataService } from '../shared/sevices/product.servisce';
 import { Product } from '../../shared/_interfaces/product.model';
 
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
- // providers: [ProductDataService],
+  // providers: [ProductDataService],
 })
 export class ProductComponent implements OnInit {
 
@@ -25,24 +23,24 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
-    this._url_img = this._repository.RootImg;
-    const katalogId: string | null = this.route.snapshot.paramMap.get('id');
+  public ngOnInit(): void {
 
+   // this._url_img = this._repository.RootImg;
+    const katalogId: string | null = this.route.snapshot.paramMap.get('id');
     const id: number = Number(katalogId) || 0;
     this.route.queryParams.subscribe((queryParam: any) => {
       this._katalogName = queryParam['katalog'];
     });
-  //  this._katalogName = '';
+    //  this._katalogName = '';
 
-    this.Load(id);
+    this.Load(id,this._katalogName);
 
     console.log('katalogs------' + this._katalogName);
   }
 
   // загрузить данные подКаталога по id
-  private Load(idKatalog: number):void {
-    this._repository.Products(idKatalog).subscribe(
+  private Load(idKatalog: number,katalogName:string): void {
+    this._repository.Products(idKatalog,katalogName).subscribe(
       (d) => {
         this._products = d;
       },

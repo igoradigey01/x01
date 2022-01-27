@@ -1,8 +1,8 @@
-<p>img-render works!</p>
+
 
 <mat-tab-group (selectedIndexChange)="selectedIndexChangeMatTabGroup($event)">
   <mat-tab label="Фото">
-    
+
     <div class="messages-show" [ngClass]="{error_show:_flagError}" >
       {{ _messagess_show }}
     </div>
@@ -22,7 +22,7 @@
       <div *ngIf="_loading" class="loader">Загрузка...</div>
 
 
-      <button type="file" class="btn btn-primary btn-circle" (click)="fileInput.click()">
+      <button type="file" class="btn file_load_show btn-circle" (click)="fileInput.click()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-file-earmark" viewBox="0 0 16 16">
           <path
@@ -56,7 +56,7 @@
     [aspectRatio]="_aspectRatio"
     [containWithinAspectRatio]="_containWithinAspectRatio"
     [autoCrop]="true"
-    [resizeToHeight]="_resizeToHeight"
+    [resizeToWidth]="_resizeToWidth"
     [transform]="_transform"
     format="png"
     (imageLoaded)="imageLoaded()"
@@ -87,8 +87,8 @@
     <mat-icon>aspect_ratio</mat-icon>
   </button>
 
-  <button  class="botton-Ratio" mat-mini-fab  (click)="toggleAspectRatio()" color="accent" aria-label="aspect Ratio 4:3">
-    {{_aspectRatio === 4/3 ? '4/3' : '16/5'}}
+  <button  class="botton-Ratio" mat-mini-fab  (click)="getAspectRatio()" color="accent" aria-label="aspect Ratio 4:3">
+    {{_show_aspectRatio}}}
    </button>
 
    <button  class="botton-Ratio" mat-mini-fab [ngClass]="{botton_Ratio_true:_containWithinAspectRatio}" (click)=" toggleContainWithinAspectRatio()" color="accent" aria-label="aspect Ratio 4:3">
@@ -98,20 +98,20 @@
 
  </div>
  <div class="rotate-group">
-  <button  class="botton-rotate" mat-mini-fab   (click)="rotateLeft()" color="accent" aria-label="rotate Left main toogle">
+  <button  class="botton-rotate" mat-mini-fab   (click)=" flipHorizontal()" color="accent" aria-label="rotate Left main toogle">
 
-    <mat-icon>aspect_ratio</mat-icon>
+    <mat-icon>swap_horiz</mat-icon>
   </button>
   <button class="botton-rotate" mat-mini-fab   (click)="flipVertical()" color="accent" aria-label="rotate Right main toogle">
 
-    <mat-icon>aspect_ratio</mat-icon>
+    <mat-icon>swap_vert</mat-icon>
   </button>
  </div>
  <div class="size-group">
- <label for="sizeToHeight" class="label"> ( {{_resizeToHeight}}) </label>
-   <input  #sizeToHeight  style="width: 3rem;" [value]="ResizeToHeight"  > <button (click)="ResizeToHeight= sizeToHeight.value">ok</button>
-  <div style="display: inline-block; "><span>(original)</span>  <span>H-</span>{{_size_h}} | <span>W-</span>{{_size_w}}</div>
-  <div style="display: inline-block; margin-left: 1rem;"><span>h-</span>{{_cropped_size_h}} | <span>w-</span>{{_cropped_size_w}} </div>
+ <label for="sizeToWidth" class="size_show"> ( {{_resizeToWidth}}) </label>
+   <input  #sizeToWidth  style="width: 3rem;" [value]="ResizeToWidth"  > <button (click)="ResizeToWidth= sizeToWidth.value">ok</button>
+  <div style="display: inline-block; "><span>(original)</span>  <div class="size_show"> <span>H-</span>{{_size_h}} | <span>W-</span>{{_size_w}}</div></div>
+  <div style="display: inline-block; margin-left: 1rem;" class="size_show" ><span>h-</span>{{_cropped_size_h}} | <span>w-</span>{{_cropped_size_w}} </div>
  </div>
 </ng-template>
 

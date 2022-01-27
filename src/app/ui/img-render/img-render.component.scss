@@ -4,6 +4,16 @@
   background-color:#f0f0f0;
   color: var(--bs-purple);
 }
+.size_show{
+  display: inline-block;
+  background-color:#f0f0f0;
+}
+
+.file_load_show{
+  color: var(--bs-white);
+  background-color:  var(--bs-purple);;
+
+}
 
 .error_show{
   color: var(--bs-pink)
@@ -13,19 +23,21 @@
   text-align: center;
   color: var(--bs-green)
 }
-.lable-zoom{
-  color: var(--bs-purple);
-  padding-left: 0.5rem;
-  font-weight: 400;
-}
+
 .botton-zoom{
   color: var(--bs-purple);
-  color: var(--bs-purple);
+
 }
 
 
 .botton_Ratio_true{
   background-color: var(--bs-green);
+
+}
+
+.botton-rotate{
+
+  color: var(--bs-purple);
 
 }
 

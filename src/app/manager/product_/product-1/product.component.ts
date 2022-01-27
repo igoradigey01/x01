@@ -45,7 +45,7 @@ export class ProductComponent implements OnInit {
   _progress: number = 0;
 
   _url_img = this._repository.RootSrcImg;
-
+  /** this old version product view */
   constructor(private _repository: ProductService) {}
 
   ngOnInit(): void {

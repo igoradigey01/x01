@@ -24,6 +24,7 @@ export class ProductMainComponent implements OnInit {
   public _root_url_img: string = '';
   public _select_Product: Product;
 
+  /** this new version product view */
   constructor(
     private _repository: ProductService,
     private _imgConverter: ImgConverterService
