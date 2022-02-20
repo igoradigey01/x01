@@ -80,8 +80,12 @@ export class ResetPasswordComponent implements OnInit {
 
 
       this._flagButoon = false;
+      if(error.status === 401){
+        this._errorMgs.push("пользователь не авторизован,войдите на сайт")
+        return;
+      }
 
-      if (error.status === 401 || error.status == 400) {
+      if ( error.status == 400) {
         console.log(error.error);
         if (error.error.errors)
           this._errorMgs.push(error.error.errors);

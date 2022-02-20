@@ -7,31 +7,33 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./bg-content.component.scss'],
 })
 export class BgContentComponent implements OnInit {
-  pathRoot: string = '../../assets/bg_img/'; //path к папки background-image:url
+ private pathRoot: string = '../../assets/bg_img/'; //path к папки background-image:url
 
-  imgs: string[] = ['bg-1.jpg', 'bg-2.jpg', 'bg-3.jpg'];
+ private imgs: string[] = ['img_1.webp', 'img_2.webp', 'img_3.webp']; //.jpg
 
-  i: number = 0;
-  counter:number=0;
- imgBgPath: string =this.pathRoot + this.imgs[this.i];
-  imgBgLoad:string=this.imgBgPath;
+ public i: number = 0;
+  counter: number = 0;
+  imgBgPath: string = this.pathRoot + this.imgs[this.i];
+  imgBgLoad: string = this.imgBgPath;
   flag_bg: boolean = false; // background-image:url or background-color
   loading_img: boolean = false;
 
   subscription_timer: Subscription | null = null;
- // img:ImageBitmap
+  // img:ImageBitmap
 
-  constructor() {
-
+  public get  getUrl(){
+    return "background-image: url("+this.imgBgPath +");"
 
   }
+
+  constructor() {}
 
   ngOnInit(): void {
     this.i = 0;
 
     const timer = new Observable((observer) => {
       const intervalId = setInterval(() => {
-        this.loading_img=false;
+        this.loading_img = false;
 
         observer.next(this.bgImagePath());
       }, 40000);
@@ -59,15 +61,15 @@ export class BgContentComponent implements OnInit {
     return this.imgBgPath;
   }
 
-  changeBackground(){
-    this.loading_img=true;
+  changeBackground() {
+    this.loading_img = true;
     ++this.counter;
-    if(this.counter<3){
-      this.imgBgLoad=this.pathRoot+this.imgs[this.counter];
+    if (this.counter < 3) {
+      this.imgBgLoad = this.pathRoot + this.imgs[this.counter];
 
-          // console.log("counet---"+this.counter);
+      // console.log("counet---"+this.counter);
     }
-   // throw new Error("not impliment exeption");
+    // throw new Error("not impliment exeption");
   }
 
   changedTheme(): void {
@@ -109,10 +111,5 @@ export class BgContentComponent implements OnInit {
     this.subscription_timer?.unsubscribe();
   }
 
- /*  private blobPut(imgPath:string) {
-    //let img = document.querySelector('img');
-    fetch(imgPath).then(res => res.blob()).then(blob => this.blobs[this.i] = URL.createObjectURL(blob));
 
-
-  } */
 }

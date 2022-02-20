@@ -1,11 +1,34 @@
 <div class="container-fluid">
   <div class="grid-container" >
-    
+
     <div *ngFor="let item of katalogs"   >
+      <div *ngIf="!item.flag_link; else elseLink ">
     <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}" [routerLink]="['/content/katalog',item.id]" [queryParams]="{'katalog':item.name}"  >
 
        {{ item.name }}</button>
+
+      </div>
+
+      <!------------------------------------------------- start ng-template-1  -->
+      <ng-template #elseLink>
+
+        <div *ngIf="!item.flag_href; else else_href " >
+          <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}" [routerLink]="item.link"  >
+
+            {{ item.name }}</button>
+
+        </div>
+       <!-------------------- start ng-template-2 -->
+        <ng-template #else_href>
+        <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}"  >
+
+       <a  href="{{item.link}}" >   {{ item.name }}</a></button>
+      </ng-template>
+
+      </ng-template>
+      <!--------------------- end ng-templage-1  -->
     </div>
   </div>
 </div>
 <!--     22.04.20              -->
+

@@ -56,8 +56,11 @@
       </span>
       <!--- start Role ------>
       <div class="nav-item" *ngIf="IsAdmin">
-        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="manager">
+        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="admin">
           Admin
+        </button>
+        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="manager">
+          Manager
         </button>
       </div>
       <div class="nav-item" *ngIf="IsManager">
@@ -115,8 +118,11 @@
       <li class="nav-item py-1">
         <!--- start Role ------>
       <div style="display: inline-block;"  *ngIf="IsAdmin">
-        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="manager">
+        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="admin">
           Admin
+        </button>
+        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="manager">
+          Manager
         </button>
       </div>
       <div  style="display: inline-block;" *ngIf="IsManager">

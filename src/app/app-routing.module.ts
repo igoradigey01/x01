@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {BgContentComponent} from './content/bg-content/bg-content.component';
-import {ForbiddenComponent} from './forbidden/forbidden.component';
+import { BgContentComponent } from './content/bg-content/bg-content.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 const routes: Routes = [
-  {path:"",component:BgContentComponent},
+  { path: '', component: BgContentComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   {
     path: 'menu',
@@ -13,20 +13,31 @@ const routes: Routes = [
       import('./header/header.module').then((m) => m.HeaderModule),
   },
   {
-     path: 'content',loadChildren:()=>import('./content/content.module').then((m)=>m.ContentModule)
+    path: 'content',
+    loadChildren: () =>
+      import('./content/content.module').then((m) => m.ContentModule),
   },
   {
-    path: 'manager',loadChildren:()=>import('./manager/manager.module').then((m)=>m.ManagerModule)
- },
- {
-  path: 'account',loadChildren:()=>import('./account/account.module').then((m)=>m.AuthModule)
-},
+    path: 'manager',
+    loadChildren: () =>
+      import('./manager/manager.module').then((m) => m.ManagerModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: 'account',
+    loadChildren: () =>
+      import('./account/account.module').then((m) => m.AuthModule),
+  },
 
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -25,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
     imgName: '',
     markup: 0,
     imageBase64: '',
-    photo: null,
+    imageWebp: undefined,
     price: -1,
   };
 

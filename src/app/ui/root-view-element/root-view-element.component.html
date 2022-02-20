@@ -11,6 +11,10 @@
   </div>
 
   <div class="btn item-menu-3" (click)="addItem()" [style.display]="DistplayButton ? 'block' : 'none'">
-    <img src="./../../../assets/icon/add-button.png" height="25" />
+    <picture>
+      <source srcset="./../../../assets/icon/add-button.webp" type="image/webp" >
+      <img src="./../../../assets/icon/add-button.png" height="25"  alt="Add element" />
+    </picture>
+
   </div>
 </div>

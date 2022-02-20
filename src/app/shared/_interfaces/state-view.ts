@@ -4,5 +4,6 @@ export enum StateView {
   editTable,
   edit,
   create,
-  wait
+  wait,
+  delete
 }

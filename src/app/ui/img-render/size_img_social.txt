@@ -1,9 +1,21 @@
-1080/1920 9/16 
-         3/2
+1080/1920 9/16
+         3/2 vk
     480/640     3/4
 
-//-- 
+//--
  Горизонтальная (альбомная) – 1024 x 512;
 Вертикальная (книжная) – 800 x 1200.
 
-https://prostudio.ru/tools/ratio-side/
+https://prostudio.ru/tools/ratio-side/  // соотношение сторон расчет
+
+https://videoinfographica.com/social-image-size/
+https://tilda.education/articles-images-for-social
+
+-- webp формат -- Put to  сервер (1080*1080)
+server save : L (1080*1080)| name| webp  in webroot dir
+
+              M (640*640)| name| webp
+
+              S (192*192)| name| webp
+               (300*300)| name| png
+

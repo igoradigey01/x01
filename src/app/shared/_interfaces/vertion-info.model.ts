@@ -1,6 +1,6 @@
-export  interface VertionInfo{
+export  interface VersionInfo{
 
- verion:string;
+ version:string;
  description:string;
 
 }

@@ -1,0 +1,71 @@
+<p>katalog-item works!</p>
+<div class="_contaner">
+  <div *ngIf="!_flag_sendServerData; else elseSendData">
+    <!-- begin edit  card ------------------------------------->
+    <form #myForm="ngForm" novalidate>
+      <div class="create">
+        <input
+          type="text"
+          *ngIf="_select_katalog"
+          class="form-control"
+          [(ngModel)]="_select_katalog.name"
+          autofocus
+        />
+
+        <div class="btn-group" role="group">
+          <button
+            *ngIf="IsCreateView"
+            mat-flat-button
+            [disabled]="myForm.invalid || _flagInvalid"
+            color="primary"
+            (click)="save()"
+          >
+            Сохранить
+          </button>
+
+          <button
+            *ngIf="IsCreateView"
+            mat-flat-button
+            color="warn"
+            [disabled]="_flagInvalid"
+            (click)="delete()"
+          >
+            Удалить
+          </button>
+          <button
+            mat-flat-button
+            color="accent"
+            [disabled]="_flagInvalid"
+            (click)="cancel()"
+          >
+            Отмена
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <ng-template #elseSendData>
+    <div class="_error " role="alert" *ngIf="_errorMgs?.length||_flagError">
+
+      <ul>
+        <li *ngFor="let error of _errorMgs">
+          {{ error }}
+        </li>
+      </ul>
+
+    </div>
+
+
+    <div class="progress">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        [style.width.%]="_progress"
+      ></div>
+    </div>
+    <div class="row" style="text-align: center">
+      <p>({{ _progress }})</p>
+      <button class="btn btn-sm btn-warning" (click)="undo()">Отмена</button>
+    </div>
+  </ng-template>
+</div>

@@ -1,15 +1,18 @@
 <div class="_container">
 <div class="c-1">
   <div class=" bg-tools text-center "   routerLink="/manager">
-     <=  модуль менеджер
+    модуль менеджера
   </div>
+
+
   <div>
     <div class="card">
-      <div class="h5 text-center mb-0"> Info </div>
+      <div class="h6 text-center mb-0"> Версия ПО </div>
       <div class="card-body">
-        <div class=" text-center">Сервер: Версия--{{vertionServer}}</div>
-        <div class=" text-center">Клиент: Версия--{{vertionClint}}</div>
+        <app-version-info></app-version-info>
+
       </div>
+
     </div>
     <div class="card">
       <div class="card-body">
@@ -39,6 +42,7 @@
               Play Маркет </a> </span><br>
           <span>Выбираем <a href="https://play.google.com/store/apps/details?id=ru.androidtools.texteditor&hl=ru&gl=US">
               Блокнот(Android Tools (ru)) </a></span><br>
+              <span>Если "Honor" , то ищем <a href="https://apkpure.com/ru/notepad-text-editor/ru.androidtools.texteditor"> .APK(Файл программы,~ как .exe для windows ) </a></span><br>
           <span> создаем запись - мой_логин ; мой_пароль </span><br>
           <span>Выбираем пункт меню -Сохранить как </span> <br>
           <span>Выбираем папку -например Download(Загрузки)</span> <br>
@@ -83,10 +87,17 @@
 
         <div class="card-body">
           <div class="h6 text-center mb-0 card-title"> диаграмма возможностей x-01</div>
-          <img src="../../../assets//diagram/infoDiagram.png" style="margin-top: 1em;" class="card-img-top" />
+          <picture >
+    <source srcset="../../../assets//diagram/infoDiagram.webp" type="image/webp">
+  <img    class="card-img" src="../../../assets//diagram/infoDiagram.png" />
+</picture>
+
+
         </div>
 
       </div>
     </div>
   </div>
+</div>
+</div>
 

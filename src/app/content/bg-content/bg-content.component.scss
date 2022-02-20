@@ -1,6 +1,8 @@
 @import "./../../../styles/content-styles.scss";
 
-
+._container{
+  min-height: 600px;
+}
 .form-check-label {
   margin-left: 0.3rem;
   color: white;

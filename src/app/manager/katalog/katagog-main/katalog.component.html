@@ -1,0 +1,69 @@
+<!---------------->
+
+<!--- Output Error-->
+
+<app-root-view-element
+(onChangedViewMode)="onChangedCreate($event)"
+(onClickKatalog)="onChangedDefaultState()"
+[_selectedKagalog]="_select_katalog"
+[_modul_name]="_modul_name"
+[_router_link]="_router_link"
+
+></app-root-view-element>
+
+<!------------------->
+<div [ngSwitch]="_flagViewState">
+  <ng-template ngSwitchDefault>
+    <div class="container-fluid">
+      <div class="grid-container">
+
+        <button *ngFor="let item of _katalogs" class="btn" style="text-align: justify;padding: 0px;" [class.active]="item == _select_katalog"
+          (click)="changeCategory(item)">
+          <span class=" badge-btn ">{{
+            item.id
+            }}</span>
+          <span style="padding: 1em;;">
+            {{ item.name }}</span>
+
+        </button>
+
+      </div>
+    </div>
+  </ng-template>
+  <!--  Create template -->
+  <ng-template name="Create" ngSwitchCase=4>
+    <h4>Создать Позицию</h4>
+    <div></div>
+
+    <app-katalog-item
+    [_select_katalog]="_select_katalog"
+
+    [_flagViewState]="4"
+    (_onChangeStateView)="onChangeStateView($event)"
+    (_onKatalogChange)="onChangedKatalog($event)"
+
+    >
+
+    </app-katalog-item>
+  </ng-template>
+
+  <!--  Edit -Delete template -->
+  <ng-template ngSwitchCase="3">
+    <div class="edit">
+
+      <p>Редактировать Элемент</p>
+      <input type="text" class="form-control" [(ngModel)]="_select_katalog.name" />
+      <div class="btn-group" role="group">
+        <button class="btn btn-sm btn-success" (click)="saveItem()">
+          Сохранить
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="deleteItem()">
+          Удалить
+        </button>
+        <button class="btn btn-sm btn-warning" (click)="cancel()">
+          Отмена
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -4,7 +4,8 @@ import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { StateView } from 'src/app/shared/_interfaces/state-view';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { TypeProduct } from 'src/app/shared/_interfaces/product-type.model';
-import { ImgConverterService } from 'src/app/shared/sevices/img-converter.service';
+import { ImgManagerService } from 'src/app/shared/sevices/img-manager.service';
+import { DtoProduct } from '../product-item/item-product.component';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class ProductMainComponent implements OnInit {
   /** this new version product view */
   constructor(
     private _repository: ProductService,
-    private _imgConverter: ImgConverterService
+    private _imgConverter: ImgManagerService
   ) {
     this._select_Product = <Product>{
       id: -1,
@@ -50,7 +51,20 @@ export class ProductMainComponent implements OnInit {
       this._typeProducts = data;
     });
   }
+  public onChangedProducts(event:DtoProduct){
+    if(event.flagViewMode==StateView.create){
+      this._products.push(event.product);
+    }
+    if(event.flagViewMode==StateView.delete)
+    {
+     let index= this._products.findIndex(f=>f.id==event.product.id);
+      this._products.splice(index,index+1);
+     // console.log(JSON.stringify( this._products));
+    }
+  }
+
   public onChangedViewMode(event: StateView) {
+   // debugger
     this._flagViewMode = event;
     if (this._flagViewMode == StateView.create) {
       this._select_Product = <Product>{

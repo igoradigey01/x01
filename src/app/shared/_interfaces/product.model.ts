@@ -11,8 +11,9 @@ export interface Product {
   description?: string;
   imgName?: string; // name -- img getServer(wwwroot/image)
   rootImgSrc?:string; //url for  server-folder wwwroot/
-  photo?: any; // именованая ссылка на Blob  window.URL.createObjectURL(d)
-  imageBase64?: any;
+  imageWebp?: Blob; // именованая ссылка на Blob  window.URL.createObjectURL(d)
+  onChangeWebp?:boolean; // change  img on server (wwwroot/image)
+  imageBase64?: string;
 }
 
 

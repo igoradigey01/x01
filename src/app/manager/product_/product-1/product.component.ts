@@ -188,7 +188,7 @@ export class ProductComponent implements OnInit {
     } else {
       // ---------SEND DATA TO SERVER----------------
 
-      this._repository.Update(this._selectedProduct).subscribe(
+      this._repository.UpdateAll(this._selectedProduct).subscribe(
         (data: HttpEvent<any>) => {
           //progress bar
           switch (data.type) {
@@ -296,7 +296,7 @@ export class ProductComponent implements OnInit {
       this._flagButton = false;
       this._flagPhoto = false;
       this._flag_ng_template = false;
-      this._selectedProduct.imageBase64 = null;
+      this._selectedProduct.imageBase64 = undefined;
 
       // console.log('onSetFilePhoto- flag flase -event.fileBase64' + event.fileBase64 );
     } else {
@@ -310,7 +310,7 @@ export class ProductComponent implements OnInit {
 
       // this._flagInvalid = true;
       this._flagButton = true;
-      if (this._selectedProduct.imageBase64.length > 0) {
+      if (this._selectedProduct.imageBase64) {
         this._errorUotput = false;
         this._flagInvalid = false;
       }
@@ -318,7 +318,7 @@ export class ProductComponent implements OnInit {
   }
 
   getBlobImg(name: string) {
-    this._repository.GetBlobIMG(name).subscribe((d) => {
+    this._repository.GetFileFromImageController(name).subscribe((d) => {
       this.createImageFromBlob(d);
     });
   }
@@ -327,7 +327,7 @@ export class ProductComponent implements OnInit {
     reader.addEventListener(
       'load',
       () => {
-        this._selectedProduct.imageBase64 = reader.result;
+        this._selectedProduct.imageBase64 = reader.result as string;
       },
       false
     );

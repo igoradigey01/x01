@@ -1,24 +1,27 @@
 <div class="_contaner">
-  <div *ngIf="!_flag_sendServerData; else elseBlock_2">
+  <div *ngIf="!_flag_sendServerData; else elseSendData">
     <!-- begin edit  card ------------------------------------->
-
+    <form #myForm="ngForm" novalidate>
     <div class="_input-group">
       <label for="katalog" class="_label">Католог &nbsp; </label>
       <mat-form-field id="katalog" appearance="outline">
-        <mat-label>id-( {{ _select_Product.id }})</mat-label>
-        <input matInput disabled [value]="_select_Product.katalogName" />
+        <mat-label> <span class="_label_id" > id( {{ _select_Product.katalogId}})</span>&nbsp;{{_select_Product.katalogName}}</mat-label>
+        <input matInput name="katalogName" disabled  />
+
       </mat-form-field>
+
     </div>
 
     <!--------------  Материал== t        -->
     <div class="_input-group">
       <label for="typeProduct" class="_label"> Материал</label>
       <mat-form-field id="typeProduct" appearance="fill">
-        <mat-select [(value)]="_select_Product.typeProductId">
+        <mat-select name="model_product" [(ngModel)]="_select_Product.typeProductId" #typeProduct="ngModel" required >
           <mat-option *ngFor="let item of _typeProducts" [value]="item.id">{{
             item.name
           }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="typeProduct.invalid"> </mat-error>
       </mat-form-field>
     </div>
 
@@ -26,28 +29,33 @@
 
     <!--------------------------->
     <div class="_input-group">
-      <label for="nameProduct" class="_label">Название </label>
+
       <mat-form-field
         id="nameProduct"
-        class="_input-full-width"
+        class="_input-name"
         appearance="fill"
       >
-        <span matPrefix>{{ _select_Product.katalogName }} &nbsp; </span>
-        <input matInput #nameProductInput [(ngModel)]="_select_Product.name" />
+      <mat-label>Название </mat-label>
+        <span *ngIf="!ShowPrefix" matPrefix>{{ _select_Product.katalogName }} &nbsp; </span>
+        <input matInput name="productname" #nameProduct="ngModel" [(ngModel)]="_select_Product.name"  required />
+        <mat-error *ngIf="nameProduct.invalid"> </mat-error>
+
       </mat-form-field>
     </div>
 
-    <mat-form-field id="nameProduct" class="_input-price" appearance="fill">
+    <mat-form-field id="PriceProduct" class="_input-price" appearance="fill">
       <mat-label>Цена</mat-label>
-      <input matInput [(ngModel)]="_select_Product.price" />
+      <input matInput name="pace_product" [(ngModel)]="_select_Product.price" #price="ngModel" required pattern="[0-9]{1,7}"  />
       <span matPrefix>₽ &nbsp;</span>
       <span matSuffix>.00</span>
+      <mat-error *ngIf="price.invalid"> </mat-error>
     </mat-form-field>
 
-    <mat-form-field id="nameProduct" class="_input-price" appearance="fill">
+    <mat-form-field id="markupProduct" class="_input-price" appearance="fill">
       <mat-label>Торговая наценка</mat-label>
-      <input matInput [(ngModel)]="_select_Product.markup" />
+      <input matInput name="markup_product" [(ngModel)]="_select_Product.markup"  #markup="ngModel" required pattern="[0-9]{1,2}"  />
       <span matPrefix>% &nbsp;</span>
+      <mat-error *ngIf="markup.invalid"> </mat-error>
     </mat-form-field>
 
     <!------------------------------------>
@@ -55,6 +63,7 @@
       <label for="discription" class="_label">Описание товара </label>
       <mat-form-field id="discription" class="_input-price" appearance="fill">
         <textarea
+         name="description_product"
           matInput
           [(ngModel)]="_select_Product.description"
           placeholder="описание товара"
@@ -70,41 +79,88 @@
       [_img_name]="_select_Product.imgName"
       [_rootSrc]="_select_Product.rootImgSrc"
       (_onChangedDtoImage)="onChangedDtoImage($event)"
+      (_onFlagShowSaveDataBar)="onFlagButtonPanel($event)"
     ></app-img-render>
+    <!---- error render 10.02.22 -->
+    <div class="alert alert-danger" role="alert" *ngIf="_errorMgs?.length">
 
-    <!---------------  Botton edit start        -->
-
-    <div class="d-flex justify-content-center">
-
-      <button  mat-flat-button color="primary" (click)="saveOnlyImgFromProduct()">
-        Сохранить только Данные
-      </button>
-
-      <button mat-flat-button color="primary" (click)="saveOnlyImgFromProduct()">
-        Сохранить только Фото
-      </button>
+      <ul>
+        <li *ngFor="let error of _errorMgs">
+          {{ error }}
+        </li>
+      </ul>
 
     </div>
 
-    <div class="d-flex justify-content-center">
+    <!---------------  Botton edit start (  panel buttons  )    -->
 
-      <button mat-flat-button color="primary" [disabled]="_flagInvalid" (click)="saveProduct()">
-        Сохранить
-      </button>
-      <button mat-flat-button color="warn" [disabled]="_flagInvalid" (click)="deleteProduct()">
-        Удалить
-      </button>
-      <button mat-flat-button color="accent" [disabled]="_flagInvalid" (click)="cancel()">
-        Отмена
-      </button>
+    <div [ngClass]="{'show_ButtonsPanel':_flagButtonShow}">
+      <div class="d-flex justify-content-center">
+        <button *ngIf="IsCreateView"
+          mat-flat-button
+          [disabled]="myForm.invalid||_flagInvalid"
+          color="primary"
+          (click)="saveIgnoreImgFromProduct()"
+        >
+          Сохранить Данные
+        </button>
 
+        <button *ngIf="IsCreateView"
+          mat-flat-button
+          [disabled]="myForm.invalid||_flagInvalid"
+          color="primary"
+          (click)="saveOnlyImgFromProduct()"
+        >
+          Сохранить Фото
+        </button>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button
+          mat-flat-button
+          [disabled]="myForm.invalid||_flagInvalid"
+          color="primary"
+
+          (click)="saveProduct()"
+        >
+          Сохранить
+        </button>
+        <button *ngIf="IsCreateView"
+          mat-flat-button
+          color="warn"
+          [disabled]="_flagInvalid"
+          (click)="deleteProduct()"
+        >
+          Удалить
+        </button>
+        <button
+          mat-flat-button
+          color="accent"
+          [disabled]="_flagInvalid"
+          (click)="cancel()"
+        >
+          Отмена
+        </button>
+      </div>
     </div>
+    </form>
 
     <!--button edit end-->
     <!---------ng-template #elseBlock end-------------------------------------------- -->
   </div>
   <!-- end  _flag_sendServerData-->
-  <ng-template #elseBlock_2>
+  <ng-template #elseSendData>
+    <div class="_error " role="alert" *ngIf="_errorMgs?.length||_flagError">
+
+      <ul>
+        <li *ngFor="let error of _errorMgs">
+          {{ error }}
+        </li>
+      </ul>
+
+    </div>
+
+
     <div class="progress">
       <div
         class="progress-bar"

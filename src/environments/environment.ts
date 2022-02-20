@@ -3,19 +3,21 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  firebaseConfig : {
+   production: false,
+ /* firebaseConfig : {
     apiKey: 'AIzaSyAxAhm9TPJuvqRx3kqQ2kUOMvzHzo9R2Us',
    // authDomain: 'x-01-mystore.firebaseapp.com',
     databaseURL: 'x-01-mystore.firebaseio.com',
     projectId: 'x-01-mystore'
 
-  },
+  }, */
 
    clientRoot:  'http://localhost:4200/', //'https://x-01.ru/',       //  Host client
    serverRoot: 'http://localhost:5010/',  //'https://s.x-01.ru/',               //
    serverAuthority:'http://localhost:5010/',//'https://s.x-01.ru/',             //
-   clientId:'angular-client'
+   clientId:'angular-client',
+   version:'b2.02.22',
+   description:"Client shop- вторая редакция (angular:13.1.2)"
 
 };
 

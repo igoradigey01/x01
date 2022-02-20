@@ -26,20 +26,20 @@ export class SignInComponent implements OnInit {
   rememberme: boolean = false;
   /** вход пользователья ;создание токена */
   constructor(
-    private accountServie: AccountService,
-    private userManagerService: UserManagerService,
+    private _accountServie: AccountService,
+    private _userManager: UserManagerService,
     private router: Router,
     private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
-    let subLogin = this.userManagerService.InvalidLogin$.subscribe();
-    if (this.tokenService.Exists) {
-      this.accountServie
+    let subLogin = this._userManager.InvalidLogin$.subscribe();
+    if (this._userManager.Exists) {
+      this._accountServie
         .isUserValid(this.tokenService.AccessToken || '')
 
         .subscribe(() => {
-          this.userManagerService.setInvalidLogin$(false);
+          this._userManager.setInvalidLogin$(false);
         });
     }
     this._subscriptions.push(subLogin);
@@ -62,9 +62,9 @@ export class SignInComponent implements OnInit {
     const credentials = JSON.stringify(loginForm.value);
     // this._errorMgs.length=0;
 
-    this.accountServie.login(credentials).subscribe(
+    this._accountServie.login(credentials).subscribe(
       (next) => {
-        this.userManagerService.setInvalidLogin$(false);
+        this._userManager.setInvalidLogin$(false);
         this._flagButoon = true;
         /* if (this.tokenService.IsAdmin()) {
           this.userManagerService.isAdimin = true;
@@ -73,7 +73,7 @@ export class SignInComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         let body: string;
-        this.userManagerService.setInvalidLogin$(true);
+        this._userManager.setInvalidLogin$(true);
         this._flagButoon = false;
         if (error.status === 401 || error.status == 400) {
           //this.userManagerService.invalidLogin = true;
@@ -97,7 +97,7 @@ export class SignInComponent implements OnInit {
   }
 
   onUserChenged() {
-    console.log('userManager.IsAdmin--' + this.userManagerService.IsAdmin);
+    console.log('userManager.IsAdmin--' + this._userManager.IsAdmin);
   }
 
   onFileInput(event: any) {

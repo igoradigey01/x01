@@ -1,42 +1,48 @@
-<app-left-panel-view-element
-  [_katalogs]="_katalogs"
-  [_router_link]="_router_link"
-  [_modul_name]="_modul_name"
-  (_onChangedKatalog)="onChangedKatalog($event)"
-  (_onChangedViewMode)="onChangedViewMode($event)"
->
-  <!--------------------------------------------------- Start ngSwith-->
+<div class="_main-container">
+  <app-left-panel-view-element
+    [_katalogs]="_katalogs"
+    [_router_link]="_router_link"
+    [_modul_name]="_modul_name"
+    (_onChangedKatalog)="onChangedKatalog($event)"
+    (_onChangedViewMode)="onChangedViewMode($event)"
+  >
+    <!--------------------------------------------------- Start ngSwith-->
 
-  <div [ngSwitch]="_flagViewMode">
-    <ng-template ngSwitchDefault>
-      <app-product-table
-        [_products]="_products"
-        
-        (_onChangeRow)="onChangeRow($event)"
-      >
-      </app-product-table>
-    </ng-template>
-    <ng-template name="editTable" ngSwitchCase="2"> </ng-template>
-    <ng-template name="Edit" ngSwitchCase="3">
-      <!-- edit template-->
-      <h4>Редактировать Позицию</h4>
-      <app-item-product
-        [_select_Product]="_select_Product"
-        [_typeProducts]="_typeProducts"
-
-      >
-      </app-item-product>
-    </ng-template>
-    <ng-template name="Create"   ngSwitchCase="4">
-      <h4>Создать Позицию</h4>
-       <div ></div>
-      <app-item-product
-        [_select_Product]="_select_Product"
-        [_typeProducts]="_typeProducts"
-
-      >
-      </app-item-product>
-    </ng-template>
-  </div>
-  <!--------------------------------------------------- End ngSwith-->
-</app-left-panel-view-element>
+    <div [ngSwitch]="_flagViewMode">
+      <ng-template ngSwitchDefault>
+        <app-product-table
+          [_products]="_products"
+          (_onChangeRow)="onChangeRow($event)"
+        >
+        </app-product-table>
+      </ng-template>
+      <ng-template name="editTable" ngSwitchCase="2"> </ng-template>
+      <ng-template name="Edit" ngSwitchCase="3">
+        <!-- edit template-->
+        <h4>Редактировать Позицию</h4>
+        <app-item-product
+          [_select_Product]="_select_Product"
+          [_typeProducts]="_typeProducts"
+          [_flagViewMode]="3"
+          (_onShowTableView)="onChangedViewMode($event)"
+          (_onProductChange)="onChangedProducts($event)"
+        >
+        </app-item-product>
+      </ng-template>
+      <ng-template name="Create" ngSwitchCase="4">
+        <h4>Создать Позицию</h4>
+        <div></div>
+        <app-item-product
+          [_select_Product]="_select_Product"
+          [_typeProducts]="_typeProducts"
+          [_select_katalog]="_select_Katalog"
+          [_flagViewMode]="4"
+          (_onShowTableView)="onChangedViewMode($event)"
+          (_onProductChange)="onChangedProducts($event)"
+        >
+        </app-item-product>
+      </ng-template>
+    </div>
+    <!--------------------------------------------------- End ngSwith-->
+  </app-left-panel-view-element>
+</div>

@@ -41,7 +41,17 @@
             [ngClass]="{ 'row-grid': i % 2 == 0 }"
             *ngIf="product.imgName; else elseBlock_3"
           >
-            <img height="38" src="{{product.rootImgSrc }}{{ product.imgName }}" />
+            <!---    start -->
+
+            <div *ngIf="!product.onChangeWebp;else changedWebp">
+              <img height="38"  src="{{product.rootImgSrc }}S{{ product.imgName }}.webp" />
+          </div>
+
+          <ng-template #changedWebp>
+            <img height="38"  src="{{product.rootImgSrc }}M{{ product.imgName }}.webp" />
+          </ng-template>
+
+            <!--   endt -->
           </div>
 
           <ng-template #elseBlock_3>

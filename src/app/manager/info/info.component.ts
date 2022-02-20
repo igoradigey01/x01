@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import {InfoService} from './../shared/sevices/info.service';
-//import {VertionInfo} from '../../data-model/class-data.model';
-
-
 
 
 @Component({
@@ -14,17 +9,15 @@ import {InfoService} from './../shared/sevices/info.service';
 
 export class InfoComponent implements OnInit {
 
-  vertionServer:string='';
-  vertionClint:string='1.00.6--27.10.21';
+   versionServer:string|undefined;
+   versionClint:string|undefined;
 
   constructor(
-    private _repository:InfoService
+
   ) { }
 
   ngOnInit(): void {
-    this._repository.Vertion.subscribe((d)=>{this.vertionServer=d.verion;
 
-    });
   }
 
 }

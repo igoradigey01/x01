@@ -61,7 +61,7 @@ export class MenuComponent implements OnInit {
   }
   public get IsManager(): boolean {
    // return true;
-     if(this._isManager && !this._invalidLogin){
+     if(this._isManager  && !this._invalidLogin){
                return true;
      }
     return false;

@@ -6,11 +6,17 @@ import { Product } from 'src/app/shared/_interfaces/product.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { TypeProduct } from '../../../shared/_interfaces/product-type.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
+
 import { ManagerServiceModule } from './maneger-service.module';
 import { KatalogService } from './katalog.service';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 import { TokenService } from 'src/app/shared/sevices/token.service';
+
+enum FlagState {
+  all,
+  date,
+  img,
+}
 
 @Injectable({
   providedIn: ManagerServiceModule,
@@ -35,7 +41,8 @@ export class ProductService {
   //-----------------------
 
   //-----------------------
-  public TypeProducts(): Observable<TypeProduct[]> {
+  /**Subscribe to Get- Models  Product*/
+  public TypeProducts = (): Observable<TypeProduct[]> => {
     this._url.Controller = 'typeProduct';
     this._url.Action = '';
     let headers: HttpHeaders = new HttpHeaders({
@@ -43,7 +50,7 @@ export class ProductService {
       //  Authorization: 'Bearer ' + token,
     });
     return this._http.get<TypeProduct[]>(this._url.Url, { headers });
-  }
+  };
 
   //------------- Get all Katalog------------
   public Katalogs = (): Observable<Katalog[]> => {
@@ -51,10 +58,10 @@ export class ProductService {
   };
 
   //------------------- Get all Product--------
-  public Products(
+  public Products = (
     idKatalog: number,
     nameKatalog: string | undefined
-  ): Observable<Product[]> {
+  ): Observable<Product[]> => {
     this._url.Controller = 'product';
     this._url.Action = '';
     let headers: HttpHeaders = new HttpHeaders({
@@ -83,33 +90,111 @@ export class ProductService {
         });
       })
     );
-  }
+  };
 
   //---------------
   public Create = (item: Product): Observable<any> => {
     // throw new Error('not implemint exeption');
     this._url.Controller = 'product';
-    this._url.Action = 'Post';
+    this._url.Action = 'Create'; //Post
+    // debugger
+    let headers: HttpHeaders = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + this._token.AccessToken,
+    });
+
+    let fd = this.createFormData(item,FlagState.all);
+
+    //!!!!!!--  new Response(fd).text().then(console.log);--!!!!!!!!!!!!
+    return this._http.post(this._url.Url, fd, {
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
+
+    // return this._http.post(this._url.Url, fd, { headers },);
+  };
+
+
+
+  //--------------
+  public UpdateAll = (item: Product): Observable<any> => {
+    // debugger
+    this._url.Controller = 'product';
+    this._url.Action = 'UpdateAll';
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
 
-    return this._http.post(this._url.Url, item, { headers });
+    let fd = this.createFormData(item,FlagState.all);
+
+  //!!!!  new Response(fd).text().then(console.log);
+
+    return this._http.put(this._url.Url + '/' + item.id, fd, {
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
   };
 
-  //--------------
-  public Update = (item: Product): Observable<any> => {
-    throw new Error('not implemint exeption');
+  public UpdateOnlyImg = (item: Product): Observable<any> => {
+    this._url.Controller = 'product';
+    this._url.Action = 'UpdateOnlyImg';
+
+    let headers: HttpHeaders = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + this._token.AccessToken,
+    });
+
+    let fd = this.createFormData(item,FlagState.img);
+
+   new Response(fd).text().then(console.log);
+
+    return this._http.put(this._url.Url + '/' + item.imgName, fd, {
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
   };
 
+  public UpdateIgnoreImg = (item: Product): Observable<any> => {
+    this._url.Controller = 'product';
+    this._url.Action = 'UpdateIgnoreImg';
+
+    let headers: HttpHeaders = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + this._token.AccessToken,
+    });
+
+    let fd = this.createFormData(item,FlagState.date);
+
+   // !!! new Response(fd).text().then(console.log);
+
+    return this._http.put(this._url.Url + '/' + item.id, fd, {
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
+  };
   //--------------------------
   public Delete = (id: number): Observable<any> => {
-    throw new Error('not implemint exeption');
+    this._url.Controller = 'product';
+    this._url.Action = 'Delete';
+
+    let headers: HttpHeaders = new HttpHeaders({
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + this._token.AccessToken,
+    });
+    return this._http.delete(this._url.Url + '/' + id, {
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
   };
 
-  public GetBlobIMG = (name: string): Observable<Blob> => {
+  public GetFileFromImageController = (name: string): Observable<Blob> => {
     this._url.Controller = 'image';
     this._url.Action = '';
     // return this.http.get(src,{responseType: 'blob'});
@@ -128,4 +213,66 @@ export class ProductService {
     });
     // return this.http.get<Blob>(url, { headers });
   };
+
+  private createFormData(item: Product, flag: FlagState): FormData {
+    const formData = new FormData();
+
+    const entries = Object.entries(item);
+    if (flag == FlagState.all) {
+      // debugger
+      entries.forEach(([key, value]) => {
+        //  if (key == 'katalogName') return;
+        if (key == 'typeProductName') return;
+        // if (key == 'imgName') return;
+        if (key == 'rootImgSrc') return;
+        if (key == 'imageBase64') return;
+        if (key == 'imageWebp') {
+          let f = value as File;
+          formData.append('file', f, f.name);
+          return;
+        }
+
+        formData.append(key, value);
+        // console.log(`${key}: ${value}`)
+      });
+
+      return formData;
+    }
+    if (flag === FlagState.date) {
+      entries.forEach(([key, value]) => {
+        //  if (key == 'katalogName') return;
+        if (key == 'typeProductName') return;
+        // if (key == 'imgName') return;
+        if (key == 'rootImgSrc') return;
+        if (key == 'imageBase64') return;
+        if (key == 'imageWebp') return;
+
+        formData.append(key, value);
+        // console.log(`${key}: ${value}`)
+      });
+
+      return formData;
+    }
+
+    if (flag === FlagState.img) {
+      entries.forEach(([key, value]) => {
+
+
+        if(key=='imgName'){
+
+          formData.append(key, value);
+          return;
+
+        }
+
+        if (key == 'imageWebp') {
+          let f = value as File;
+          formData.append('file', f, f.name);
+          return;
+        }
+      });
+
+    }
+    return formData;
+  }
 }

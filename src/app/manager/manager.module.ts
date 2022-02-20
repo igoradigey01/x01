@@ -5,10 +5,11 @@ import { MaterialModule } from './../material/material.module';
 import { UiModule } from './../ui/ui.module';
 import { ImageCropperModule } from 'ngx-image-cropper';
 
+
 import { ManagerRoutingModule } from './magager-routing.module';
-import { KatalogComponent } from './katalog/katalog.component';
+import { KatalogComponent } from './katalog/katagog-main/katalog.component';
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
-import { ContentComponent } from './content/content.component';
+import { ManagerBarComponent } from './manager-bar/manager-bar.component';
 import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './product_/product-1/product.component';
 import { UploadFilesComponent } from './upload-files/upload-files.component';
@@ -23,12 +24,14 @@ import { ProductTableComponent } from './product_/product-table/product-table.co
 import { ItemProductComponent } from './product_/product-item/item-product.component';
 import { DetailsProductComponent } from './product_/product-details/details-product.component';
 import { ProductMainComponent } from './product_/product-main/product-main.component';
+import { KatalogItemComponent } from './katalog/katalog-item/katalog-item.component';
+
 
 @NgModule({
   declarations: [
     KatalogComponent,
     NomenclatureComponent,
-    ContentComponent,
+    ManagerBarComponent,
     ProductComponent,
     UploadFilesComponent,
     ProductDetailsComponent,
@@ -39,12 +42,15 @@ import { ProductMainComponent } from './product_/product-main/product-main.compo
     ItemProductComponent,
     DetailsProductComponent,
     ProductMainComponent,
+    KatalogItemComponent,
+
   ],
   imports: [
     CommonModule,
     ManagerRoutingModule,
     ManagerServiceModule,
     FormsModule,
+
     ImageCropperModule,
     MaterialModule,
     UiModule,

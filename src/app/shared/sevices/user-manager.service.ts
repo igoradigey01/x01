@@ -19,7 +19,7 @@ export class UserManagerService {
 
 
   constructor(
-    private tokenService: TokenService
+    private _tokenService: TokenService
   ) { }
    /** Client subscribe() for _invalidLogin chenged; !! ngOnDestroy()-- unsubscribe !!  */
   public get InvalidLogin$(): BehaviorSubject<boolean> {
@@ -53,13 +53,18 @@ export class UserManagerService {
     }
     return false;
   }
+     /** действительность    токена в localStorage проверяеться с заданной в app.component.ts  переадичностью на сервере  */
+  public get Exists():boolean{
+    return this._tokenService.Exists;
+  }
 
   private get Role() {
-    if (!this.tokenService.Exists) {
+    return this._tokenService.Role;
+   /*  if (!this._tokenService.Exists) {
       return false;
     }
 
-    let dataJwt = this.tokenService.AccessToken?.split('.')[1];
+    let dataJwt = this._tokenService.AccessToken?.split('.')[1];
     if (!dataJwt) {
       return false;
     }
@@ -67,20 +72,8 @@ export class UserManagerService {
     let data = JSON.parse(decodeData);
     //console.log('decodeData--' + decodeData);
    // console.log('data--' + data.role);
-    return data.role;
+    return data.role; */
   }
 
-  // private message$ = fromEvent<StorageEvent>(window, 'storage').pipe(
-  //   filter((event) => event.storageArea === localStorage), // sessionStorage),
-  //   filter((event) => event.key === 'access_token'), // name in token.service created
-  //   map((event) => event.newValue)
-  // );
 
-  // ReplaySubject is more flexible than BehaviorSubject, as it
-  // allows you to define how many past emissions should be available.
-  // But you can get an equivalent code with BehaviorSubject by
-  // coding like this:
-  // private _coachProfile$: BehaviorSubject<any | null> =
-  //    new BehaviorSubject<any | null>(null);
-  //private _coachProfile$ : ReplaySubject<any > = new ReplaySubject<any>(1);
 }

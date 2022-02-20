@@ -20,7 +20,9 @@ export class KatalogService {
     private _http: HttpClient,
     private _token:TokenService,
     private _url: RouteApiService
-    ) { }
+    ) {
+      
+    }
 
 
 
@@ -48,9 +50,15 @@ export class KatalogService {
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
 
+    let fd = this.createFormData(item);
 
+    new Response(fd).text().then(console.log);
 
-    return this._http.post(this._url.Url, item,{headers});
+    return this._http.post(this._url.Url, fd,{
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
   }
 
   //-----------------------------------
@@ -64,8 +72,14 @@ export class KatalogService {
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
+    let fd = this.createFormData(item);
 
-    return this._http.put(this._url.Url, item,{headers});
+    new Response(fd).text().then(console.log);
+    return this._http.put(this._url.Url, fd,{
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
   }
   //-------------------
 
@@ -81,6 +95,29 @@ export class KatalogService {
     let url: string = this._url.Url+'/'+id;
     return this._http.delete(url,{headers});
   }
+  private createFormData(item: Katalog ): FormData {
+    const formData = new FormData();
 
+    const entries = Object.entries(item);
+
+      // debugger
+      entries.forEach(([key, value]) => {
+        //  if (key == 'katalogName') return;
+
+       /*  if (key == 'imageWebp') {
+          let f = value as File;
+          formData.append('file', f, f.name);
+          return;
+        } */
+
+        formData.append(key, value);
+
+      });
+
+
+
+
+    return formData;
+  }
 
 }

@@ -1,9 +1,10 @@
-<div class="bg _container" style="background-image:url({{imgBgPath}});">
-  <img src="{{imgBgLoad}}" style="display:none" (load)="changeBackground()" />
+<div class="bg _container"    [style]="getUrl" >
+  <img src="{{imgBgLoad}}" loading="lazy"  style="display: none;"  (load)="changeBackground()" />
+
   <!----x_01 карусель   start -->
 
 
-  <div class="bg-carusel-container">
+  <div class="bg-carusel-container" >
     <div>
       <input class="form-check-input" type="checkbox" (click)="changedTheme()" checked id="flexCheckDefault" />
       <label class="form-check-label" [ngStyle]="{'color':flag_bg?'#3b3f40':'white'}" for="flexCheckDefault">
@@ -17,6 +18,7 @@
           data-bs-target="#carouselCaptions"></span>
         <span data-bs-target="#carouselCaptions" [ngClass]="{'active': i==1}" (click)="changedPozition(1)"></span>
         <span data-bs-target="#carouselCaptions" [ngClass]="{'active': i==2}" (click)="changedPozition(2)"></span>
+
 
 
 

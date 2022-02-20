@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { EventEmitter, Input, Output } from '@angular/core';
+
 import {
   Dimensions,
   ImageCroppedEvent,
   ImageTransform,
 } from 'ngx-image-cropper';
+
+import { ImgManagerService } from 'src/app/shared/sevices/img-manager.service';
+
 
 export interface DtoImage {
   base64Img: string;
@@ -21,9 +25,12 @@ export class ImgRenderComponent implements OnInit {
   @Input() public _img_name: string | undefined;
   @Input() public _rootSrc: string | undefined; //='not_found.png';
   @Output() public _onChangedDtoImage = new EventEmitter<DtoImage>();
+  @Output() public _onFlagShowSaveDataBar = new EventEmitter<boolean>();
 
   public _img_cropped: any = '';
   public _imageChanged: any = '';
+  public _imageBase64:string|undefined;
+  public _flagShowUrl:boolean=false;
 
   public _messagess_show: string | undefined;
   public _flagError = false;
@@ -38,8 +45,9 @@ export class ImgRenderComponent implements OnInit {
 
   public _rotation = 0;
   public _canvasRotation = 0;
-  public _aspectRatio = 1/ 1;
-  public _show_aspectRatio="1/ 1";
+  private _i_canvasRotation = 0;
+  public _aspectRatio = 1 / 1;
+  public _show_aspectRatio = '1/ 1';
   private _i_aspectRatio: number = 0;
   public _containWithinAspectRatio = false;
   public _maintainAspectRatio = true;
@@ -49,7 +57,7 @@ export class ImgRenderComponent implements OnInit {
 
   public _cropped_size_h = 0;
   public _cropped_size_w = 0;
-  public _resizeToWidth: number = 540;
+  public _resizeToWidth: number = 1080;
 
   public get ResizeToWidth() {
     return this._resizeToWidth.toString();
@@ -61,21 +69,26 @@ export class ImgRenderComponent implements OnInit {
   public get SrcImg() {
     // console.log("SrcImg()---" +this._img_name)
     if (this._flagPhoto) return this._img_cropped;
-    if (this._rootSrc && this._img_name) return this._rootSrc + this._img_name;
-    return this._rootSrc + 'not_found.png';
+    if (this._rootSrc && this._img_name) return this._rootSrc +'S'+ this._img_name +'.webp';
+    return this._rootSrc + 'not_found.webp';
   }
 
   public get ShowCroppedTab(): boolean {
-    if (this._index_tabs == 0) return false;
+    if (this._index_tabs == 0 || this._index_tabs == 2) return false;
     return true;
   }
 
-  constructor() {}
+  constructor(public _imgManager: ImgManagerService) {}
 
   ngOnInit(): void {}
 
   public selectedIndexChangeMatTabGroup(event: number) {
     this._index_tabs = event;
+    if (this._index_tabs == 0) {
+      this._onFlagShowSaveDataBar.emit(true);
+    } else {
+      this._onFlagShowSaveDataBar.emit(false);
+    }
     if (this._index_tabs == 0 && this._flagPhoto) {
       this.getDtoImgObgect();
     }
@@ -97,6 +110,25 @@ export class ImgRenderComponent implements OnInit {
     this._loading = true;
   }
 
+  public togleShowUrl(){
+    this._flagShowUrl=!this._flagShowUrl;
+  }
+  public onSetFileFromUrl(url:string) {
+    debugger
+    this._flagError=false;
+    if(url===null||undefined){
+      this._flagError=true;
+      this._messagess_show="Url для загрузки image не выбран"
+
+      return
+    }
+   // debugger
+    this._imgManager.ImgBase64FromUrl =url;
+      // 'http://localhost:4200/assets/bg_img/bg-1.jpg';
+
+
+  }
+
   cropperReady(sourceImageDimensions: Dimensions) {
     // console.log('Cropper ready', sourceImageDimensions);
     this._size_h = sourceImageDimensions.height;
@@ -106,6 +138,7 @@ export class ImgRenderComponent implements OnInit {
 
   imageLoaded() {
     this._messagess_show = 'Файл успешно загружен..';
+    this._i_canvasRotation = 0;
     this._flagError = false;
     this._flagPhoto = true;
     this._loading = false;
@@ -143,6 +176,7 @@ export class ImgRenderComponent implements OnInit {
     };
   }
   public resetImage() {
+    this._i_canvasRotation = 0;
     this._loading = false;
     this._scale = 1;
     this._rotation = 0;
@@ -157,25 +191,41 @@ export class ImgRenderComponent implements OnInit {
     this._maintainAspectRatio = !this._maintainAspectRatio;
   }
 
-  public toggleAspectRatio() {
-    this._aspectRatio = this._aspectRatio === 4 / 3 ? 4 / 4 : 4 / 3;
+  public setCanvasRotation() {
+    // debugger
+
+    if (this._i_canvasRotation > 2) {
+      this._i_canvasRotation = -1;
+    }
+    ++this._i_canvasRotation;
+    switch (this._i_canvasRotation) {
+      case 1:
+        this._canvasRotation = 1;
+        break;
+      case 2:
+        this._canvasRotation = 2;
+        break;
+
+      default:
+        this._canvasRotation = 0;
+        break;
+    }
   }
 
-  public getAspectRatio() {
+  public setAspectRatio() {
     if (this._i_aspectRatio > 3) {
       this._i_aspectRatio = -1;
     }
     ++this._i_aspectRatio;
 
-
     switch (this._i_aspectRatio) {
       case 1:
         this._aspectRatio = 9 / 16;
-       this._show_aspectRatio = '9/16';
+        this._show_aspectRatio = '9/16';
         break;
       case 2:
         this._aspectRatio = 3 / 4;
-        this._show_aspectRatio= '3/4';
+        this._show_aspectRatio = '3/4';
         break;
       case 3:
         this._aspectRatio = 3 / 2;
@@ -184,10 +234,9 @@ export class ImgRenderComponent implements OnInit {
 
       default:
         this._aspectRatio = 1 / 1;
-        this._show_aspectRatio='1 / 1';
+        this._show_aspectRatio = '1 / 1';
         break;
     }
-
   }
 
   private flipAfterRotate() {

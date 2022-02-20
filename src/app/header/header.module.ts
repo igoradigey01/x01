@@ -5,7 +5,7 @@ import{AboutComponent} from './about/about.component'
 import{GarantiyaComponent} from './garantiya/garantiya.component'
 import{KakZakazatComponent} from './kak-zakazat/kak-zakazat.component'
 import{OplataIDostavkaComponent} from './oplata-i-dostavka/oplata-i-dostavka.component'
-import './../../styles/styles.scss';
+
 
 
 

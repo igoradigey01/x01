@@ -1,5 +1,8 @@
 @import './styles.scss';
 
+._error{
+  color: var(--bs-pink);
+}
 ._main-container {
   min-height: 400px;
 }

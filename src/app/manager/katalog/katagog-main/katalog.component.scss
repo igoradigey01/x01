@@ -1,4 +1,4 @@
-@import "./../../../styles/manager-styles.scss";
+@import "./../../../../styles/manager-styles.scss";
 
 .badge-btn {
   display: inline-block;
@@ -18,62 +18,38 @@
   border-radius: 4px 0 0 4px;
 }
 
-.grid-container-menu {
+
+.title {
+  color: white;
+}
+.grid-container {
   display: grid;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
-  grid-template-columns: 25% auto;
-  grid-template-rows: 1fr 1fr;
-}
-.title {
-  color: white;
-}
-.item-menu-1 {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
-
-.item-menu-2 {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-.item-menu-3 {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 3;
-}
-
-/*------------------------------------------*/
-.grid-container {
-  display: grid;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 .edit {
   text-align: center;
   display: grid;
-  width: 50%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   grid-template-columns: 1fr;
 }
+
 .create {
   text-align: center;
   display: grid;
-  width: 50%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   grid-template-columns: 1fr;
 }
+
+
+/*------------------------------------------*/
 
 .grid-container button {
   font-size: 1.2em;
@@ -96,38 +72,89 @@
 .grid-container .active {
   background-color: hotpink;
 }
-@media (max-width: 768px) {
-  .grid-container-menu {
-    display: grid;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    grid-template-columns: 45% auto;
-  }
+@media (min-width: 650px) {
 
+
+
+  //-----------------------
   .grid-container {
     display: grid;
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    grid-template-columns: 1fr;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr 1fr;
   }
 
   .edit {
     text-align: center;
     display: grid;
-    width: 100%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+  }
+  .create {
+    text-align: center;
+    display: grid;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     grid-template-columns: 1fr;
   }
 
-  .create {
+}
+@media (min-width: 960px) {
+  .grid-container {
+    display: grid;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .edit {
     text-align: center;
     display: grid;
-    width: 100%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     grid-template-columns: 1fr;
   }
+  .create {
+    text-align: center;
+    display: grid;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    display: grid;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .edit {
+    text-align: center;
+    display: grid;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+  }
+  .create {
+    text-align: center;
+    display: grid;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 1fr;
+  }
+
+
 }
