@@ -21,7 +21,7 @@ export class KatalogService {
     private _token:TokenService,
     private _url: RouteApiService
     ) {
-      
+
     }
 
 
@@ -66,8 +66,8 @@ export class KatalogService {
   public Update = (item: Katalog): Observable<any> => {
    // throw new Error("not implemint exeption");
    this._url.Controller = 'Katalog';
-   this._url.Action = 'put';
-
+   this._url.Action = 'Update';
+   debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -75,7 +75,7 @@ export class KatalogService {
     let fd = this.createFormData(item);
 
     new Response(fd).text().then(console.log);
-    return this._http.put(this._url.Url, fd,{
+    return this._http.put(this._url.Url+'/'+item.id, fd,{
       reportProgress: true,
       observe: 'events',
       headers,
@@ -96,13 +96,13 @@ export class KatalogService {
     return this._http.delete(url,{headers});
   }
   private createFormData(item: Katalog ): FormData {
-    const formData = new FormData();
+    let formData = new FormData();
 
     const entries = Object.entries(item);
 
       // debugger
       entries.forEach(([key, value]) => {
-        //  if (key == 'katalogName') return;
+          if (key == 'products') return;
 
        /*  if (key == 'imageWebp') {
           let f = value as File;

@@ -5,11 +5,13 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductDataService } from './shared/sevices/product.servisce';
 import { ProductDetailsService } from './shared/sevices/product-details.service';
+import {PrivacyComponent}  from './privacy-policy/privacy.component'
 
 @NgModule({
   declarations: [
     ProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    PrivacyComponent
   ],
   imports: [
     CommonModule,
@@ -17,11 +19,13 @@ import { ProductDetailsService } from './shared/sevices/product-details.service'
   ],
   providers: [
     ProductDataService,
-    ProductDetailsService
+    ProductDetailsService,
+
   ],
   exports: [
     ProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    PrivacyComponent
   ],
 })
 export class ContentModule { }

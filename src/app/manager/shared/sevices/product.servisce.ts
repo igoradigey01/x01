@@ -94,6 +94,7 @@ export class ProductService {
 
   //---------------
   public Create = (item: Product): Observable<any> => {
+    // debugger
     // throw new Error('not implemint exeption');
     this._url.Controller = 'product';
     this._url.Action = 'Create'; //Post
@@ -167,7 +168,7 @@ export class ProductService {
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
-
+     //   debugger
     let fd = this.createFormData(item,FlagState.date);
 
    // !!! new Response(fd).text().then(console.log);
@@ -215,7 +216,7 @@ export class ProductService {
   };
 
   private createFormData(item: Product, flag: FlagState): FormData {
-    const formData = new FormData();
+   let formData = new FormData();
 
     const entries = Object.entries(item);
     if (flag == FlagState.all) {

@@ -45,10 +45,11 @@ export class KatalogItemComponent implements OnInit {
   constructor(
     private _repository:KatalogService
   ) {
-    this._select_katalog=<Katalog>{id:-1,name:'',flag_href:false,flag_link:false}
+    this._select_katalog=<Katalog>{id:-1,name:'',flag_href:false,flag_link:false,hidden:false,decriptSEO:undefined,link:undefined,keywordsSEO:undefined}
    }
 
   ngOnInit(): void {
+   // debugger
 
   }
 

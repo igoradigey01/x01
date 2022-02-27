@@ -7,7 +7,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 import { ManagerRoutingModule } from './magager-routing.module';
-import { KatalogComponent } from './katalog/katagog-main/katalog.component';
+import { KatalogComponent } from './katalog/katagog-main/katalog-main.component';
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { ManagerBarComponent } from './manager-bar/manager-bar.component';
 import { FormsModule } from '@angular/forms';

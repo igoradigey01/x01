@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ManagerBarComponent } from './manager-bar/manager-bar.component';
-import { KatalogComponent } from './katalog/katagog-main/katalog.component';
+import { KatalogComponent } from './katalog/katagog-main/katalog-main.component';
 import { ProductComponent } from './product_/product-1/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductTypeComponent } from './product-type/product-type.component';

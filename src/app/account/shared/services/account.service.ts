@@ -12,7 +12,7 @@ import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 import { RegistrationResponseDto } from '../_interfaces/registration-responseDto.model';
 import { UserRegistrationDto } from '../_interfaces/user-registrationDto.model';
 import { ForgotPasswordDto } from '../_interfaces/forgot-passwordDto.model';
-import { CustomEncoder } from 'src/app/shared/custom-encoder';
+import { UrlEncoder } from 'src/app/shared/_class/url-encoder.class';
 import { ResetPasswordDto } from './../_interfaces/reset-passwordDto.model';
 
 @Injectable({
@@ -74,7 +74,7 @@ export class AccountService {
     this.url.Controller = this._controller;
     this.url.Action = 'EmailConfirmation';            //this._action;
 
-    let params = new HttpParams({ encoder: new CustomEncoder() })
+    let params = new HttpParams({ encoder: new UrlEncoder() })
     params = params.append('token', token);
     params = params.append('email', email);
 

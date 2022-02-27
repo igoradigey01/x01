@@ -3,7 +3,7 @@
 <!--- Output Error-->
 
 <app-root-view-element
-(onChangedViewMode)="onChangedCreate($event)"
+(onChangedViewMode)="onChangeStateView($event)"
 (onClickKatalog)="onChangedDefaultState()"
 [_selectedKagalog]="_select_katalog"
 [_modul_name]="_modul_name"
@@ -32,8 +32,9 @@
   </ng-template>
   <!--  Create template -->
   <ng-template name="Create" ngSwitchCase=4>
+    <div class="edit-create">
     <h4>Создать Позицию</h4>
-    <div></div>
+
 
     <app-katalog-item
     [_select_katalog]="_select_katalog"
@@ -45,25 +46,23 @@
     >
 
     </app-katalog-item>
+  </div>
   </ng-template>
 
   <!--  Edit -Delete template -->
-  <ng-template ngSwitchCase="3">
-    <div class="edit">
+  <ng-template name="Edit" ngSwitchCase="3">
+    <div class="edit-create">
+    <h4>Редактировать Позицию</h4>
+    <app-katalog-item
+    [_select_katalog]="_select_katalog"
 
-      <p>Редактировать Элемент</p>
-      <input type="text" class="form-control" [(ngModel)]="_select_katalog.name" />
-      <div class="btn-group" role="group">
-        <button class="btn btn-sm btn-success" (click)="saveItem()">
-          Сохранить
-        </button>
-        <button class="btn btn-sm btn-danger" (click)="deleteItem()">
-          Удалить
-        </button>
-        <button class="btn btn-sm btn-warning" (click)="cancel()">
-          Отмена
-        </button>
-      </div>
-    </div>
+    [_flagViewState]="3"
+    (_onChangeStateView)="onChangeStateView($event)"
+    (_onKatalogChange)="onChangedKatalog($event)"
+
+    >
+
+    </app-katalog-item>
+  </div>
   </ng-template>
 </div>

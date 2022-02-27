@@ -269,7 +269,7 @@ export class ItemProductComponent implements OnInit {
     this._childComponent?.getDtoImgObgect();
 
     /**  'Файл Фото не изменился,' */
-    if (!this._selectDtoImg.flagChanged && this._flagViewMode==StateView.edit) {
+     if (!this._selectDtoImg.flagChanged && this._flagViewMode==StateView.edit) {
       this.saveIgnoreImgFromProduct();
       return;
     }
@@ -307,8 +307,10 @@ export class ItemProductComponent implements OnInit {
               this._errorMgs = [];
               this._flagError = false;
 
+              this._select_Product.imgName=data.body.image // on server imgName ==Image
+
               this._onProductChange.emit(<DtoProduct>{
-                product: this._select_Product,
+                product: this._select_Product,                           //,
                 flagViewMode: this._flagViewMode,
               });
 

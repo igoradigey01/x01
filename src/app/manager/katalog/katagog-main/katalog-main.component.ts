@@ -7,9 +7,9 @@ import {DtoKatalog} from '../katalog-item/katalog-item.component'
 
 
 @Component({
-  selector: 'app-katalog',
-  templateUrl: './katalog.component.html',
-  styleUrls: ['./katalog.component.scss'],
+  selector: 'app-katalog-main',
+  templateUrl: './katalog-main.component.html',
+  styleUrls: ['./katalog-main.component.scss'],
 })
 export class KatalogComponent implements OnInit {
 
@@ -27,11 +27,12 @@ export class KatalogComponent implements OnInit {
 
   //----------------------
 
-  loadKatalogs() {
+public  loadKatalogs() {
     this._repository.Katalogs().subscribe((data) => (this._katalogs = data));
   }
 
-  onChangeStateView(event:StateView){
+public  onChangeStateView(event:StateView){
+ // debugger
     this._flagViewState = event;
     if (this._flagViewState == StateView.create) {
       this._select_katalog = <Katalog>{ id: -1, name: '',flag_href:false,flag_link:false,hidden:false };
@@ -39,7 +40,7 @@ export class KatalogComponent implements OnInit {
 
   }
 
-  onChangedKatalog(event:DtoKatalog){
+public  onChangedKatalog(event:DtoKatalog){
     if(event.flagViewState==StateView.create){
       if(this._katalogs)
       this._katalogs.push(event.katalog);
@@ -56,61 +57,24 @@ export class KatalogComponent implements OnInit {
   }
 
   changeCategory(item: Katalog) {
-
+   // debugger
       this._select_katalog = item;
 
     this._flagViewState = StateView.edit;
    // this._flagDisplayAddButton = false;
   }
   //--------------------
-  public onChangedCreate(event: StateView) {
-    //debugger
-    this._flagViewState = event;
-    this.addItem();
-  }
+
 
   public onChangedDefaultState(){
     //debugger
     this._flagViewState = StateView.default;
   }
- private addItem() {
-  //  this._flagViewMode = 'create';
-    this._select_katalog = <Katalog>{ id: -1, name: '' };
-   // this._flagDisplayAddButton = false;
-  }
-
-  deleteItem() {
-    this._repository.Delete(this._select_katalog.id).subscribe();
-
-    let i = this._katalogs?.findIndex((d) => d.id === this._select_katalog.id);
-    if (i) this._katalogs?.splice(i, 1);
-    this.cancel();
-  }
-
-  saveItem() {
-    if (this._flagViewState == StateView.create)
-     {
-      this._select_katalog.id = 0;
-      this._repository
-        .Create(this._select_katalog)
-        .subscribe((data: Katalog) => this._katalogs?.push(data));
-    }
-    if(this._flagViewState == StateView.edit) {
 
 
-      // при загрузке компонента мы подписались на GetKatalogs
-      //this.loadKatalogs() Katalog[]
-      // получаем ссылку на item в []Katalog _selectKatalog
-      // нужно изменить данные только на сервере на клиенте именяются в результате привязки к _selectItem
-      //и ссылки на item в  массиве
 
 
-      this._repository.Update(this._select_katalog).subscribe();
 
-    }
-
-    this.cancel();
-  }
 
   cancel() {
     this._flagViewState =StateView.default;

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'X-01';
+ // title = 'X-01';
   year:number=new Date().getFullYear();
   name:string="Ханская Мебель";
 }

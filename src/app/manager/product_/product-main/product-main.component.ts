@@ -53,6 +53,7 @@ export class ProductMainComponent implements OnInit {
   }
   public onChangedProducts(event:DtoProduct){
     if(event.flagViewMode==StateView.create){
+     // debugger
       this._products.push(event.product);
     }
     if(event.flagViewMode==StateView.delete)
@@ -95,6 +96,7 @@ export class ProductMainComponent implements OnInit {
 
   public onChangeRow(event: Product) {
     this._select_Product = event;
+  //  debugger
 
     if (this._select_Katalog.id == this._select_Product.katalogId) {
       this._select_Product.katalogName = this._select_Katalog.name;

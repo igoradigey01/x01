@@ -16,7 +16,7 @@
     <div class="_input-group">
       <label for="typeProduct" class="_label"> Материал</label>
       <mat-form-field id="typeProduct" appearance="fill">
-        <mat-select name="model_product" [(ngModel)]="_select_Product.typeProductId" #typeProduct="ngModel" required >
+        <mat-select name="typeProduc"  matNativeControl [(ngModel)]="_select_Product.typeProductId" #typeProduct="ngModel" required >
           <mat-option *ngFor="let item of _typeProducts" [value]="item.id">{{
             item.name
           }}</mat-option>

@@ -30,7 +30,7 @@
   grid-template-columns: 1fr;
 }
 
-.edit {
+.edit-create {
   text-align: center;
   display: grid;
   width: 100%;
@@ -39,14 +39,7 @@
   grid-template-columns: 1fr;
 }
 
-.create {
-  text-align: center;
-  display: grid;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  grid-template-columns: 1fr;
-}
+
 
 
 /*------------------------------------------*/
@@ -85,15 +78,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .edit {
-    text-align: center;
-    display: grid;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: 1fr;
-  }
-  .create {
+  .edit-create {
     text-align: center;
     display: grid;
     width: 90%;
@@ -112,7 +97,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .edit {
+  .edit-create {
     text-align: center;
     display: grid;
     width: 50%;
@@ -120,14 +105,7 @@
     margin-right: auto;
     grid-template-columns: 1fr;
   }
-  .create {
-    text-align: center;
-    display: grid;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: 1fr;
-  }
+
 }
 
 @media (min-width: 1200px) {
@@ -139,7 +117,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  .edit {
+  .edit-create {
     text-align: center;
     display: grid;
     width: 50%;
@@ -147,14 +125,7 @@
     margin-right: auto;
     grid-template-columns: 1fr;
   }
-  .create {
-    text-align: center;
-    display: grid;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: 1fr;
-  }
+  
 
 
 }

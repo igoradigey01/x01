@@ -1,7 +1,7 @@
 import { HttpParameterCodec } from "@angular/common/http";
 
 /** to help us encode our token (which contains some special characters)--HttpParameterCodec */
-export class CustomEncoder implements HttpParameterCodec {
+export class UrlEncoder implements HttpParameterCodec {
     encodeKey(key: string): string {
       return encodeURIComponent(key);
     }

@@ -2,13 +2,14 @@
   <div class="grid-container" >
 
     <div *ngFor="let item of katalogs"   >
+      <div *ngIf="!item.hidden">
       <div *ngIf="!item.flag_link; else elseLink ">
     <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}" [routerLink]="['/content/katalog',item.id]" [queryParams]="{'katalog':item.name}"  >
 
        {{ item.name }}</button>
 
       </div>
-
+    </div>
       <!------------------------------------------------- start ng-template-1  -->
       <ng-template #elseLink>
 
@@ -20,9 +21,10 @@
         </div>
        <!-------------------- start ng-template-2 -->
         <ng-template #else_href>
+          <a  href="{{item.link}}" >
         <button   class="btn  btn-outline-primary" [ngClass]="{s1: flagStyle}"  >
 
-       <a  href="{{item.link}}" >   {{ item.name }}</a></button>
+       {{ item.name }}</button></a>
       </ng-template>
 
       </ng-template>

@@ -4,6 +4,8 @@ export interface Katalog {
   hidden:boolean;
   flag_link:boolean;
   flag_href:boolean;
-  link:string;
+  link:string|undefined;
+  decriptSEO:string|undefined;
+  keywordsSEO:string|undefined;
 
 }
