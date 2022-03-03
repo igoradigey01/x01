@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Katalog } from '../../shared/_interfaces/katalog.model';
 import { KatalogService } from './../shared/sevices/katalog.service';
 import { Meta, Title } from '@angular/platform-browser';
-import {SharedVarService} from 'src/app/shared/sevices/shared-var.service'
+import {SharedVarService} from 'src/app/shared/sevices/shared-var.service';
+import {SEO_var} from 'src/app/shared/_interfaces/SEO-var.models'
 
 @Component({
   selector: 'app-katalog',
@@ -42,6 +43,14 @@ export class KatalogComponent implements OnInit {
       },
       (err) => console.log('load katalog err: --' + err)
     );
+  }
+
+  public onSharedVarSet(item:Katalog){
+  let i=<SEO_var>{id:item.id,decriptSEO:item.decriptSEO,keywordsSEO:item.keywordsSEO}
+
+    this.sharedVar.SEO_let=i;
+
+
   }
 }
 //------------------------------

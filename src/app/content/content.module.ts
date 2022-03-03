@@ -5,13 +5,17 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductDataService } from './shared/sevices/product.servisce';
 import { ProductDetailsService } from './shared/sevices/product-details.service';
-import {PrivacyComponent}  from './privacy-policy/privacy.component'
+import {PrivacyComponent}  from './privacy-policy/privacy.component';
+import { OptKatalogComponent } from './opt-katalog/opt-katalog.component';
+import { OptProductComponent } from './opt-product/opt-product.component'
 
 @NgModule({
   declarations: [
     ProductComponent,
     ProductDetailsComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    OptKatalogComponent,
+    OptProductComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,9 @@ import {PrivacyComponent}  from './privacy-policy/privacy.component'
   exports: [
     ProductComponent,
     ProductDetailsComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    OptKatalogComponent,
+    OptProductComponent
   ],
 })
 export class ContentModule { }

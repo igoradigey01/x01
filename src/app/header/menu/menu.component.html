@@ -74,6 +74,12 @@
           Заказы
         </button>
       </div>
+
+      <div class="nav-item" *ngIf="IsShopperOpt">
+        <button type="button" class="btn navbar-btn account_botton_ok" routerLink="/content/opt">
+          Оптовые цены
+        </button>
+      </div>
       <!--end Role  --------------->
 
       <div class="nav-item">
@@ -134,6 +140,11 @@
       <div  style="display: inline-block;" *ngIf="IsShopper">
         <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="orders">
           Заказы
+        </button>
+      </div>
+      <div class="nav-item" *ngIf="IsShopperOpt">
+        <button type="button" (click)="drawer.toggle()" class="btn navbar-btn account_botton_ok" routerLink="/content/opt">
+          Оптовые цены
         </button>
       </div>
       <!--end Role  --------------->

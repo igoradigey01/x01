@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit {
   private _isManager: boolean = false;
   private _isAdmin: boolean = false;
   private _isShopper: boolean = false;
+  private _isOptovik:boolean=false;
 
   company_name_1: string = '';
   company_name_2: string = ''; //First Site
@@ -37,6 +38,12 @@ export class MenuComponent implements OnInit {
         this._isAdmin = this.userManager.IsAdmin;
         this._isManager = this.userManager.IsManager;
         this._isShopper = this.userManager.IsShopper;
+      }
+    )
+
+    this.userManager.FlagShopperOpt$.subscribe(
+      d=>{
+        this._isOptovik=this.userManager.IsShopperOpt;
       }
     )
 
@@ -72,6 +79,9 @@ export class MenuComponent implements OnInit {
                return true;
      }
     return false;
+  }
+  public get IsShopperOpt(): boolean {
+    return this._isOptovik;
   }
 
 }

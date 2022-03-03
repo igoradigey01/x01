@@ -5,25 +5,44 @@ import { TokenService } from './token.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserManagerService {
-
-
   //_invalidLogin|| userAuth: boolean = false; // авторизован ли пользователь ? иконка входа цвет
   user?: User | null = null; // передача данных на сервер в параметрах // edit-profile,profile
   private isAdmin: boolean = false; // является ли пользователь админ,для перехода в админ модуль
   private isManager: boolean = false; // 03.10.21
   private isShopper: boolean = false; // role -покупатель(клиент)
+  // private isShopperOpt:boolean=false; // оптовый покупатель(реализатор?)
+
+  private readonly _var_opt_shopper: string = 'opt_var';
 
   private _invalidLogin$: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(true);
 
+  private _flagOptVar$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
+  constructor(private _tokenService: TokenService) {}
 
-  constructor(
-    private _tokenService: TokenService
-  ) { }
-   /** Client subscribe() for _invalidLogin chenged; !! ngOnDestroy()-- unsubscribe !!  */
+  /** Client subscribe() for var_opt_shopper chenged; !! ngOnDestroy()-- unsubscribe !!  */
+  public get FlagShopperOpt$(): BehaviorSubject<boolean> {
+    return this._flagOptVar$;
+  }
+  /** set value for   var_opt_shopper ; defauld -- false */
+  public setFlagShopperOpt$(i: boolean) {
+    this._flagOptVar$.next(i);
+  }
+
+  public setVarShopperOpt(){
+    localStorage.setItem(this._var_opt_shopper,'opt-1');
+
+  }
+
+  public clearVarShopperOpt(): void {
+    localStorage.removeItem(this._var_opt_shopper);
+  }
+
+  /** Client subscribe() for _invalidLogin chenged; !! ngOnDestroy()-- unsubscribe !!  */
   public get InvalidLogin$(): BehaviorSubject<boolean> {
-
     return this._invalidLogin$;
   }
   /** set value for  _invalidLogin ; defauld -- true */
@@ -53,27 +72,26 @@ export class UserManagerService {
     }
     return false;
   }
-     /** действительность    токена в localStorage проверяеться с заданной в app.component.ts  переадичностью на сервере  */
-  public get Exists():boolean{
+   /** это реализатор */
+   public get IsShopperOpt(): boolean {
+    let opt_var = localStorage.getItem(this._var_opt_shopper);
+
+    // debugger
+    if (opt_var && opt_var === 'opt-1') {
+      return true;
+    }
+    return false;
+  }
+  /** token существует && срок действия токена истек ?  */
+  public get Exists(): boolean {
     return this._tokenService.Exists;
   }
 
+
+
+
+
   private get Role() {
     return this._tokenService.Role;
-   /*  if (!this._tokenService.Exists) {
-      return false;
-    }
-
-    let dataJwt = this._tokenService.AccessToken?.split('.')[1];
-    if (!dataJwt) {
-      return false;
-    }
-    let decodeData = atob(dataJwt);
-    let data = JSON.parse(decodeData);
-    //console.log('decodeData--' + decodeData);
-   // console.log('data--' + data.role);
-    return data.role; */
   }
-
-
 }
