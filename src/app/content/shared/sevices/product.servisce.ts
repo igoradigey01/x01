@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../../../shared/_interfaces/product.model';
-import { TypeProduct } from '../../../shared/_interfaces/product-type.model';
+import { Material } from '../../../shared/_interfaces/material.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 import { map } from 'rxjs/operators';
@@ -17,14 +17,14 @@ export class ProductDataService {
   //-----------------------
 
   //-----------------------
-  public TypeProducts(): Observable<TypeProduct[]> {
+  public TypeProducts(): Observable<Material[]> {
     this._url.Controller = 'typeProduct';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
 
-    return this._http.get<TypeProduct[]>(this._url.Url, { headers });
+    return this._http.get<Material[]>(this._url.Url, { headers });
   }
 
   //-------------------

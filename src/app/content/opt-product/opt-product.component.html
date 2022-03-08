@@ -1,1 +1,40 @@
-<p>opt-product works!</p>
+<p>Оптовая Цена!</p>
+<div class="_container">
+
+  <div class="h4 text-center mb-0">{{ _katalogName }}</div>
+  <div class="container-fluid">
+    <div name="outputError" [style.display]="_errorUotput ? 'block' : 'none'" class="alert alert-danger p-1"
+      role="alert">
+      {{ _error }}
+    </div>
+
+    <!-- Grid table-->
+    <div class="grid-container">
+      <div class="card m-1 p-1 border-info" *ngFor="let item of _products">
+        <div class="card-body">
+          <h4 class="card-title">{{ item.name }}</h4>
+          <picture>
+            <source srcset="{{ item.rootImgSrc }}M{{ item.imgName }}.webp" type="image/webp">
+          <img class="card-img-top" src="{{ item.rootImgSrc }}{{ item.imgName }}.png" />
+        </picture>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ item.description }}</li>
+            <li class="list-group-item">
+              <div *ngIf="item.price&&item.markup">
+                Цена:{{ item.price }}р
+              </div>
+            </li>
+          </ul>
+
+          <a
+          class="btn btn-primary"
+          [routerLink]="['/content/product',item.id]"
+          [state]=item
+          >Подробней</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+</div>

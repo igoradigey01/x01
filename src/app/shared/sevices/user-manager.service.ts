@@ -76,7 +76,7 @@ export class UserManagerService {
    public get IsShopperOpt(): boolean {
     let opt_var = localStorage.getItem(this._var_opt_shopper);
 
-    // debugger
+     //debugger
     if (opt_var && opt_var === 'opt-1') {
       return true;
     }

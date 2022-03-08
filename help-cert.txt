@@ -3,6 +3,19 @@ certbot certonly  --webroot    -m admin@x-01.ru -d xf-01.ru
 
 Input the webroot for s.x-01.ru: (Enter 'c' to cancel): nginx/data
 
+cp  /etc/letsencrypt/live/xf-01.ru/privkey.pem xf-01.ru.key  // copy files
+cp  /etc/letsencrypt/live/xf-01.ru/fullchain.pem xf-01.ru.crt
+
+cp  /etc/letsencrypt/live/s.x-01.ru/fullchain.pem s.x-01.ru.crt
+cp  /etc/letsencrypt/live/s.x-01.ru/privkey.pem s.x-01.ru.key
+
+
+
+https://2ip.ru/ssl-info/   // help to ssl
+certbot certonly  --webroot    -m admin@x-01.ru -d xf-01.ru
+
+Input the webroot for s.x-01.ru: (Enter 'c' to cancel): nginx/data
+
 cp  /etc/letsencrypt/live/xf-01.ru/privkey.pem fx-01.ru.key  // copy files
 
 Successfully received certificate.

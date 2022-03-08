@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/shared/_interfaces/product.model';
-import { TypeProduct } from 'src/app/shared/_interfaces/product-type.model';
+import { Material } from 'src/app/shared/_interfaces/material.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { DtoImage } from 'src/app/ui/img-render/img-render.component';
 import { ImgRenderComponent } from 'src/app/ui/img-render/img-render.component';
@@ -23,18 +23,18 @@ export interface DtoProduct {
 })
 export class ItemProductComponent implements OnInit {
   @Input() public _select_Product: Product;
-  @Input() public _typeProducts: TypeProduct[] = [];
+  @Input() public _typeProducts: Material[] = [];
   @Input() public _select_katalog: Katalog | undefined;
   @Input() public _flagViewMode: StateView | undefined;
 
-  @Output() public _onShowTableView = new EventEmitter<StateView>();
+  @Output() public _onChangeStateView = new EventEmitter<StateView>();
   @Output() public _onProductChange = new EventEmitter<DtoProduct>();
 
   @ViewChild(ImgRenderComponent, { static: false })
   private _childComponent: ImgRenderComponent | undefined;
 
   public _flag_sendServerData: boolean = false;
-  public _select_typeProduct: TypeProduct = <TypeProduct>{ id: -1, name: '' };
+  public _select_typeProduct: Material = <Material>{ id: -1, name: '' };
 
   public _flagInvalid: boolean = false;
 
@@ -464,11 +464,17 @@ export class ItemProductComponent implements OnInit {
   }
   public cancel() {
     // debugger
-    this._onShowTableView.emit(StateView.default);
+    this._onChangeStateView.emit(StateView.default);
   }
 
   public undo() {
     //debugger
     this._flag_sendServerData = false;
   }
+
+  public OK(){
+    this._onChangeStateView.emit(StateView.default);
+
+   }
+
 }

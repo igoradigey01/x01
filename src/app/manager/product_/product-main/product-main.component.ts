@@ -3,7 +3,7 @@ import { ProductService } from '../../shared/sevices/product.servisce';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { StateView } from 'src/app/shared/_interfaces/state-view';
 import { Product } from 'src/app/shared/_interfaces/product.model';
-import { TypeProduct } from 'src/app/shared/_interfaces/product-type.model';
+import { Material } from 'src/app/shared/_interfaces/material.model';
 import { ImgManagerService } from 'src/app/shared/sevices/img-manager.service';
 import { DtoProduct } from '../product-item/item-product.component';
 
@@ -21,7 +21,7 @@ export class ProductMainComponent implements OnInit {
   public _flagViewMode: StateView = StateView.default;
   //--------------------------
   public _products: Product[] = [];
-  public _typeProducts: TypeProduct[] = [];
+  public _typeProducts: Material[] = [];
   public _root_url_img: string = '';
   public _select_Product: Product;
 
@@ -47,7 +47,7 @@ export class ProductMainComponent implements OnInit {
     this._repository.Katalogs().subscribe((data) => {
       this._katalogs = data;
     });
-    this._repository.TypeProducts().subscribe((data) => {
+    this._repository.Materials().subscribe((data) => {
       this._typeProducts = data;
     });
   }

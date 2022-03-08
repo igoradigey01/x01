@@ -7,7 +7,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 import { ManagerRoutingModule } from './magager-routing.module';
-import { KatalogComponent } from './katalog/katagog-main/katalog-main.component';
+import { KatalogComponent } from './katalog_/katagog-main/katalog-main.component';
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { ManagerBarComponent } from './manager-bar/manager-bar.component';
 import { FormsModule } from '@angular/forms';
@@ -24,7 +24,10 @@ import { ProductTableComponent } from './product_/product-table/product-table.co
 import { ItemProductComponent } from './product_/product-item/item-product.component';
 import { DetailsProductComponent } from './product_/product-details/details-product.component';
 import { ProductMainComponent } from './product_/product-main/product-main.component';
-import { KatalogItemComponent } from './katalog/katalog-item/katalog-item.component';
+import { KatalogItemComponent } from './katalog_/katalog-item/katalog-item.component';
+import { MainMaterialComponent } from './material_/main-material/main-material.component';
+import { ItemMaterialComponent } from './material_/item-material/item-material.component';
+
 
 
 @NgModule({
@@ -43,6 +46,9 @@ import { KatalogItemComponent } from './katalog/katalog-item/katalog-item.compon
     DetailsProductComponent,
     ProductMainComponent,
     KatalogItemComponent,
+    MainMaterialComponent,
+    ItemMaterialComponent,
+
 
   ],
   imports: [

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../shared/sevices/product.servisce';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { Product } from 'src/app/shared/_interfaces/product.model';
-import { TypeProduct } from 'src/app/shared/_interfaces/product-type.model';
+import { Material } from 'src/app/shared/_interfaces/material.model';
 import { CorpImgFile } from '../../shared/_interfaces/crop-img.model';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 
@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
   //jwt end--
    defaulImg={id:-1,name:'not_found.png'};
   _katalogs: Katalog[]|null=null;
-  _typeProducts: TypeProduct[]|null=null;
+  _typeProducts: Material[]|null=null;
   _error: any;
   _errorUotput: boolean = false; //09.04.21 (true)
   _flagInvalid: boolean = true;
@@ -35,7 +35,7 @@ export class ProductComponent implements OnInit {
   _flagDisplayAddButton: boolean = false;
 
   _selectedKagalog: Katalog =  <Katalog>{id:-1,name:''}; //new Katalog(-1, '');
-  _selectedTypeProduct: TypeProduct =<TypeProduct>{id:-1,name:''};         //new TypeProduct(-1, '', null);
+  _selectedTypeProduct: Material =<Material>{id:-1,name:''};         //new TypeProduct(-1, '', null);
   _selectedProduct: Product =  <Product>{id:-1,name:'',katalogId:-1,typeProductId:-1};          // new Product(-1, '', -1, -1, null, null, null);
 
   _flagPhoto: boolean = false;
@@ -52,7 +52,7 @@ export class ProductComponent implements OnInit {
     this._flagDisplayAddButton = true;
     this._repository.Katalogs().subscribe((d) => (this._katalogs = d));
     this._repository
-      .TypeProducts()
+      .Materials()
       .subscribe((d) => (this._typeProducts = d));
   }
   // ngClass flags
@@ -69,7 +69,7 @@ export class ProductComponent implements OnInit {
     this.load(item.id);
   }
 
-  changeTypeProduct(item: TypeProduct) {
+  changeTypeProduct(item: Material) {
     //  this._selectedProduct.idTypeProduct=item.id;
     console.log(item.id + '----' + item.name);
     this._selectedTypeProduct = item;
@@ -97,7 +97,7 @@ export class ProductComponent implements OnInit {
       this._errorUotput = false;
       this._selectedTypeProduct = this._typeProducts?.find(
         (x) => x.id == this._selectedProduct.typeProductId
-      )||<TypeProduct>{id:-1,name:""};
+      )||<Material>{id:-1,name:""};
 
       this._flagViewMode = 'edit';
       this._flagPhoto = true;

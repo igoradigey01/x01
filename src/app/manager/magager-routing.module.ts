@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ManagerBarComponent } from './manager-bar/manager-bar.component';
-import { KatalogComponent } from './katalog/katagog-main/katalog-main.component';
+import { KatalogComponent } from './katalog_/katagog-main/katalog-main.component';
 import { ProductComponent } from './product_/product-1/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductTypeComponent } from './product-type/product-type.component';
+import { MainMaterialComponent } from './material_/main-material/main-material.component';
 import { InfoComponent } from './info/info.component';
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { ProductMainComponent } from './product_/product-main/product-main.component';
@@ -24,8 +24,8 @@ const routes: Routes = [
     canActivate: [ManagerGuard],
   },
   {
-    path: 'type-product',
-    component: ProductTypeComponent,
+    path: 'material',
+    component: MainMaterialComponent,
     canActivate: [ManagerGuard],
   },
   { path: 'info', component: InfoComponent, canActivate: [ManagerGuard] },

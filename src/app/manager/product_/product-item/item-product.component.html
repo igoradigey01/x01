@@ -170,7 +170,22 @@
     </div>
     <div class="row" style="text-align: center">
       <p>({{ _progress }})</p>
-      <button class="btn btn-sm btn-warning" (click)="undo()">Отмена</button>
+      <button
+      mat-flat-button
+      color="accent"
+
+      (click)="undo()"
+    >
+      Отмена
+    </button>
+    <button
+    mat-flat-button
+    color="primary"
+
+    (click)="OK()"
+  >
+   OK
+  </button>
     </div>
   </ng-template>
 </div>

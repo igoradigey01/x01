@@ -4,6 +4,11 @@ import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 
 import { EventEmitter, Input, Output} from '@angular/core';
 
+ export interface Item{
+  id:number;
+  name:string;
+}
+
 @Component({
   selector: 'app-root-view-element',
   templateUrl: './root-view-element.component.html',
@@ -19,7 +24,7 @@ export class RootViewElementComponent implements OnInit {
   @Output() onChangedViewMode = new EventEmitter<StateView>();
   @Output() onClickKatalog=new EventEmitter();
 
-  @Input()  public _selectedKagalog: Katalog = <Katalog>{ id: -1, name: '' }
+  @Input()  public _selectedKagalog:any = <Item>{ id: -1, name: '' }
 
   constructor() { }
 

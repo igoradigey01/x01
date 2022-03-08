@@ -93,6 +93,7 @@ export class KatalogItemComponent implements OnInit {
                     flagViewState:StateView.create
                    }
                  );
+                 this.OK();
               break;
           }
           // end progrss bar
@@ -154,7 +155,7 @@ export class KatalogItemComponent implements OnInit {
               );
               //   window.location.replace(this._select_Product.rootImgSrc+'S'+this._select_Product.imgName+'.web');
 
-              this.cancel(); //15.03.21
+              this.OK(); //15.03.21
               break;
           }
           // end progrss bar
@@ -214,11 +215,7 @@ export class KatalogItemComponent implements OnInit {
                flagViewState:StateView.delete
               }
             );
-
-
-
-
-            this.cancel(); //15.03.21
+            this.OK();; //15.03.21
             break;
         }
         // end progrss bar
@@ -258,6 +255,10 @@ export class KatalogItemComponent implements OnInit {
   public undo() {
     //debugger
     this._flag_sendServerData = false;
+  }
+  public OK(){
+   this._onChangeStateView.emit(StateView.default);
+
   }
 
 

@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
-import { TypeProduct } from '../../../shared/_interfaces/product-type.model';
+import { Material } from '../../../shared/_interfaces/material.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ManagerServiceModule } from './maneger-service.module';
@@ -42,14 +42,14 @@ export class ProductService {
 
   //-----------------------
   /**Subscribe to Get- Models  Product*/
-  public TypeProducts = (): Observable<TypeProduct[]> => {
-    this._url.Controller = 'typeProduct';
-    this._url.Action = '';
+  public Materials = (): Observable<Material[]> => {
+    this._url.Controller = 'material';
+    this._url.Action = 'get';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    return this._http.get<TypeProduct[]>(this._url.Url, { headers });
+    return this._http.get<Material[]>(this._url.Url, { headers });
   };
 
   //------------- Get all Katalog------------

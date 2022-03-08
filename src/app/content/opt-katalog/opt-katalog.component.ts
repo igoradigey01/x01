@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserManagerService } from 'src/app/shared/sevices/user-manager.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { KatalogService } from './../shared/sevices/katalog.service';
 import { Katalog } from '../../shared/_interfaces/katalog.model';
 
@@ -20,7 +20,8 @@ export class OptKatalogComponent implements OnInit {
   constructor(
     private repository: KatalogService,
     private _userManager: UserManagerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
 
   ) {}
 
@@ -35,6 +36,7 @@ export class OptKatalogComponent implements OnInit {
 
      }
     });
+    this.redirect();
     this.repository.Katalogs().subscribe(
       (data) => {
         this.katalogs = data;
@@ -47,6 +49,13 @@ export class OptKatalogComponent implements OnInit {
   ngOnDestroy() {
     this._subscriptions.forEach((s) => s.unsubscribe());
 
+  }
+ private redirect(){
+ //  debugger
+    if(!this._userManager.IsShopperOpt){
+      this.router.navigate(['/'])
+
+    }
   }
 
 }
