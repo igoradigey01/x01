@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { StateView } from 'src/app/shared/_interfaces/state-view';
-import { Material } from 'src/app/shared/_interfaces/material.model';
-import { MaterialProductService } from '../../shared/sevices/material.service';
+import {Categoria} from 'src/app/shared/_interfaces/categoria.modil';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
+import { CategoriaProductService} from '../../shared/sevices/categoriaProduct.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Input, Output, EventEmitter } from '@angular/core';
 
-
-
-export interface DtoMaterial {
-  materialProduct: Material;
+export interface DtoCategoria {
+  categoriaProduct: Categoria;
   flagViewState: StateView;
 }
 
 @Component({
-  selector: 'app-material-item',
-  templateUrl: './item-material.component.html',
-  styleUrls: ['./item-material.component.scss'],
+  selector: 'app-categoria-item',
+  templateUrl: './categoria-item.component.html',
+  styleUrls: ['./categoria-item.component.scss']
 })
-export class ItemMaterialComponent implements OnInit {
+export class CategoriaItemComponent implements OnInit {
+
+
   @Output() public _onChangeStateView = new EventEmitter<StateView>();
-  @Output() public _onMaterialChange = new EventEmitter<DtoMaterial>();
-  @Input() public _select_material: Material | undefined;
+  @Output() public _onCategoriaChange = new EventEmitter<DtoCategoria>();
+  @Input() public _select_categoria:Categoria | undefined;
   @Input() public _flagViewState: StateView | undefined;
 
   public _flag_sendServerData: boolean = false;
@@ -40,14 +40,12 @@ export class ItemMaterialComponent implements OnInit {
     return this._flagViewState == StateView.create ? false : true;
   }
 
-  constructor(private _repository: MaterialProductService) {
-    this._select_material = <Material>{
+  constructor(private _repository: CategoriaProductService) {
+    this._select_categoria = <Categoria>{
       id: -1,
       name: '',
       hidden: false,
       description:undefined
-
-
     };
   }
 
@@ -63,9 +61,9 @@ export class ItemMaterialComponent implements OnInit {
     this._errorMgs = [];
     if (this._flagViewState == StateView.create) {
       // --- start create--
-      if (this._select_material) {
-        this._select_material.id = 0;
-        this._repository.Create(this._select_material).subscribe(
+      if (this._select_categoria) {
+        this._select_categoria.id = 0;
+        this._repository.Create(this._select_categoria).subscribe(
           (data: HttpEvent<any>) => {
             //progress bar
             switch (data.type) {
@@ -83,9 +81,9 @@ export class ItemMaterialComponent implements OnInit {
                 console.log('---Finished-----');
                 this._errorMgs = [];
                 this._flagError = false;
-                let d = <Material>data.body;
-                this._onMaterialChange.emit(<DtoMaterial>{
-                  materialProduct: d,
+                let d = <Categoria>data.body;
+                this._onCategoriaChange.emit(<DtoCategoria>{
+                  categoriaProduct: d,
                   flagViewState: StateView.create,
                 });
                 this.OK();
@@ -121,9 +119,9 @@ export class ItemMaterialComponent implements OnInit {
       }
     }
     if (this._flagViewState == StateView.edit) {
-      if (this._select_material) {
+      if (this._select_categoria) {
         // ---- start edit -------
-        this._repository.Update(this._select_material).subscribe(
+        this._repository.Update(this._select_categoria).subscribe(
           (data: HttpEvent<any>) => {
             //progress bar
             switch (data.type) {
@@ -144,9 +142,9 @@ export class ItemMaterialComponent implements OnInit {
                 this._errorMgs = [];
                 this._flagError = false;
                 //03.02.22
-                let d = <Material>data.body;
-                this._onMaterialChange.emit(<DtoMaterial>{
-                  materialProduct: d,
+                let d = <Categoria>data.body;
+                this._onCategoriaChange.emit(<DtoCategoria>{
+                  categoriaProduct: d,
                   flagViewState: StateView.edit,
                 });
                 //   window.location.replace(this._select_Product.rootImgSrc+'S'+this._select_Product.imgName+'.web');
@@ -193,8 +191,8 @@ export class ItemMaterialComponent implements OnInit {
     // debugger
     this._errorMgs = [];
     this._flagError = false;
-    if (this._select_material) {
-      this._repository.Delete(this._select_material.id).subscribe(
+    if (this._select_categoria) {
+      this._repository.Delete(this._select_categoria.id).subscribe(
         (data: HttpEvent<any>) => {
           //progress bar
           switch (data.type) {
@@ -206,9 +204,9 @@ export class ItemMaterialComponent implements OnInit {
               console.log('---Finished-----');
               this._errorMgs = [];
               this._flagError = false;
-              let d = <Material>data.body;
-              this._onMaterialChange.emit(<DtoMaterial>{
-                materialProduct: d,
+              let d = <Categoria>data.body;
+              this._onCategoriaChange.emit(<DtoCategoria>{
+                categoriaProduct: d,
                 flagViewState: StateView.delete,
               });
 
@@ -255,3 +253,4 @@ export class ItemMaterialComponent implements OnInit {
     this._onChangeStateView.emit(StateView.default);
   }
 }
+

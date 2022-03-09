@@ -1,0 +1,142 @@
+<p>categoria-item works!</p>
+
+<p>item-Material Product works!</p>
+<div class="_contaner">
+  <div *ngIf="!_flag_sendServerData; else elseSendData">
+    <!-- begin edit  card ------------------------------------->
+    <form #myForm="ngForm" novalidate>
+      <div class="item-form">
+        <div class="_input-group" *ngIf="_select_categoria">
+          <label for="nameCategoria">Название Категории</label> <br />
+          <mat-form-field class="_input-name" appearance="fill">
+            <mat-label  >ID(  {{ _select_categoria.id }}) </mat-label>
+            <div>
+              <input
+                matInput
+                name="nameCategoria"
+                #nameCategoria="ngModel"
+                [(ngModel)]="_select_categoria.name"
+                required
+              />
+              <mat-error *ngIf="nameCategoria.invalid"> </mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+        <!-------------          SEO -->
+
+
+        <!-------------- end SEO-->
+
+        <div class="_input-group">
+          <label for="hiddenCategoria" class="_label"> Скрыть Позицию</label><br />
+          <mat-form-field  appearance="fill">
+            <div *ngIf="_select_categoria">
+              <mat-select
+                name="hiddenCategoria"
+                [(ngModel)]="_select_categoria.hidden"
+                #hiddenCategoria="ngModel"
+                required
+              >
+                <mat-option [value]="false">Нет </mat-option>
+                <mat-option [value]="true">Да </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hiddenCategoria.invalid"> </mat-error>
+            </div>
+          </mat-form-field>
+        </div>
+
+        <div class="_input-group" *ngIf="_select_categoria">
+          <label for="nameDescription">Описание Материала</label> <br />
+          <mat-form-field class="_input-name" appearance="fill">
+
+            <div>
+              <input
+                matInput
+                name="nameDescription"
+                #nameDescription="ngModel"
+                [(ngModel)]="_select_categoria.description"
+
+              />
+
+            </div>
+          </mat-form-field>
+        </div>
+
+
+
+
+
+
+
+        <!-----    ----------------- button gurop start           -->
+        <div class="btn-group" role="group">
+          <button
+            mat-flat-button
+            [disabled]="myForm.invalid || _flagInvalid"
+            color="primary"
+            (click)="save()"
+          >
+            Сохранить
+          </button>
+
+          <button
+            *ngIf="IsCreateView"
+            mat-flat-button
+            color="warn"
+            [disabled]="_flagInvalid"
+            (click)="delete()"
+          >
+            Удалить
+          </button>
+          <button
+            mat-flat-button
+            color="accent"
+            [disabled]="_flagInvalid"
+            (click)="cancel()"
+          >
+            Отмена
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <ng-template #elseSendData>
+    <div class="_error" role="alert" *ngIf="_errorMgs?.length || _flagError">
+      <ul>
+        <li *ngFor="let error of _errorMgs">
+          {{ error }}
+        </li>
+      </ul>
+    </div>
+
+    <div class="progress">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        [style.width.%]="_progress"
+      ></div>
+    </div>
+
+    <div class="row" style="text-align: center">
+
+      <p>({{ _progress }})</p>
+      <button
+      mat-flat-button
+      color="accent"
+
+      (click)="undo()"
+    >
+      Отмена
+    </button>
+    <button
+    mat-flat-button
+    color="primary"
+
+    (click)="OK()"
+  >
+   OK
+  </button>
+
+    </div>
+  </ng-template>
+</div>

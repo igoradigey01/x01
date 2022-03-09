@@ -25,9 +25,10 @@ import { ItemProductComponent } from './product_/product-item/item-product.compo
 import { DetailsProductComponent } from './product_/product-details/details-product.component';
 import { ProductMainComponent } from './product_/product-main/product-main.component';
 import { KatalogItemComponent } from './katalog_/katalog-item/katalog-item.component';
-import { MainMaterialComponent } from './material_/main-material/main-material.component';
-import { ItemMaterialComponent } from './material_/item-material/item-material.component';
-
+import { MaterialMainComponent } from './material_/material-main/material-main.component';
+import { MaterialItemComponent } from './material_/material-item/material-item.component';
+import { CategoriaItemComponent } from './categoria_/categoria-item/categoria-item.component';
+import { CategoriaMainComponent } from './categoria_/categoria-main/categoria-main.component'
 
 
 @NgModule({
@@ -46,8 +47,10 @@ import { ItemMaterialComponent } from './material_/item-material/item-material.c
     DetailsProductComponent,
     ProductMainComponent,
     KatalogItemComponent,
-    MainMaterialComponent,
-    ItemMaterialComponent,
+    MaterialMainComponent,
+    MaterialItemComponent,
+    CategoriaMainComponent,
+    CategoriaItemComponent,
 
 
   ],

@@ -8,7 +8,7 @@ import { Material } from '../../../shared/_interfaces/material.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ManagerServiceModule } from './maneger-service.module';
-import { KatalogService } from './katalog.service';
+import { KatalogService } from './katalogProduct.service';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
 import { TokenService } from 'src/app/shared/sevices/token.service';
 

@@ -11,7 +11,8 @@ import {BgContentComponent} from './content/bg-content/bg-content.component';
 import {KatalogComponent} from './content/katalog/katalog.component'
 import { HttpClientModule } from '@angular/common/http';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import {SharedVarService} from 'src/app/shared/sevices/shared-var.service'
+import {SharedVarService} from 'src/app/shared/sevices/shared-var.service';
+
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {SharedVarService} from 'src/app/shared/sevices/shared-var.service'
     BgContentComponent,
     KatalogComponent,
     PageNotFoundComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    
 
   ],
   imports: [

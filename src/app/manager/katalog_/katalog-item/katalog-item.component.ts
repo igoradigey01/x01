@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Input, Output, EventEmitter } from '@angular/core';
 import {StateView} from 'src/app/shared/_interfaces/state-view';
-import { KatalogService } from     "./../../shared/sevices/katalog.service";                  //' shared/sevices/katalog.service';
+import { KatalogService } from     "../../shared/sevices/katalogProduct.service";                  //' shared/sevices/katalog.service';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 
 export interface DtoKatalog {

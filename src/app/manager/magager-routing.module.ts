@@ -5,11 +5,12 @@ import { ManagerBarComponent } from './manager-bar/manager-bar.component';
 import { KatalogComponent } from './katalog_/katagog-main/katalog-main.component';
 import { ProductComponent } from './product_/product-1/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { MainMaterialComponent } from './material_/main-material/main-material.component';
+import { MaterialMainComponent } from './material_/material-main/material-main.component';
 import { InfoComponent } from './info/info.component';
 import { NomenclatureComponent } from './nomenclature/nomenclature.component';
 import { ProductMainComponent } from './product_/product-main/product-main.component';
-import { ProductTableComponent } from './product_/product-table/product-table.component';
+//import { ProductTableComponent } from './product_/product-table/product-table.component';
+import { CategoriaMainComponent } from './categoria_/categoria-main/categoria-main.component';
 import { ManagerGuard } from './manager.guard';
 
 // table-product , item-product ,details-product
@@ -25,7 +26,12 @@ const routes: Routes = [
   },
   {
     path: 'material',
-    component: MainMaterialComponent,
+    component: MaterialMainComponent,
+    canActivate: [ManagerGuard],
+  },
+  {
+    path: 'categoria',
+    component: CategoriaMainComponent,
     canActivate: [ManagerGuard],
   },
   { path: 'info', component: InfoComponent, canActivate: [ManagerGuard] },

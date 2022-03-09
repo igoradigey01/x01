@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StateView} from 'src/app/shared/_interfaces/state-view';
 
-import { KatalogService } from '../../shared/sevices/katalog.service';
+import { KatalogService } from '../../shared/sevices/katalogProduct.service';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import {DtoKatalog} from '../katalog-item/katalog-item.component'
 

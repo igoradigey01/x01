@@ -6,7 +6,7 @@
 <app-root-view-element
   (onChangedViewMode)="onChangeStateView($event)"
   (onClickKatalog)="onChangedDefaultState()"
-  [_selectedKagalog]="_select_materialProduct"
+  [_selectedKagalog]="_select_material"
   [_modul_name]="_modul_name"
   [_router_link]="_router_link"
 ></app-root-view-element>
@@ -17,10 +17,10 @@
     <div class="container-fluid">
       <div class="grid-container">
         <button
-          *ngFor="let item of _materialProducts"
+          *ngFor="let item of _materials"
           class="btn"
           style="text-align: justify; padding: 0px"
-          [class.active]="item == _select_materialProduct"
+          [class.active]="item == _select_material"
           (click)="changePosition(item)"
         >
           <span class="badge-btn">{{ item.id }}</span>
@@ -35,7 +35,7 @@
       <h4>Создать Позицию</h4>
 
       <app-material-item
-        [_select_material]="_select_materialProduct"
+        [_select_material]="_select_material"
         [_flagViewState]="4"
         (_onChangeStateView)="onChangeStateView($event)"
         (_onMaterialChange)="onChangedMaterial($event)"
@@ -49,7 +49,7 @@
     <div class="edit-create">
       <h4>Редактировать Позицию</h4>
       <app-material-item
-        [_select_material]="_select_materialProduct"
+        [_select_material]="_select_material"
         [_flagViewState]="3"
         (_onChangeStateView)="onChangeStateView($event)"
         (_onMaterialChange)="onChangedMaterial($event)"

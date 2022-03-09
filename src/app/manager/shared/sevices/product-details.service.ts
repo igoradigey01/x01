@@ -6,7 +6,7 @@ import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
 
 import { ProductDetile } from 'src/app/shared/_interfaces/product-detile.model';
 import { ManagerServiceModule } from '../../shared/sevices/maneger-service.module';
-import { KatalogService } from './katalog.service';
+import { KatalogService } from './katalogProduct.service';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import {Product} from 'src/app/shared/_interfaces/product.model';
 import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
