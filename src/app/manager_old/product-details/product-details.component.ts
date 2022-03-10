@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { throwError } from 'rxjs';
-import { CorpImgFile } from './../shared/_interfaces/crop-img.model';
+import { CorpImgFile } from '../../manager/shared/_interfaces/crop-img.model';
 import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
 import { ProductDetile } from 'src/app/shared/_interfaces/product-detile.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 
-import { ProductDetailsService } from './../shared/sevices/product-details.service';
+import { ProductDetailsService } from '../../manager/shared/sevices/product-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 

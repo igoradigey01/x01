@@ -1,7 +1,11 @@
 export interface Nomenclature {
-  id: string;
+  id: number;
   name: string;
-  description?: string;
-  image?:any;
+  hidden:boolean;
+  flag_link:boolean;
+  flag_href:boolean;
+  link:string|undefined;
+  decriptSEO:string|undefined;
+  keywordsSEO:string|undefined;
 }
 

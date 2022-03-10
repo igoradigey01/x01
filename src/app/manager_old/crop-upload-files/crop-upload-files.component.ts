@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { from } from 'rxjs';
-import {CorpImgFile} from './../shared/_interfaces/crop-img.model';
+import {CorpImgFile} from '../../manager/shared/_interfaces/crop-img.model';
 @Component({
   selector: 'app-crop-upload-files',
   templateUrl: './crop-upload-files.component.html',

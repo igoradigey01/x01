@@ -35,6 +35,7 @@
         class="_input-name"
         appearance="fill"
       >
+      
       <mat-label>Название </mat-label>
         <span *ngIf="!ShowPrefix" matPrefix>{{ _select_Product.katalogName }} &nbsp; </span>
         <input matInput name="productname" #nameProduct="ngModel" [(ngModel)]="_select_Product.name"  required />

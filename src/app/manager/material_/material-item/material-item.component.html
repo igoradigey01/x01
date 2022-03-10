@@ -1,5 +1,5 @@
-<p>item-Material Product works!</p>
-<div class="_contaner">
+
+<div class="_main-container">
   <div *ngIf="!_flag_sendServerData; else elseSendData">
     <!-- begin edit  card ------------------------------------->
     <form #myForm="ngForm" novalidate>
@@ -46,7 +46,7 @@
         <div class="_input-group" *ngIf="_select_material">
           <label for="nameDescription">Описание Материала</label> <br />
           <mat-form-field class="_input-name" appearance="fill">
-          
+
             <div>
               <input
                 matInput

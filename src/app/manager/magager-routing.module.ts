@@ -2,28 +2,24 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ManagerBarComponent } from './manager-bar/manager-bar.component';
-import { KatalogComponent } from './katalog_/katagog-main/katalog-main.component';
-import { ProductComponent } from './product_/product-1/product.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { KatalogMainComponent } from './katalog_/katagog-main/katalog-main.component';
+
+
 import { MaterialMainComponent } from './material_/material-main/material-main.component';
 import { InfoComponent } from './info/info.component';
-import { NomenclatureComponent } from './nomenclature/nomenclature.component';
+
 import { ProductMainComponent } from './product_/product-main/product-main.component';
 //import { ProductTableComponent } from './product_/product-table/product-table.component';
 import { CategoriaMainComponent } from './categoria_/categoria-main/categoria-main.component';
 import { ManagerGuard } from './manager.guard';
+import {NomenclatureMainComponent} from './nomenclature_/nomenclature-main/nomenclature-main.component'
 
 // table-product , item-product ,details-product
 
 const routes: Routes = [
   { path: '', component: ManagerBarComponent, canActivate: [ManagerGuard] },
-  { path: 'katalog', component: KatalogComponent, canActivate: [ManagerGuard] },
-  { path: 'product', component: ProductComponent, canActivate: [ManagerGuard] },
-  {
-    path: 'item-product',
-    component: ProductDetailsComponent,
-    canActivate: [ManagerGuard],
-  },
+  { path: 'katalog', component: KatalogMainComponent, canActivate: [ManagerGuard] },
+
   {
     path: 'material',
     component: MaterialMainComponent,
@@ -37,7 +33,7 @@ const routes: Routes = [
   { path: 'info', component: InfoComponent, canActivate: [ManagerGuard] },
   {
     path: 'nomenclature',
-    component: NomenclatureComponent,
+    component: NomenclatureMainComponent,
     canActivate: [ManagerGuard],
   },
 

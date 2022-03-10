@@ -1,8 +1,6 @@
-<p>categoria-main works!</p>
 
-<!---------------->
 
-<!--- Output Error-->
+
 
 <app-root-view-element
   (onChangedViewMode)="onChangeStateView($event)"
@@ -16,6 +14,7 @@
 <div [ngSwitch]="_flagViewState">
   <ng-template ngSwitchDefault>
     <div class="container-fluid">
+      <h4>  Категории Позиции</h4>
       <div class="grid-container">
         <button
           *ngFor="let item of _categorias"
@@ -33,7 +32,7 @@
   <!--  Create template -->
   <ng-template name="Create" ngSwitchCase="4">
     <div class="edit-create">
-      <h4>Создать Позицию</h4>
+      <h4>Создать Позицию Категории</h4>
 
       <app-categoria-item
         [_select_categoria]="_select_categoria"
@@ -48,7 +47,7 @@
   <!--  Edit -Delete template -->
   <ng-template name="Edit" ngSwitchCase="3">
     <div class="edit-create">
-      <h4>Редактировать Позицию</h4>
+      <h4>Редактировать Позицию Категории</h4>
       <app-categoria-item
         [_select_categoria]="_select_categoria"
         [_flagViewState]="3"

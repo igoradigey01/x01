@@ -15,6 +15,7 @@ import {SharedVarService} from 'src/app/shared/sevices/shared-var.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,6 @@ import {SharedVarService} from 'src/app/shared/sevices/shared-var.service';
     KatalogComponent,
     PageNotFoundComponent,
     ForbiddenComponent,
-    
 
   ],
   imports: [

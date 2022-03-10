@@ -234,10 +234,11 @@
 
           <!--            end Price-->
 
-          <div class="input-group input-group-sm mb-3">
+          <div  class="input-group input-group-sm mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text">Торговая наценка</span>
             </div>
+            
             <input
               type="text"
               class="form-control"
@@ -248,12 +249,14 @@
               [(ngModel)]="_selectedProduct.markup"
               placeholder="Торговая наценка"
             />
+
             <div
               [hidden]="markup.valid || markup.untouched"
               class="alert alert-danger p-1"
             >
               !
             </div>
+
           </div>
 
           <!------------  end Markup  ------------------------>

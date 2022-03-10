@@ -11,7 +11,7 @@ import {DtoKatalog} from '../katalog-item/katalog-item.component'
   templateUrl: './katalog-main.component.html',
   styleUrls: ['./katalog-main.component.scss'],
 })
-export class KatalogComponent implements OnInit {
+export class KatalogMainComponent implements OnInit {
 
   public _select_katalog: Katalog = <Katalog>{ id: -1, name: '',flag_href:false,flag_link:false,hidden:false };; //new Katalog(-1, ''); //выбор Kalog item
   public  _katalogs: Katalog[] | undefined ; // массив items katalog

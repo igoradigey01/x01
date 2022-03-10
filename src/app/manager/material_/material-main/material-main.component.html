@@ -1,60 +1,60 @@
-<p>main-material works!</p>
-<!---------------->
+<div class="_main-container">
+  <!--- Output Error-->
 
-<!--- Output Error-->
+  <app-root-view-element
+    (onChangedViewMode)="onChangeStateView($event)"
+    (onClickKatalog)="onChangedDefaultState()"
+    [_selectedKagalog]="_select_material"
+    [_modul_name]="_modul_name"
+    [_router_link]="_router_link"
+  ></app-root-view-element>
 
-<app-root-view-element
-  (onChangedViewMode)="onChangeStateView($event)"
-  (onClickKatalog)="onChangedDefaultState()"
-  [_selectedKagalog]="_select_material"
-  [_modul_name]="_modul_name"
-  [_router_link]="_router_link"
-></app-root-view-element>
-
-<!------------------->
-<div [ngSwitch]="_flagViewState">
-  <ng-template ngSwitchDefault>
-    <div class="container-fluid">
-      <div class="grid-container">
-        <button
-          *ngFor="let item of _materials"
-          class="btn"
-          style="text-align: justify; padding: 0px"
-          [class.active]="item == _select_material"
-          (click)="changePosition(item)"
-        >
-          <span class="badge-btn">{{ item.id }}</span>
-          <span style="padding: 1em ;"> {{ item.name }}</span>
-        </button>
+  <!------------------->
+  <div [ngSwitch]="_flagViewState">
+    <ng-template ngSwitchDefault>
+      <div class="container-fluid">
+        <h4>Материал Позиции</h4>
+        <div class="grid-container">
+          <button
+            *ngFor="let item of _materials"
+            class="btn"
+            style="text-align: justify; padding: 0px"
+            [class.active]="item == _select_material"
+            (click)="changePosition(item)"
+          >
+            <span class="badge-btn">{{ item.id }}</span>
+            <span style="padding: 1em"> {{ item.name }}</span>
+          </button>
+        </div>
       </div>
-    </div>
-  </ng-template>
-  <!--  Create template -->
-  <ng-template name="Create" ngSwitchCase="4">
-    <div class="edit-create">
-      <h4>Создать Позицию</h4>
+    </ng-template>
+    <!--  Create template -->
+    <ng-template name="Create" ngSwitchCase="4">
+      <div class="edit-create">
+        <h4>Создать Позицию Материала</h4>
 
-      <app-material-item
-        [_select_material]="_select_material"
-        [_flagViewState]="4"
-        (_onChangeStateView)="onChangeStateView($event)"
-        (_onMaterialChange)="onChangedMaterial($event)"
-      >
-      </app-material-item>
-    </div>
-  </ng-template>
+        <app-material-item
+          [_select_material]="_select_material"
+          [_flagViewState]="4"
+          (_onChangeStateView)="onChangeStateView($event)"
+          (_onMaterialChange)="onChangedMaterial($event)"
+        >
+        </app-material-item>
+      </div>
+    </ng-template>
 
-  <!--  Edit -Delete template -->
-  <ng-template name="Edit" ngSwitchCase="3">
-    <div class="edit-create">
-      <h4>Редактировать Позицию</h4>
-      <app-material-item
-        [_select_material]="_select_material"
-        [_flagViewState]="3"
-        (_onChangeStateView)="onChangeStateView($event)"
-        (_onMaterialChange)="onChangedMaterial($event)"
-      >
-      </app-material-item>
-    </div>
-  </ng-template>
+    <!--  Edit -Delete template -->
+    <ng-template name="Edit" ngSwitchCase="3">
+      <div class="edit-create">
+        <h4>Редактировать Позицию Материала</h4>
+        <app-material-item
+          [_select_material]="_select_material"
+          [_flagViewState]="3"
+          (_onChangeStateView)="onChangeStateView($event)"
+          (_onMaterialChange)="onChangedMaterial($event)"
+        >
+        </app-material-item>
+      </div>
+    </ng-template>
+  </div>
 </div>

@@ -60,10 +60,10 @@
 .grid-container button:hover {
   border: solid #e66333;
 
-  background-color: #00978e;
+  background-color: #d1e8b678; // #d1e8b6;
 }
 .grid-container .active {
-  background-color: hotpink;
+  background-color:   #a1ff6b1c;
 }
 @media (min-width: 650px) {
 
@@ -125,7 +125,7 @@
     margin-right: auto;
     grid-template-columns: 1fr;
   }
-  
+
 
 
 }
