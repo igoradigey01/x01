@@ -8,7 +8,7 @@ import {
   ImageTransform,
 } from 'ngx-image-cropper';
 
-import { ImgManagerService } from 'src/app/shared/sevices/img-manager.service';
+import { ImgManagerService } from 'src/app/shared/services/img-manager.service';
 
 
 export interface DtoImage {

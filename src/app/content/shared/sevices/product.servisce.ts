@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../../../shared/_interfaces/product.model';
 import { Material } from '../../../shared/_interfaces/material.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 import { map } from 'rxjs/operators';
 
 @Injectable()

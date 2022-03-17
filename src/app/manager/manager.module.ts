@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from './../material/material.module';
 import { UiModule } from './../ui/ui.module';
+import { FormsModule } from '@angular/forms';
+import { ManagerServiceModule } from './shared/sevices/maneger-service.module';
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { ManagerRoutingModule } from './magager-routing.module';
 import { KatalogMainComponent } from './katalog_/katagog-main/katalog-main.component';
 
 import { ManagerBarComponent } from './manager-bar/manager-bar.component';
-import { FormsModule } from '@angular/forms';
+
 
 import { InfoComponent } from './info/info.component';
-import { ManagerServiceModule } from './shared/sevices/maneger-service.module';
+
 
 import { ProductTableComponent } from './product_/product-table/product-table.component';
 

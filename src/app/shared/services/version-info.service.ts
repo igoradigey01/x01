@@ -5,8 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ManagerServiceModule } from '../../manager/shared/sevices/maneger-service.module';
 import { VersionInfo} from 'src/app/shared/_interfaces/vertion-info.model';
-import { TokenService } from 'src/app/shared/sevices/token.service';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { TokenService } from 'src/app/shared/services/token.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: ManagerServiceModule })

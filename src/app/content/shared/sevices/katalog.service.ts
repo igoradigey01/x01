@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Katalog } from '../../../shared/_interfaces/katalog.model';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class KatalogService {
 
   public Katalogs = (): Observable<Katalog[]> => {
     this.url.Controller = 'Katalog';
-    this.url.Action = 'get'; 
+    this.url.Action = 'get';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,

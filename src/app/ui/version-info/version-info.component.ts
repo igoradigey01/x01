@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {VersionInfo} from 'src/app/shared/_interfaces/vertion-info.model'
-import {VersionInfoService} from 'src/app/shared/sevices/version-info.service';
+import {VersionInfoService} from 'src/app/shared/services/version-info.service';
 
 @Component({
   selector: 'app-version-info',

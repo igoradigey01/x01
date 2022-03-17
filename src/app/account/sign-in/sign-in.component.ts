@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 //import { tap } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
-import { UserManagerService } from 'src/app/shared/sevices/user-manager.service';
+import { UserManagerService } from 'src/app/shared/services/user-manager.service';
 import { AccountService } from './../shared/services/account.service';
 //import { User } from 'src/app/shared/_interfaces/user.model';
-import { TokenService } from 'src/app/shared/sevices/token.service';
+import { TokenService } from 'src/app/shared/services/token.service';
 import { Subscription } from 'rxjs';
 
 @Component({

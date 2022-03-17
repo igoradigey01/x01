@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { UserManagerService } from 'src/app/shared/sevices/user-manager.service';
+import { UserManagerService } from 'src/app/shared/services/user-manager.service';
 
 
 @Component({

@@ -6,9 +6,9 @@ import { tap } from 'rxjs/operators';
 
 import { AccoutServiceModule } from './accout-service.module';
 
-import { TokenService } from 'src/app/shared/sevices/token.service';
+import { TokenService } from 'src/app/shared/services/token.service';
 import { TokenModel } from 'src/app/shared/_interfaces/token-model';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 import { RegistrationResponseDto } from '../_interfaces/registration-responseDto.model';
 import { UserRegistrationDto } from '../_interfaces/user-registrationDto.model';
 import { ForgotPasswordDto } from '../_interfaces/forgot-passwordDto.model';

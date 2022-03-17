@@ -9,8 +9,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ManagerServiceModule } from './maneger-service.module';
 import { KatalogService } from './katalogProduct.service';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
-import { TokenService } from 'src/app/shared/sevices/token.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
+import { TokenService } from 'src/app/shared/services/token.service';
 
 enum FlagState {
   all,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TokenService } from 'src/app/shared/sevices/token.service';
-import {UserManagerService} from 'src/app/shared/sevices/user-manager.service'
+import { TokenService } from 'src/app/shared/services/token.service';
+import {UserManagerService} from 'src/app/shared/services/user-manager.service'
 
 @Component({
   selector: 'app-log-off',

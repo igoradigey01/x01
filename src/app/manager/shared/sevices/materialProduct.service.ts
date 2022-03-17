@@ -7,8 +7,8 @@ import {
 import { ManagerServiceModule } from './maneger-service.module';
 import { Material } from 'src/app/shared/_interfaces/material.model';
 import { Observable } from 'rxjs';
-import {TokenService} from 'src/app/shared/sevices/token.service';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import {TokenService} from 'src/app/shared/services/token.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 @Injectable({
   providedIn: ManagerServiceModule,
 })

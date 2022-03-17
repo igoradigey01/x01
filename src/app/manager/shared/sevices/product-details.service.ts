@@ -9,7 +9,7 @@ import { ManagerServiceModule } from '../../shared/sevices/maneger-service.modul
 import { KatalogService } from './katalogProduct.service';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import {Product} from 'src/app/shared/_interfaces/product.model';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 
 @Injectable({ providedIn: ManagerServiceModule })
 export class ProductDetailsService {

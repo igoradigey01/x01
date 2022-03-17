@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 
 @Injectable()
 export class ProductDetailsService {
@@ -34,7 +34,7 @@ export class ProductDetailsService {
   }
 
   public GetBlobIMG(name: string): Observable<Blob> {
-    
+
     this._url.Controller = 'image';
     this._url.Action = '';
     let headers: HttpHeaders = new HttpHeaders({

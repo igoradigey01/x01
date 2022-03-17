@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TokenService } from 'src/app/shared/sevices/token.service';
+import { TokenService } from 'src/app/shared/services/token.service';
 import { AccoutServiceModule } from './accout-service.module';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RouteApiService } from 'src/app/shared/sevices/route-api.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 import { User } from '../../../shared/_interfaces/user.model';
 
 @Injectable({

@@ -13,6 +13,14 @@ const routes: Routes = [
       import('./header/header.module').then((m) => m.HeaderModule),
   },
   {
+    path: 'контакты',redirectTo: '/menu/about', pathMatch: 'full'
+
+  },
+  {
+    path: 'контакты/',redirectTo: '/menu/about', pathMatch: 'full'
+
+  },
+  {
     path: 'content',
     loadChildren: () =>
       import('./content/content.module').then((m) => m.ContentModule),

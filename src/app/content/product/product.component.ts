@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductDataService } from '../shared/sevices/product.servisce';
 import { Product } from '../../shared/_interfaces/product.model';
 import { Meta, Title } from '@angular/platform-browser';
-import { SharedVarService } from 'src/app/shared/sevices/shared-var.service';
+import { SharedVarService } from 'src/app/shared/services/shared-var.service';
 import { SEO_var } from 'src/app/shared/_interfaces/SEO-var.models';
 
 @Component({
@@ -73,7 +73,7 @@ export class ProductComponent implements OnInit {
     if (item.keywordsSEO){
 
       this.meta.updateTag({ name: 'keywords', content: item.keywordsSEO});
-    } 
+    }
 
 
 

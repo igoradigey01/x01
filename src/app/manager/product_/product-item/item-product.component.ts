@@ -8,7 +8,7 @@ import { ImgRenderComponent } from 'src/app/ui/img-render/img-render.component';
 import { ProductService } from '../../shared/sevices/product.servisce';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { StateView } from 'src/app/shared/_interfaces/state-view';
-import { ImgManagerService } from 'src/app/shared/sevices/img-manager.service';
+import { ImgManagerService } from 'src/app/shared/services/img-manager.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 export interface DtoProduct {

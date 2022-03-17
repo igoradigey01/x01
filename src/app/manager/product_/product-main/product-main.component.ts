@@ -4,7 +4,7 @@ import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { StateView } from 'src/app/shared/_interfaces/state-view';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { Material } from 'src/app/shared/_interfaces/material.model';
-import { ImgManagerService } from 'src/app/shared/sevices/img-manager.service';
+import { ImgManagerService } from 'src/app/shared/services/img-manager.service';
 import { DtoProduct } from '../product-item/item-product.component';
 
 
