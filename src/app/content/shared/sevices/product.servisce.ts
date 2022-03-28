@@ -48,7 +48,7 @@ export class ProductDataService {
             name: f.name,
             katalogId: f.katalogId,
             katalogName: nameKatalog,
-            typeProductId: f.typeProductId,
+            materialId: f.typeProductId,
             price: f.price,
             markup: f.markup,
             description: f.description,

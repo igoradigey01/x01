@@ -92,7 +92,11 @@ export class KatalogService {
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
     let url: string = this._url.Url+'/'+id;
-    return this._http.delete(url,{headers});
+    return this._http.delete(url,{
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
   }
   private createFormData(item: Katalog ): FormData {
     let formData = new FormData();

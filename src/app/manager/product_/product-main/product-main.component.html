@@ -23,7 +23,8 @@
         <h4>Редактировать Позицию Товара</h4>
         <app-item-product
           [_select_Product]="_select_Product"
-          [_typeProducts]="_typeProducts"
+          [_materials]="_materials"
+          [_categorias]="_categorias"
           [_flagViewMode]="3"
           (_onChangeStateView)="onChangedViewMode($event)"
           (_onProductChange)="onChangedProducts($event)"
@@ -32,10 +33,11 @@
       </ng-template>
       <ng-template name="Create" ngSwitchCase="4">
         <h4>Создать Позицию Товара</h4>
-        
+
         <app-item-product
           [_select_Product]="_select_Product"
-          [_typeProducts]="_typeProducts"
+          [_materials]="_materials"
+          [_categorias]="_categorias"
           [_select_katalog]="_select_Katalog"
           [_flagViewMode]="4"
           (_onChangeStateView)="onChangedViewMode($event)"

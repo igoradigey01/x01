@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
-import { Categoria } from 'src/app/shared/_interfaces/categoria.modil';
+import { Categoria } from 'src/app/shared/_interfaces/categoria.model';
 import { Observable } from 'rxjs';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { RouteApiService } from 'src/app/shared/services/route-api.service';
@@ -81,7 +81,11 @@ export class CategoriaProductService {
       Authorization: 'Bearer ' + this._token.AccessToken,
     });
     let url: string = this._url.Url + '/' + id;
-    return this._http.delete(url, { headers });
+    return this._http.delete(url,{
+      reportProgress: true,
+      observe: 'events',
+      headers,
+    });
   };
 
   private createFormData(item: Categoria): FormData {

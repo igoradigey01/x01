@@ -14,18 +14,29 @@
 
     <!--------------  Материал== t        -->
     <div class="_input-group">
-      <label for="typeProduct" class="_label"> Материал</label>
-      <mat-form-field id="typeProduct" appearance="fill">
-        <mat-select name="typeProduc"  matNativeControl [(ngModel)]="_select_Product.typeProductId" #typeProduct="ngModel" required >
-          <mat-option *ngFor="let item of _typeProducts" [value]="item.id">{{
+      <label for="material" class="_label"> Материал</label>
+      <mat-form-field id="material" appearance="fill">
+        <mat-select name="material"  matNativeControl [(ngModel)]="_select_Product.materialId" #material="ngModel" required >
+          <mat-option *ngFor="let item of _materials" [value]="item.id">{{
             item.name
           }}</mat-option>
         </mat-select>
-        <mat-error *ngIf="typeProduct.invalid"> </mat-error>
+        <mat-error *ngIf="material.invalid"> </mat-error>
       </mat-form-field>
     </div>
 
     <!-- idTypeProduct begin -->
+    <div class="_input-group">
+      <label for="categoria" class="_label"> Категория</label>
+      <mat-form-field id="categoria" appearance="fill">
+        <mat-select name="categoria"  matNativeControl [(ngModel)]="_select_Product.categoriaId" #categoria="ngModel" required >
+          <mat-option *ngFor="let item of _categorias" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="categoria.invalid"> </mat-error>
+      </mat-form-field>
+    </div>
 
     <!--------------------------->
     <div class="_input-group">
@@ -35,7 +46,7 @@
         class="_input-name"
         appearance="fill"
       >
-      
+
       <mat-label>Название </mat-label>
         <span *ngIf="!ShowPrefix" matPrefix>{{ _select_Product.katalogName }} &nbsp; </span>
         <input matInput name="productname" #nameProduct="ngModel" [(ngModel)]="_select_Product.name"  required />

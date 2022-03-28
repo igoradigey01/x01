@@ -4,8 +4,10 @@ export interface Product {
   name: string;
   katalogId: number;
   katalogName?:string;
-  typeProductId: number;
-  typeProductName?:string;
+  materialId: number;
+  materialName?:string;
+  categoriaId:number;
+  categoriaName?:string;
   price?: number;
   markup?: number; //Торговая наценка
   description?: string;

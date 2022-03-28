@@ -209,9 +209,9 @@ export class KatalogItemComponent implements OnInit {
             console.log('---Finished-----');
             this._errorMgs = [];
             this._flagError = false;
-            let d=  <Katalog>   data.body
+         //   let d=  <Katalog>   data.body
             this._onKatalogChange.emit(
-              <DtoKatalog>{ katalog:d,
+              <DtoKatalog>{ katalog:this._select_katalog, //21.03.22
                flagViewState:StateView.delete
               }
             );

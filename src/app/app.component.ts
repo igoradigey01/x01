@@ -8,6 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
  // title = 'X-01';
-  year:number=new Date().getFullYear();
+  year:number=new Date(2020,0,1).getFullYear();
   name:string="Ханская Мебель";
 }

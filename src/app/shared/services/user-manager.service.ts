@@ -32,6 +32,10 @@ export class UserManagerService {
     this._flagOptVar$.next(i);
   }
 
+  public get InvalidTimeAccess_token$(): BehaviorSubject<boolean> {
+    return this._tokenService.InvalidTimeAccess_token$;
+  }
+
   public setVarShopperOpt(){
     localStorage.setItem(this._var_opt_shopper,'opt-1');
 

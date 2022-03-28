@@ -3,13 +3,13 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { ManagerServiceModule } from '../../manager/shared/sevices/maneger-service.module';
-import { VersionInfo} from 'src/app/shared/_interfaces/vertion-info.model';
-import { TokenService } from 'src/app/shared/services/token.service';
+//import { ManagerServiceModule } from '../../../manager_/shared/services/maneger-service.module';
+import { VersionInfo} from '../_interfaces/vertion-info.model';
+//import { TokenService } from 'src/app/shared/services/token.service';
 import { RouteApiService } from 'src/app/shared/services/route-api.service';
 import { environment } from 'src/environments/environment';
 
-@Injectable({ providedIn: ManagerServiceModule })
+@Injectable()
 export class VersionInfoService {
   constructor(
     private http: HttpClient,

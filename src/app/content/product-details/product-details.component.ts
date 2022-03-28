@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
     id: -1,
     name: '',
     katalogId: -1,
-    typeProductId: -1,
+    materialId: -1,
     description: '',
     imgName: '',
     markup: 0,

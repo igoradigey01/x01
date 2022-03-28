@@ -18,10 +18,10 @@ export class ProductComponent implements OnInit {
   _error: any;
   _products: Product[] | null = null; //
   _katalogName: string = '';
-  _url_img: string = '';
+ // _url_img: string = '';
 
-  _decriptSEO: string = '';
-  _keywordsSEO: string = '';
+//  _decriptSEO: string = '';
+  //_keywordsSEO: string = '';
 
   constructor(
     private _repository: ProductDataService,

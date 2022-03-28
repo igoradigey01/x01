@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StateView} from 'src/app/shared/_interfaces/state-view';
-import {Categoria} from 'src/app/shared/_interfaces/categoria.modil'
+import {Categoria} from 'src/app/shared/_interfaces/categoria.model'
 import {CategoriaProductService} from '../../shared/sevices/categoriaProduct.service'
 import { DtoCategoria } from '../categoria-item/categoria-item.component';
 

@@ -1,11 +1,16 @@
 @import "./../../../styles/manager-styles.scss";
 
+error{
+  color: var(--bs-pink);
+  text-align: center;
+}
+
 .grid-container-menu {
   display: grid;
   width: 100%;
   margin-left: 0;
   margin-right: 0;
-  grid-template-columns: 45% auto;
+  grid-template-columns: 60% auto;
   grid-template-rows: 1fr 1fr;
 }
 
@@ -42,11 +47,17 @@
 
 @media (min-width: 576px){
   .grid-container-menu {
-    grid-template-columns: 35% auto;
+    grid-template-columns: 50% auto;
   }
 }
 
 @media (min-width: 768px) {
+  .grid-container-menu {
+    grid-template-columns: 35% auto;
+  }
+}
+
+@media (min-width: 960px) {
   .grid-container-menu {
     grid-template-columns: 25% auto;
   }

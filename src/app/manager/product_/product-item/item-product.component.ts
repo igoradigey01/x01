@@ -3,6 +3,7 @@ import { Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { Material } from 'src/app/shared/_interfaces/material.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
+import {Categoria} from 'src/app/shared/_interfaces/categoria.model'
 import { DtoImage } from 'src/app/ui/img-render/img-render.component';
 import { ImgRenderComponent } from 'src/app/ui/img-render/img-render.component';
 import { ProductService } from '../../shared/sevices/product.servisce';
@@ -23,7 +24,8 @@ export interface DtoProduct {
 })
 export class ItemProductComponent implements OnInit {
   @Input() public _select_Product: Product;
-  @Input() public _typeProducts: Material[] = [];
+  @Input() public _materials: Material[] = [];
+  @Input() public _categorias: Categoria[] = [];
   @Input() public _select_katalog: Katalog | undefined;
   @Input() public _flagViewMode: StateView | undefined;
 
@@ -62,7 +64,7 @@ export class ItemProductComponent implements OnInit {
       id: -1,
       katalogId: -1,
       katalogName: '',
-      typeProductId: -1,
+      materialId: -1,
       description: '',
       name: '',
       imgName: '',

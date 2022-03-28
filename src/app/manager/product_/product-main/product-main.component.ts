@@ -4,6 +4,7 @@ import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { StateView } from 'src/app/shared/_interfaces/state-view';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { Material } from 'src/app/shared/_interfaces/material.model';
+import {Categoria} from 'src/app/shared/_interfaces/categoria.model'
 import { ImgManagerService } from 'src/app/shared/services/img-manager.service';
 import { DtoProduct } from '../product-item/item-product.component';
 
@@ -21,7 +22,8 @@ export class ProductMainComponent implements OnInit {
   public _flagViewMode: StateView = StateView.default;
   //--------------------------
   public _products: Product[] = [];
-  public _typeProducts: Material[] = [];
+  public _materials: Material[] = [];
+  public _categorias:Categoria[]=[];
   public _root_url_img: string = '';
   public _select_Product: Product;
 
@@ -34,7 +36,7 @@ export class ProductMainComponent implements OnInit {
       id: -1,
       katalogId: -1,
       katalogName: '',
-      typeProductId: -1,
+      materialId: -1,
       description: '',
       name: '',
       imgName: '',
@@ -48,7 +50,10 @@ export class ProductMainComponent implements OnInit {
       this._katalogs = data;
     });
     this._repository.Materials().subscribe((data) => {
-      this._typeProducts = data;
+      this._materials = data;
+    });
+    this._repository.Categorias().subscribe((data) => {
+      this._categorias = data;
     });
   }
   public onChangedProducts(event:DtoProduct){
@@ -72,7 +77,7 @@ export class ProductMainComponent implements OnInit {
         id: -1,
         katalogId: this._select_Katalog.id,
         katalogName: this._select_Katalog.name,
-        typeProductId: -1,
+        materialId: -1,
         description: '',
         name: '',
         imgName: '',
@@ -105,10 +110,14 @@ export class ProductMainComponent implements OnInit {
       throw new Error('this._selectKatalog.id!=this._select_Product.katalogId');
       // console.log('onChangeRow--' + event.name);
     }
-    let item = this._typeProducts.find(
-      (x) => x.id == this._select_Product.typeProductId
+    let itemM = this._materials.find(
+      (x) => x.id == this._select_Product.materialId
     );
-    this._select_Product.typeProductName = item?.name;
+    this._select_Product.materialName = itemM?.name;
+    let itemC=this._categorias.find(
+      d=>d.id==this._select_Product.categoriaId
+    );
+    this._select_Product.categoriaName=itemC?.name;
     this._flagViewMode = StateView.edit;
   }
 }

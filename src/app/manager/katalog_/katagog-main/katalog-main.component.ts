@@ -22,6 +22,7 @@ export class KatalogMainComponent implements OnInit {
   constructor(private _repository: KatalogService) {}
 
   ngOnInit(): void {
+   // debugger
     this.loadKatalogs();
   }
 

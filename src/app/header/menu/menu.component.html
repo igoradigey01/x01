@@ -86,12 +86,18 @@
         <div *ngIf="InvalidLogin; then thenBlock; else elseBlock"></div>
         <ng-template #elseBlock>
           <button type="button" class="btn navbar-btn account_botton_ok" routerLink="/account/user-profile">
-            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" />
+            <picture>
+              <source srcset="./../../../assets/icon/log-in-1.webp" type="image/webp">
+            <img class="card-img-top" src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД"  />
+          </picture>
           </button>
         </ng-template>
         <ng-template #thenBlock>
           <button type="button" class="btn navbar-btn account_botton_false" routerLink="/account">
-            <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД" />
+            <picture>
+              <source srcset="./../../../assets/icon/log-in-1.webp" type="image/webp">
+            <img class="card-img-top" src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД"  />
+          </picture>
           </button>
         </ng-template>
       </div>
@@ -108,13 +114,19 @@
           <ng-template #okAccount_md>
             <button type="button" class="btn navbar-btn account_botton_ok" (click)="drawer.toggle()"
               routerLink="/account/user-profile">
-              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД" />
+              <picture>
+                <source srcset="./../../../assets/icon/log-in-1.webp" type="image/webp">
+              <img class="card-img-top" src="./../../../assets/icon/log-in-1.png" height="23" alt="ВХОД"  />
+            </picture>
             </button>
           </ng-template>
           <ng-template #falseAccout_md>
             <button type="button" class="btn navbar-btn account_botton_false" (click)="drawer.toggle()"
               routerLink="/account">
-              <img src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД" />
+              <picture>
+                <source srcset="./../../../assets/icon/log-in-1.webp" type="image/webp">
+              <img class="card-img-top" src="./../../../assets/icon/log-in-1.png" height="23" alt="ВЫХОД"  />
+            </picture>
             </button>
           </ng-template>
         </div>

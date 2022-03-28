@@ -17,7 +17,7 @@ export const environment = {
    serverAuthority:'http://localhost:5010/',//'https://s.x-01.ru/',             //
    clientId:'angular-client',
    version:'b2.02.22',
-   description:"Client shop- вторая редакция (angular:13.1.2)"
+   description:"Client shop- вторая редакция (angular:13.1.2)(26.03.22)"
 
 };
 

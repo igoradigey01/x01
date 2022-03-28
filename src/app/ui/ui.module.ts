@@ -9,6 +9,7 @@ import { RootViewElementComponent } from './root-view-element/root-view-element.
 import { LeftPanelViewElementComponent } from './left-panel-view-element/left-panel-view-element.component';
 import { ImgRenderComponent } from './img-render/img-render.component';
 import { VersionInfoComponent } from './version-info/version-info.component';
+import {VersionInfoService} from './shared/service/version-info.service'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,11 @@ import { VersionInfoComponent } from './version-info/version-info.component';
     RootViewElementComponent,
     LeftPanelViewElementComponent,
     ImgRenderComponent,
-    VersionInfoComponent
+    VersionInfoComponent,
+    
   ],
+  providers:[
+     VersionInfoService
+  ]
 })
 export class UiModule {}

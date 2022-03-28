@@ -1,3 +1,6 @@
+<div *ngIf="_invalidLogin">
+  <h5 class="error">Токен не действителен .Авторизуйтесь !!! </h5>
+</div>
 
 <div class="grid-container-menu bg-tools2 ">
   <div class="bg-tools text-center btn btn-link item-menu-1" routerLink={{_router_link}}>
@@ -6,8 +9,8 @@
 
   <div class="bg-tools3 text-center  btn btn-link item-menu-2" style="text-decoration: none;" (click)="cancel()">
     id(
-    <span class="text-primary"> {{ _selectedKagalog.id }}</span>)
-    {{ _selectedKagalog.name }} <span *ngIf='_selectedKagalog.id==-1' class="title">(katalog)</span>
+    <span class="text-primary"> {{ _selectedKagalogUI.id }}</span>)
+    {{ _selectedKagalogUI.name }} <span *ngIf='_selectedKagalogUI.id==-1' class="title">(katalog)</span>
   </div>
 
   <div class="btn item-menu-3" (click)="addItem()" [style.display]="DistplayButton ? 'block' : 'none'">

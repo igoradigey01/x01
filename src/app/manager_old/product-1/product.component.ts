@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
   _errorUotput: boolean = false; //09.04.21 (true)
   _flagInvalid: boolean = true;
 
-  _products: Product[] = [<Product>{id:-1,name:'',katalogId:-1,typeProductId:-1}];                //[new Product(-1, '', -1, -1, -1, -1, '', null)];
+  _products: Product[] = [<Product>{id:-1,name:'',katalogId:-1,materialId:-1}];                //[new Product(-1, '', -1, -1, -1, -1, '', null)];
   _flagPanel1: boolean = true;
   _flagPanel2: boolean = false;
   _flagKatalogHiden = false;
@@ -36,7 +36,7 @@ export class ProductComponent implements OnInit {
 
   _selectedKagalog: Katalog =  <Katalog>{id:-1,name:''}; //new Katalog(-1, '');
   _selectedTypeProduct: Material =<Material>{id:-1,name:''};         //new TypeProduct(-1, '', null);
-  _selectedProduct: Product =  <Product>{id:-1,name:'',katalogId:-1,typeProductId:-1};          // new Product(-1, '', -1, -1, null, null, null);
+  _selectedProduct: Product =  <Product>{id:-1,name:'',katalogId:-1,materialId:-1};          // new Product(-1, '', -1, -1, null, null, null);
 
   _flagPhoto: boolean = false;
   _flagButton: boolean = true;
@@ -96,7 +96,7 @@ export class ProductComponent implements OnInit {
       this._error = '';
       this._errorUotput = false;
       this._selectedTypeProduct = this._typeProducts?.find(
-        (x) => x.id == this._selectedProduct.typeProductId
+        (x) => x.id == this._selectedProduct.materialId
       )||<Material>{id:-1,name:""};
 
       this._flagViewMode = 'edit';
@@ -128,7 +128,7 @@ export class ProductComponent implements OnInit {
 
     //--- end progess file
     this._selectedProduct.katalogId = this._selectedKagalog.id;
-    this._selectedProduct.typeProductId = this._selectedTypeProduct.id;
+    this._selectedProduct.materialId = this._selectedTypeProduct.id;
 
     this._errorUotput = true;
     this._flagDisplayAddButton = true;

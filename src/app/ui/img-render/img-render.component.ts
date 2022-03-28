@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/shared/_interfaces/product.model';
+//import { Product } from 'src/app/shared/_interfaces/product.model'; 20.03.22
 import { EventEmitter, Input, Output } from '@angular/core';
 
 import {

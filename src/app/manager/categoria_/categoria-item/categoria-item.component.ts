@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Categoria} from 'src/app/shared/_interfaces/categoria.modil';
+import {Categoria} from 'src/app/shared/_interfaces/categoria.model';
 import {StateView} from 'src/app/shared/_interfaces/state-view';
 import { CategoriaProductService} from '../../shared/sevices/categoriaProduct.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -204,9 +204,9 @@ export class CategoriaItemComponent implements OnInit {
               console.log('---Finished-----');
               this._errorMgs = [];
               this._flagError = false;
-              let d = <Categoria>data.body;
+             // let d = <Categoria>data.body;
               this._onCategoriaChange.emit(<DtoCategoria>{
-                categoriaProduct: d,
+                categoriaProduct: this._select_categoria,
                 flagViewState: StateView.delete,
               });
 

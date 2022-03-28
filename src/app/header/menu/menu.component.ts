@@ -32,7 +32,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.userManager.InvalidLogin$.subscribe(
+  let sub1 =  this.userManager.InvalidLogin$.subscribe(
       d => {
         this._invalidLogin = d;
         this._isAdmin = this.userManager.IsAdmin;
@@ -41,11 +41,13 @@ export class MenuComponent implements OnInit {
       }
     )
 
-    this.userManager.FlagShopperOpt$.subscribe(
+  let sub2 = this.userManager.FlagShopperOpt$.subscribe(
       d=>{
         this._isOptovik=this.userManager.IsShopperOpt;
       }
     )
+    this._subscriptions.push(sub1);
+    this._subscriptions.push(sub2);
 
 
   }

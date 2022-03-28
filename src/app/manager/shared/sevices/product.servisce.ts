@@ -4,7 +4,8 @@ import { map } from 'rxjs/operators';
 
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
-import { Material } from '../../../shared/_interfaces/material.model';
+import { Material } from 'src/app/shared/_interfaces/material.model';
+import {Categoria} from 'src/app/shared/_interfaces/categoria.model'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ManagerServiceModule } from './maneger-service.module';
@@ -52,6 +53,17 @@ export class ProductService {
     return this._http.get<Material[]>(this._url.Url, { headers });
   };
 
+  public Categorias = (): Observable<Categoria[]> => {
+    this._url.Controller = 'Categoria';
+    this._url.Action = 'get';
+    let headers: HttpHeaders = new HttpHeaders({
+      Accept: 'application/json',
+      //  Authorization: 'Bearer ' + token,
+    });
+    return this._http.get<Categoria[]>(this._url.Url, { headers });
+  };
+
+
   //------------- Get all Katalog------------
   public Katalogs = (): Observable<Katalog[]> => {
     return this._katalogServise.Katalogs();
@@ -79,7 +91,7 @@ export class ProductService {
             name: f.name,
             katalogId: f.katalogId,
             katalogName: nameKatalog,
-            typeProductId: f.typeProductId,
+            materialId: f.typeProductId,
             price: f.price,
             markup: f.markup,
             description: f.description,
@@ -223,7 +235,9 @@ export class ProductService {
       // debugger
       entries.forEach(([key, value]) => {
         //  if (key == 'katalogName') return;
-        if (key == 'typeProductName') return;
+       // if (key == 'katalogName') return;-- используется на сервере !!!!!
+        if (key == 'categoriaName') return;
+        if (key == 'materialName') return;
         // if (key == 'imgName') return;
         if (key == 'rootImgSrc') return;
         if (key == 'imageBase64') return;
@@ -241,8 +255,9 @@ export class ProductService {
     }
     if (flag === FlagState.date) {
       entries.forEach(([key, value]) => {
-        //  if (key == 'katalogName') return;
-        if (key == 'typeProductName') return;
+        //  if (key == 'katalogName') return;-- используется на сервере !!!!!
+        if (key == 'categoriaName') return;
+        if (key == 'materialName') return;
         // if (key == 'imgName') return;
         if (key == 'rootImgSrc') return;
         if (key == 'imageBase64') return;

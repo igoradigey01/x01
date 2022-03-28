@@ -5,7 +5,7 @@
 <app-root-view-element
 (onChangedViewMode)="onChangeStateView($event)"
 (onClickKatalog)="onChangedDefaultState()"
-[_selectedKagalog]="_select_katalog"
+[_selectedKagalogUI]="_select_katalog"
 [_modul_name]="_modul_name"
 [_router_link]="_router_link"
 
@@ -29,7 +29,7 @@
 
       </div>
     </div>
-  </ng-template>                 
+  </ng-template>
   <!--  Create template -->
   <ng-template name="Create" ngSwitchCase=4>
     <div class="edit-create">

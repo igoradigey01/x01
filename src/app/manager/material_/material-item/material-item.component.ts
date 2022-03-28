@@ -206,9 +206,9 @@ export class MaterialItemComponent implements OnInit {
               console.log('---Finished-----');
               this._errorMgs = [];
               this._flagError = false;
-              let d = <Material>data.body;
+            //  let d = <Material>data.body;
               this._onMaterialChange.emit(<DtoMaterial>{
-                materialProduct: d,
+                materialProduct: this._select_material,
                 flagViewState: StateView.delete,
               });
 
