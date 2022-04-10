@@ -25,8 +25,8 @@ export class KatalogService {
 
 
 
-  public Katalogs = (): Observable<Katalog[]> => {
-    this._url.Controller = 'Katalog';
+  public KatalogPs = (): Observable<Katalog[]> => {
+    this._url.Controller = 'KatalogP';
     this._url.Action = 'get';
 
     let headers: HttpHeaders = new HttpHeaders({
@@ -42,7 +42,7 @@ export class KatalogService {
 
   public Create = (item: Katalog): Observable<any> => {
 
-    this._url.Controller = 'Katalog';
+    this._url.Controller = 'KatalogP';
     this._url.Action = 'Post';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -64,7 +64,7 @@ export class KatalogService {
 
   public Update = (item: Katalog): Observable<any> => {
    // throw new Error("not implemint exeption");
-   this._url.Controller = 'Katalog';
+   this._url.Controller = 'KatalogP';
    this._url.Action = 'Update';
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
@@ -83,7 +83,7 @@ export class KatalogService {
   //-------------------
 
   public Delete = (id: number): Observable<any> => {
-    this._url.Controller = 'Katalog';
+    this._url.Controller = 'KatalogP';
     this._url.Action = 'delete';
 
 

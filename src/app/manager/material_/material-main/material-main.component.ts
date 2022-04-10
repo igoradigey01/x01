@@ -26,7 +26,7 @@ export class MaterialMainComponent implements OnInit {
   //----------------------
 
 public  loadMaterials() {
-    this._repository.MaterialProducts().subscribe((data) => (this._materials = data));
+    this._repository.MaterialPs().subscribe((data) => (this._materials = data));
   }
 
 public  onChangeStateView(event:StateView){

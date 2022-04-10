@@ -17,8 +17,8 @@ export class CategoriaProductService {
     private _url: RouteApiService
   ) {}
 
-  public CategoriaProducts = (): Observable<Categoria[]> => {
-    this._url.Controller = 'Categoria';
+  public CategoriaPs = (): Observable<Categoria[]> => {
+    this._url.Controller = 'CategoriaP';
     this._url.Action = 'get';
 
     let headers: HttpHeaders = new HttpHeaders({
@@ -32,7 +32,7 @@ export class CategoriaProductService {
   //------------------------------------------------
 
   public Create = (item: Categoria): Observable<any> => {
-    this._url.Controller = 'Categoria';
+    this._url.Controller = 'CategoriaP';
     this._url.Action = 'Create';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -54,7 +54,7 @@ export class CategoriaProductService {
 
   public Update = (item: Categoria): Observable<any> => {
     // throw new Error("not implemint exeption");
-    this._url.Controller = 'Categoria';
+    this._url.Controller = 'CategoriaP';
     this._url.Action = 'Update';
     //  debugger
     let headers: HttpHeaders = new HttpHeaders({
@@ -73,7 +73,7 @@ export class CategoriaProductService {
   //-------------------
 
   public Delete = (id: number): Observable<any> => {
-    this._url.Controller = 'Categoria';
+    this._url.Controller = 'CategoriaP';
     this._url.Action = 'delete';
 
     let headers: HttpHeaders = new HttpHeaders({

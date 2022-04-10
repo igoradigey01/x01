@@ -29,7 +29,7 @@ export class KatalogMainComponent implements OnInit {
   //----------------------
 
 public  loadKatalogs() {
-    this._repository.Katalogs().subscribe((data) => (this._katalogs = data));
+    this._repository.KatalogPs().subscribe((data) => (this._katalogs = data));
   }
 
 public  onChangeStateView(event:StateView){

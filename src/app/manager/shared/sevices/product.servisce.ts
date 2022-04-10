@@ -10,6 +10,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ManagerServiceModule } from './maneger-service.module';
 import { KatalogService } from './katalogProduct.service';
+import {CategoriaProductService} from './categoriaProduct.service';
+import {MaterialProductService} from './materialProduct.service';
 import { RouteApiService } from 'src/app/shared/services/route-api.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 
@@ -35,6 +37,8 @@ export class ProductService {
   constructor(
     private _http: HttpClient,
     private _katalogServise: KatalogService,
+    private _categoriaServise:CategoriaProductService,
+    private _materialServise:MaterialProductService,
     private _token: TokenService,
     private _url: RouteApiService
   ) {}
@@ -44,29 +48,17 @@ export class ProductService {
   //-----------------------
   /**Subscribe to Get- Models  Product*/
   public Materials = (): Observable<Material[]> => {
-    this._url.Controller = 'material';
-    this._url.Action = 'get';
-    let headers: HttpHeaders = new HttpHeaders({
-      Accept: 'application/json',
-      //  Authorization: 'Bearer ' + token,
-    });
-    return this._http.get<Material[]>(this._url.Url, { headers });
+    return this._materialServise.MaterialPs();
   };
 
   public Categorias = (): Observable<Categoria[]> => {
-    this._url.Controller = 'Categoria';
-    this._url.Action = 'get';
-    let headers: HttpHeaders = new HttpHeaders({
-      Accept: 'application/json',
-      //  Authorization: 'Bearer ' + token,
-    });
-    return this._http.get<Categoria[]>(this._url.Url, { headers });
+   return this._categoriaServise.CategoriaPs();
   };
 
 
   //------------- Get all Katalog------------
   public Katalogs = (): Observable<Katalog[]> => {
-    return this._katalogServise.Katalogs();
+    return this._katalogServise.KatalogPs();
   };
 
   //------------------- Get all Product--------

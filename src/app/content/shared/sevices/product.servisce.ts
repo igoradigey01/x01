@@ -17,8 +17,8 @@ export class ProductDataService {
   //-----------------------
 
   //-----------------------
-  public TypeProducts(): Observable<Material[]> {
-    this._url.Controller = 'typeProduct';
+  public Materials(): Observable<Material[]> {
+    this._url.Controller = 'materialP';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,

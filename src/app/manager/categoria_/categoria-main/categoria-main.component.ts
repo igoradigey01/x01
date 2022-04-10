@@ -27,7 +27,7 @@ export class CategoriaMainComponent implements OnInit {
   //----------------------
 
 public  loadCategorias() {
-    this._repository.CategoriaProducts().subscribe((data) => (this._categorias = data));
+    this._repository.CategoriaPs().subscribe((data) => (this._categorias = data));
   }
 
 public  onChangeStateView(event:StateView){

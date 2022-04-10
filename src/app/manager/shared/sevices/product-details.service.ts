@@ -32,7 +32,7 @@ export class ProductDetailsService {
   }
   //--------
   public get Katalogs(): Observable<Katalog[]> {
-    return this.katalogServise.Katalogs();
+    return this.katalogServise.KatalogPs();
   }
   //------------------
   public  Products(idKatalog: number): Observable<Product[]> {

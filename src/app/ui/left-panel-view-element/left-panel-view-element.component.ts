@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import {ProductViewComponent} from './../product-view/product-view.component'
 import { StateView } from 'src/app/shared/_interfaces/state-view';
-import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
-
+//import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
+import { KatalogUI } from 'src/app/ui/shared/_interfaces/katalog.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
@@ -19,9 +19,9 @@ export class LeftPanelViewElementComponent implements OnInit {
   @Input() public _router_link: string = '';
   @Input()  public _flagViewState: StateView = StateView.default;
   @Output() _onChangedViewMode = new EventEmitter<StateView>();
-  @Output() _onChangedKatalog = new EventEmitter<Katalog>();
-  public _selectedKagalogUI: Katalog = <Katalog>{ id: -1, name: '' };
-  @Input() public _katalogs: Katalog[] | null = null;
+  @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();
+  public _selectedKagalogUI: KatalogUI = <KatalogUI>{ id: -1, name: '' };
+  @Input() public _katalogUIs: KatalogUI[] | null = null;
   public _flagStyle: boolean = false;
 
   constructor(public breakpointObserver: BreakpointObserver) {}
@@ -33,10 +33,10 @@ export class LeftPanelViewElementComponent implements OnInit {
     this._onChangedViewMode.emit(event);
   }
 
-  public onChecks(item: Katalog) {
+  public onChecks(item: KatalogUI) {
     this._flagStyle = true;
     this._selectedKagalogUI = item;
-    this._onChangedKatalog.emit(item)
+    this._onChangedKatalogUI.emit(item)
     // if(this._sidenav) this._sidenav.close();
   }
 }

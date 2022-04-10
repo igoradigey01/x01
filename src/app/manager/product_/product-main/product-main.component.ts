@@ -7,6 +7,7 @@ import { Material } from 'src/app/shared/_interfaces/material.model';
 import {Categoria} from 'src/app/shared/_interfaces/categoria.model'
 import { ImgManagerService } from 'src/app/shared/services/img-manager.service';
 import { DtoProduct } from '../product-item/item-product.component';
+import { KatalogUI } from 'src/app/ui/shared/_interfaces/katalog.model';
 
 
 @Component({
@@ -87,9 +88,11 @@ export class ProductMainComponent implements OnInit {
     }
   }
 
-  public onChangedKatalog(event: Katalog) {
+  public onChangedKatalogUI(event: KatalogUI) {
     this._flagViewMode = StateView.default;
-    this._select_Katalog = event;
+    this._select_Katalog.id = event.id;
+    this._select_Katalog.name=event.name;
+    this._select_Katalog.hidden=event.hidden;
     this._repository
       .Products(this._select_Katalog.id,this._select_Katalog.name)
       .subscribe((data) => {

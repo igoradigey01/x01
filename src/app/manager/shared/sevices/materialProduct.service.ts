@@ -26,8 +26,8 @@ export class MaterialProductService {
 
 
 
-  public MaterialProducts = (): Observable<Material[]> => {
-    this._url.Controller = 'Material';
+  public MaterialPs = (): Observable<Material[]> => {
+    this._url.Controller = 'MaterialP';
     this._url.Action = 'get';
 
     let headers: HttpHeaders = new HttpHeaders({
@@ -43,7 +43,7 @@ export class MaterialProductService {
 
   public Create = (item: Material): Observable<any> => {
 
-    this._url.Controller = 'Material';
+    this._url.Controller = 'MaterialP';
     this._url.Action = 'Create';
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -65,7 +65,7 @@ export class MaterialProductService {
 
   public Update = (item: Material): Observable<any> => {
    // throw new Error("not implemint exeption");
-   this._url.Controller = 'Material';
+   this._url.Controller = 'MaterialP';
    this._url.Action = 'Update';
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
@@ -84,7 +84,7 @@ export class MaterialProductService {
   //-------------------
 
   public Delete = (id: number): Observable<any> => {
-    this._url.Controller = 'Material';
+    this._url.Controller = 'MaterialP';
     this._url.Action = 'delete';
 
 
