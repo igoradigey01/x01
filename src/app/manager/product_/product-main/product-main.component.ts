@@ -40,7 +40,7 @@ export class ProductMainComponent implements OnInit {
       materialId: -1,
       description: '',
       name: '',
-      imgName: '',
+      guid: '',
       markup: 20,
       price: -1,
     };
@@ -81,7 +81,7 @@ export class ProductMainComponent implements OnInit {
         materialId: -1,
         description: '',
         name: '',
-        imgName: '',
+        guid: '',
         markup: 20,
         price: -1,
       };
@@ -108,7 +108,7 @@ export class ProductMainComponent implements OnInit {
 
     if (this._select_Katalog.id == this._select_Product.katalogId) {
       this._select_Product.katalogName = this._select_Katalog.name;
-      this._select_Product.rootImgSrc = this._repository.RootSrcImg;
+      this._select_Product.wwwroot = this._repository.WWWroot;
     } else {
       throw new Error('this._selectKatalog.id!=this._select_Product.katalogId');
       // console.log('onChangeRow--' + event.name);

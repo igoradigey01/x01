@@ -39,26 +39,19 @@
 
           <div
             [ngClass]="{ 'row-grid': i % 2 == 0 }"
-            *ngIf="product.imgName; else elseBlock_3"
+
           >
             <!---    start -->
 
-            <div *ngIf="!product.onChangeWebp;else changedWebp">
-              <img height="38"  src="{{product.rootImgSrc }}S{{ product.imgName }}.webp" />
+            <div >
+              <img height="38"  src={{ImgObj(product)}} >
           </div>
-
-          <ng-template #changedWebp>
-            <img height="38"  src="{{product.rootImgSrc }}M{{ product.imgName }}.webp" />
-          </ng-template>
 
             <!--   endt -->
           </div>
+          <div hidden > {{product.categoriaId}}</div>
+          <div hidden > {{product.materialId}}</div>
 
-          <ng-template #elseBlock_3>
-            <div [ngClass]="{ 'row-grid': i % 2 == 0 }">
-              <img height="38" src="{{ product.rootImgSrc }}not_found.png" />
-            </div>
-          </ng-template>
 
           <!-- end  model view-->
         </ng-template>

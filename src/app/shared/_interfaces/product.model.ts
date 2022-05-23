@@ -11,10 +11,10 @@ export interface Product {
   price?: number;
   markup?: number; //Торговая наценка
   description?: string;
-  imgName?: string; // name -- img getServer(wwwroot/image)
-  rootImgSrc?:string; //url for  server-folder wwwroot/
+  guid: string; // name -- img getServer(wwwroot/image)
+  wwwroot?:string; //url for  server-folder wwwroot/
   imageWebp?: Blob; // именованая ссылка на Blob  window.URL.createObjectURL(d)
-  onChangeWebp?:boolean; // change  img on server (wwwroot/image)
+  wwwrootOK?:boolean; // change  img on server (wwwroot/image)
   imageBase64?: string;
 }
 

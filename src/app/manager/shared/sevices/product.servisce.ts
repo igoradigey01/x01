@@ -28,7 +28,7 @@ export class ProductService {
   _nameKatalog: any = '';
   //readonly _url:string="Type";
 
-  get RootSrcImg(): string {
+  get WWWroot(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
     return this._url.RootImage; //environment.serverRoot + 'images/';
@@ -83,13 +83,14 @@ export class ProductService {
             name: f.name,
             katalogId: f.katalogId,
             katalogName: nameKatalog,
-            materialId: f.typeProductId,
+            materialId: f.materialId,
+            categoriaId: f.categoriaId,
             price: f.price,
             markup: f.markup,
             description: f.description,
             //            -------------
-            imgName: f.image,
-            rootImgSrc: this._url.RootImage,
+            guid: f.image,
+            wwwroot: this._url.RootImage,
           };
         });
       })
@@ -157,7 +158,7 @@ export class ProductService {
 
    new Response(fd).text().then(console.log);
 
-    return this._http.put(this._url.Url + '/' + item.imgName, fd, {
+    return this._http.put(this._url.Url + '/' + item.guid, fd, {
       reportProgress: true,
       observe: 'events',
       headers,

@@ -65,9 +65,10 @@ export class ItemProductComponent implements OnInit {
       katalogId: -1,
       katalogName: '',
       materialId: -1,
+      categoriaId:-1,
       description: '',
       name: '',
-      imgName: '',
+      guid: '',
       markup: 20,
       price: -1,
     };
@@ -121,7 +122,7 @@ export class ItemProductComponent implements OnInit {
       //   this._flagInvalid = true;
       return;
     }
-    console.log("img name--"+ this._select_Product.imgName);
+    console.log("img name--"+ this._select_Product.guid);
 
     if (this._flagViewMode == StateView.edit) {
       // ---- start edit -------
@@ -144,7 +145,7 @@ export class ItemProductComponent implements OnInit {
               this._errorMgs =[];
               this._flagError = false;
               //03.02.22
-              this._select_Product.onChangeWebp=true;
+              this._select_Product.wwwrootOK=true;
               this._onProductChange.emit(<DtoProduct>{
                 product: this._select_Product,
                 flagViewMode: this._flagViewMode,
@@ -309,7 +310,9 @@ export class ItemProductComponent implements OnInit {
               this._errorMgs = [];
               this._flagError = false;
 
-              this._select_Product.imgName=data.body.image // on server imgName ==Image
+              this._select_Product.guid=data.body.image // on server imgName ==Image
+              this._select_Product.id=data.body.id;
+              this._select_Product.wwwroot=this._repository.WWWroot;
 
               this._onProductChange.emit(<DtoProduct>{
                 product: this._select_Product,                           //,
@@ -367,7 +370,7 @@ export class ItemProductComponent implements OnInit {
               this._errorMgs =[];
               this._flagError = false;
               //03.02.22
-              this._select_Product.onChangeWebp=true;
+              this._select_Product.wwwrootOK=true;
               this._onProductChange.emit(<DtoProduct>{
                 product: this._select_Product,
                 flagViewMode: this._flagViewMode,

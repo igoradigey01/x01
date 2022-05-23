@@ -53,8 +53,8 @@ export class ProductDataService {
             markup: f.markup,
             description: f.description,
             //            -------------
-            imgName: f.image,
-            rootImgSrc: this._url.RootImage,
+            guid: f.image,
+            wwwroot: this._url.RootImage,
           };
         });
       })

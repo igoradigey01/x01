@@ -17,6 +17,28 @@ export class ProductTableComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public  ImgObj(product:Product):string{
+
+    let root=product.wwwroot?product.wwwroot:'';
+    root=root+'S'+product.guid+'.webp';
+   // console.log(root);
+    if(!product.wwwrootOK){
+   return  root;
+
+
+    }
+
+    else {
+  /*  let safeUrl=  this.sanitizer.bypassSecurityTrustResourceUrl( URL.createObjectURL(nomenclature.imageWebp));
+     console.log(safeUrl) */
+     //console.log(nomenclature.imageBase64)
+     let timestamp = new Date().getTime();
+     let queryString = "?t=" + timestamp;
+    return root+queryString;
+  }
+  }
+
+
   public changeProduct(product: Product) {
   //  console.log(" changeProduct(product: Product-)"+product.name+"||imgName--"+ product.rootImgSrc+ "|"  +product.imgName);
     this._onChangeRow.emit(product);

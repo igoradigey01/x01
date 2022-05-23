@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
   _flag_sendServerData: boolean = true;
   _progress: number = 0;
 
-  _url_img = this._repository.RootSrcImg;
+  _url_img = this._repository.WWWroot;
   /** this old version product view */
   constructor(private _repository: ProductService) {}
 
@@ -106,7 +106,7 @@ export class ProductComponent implements OnInit {
       // let url=  this._url_img + this._selectedProduct.image;
       // this.getPhotoBase64(this._selectedProduct.image);
       //  this.previewOld();
-      this.getBlobImg(this._selectedProduct.imgName||this.defaulImg.name);
+      this.getBlobImg(this._selectedProduct.guid||this.defaulImg.name);
 
       this._flagDisplayAddButton = false;
       // this._selectedProduct.idTypeProduct-------------------------------------
