@@ -1,0 +1,38 @@
+
+<div class="container-fluid _container"   >
+  <div class=" text-center mb-0" style="margin-top: 1rem;"><h4>КАТЕГОРИИ Номенклатуры</h4></div>
+  <div class="grid-container"  >
+
+    <div *ngFor="let item of _categoriaNs"   >
+      <div *ngIf="!item.hidden">
+      <div *ngIf="!item.flag_link; else elseLink ">
+    <button   class="btn btn-outline-info" (click)="onSharedVarSet(item)" [ngClass]="{s1: flagStyle}" [routerLink]="['/content/categoria',item.id]" [queryParams]="{'categoria':item.name}"  >
+
+       {{ item.name }}</button>
+
+      </div>
+    </div>
+      <!------------------------------------------------- start ng-template-1  -->
+      <ng-template #elseLink>
+
+        <div *ngIf="!item.flag_href; else else_href " >
+          <button   class="btn btn-outline-info"  (click)="onSharedVarSet(item)" [ngClass]="{s1: flagStyle}" [routerLink]="item.link"  >
+
+            {{ item.name }}</button>
+
+        </div>
+       <!-------------------- start ng-template-2 -->
+        <ng-template #else_href>
+          <a  href="{{item.link}}" >
+        <button   class="btn btn-outline-info" [ngClass]="{s1: flagStyle}"  >
+
+       {{ item.name }}</button></a>
+      </ng-template>
+
+      </ng-template>
+      <!--------------------- end ng-templage-1  -->
+    </div>
+  </div>
+</div>
+<!--     22.04.20              -->
+

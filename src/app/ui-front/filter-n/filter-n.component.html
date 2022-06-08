@@ -1,0 +1,93 @@
+<div *ngIf="!_flag_ShowFilter; else elseShowFilter">
+  <button mat-flat-button color="primary" (click)="onShowFilterChange()">
+    {{ _button_name }}
+  </button>
+</div>
+<ng-template #elseShowFilter>
+  <div class="_form-group">
+    <!--------------  Материал== t        -->
+    <div class="_input-group">
+      <mat-form-field id="brand" appearance="fill">
+        <mat-label> Бренд </mat-label>
+        <mat-select
+          name="brand"
+          (selectionChange)="onBrandChange($event)"
+          [(ngModel)]="_select_FilterN.brandId"
+          #brand="ngModel"
+        >
+        <mat-option value="-2">All</mat-option>
+          <mat-option *ngFor="let item of _brands" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="brand.invalid"> </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- idTypeProduct begin -->
+    <div class="_input-group">
+      <mat-form-field id="color" appearance="fill">
+        <mat-label>Цвет</mat-label>
+        <mat-select
+          name="color"
+          [(ngModel)]="_select_FilterN.colorId"
+          (selectionChange)="onColorChange($event)"
+          #color="ngModel"
+        >
+        <mat-option value="-2">All</mat-option>
+          <mat-option *ngFor="let item of _colors" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="color.invalid"> </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="_input-group">
+      <mat-form-field id="article" appearance="fill">
+        <mat-label> Артикул </mat-label>
+        <mat-select
+          name="article"
+          (selectionChange)="onArticleChange($event)"
+          [(ngModel)]="_select_FilterN.articleId"
+          #article="ngModel"
+        >
+        <mat-option value=-2>All</mat-option>
+          <mat-option *ngFor="let item of _articles" [value]="item.id">{{
+            item.name
+          }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="article.invalid"> </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="_input-group">
+      <mat-form-field id="nameFind" appearance="fill">
+        <mat-label> Название </mat-label>
+        <input
+          matInput
+          (keyup)="onNameFindChange(nameFind.value)"
+          type="text"
+          name="nameFind"
+
+
+          [(ngModel)]="_select_FilterN.nameFind"
+          #nameFind="ngModel"
+        />
+
+        <button  matSuffix mat-icon-button aria-label="Clear" (click)="_select_FilterN.nameFind=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <button
+      mat-flat-button
+      style="height: 3rem"
+      color="primary"
+      (click)="onShowFilterChange()"
+    >
+      {{ _button_name }}
+    </button>
+  </div>
+</ng-template>

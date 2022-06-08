@@ -4,18 +4,13 @@
 
 export const environment = {
    production: false,
- /* firebaseConfig : {
-    apiKey: 'AIzaSyAxAhm9TPJuvqRx3kqQ2kUOMvzHzo9R2Us',
-   // authDomain: 'x-01-mystore.firebaseapp.com',
-    databaseURL: 'x-01-mystore.firebaseio.com',
-    projectId: 'x-01-mystore'
-
-  }, */
 
    clientRoot:  'http://localhost:4200/', //'https://x-01.ru/',       //  Host client
-   serverRoot: 'http://localhost:5010/',  //'https://s.x-01.ru/',               //
+   serverRoot: 'http://localhost:8080/',  //'https://s.x-01.ru/',               //
    serverAuthority:'http://localhost:5010/',//'https://s.x-01.ru/',             //
    clientId:'angular-client',
+   postavchik_XF01_Id:'1',// postavchikId:'1',//xf-01.ru
+   postavchik_X01_Id:'2',
    version:'b2.02.22',
    description:"Client shop- вторая редакция (angular:13.1.2)(26.03.22)"
 

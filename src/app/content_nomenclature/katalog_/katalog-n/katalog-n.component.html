@@ -1,0 +1,29 @@
+
+<div class="container-fluid _container">
+
+  <div class="navigate">
+    <div class="navigate-route" ><span class="navigate-route-hiden"> категории</span>>каталог</div>
+    <div><h4> {{  _categoriaN_name }}</h4></div>
+    <div>
+      <a  class="navigate-route-link" (click)="onBackInNavBar()" >назад</a>
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <div *ngFor="let item of _katalogNs">
+      <div *ngIf="!item.hidden">
+
+
+          <button
+            class="btn btn-outline-info"
+
+            [routerLink]="['/content/categoria/katalog', item.id]"
+            [queryParams]="{ katalog: item.name }"
+          >
+            {{ item.name }}
+          </button>
+
+      </div>
+    </div>
+  </div>
+</div>

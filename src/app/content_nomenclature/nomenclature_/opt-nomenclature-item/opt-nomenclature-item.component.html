@@ -1,0 +1,51 @@
+<div class="card" style="width: 18rem;margin-left: auto;margin-right: auto;">
+  <div *ngIf="!_flagShowQRcode ;else showQR">
+  <div class="card-header">
+    <div style="display:flex;justify-content:space-between ;">
+
+      <button class="btn btn-link"  (click)="copyLinkK()"  ><mat-icon aria-hidden="false" aria-label="copy katalog link">content_copy</mat-icon>K</button>
+      <button class="btn btn-link" (click)="copyLinkN()" ><mat-icon aria-hidden="false" aria-label="copy nomenclature link">content_copy</mat-icon>N</button>
+    </div>
+
+
+
+    <div>ОПТ ( ID ):
+      <span *ngIf="_nomenclature">{{_nomenclature.id}} </span>
+    </div>
+    <div>
+      Название: <br>
+      {{FullName}}
+    </div>
+  </div>
+  <img src="{{ ImgObj() }}" class="card-img-top" alt="{{_nomenclature?.name}}">
+  <div class="card-body">
+    <h5 class="card-title">Описание товара</h5>
+    <p class="card-text">
+      {{_nomenclature?.description}}
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Артикул : {{_nomenclature?.articleName}} </li>
+    <li class="list-group-item">Цвет : {{_nomenclature?.colorName}} </li>
+    <li class="list-group-item">Бренд :{{_nomenclature?.brandName}}</li>
+    <li class="list-group-item">Цена : <span *ngIf="_nomenclature"> {{ _nomenclature.price }}р</span></li>
+  </ul>
+</div>
+<div class="card-body" style="display:flex;justify-content:space-between ;">
+
+  <a (click)="onBack()" class="card-link">Назад</a>
+  <a (click)="onToggle()" class="card-link">QR Code</a>
+</div>
+</div>
+
+<ng-template #showQR>
+  <app-qr-code
+  [_katalogURL]="KatalogURL"
+  [_nomenclatureURL]="NomenclatureURL"
+  [_fullName]="FullName"
+  [_katalog_name]="_katalog_name"
+
+  >
+  </app-qr-code>
+</ng-template>
+
