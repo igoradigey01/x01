@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './../material/material.module';
 import { FilterNComponent } from './filter-n/filter-n.component';
 import { FormsModule } from '@angular/forms';
+import {CoreNomenclatureModule} from 'src/app/core-nomenclature/core-nomenclature.module'
 
 
 
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    CoreNomenclatureModule
   ],
   exports:[
     FilterNComponent

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute ,Router} from '@angular/router';
-import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
+import { KatalogN } from 'src/app/core-nomenclature/_interfaces/katalog-n.model';
 import { KatalogNService } from '../../shared/services/katalog-n.service';
 import { Meta, Title } from '@angular/platform-browser';
-import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
-import { SEO_var } from 'src/app/_shared/_interfaces/SEO-var.models';
+import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.service';
+import { SEO_var } from 'src/app/shared/_interfaces/SEO-var.models';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class KatalogNComponent implements OnInit {
     private router: Router,
     private meta: Meta,
     private titleMeta: Title,
-    private sharedVar: SharedVarService
+    private sharedVar: NomenclatrueVarService
 
   ) { }
 
@@ -49,7 +49,7 @@ export class KatalogNComponent implements OnInit {
 
   public onBackInNavBar() {
    // console.log(" onBackInNavBar")
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/content-n');
 
   }
 

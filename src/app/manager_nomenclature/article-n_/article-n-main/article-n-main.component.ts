@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
 
 import { ArticleNService} from '../../shared/services/article-n.service';
-import {Article} from 'src/app/_shared/_interfaces/article.model';
+import {Article} from 'src/app//core-nomenclature/_interfaces/article.model';
 import {DtoArticleN} from '../article-n-item/article-n-item.component'
 
 

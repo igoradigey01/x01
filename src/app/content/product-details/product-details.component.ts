@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
-import { ProductDetile } from 'src/app/shared/_interfaces/product-detile.model';
-import { Nomenclature } from 'src/app/shared/_interfaces/nomenclature.model';
+import { ProductDetile } from 'src/app/manager_old/_shared/_interfaces/product-detile.model';
+import { Nomenclature } from 'src/app/manager_old/_shared/_interfaces/nomenclature.model';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 import { ProductDetailsService } from '../shared/sevices/product-details.service';
 

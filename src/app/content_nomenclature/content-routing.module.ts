@@ -10,8 +10,14 @@ import { OptNomenclatureComponent } from './nomenclature_/opt-nomenclature/opt-n
 import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-item/opt-nomenclature-item.component';
 import { ContentGuard } from './content.guard';
 import { NomenclatureItemResolver } from './shared/resolver/nomenclature-item.resolver';
+import {CategoriaNComponent} from './categoria_/categoria-n/categoria-n.component'
 
 const routes: Routes = [
+  {
+    path: '',
+    component: CategoriaNComponent,
+  },
+
   {
     path: 'categoria/:id',
     component: KatalogNComponent,

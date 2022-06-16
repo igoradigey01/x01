@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable,forkJoin, of } from 'rxjs';
 import {NomenclatureService} from './../services/nomenclature.servise'
-import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
+import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.service';
 
 @Injectable()
 export class NomenclatureItemResolver implements Resolve<any> {
 
   constructor(
     private repository:NomenclatureService,
-    private sharedVar: SharedVarService
+    private sharedVar: NomenclatrueVarService
     ) {
 
   }

@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CategoriaN} from 'src/app/_shared/_interfaces/categoria-n.model';
+
+import { CategoriaN} from 'src/app/core-nomenclature/_interfaces/categoria-n.model';
 import { CategoriaNService} from '../../shared/services/categoria-n.servise';
 import { Meta, Title } from '@angular/platform-browser';
-import {SharedVarService} from 'src/app/_shared/services/shared-var.service';
-import {SEO_var} from 'src/app/_shared/_interfaces/SEO-var.models'
+import {NomenclatrueVarService} from '../../shared/services/nomenclature-var.service';
+import {SEO_var} from 'src/app/shared/_interfaces/SEO-var.models'
 
 @Component({
   selector: 'app-categoria-n',
@@ -29,7 +30,7 @@ export class CategoriaNComponent implements OnInit {
     private _repository:  CategoriaNService,
     private _meta: Meta,
     private _titleMeta: Title,
-    private _sharedVar:SharedVarService
+    private _sharedVar:NomenclatrueVarService
 
     ) {
 

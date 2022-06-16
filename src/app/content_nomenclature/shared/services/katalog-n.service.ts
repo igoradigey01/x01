@@ -5,11 +5,11 @@ import {
 } from '@angular/common/http';
 //import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
-import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
+import { KatalogN } from 'src/app/core-nomenclature/_interfaces/katalog-n.model';
 
 import { Observable } from 'rxjs';
-import {TokenService} from 'src/app/_shared/services/token.service';
-import { RouteApiService } from 'src/app/_shared/services/route-api.service';
+import {TokenService} from 'src/app/shared/services/token.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 
 @Injectable({
   providedIn: ManagerServiceModule

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Input, Output, EventEmitter } from '@angular/core';
-import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
 import { ArticleNService} from     "../../shared/services/article-n.service";                  //' shared/sevices/katalog.service';
-import { Article} from 'src/app/_shared/_interfaces/article.model';
+import { Article} from 'src/app//core-nomenclature/_interfaces/article.model';
 
 
 export interface DtoArticleN {

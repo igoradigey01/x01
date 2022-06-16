@@ -31,7 +31,7 @@ export class ProductService {
   get WWWroot(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return this._url.RootImage; //environment.serverRoot + 'images/';
+    return this._url.WWWroot; //environment.serverRoot + 'images/';
   }
 
   constructor(
@@ -90,7 +90,7 @@ export class ProductService {
             description: f.description,
             //            -------------
             guid: f.image,
-            wwwroot: this._url.RootImage,
+            wwwroot: this._url.WWWroot,
           };
         });
       })

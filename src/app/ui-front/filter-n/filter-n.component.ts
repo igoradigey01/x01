@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
-import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
-import { Color } from 'src/app/_shared/_interfaces/color.model';
-import { Brand } from 'src/app/_shared/_interfaces/brand.model';
-import { Article } from 'src/app/_shared/_interfaces/article.model';
+import { Nomenclature } from 'src/app/core-nomenclature/_interfaces/nomenclature.model';
+import { Color } from 'src/app/core-nomenclature/_interfaces/color.model';
+import { Brand } from 'src/app/core-nomenclature/_interfaces/brand.model';
+import { Article } from 'src/app/core-nomenclature/_interfaces/article.model';
 
 export interface FilterN{
   brandId: number;

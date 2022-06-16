@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
 
 import { ColorNService } from '../../shared/services/color-n.service';
-import {Color} from 'src/app/_shared/_interfaces/color.model';
+import {Color} from 'src/app//core-nomenclature/_interfaces/color.model';
 import {DtoColorN} from '../color-n-item/color-n-item.component'
 
 @Component({

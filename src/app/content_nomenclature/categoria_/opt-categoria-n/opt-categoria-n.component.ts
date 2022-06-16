@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
+import { CategoriaN } from 'src/app/core-nomenclature/_interfaces/categoria-n.model';
 import { CategoriaNService } from '../../shared/services/categoria-n.servise';
 import { Meta, Title } from '@angular/platform-browser';
-import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
-import { SEO_var } from 'src/app/_shared/_interfaces/SEO-var.models'
-import { UserManagerService } from 'src/app/_shared/services/user-manager.service';
+import { SharedVarService } from 'src/app/shared/services/shared-var.service';
+import { SEO_var } from 'src/app/shared/_interfaces/SEO-var.models'
+import { UserManagerService } from 'src/app/shared/services/user-manager.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -81,7 +81,7 @@ export class OptCategoriaNComponent implements OnInit {
   private redirect(){
     //  debugger
        if(!this._userManager.IsShopperOpt){
-         this.router.navigate(['/'])
+         this.router.navigate(['/content-n'])
 
        }
      }

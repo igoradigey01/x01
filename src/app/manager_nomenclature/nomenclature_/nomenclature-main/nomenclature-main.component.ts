@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NomenclatureService } from '../../shared/services/nomenclature.service';
-import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
-import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
-import { Color } from 'src/app/_shared/_interfaces/color.model';
-import { Brand } from 'src/app/_shared/_interfaces/brand.model';
-import { Article } from 'src/app/_shared/_interfaces/article.model';
-import { StateView } from 'src/app/_shared/_interfaces/state-view';
-import { ImgManagerService } from 'src/app/_shared/services/img-manager.service';
+import { Nomenclature } from 'src/app//core-nomenclature/_interfaces/nomenclature.model';
+import { KatalogN } from 'src/app//core-nomenclature/_interfaces/katalog-n.model';
+import { Color } from 'src/app//core-nomenclature/_interfaces/color.model';
+import { Brand } from 'src/app//core-nomenclature/_interfaces/brand.model';
+import { Article } from 'src/app//core-nomenclature/_interfaces/article.model';
+import { StateView } from 'src/app/shared/_interfaces/state-view';
+import { ImgManagerService } from 'src/app/shared/services/img-manager.service';
 import { DtoNomenclature } from '../nomenclature-item/nomenclature-item.component';
 import { KatalogUI } from 'src/app/ui/shared/_interfaces/katalog.model';
-import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
+import { CategoriaN } from 'src/app//core-nomenclature/_interfaces/categoria-n.model';
 import {DtoCategoriaN} from './../../categoria-n_/categoria-n-item/categoria-n-item.component'
 
 @Component({

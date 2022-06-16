@@ -30,7 +30,7 @@ export class ProductDetailsService {
   public get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return this._url.RootImage;
+    return this._url.WWWroot;
   }
 
   public GetBlobIMG(name: string): Observable<Blob> {

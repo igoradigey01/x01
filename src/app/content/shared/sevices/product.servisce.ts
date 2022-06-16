@@ -54,7 +54,7 @@ export class ProductDataService {
             description: f.description,
             //            -------------
             guid: f.image,
-            wwwroot: this._url.RootImage,
+            wwwroot: this._url.WWWroot,
           };
         });
       })
@@ -64,6 +64,6 @@ export class ProductDataService {
   public get RootImg(): string {
     // return this.http.get(src,{responseType: 'blob'});
 
-    return this._url.RootImage;
+    return this._url.WWWroot;
   }
 }

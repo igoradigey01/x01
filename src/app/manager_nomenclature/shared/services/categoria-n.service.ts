@@ -6,10 +6,10 @@ import {
 //import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
 
-import {CategoriaN} from 'src/app/_shared/_interfaces/categoria-n.model'
+import {CategoriaN} from 'src/app/core-nomenclature/_interfaces/categoria-n.model'
 import { Observable } from 'rxjs';
-import {TokenService} from 'src/app/_shared/services/token.service';
-import { RouteApiService } from 'src/app/_shared/services/route-api.service';
+import {TokenService} from 'src/app/shared/services/token.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 
 @Injectable({
   providedIn: ManagerServiceModule
@@ -31,7 +31,7 @@ export class CategoriaNService {
   public CategoriaNs = (): Observable<CategoriaN[]> => {
     this._url.Controller = 'CategoriaN';
     this._url.Action = 'getPostavchik';
-    this._url.ID=this._url.PostavchikId;
+    this._url.ID=this._url.Postavchik_X01_Id;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
        Authorization: 'Bearer ' + this._token.AccessToken,
@@ -50,7 +50,7 @@ export class CategoriaNService {
     this._url.Controller = 'CategoriaN';
     this._url.Action = 'Create';
     this._url.ID=null;
-    item.postavchikId=this._url.PostavchikId;
+    item.postavchikId=this._url.Postavchik_X01_Id;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -74,7 +74,7 @@ export class CategoriaNService {
    this._url.Controller = 'CategoriaN';
    this._url.Action = 'Update';
    this._url.ID=item.id;
-   item.postavchikId=this._url.PostavchikId;
+   item.postavchikId=this._url.Postavchik_X01_Id;
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',

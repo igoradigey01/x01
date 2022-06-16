@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {KatalogN} from 'src/app/_shared/_interfaces/katalog-n.model';
-import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import {KatalogN} from 'src/app//core-nomenclature/_interfaces/katalog-n.model';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
 import { KatalogNService} from '../../shared/services/katalog-n.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
@@ -65,7 +65,7 @@ export class KatalogNItemComponent implements OnInit {
       if (this._select_KatalogN) {
         this._select_KatalogN.id = 0;
         if(this._select_CategoriaN_ID)this._select_KatalogN.categoriaId=this._select_CategoriaN_ID;
-        
+
 
         this._repository.Create(this._select_KatalogN).subscribe(
           (data: HttpEvent<any>) => {

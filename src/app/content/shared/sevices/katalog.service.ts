@@ -19,6 +19,7 @@ export class KatalogService {
   public Katalogs = (): Observable<Katalog[]> => {
     this.url.Controller = 'KatalogP';
     this.url.Action = 'get';
+    this.url.ID=  null;          //this.url.Postavchik_X01_Id;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,

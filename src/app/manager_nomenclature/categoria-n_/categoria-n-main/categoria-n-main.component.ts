@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
 
 import { CategoriaNService } from '../../shared/services/categoria-n.service';
-import { CategoriaN} from 'src/app/_shared/_interfaces/categoria-n.model';
+import { CategoriaN} from 'src/app//core-nomenclature/_interfaces/categoria-n.model';
 import {DtoCategoriaN} from '../categoria-n-item/categoria-n-item.component'
 
 

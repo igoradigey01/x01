@@ -27,6 +27,7 @@ export class RootViewElementComponent implements OnInit {
 
   @Input() public _modul_name:string=""
   @Input() public _router_link:string="";
+  @Input() public _flagAddButton=true;
 
   @Output() onChangedViewMode = new EventEmitter<StateView>();
   @Output() onClickKatalogUI=new EventEmitter();
@@ -37,24 +38,23 @@ export class RootViewElementComponent implements OnInit {
     private userManager: UserManagerService,
     private router : Router
   ) {
-
     //debugger
     let sub1=  this.userManager.InvalidLogin$.subscribe(
       d => { this._invalidLogin = d;
 
            });
 
-    let sub2=  this.userManager.InvalidTimeAccess_token$.subscribe(
+  /*   let sub2=  this.userManager.InvalidTimeAccess_token$.subscribe(
       d => {
         this._invalidLogin = d;
 
       //  console.log("RootViewElementComponent--this.userManager.InvalidTimeAccess_token$--")
         if(d) this.routedLogins();
       }
-    );
+    ); */  //18.04.22
     this._subscriptions.push(sub1);
-    this._subscriptions.push(sub2);
-   }
+   // this._subscriptions.push(sub2);//18.04.22
+  }
 
   ngOnInit(): void {
   }
@@ -72,6 +72,7 @@ export class RootViewElementComponent implements OnInit {
   }
 
   public addItem():void {
+    // debugger
     this._flagViewState = StateView.create;
     this._selectedKagalogUI = <KatalogUI>{ id: -1, name: '' };
     this.onChangedViewMode.emit(this._flagViewState);
@@ -79,9 +80,14 @@ export class RootViewElementComponent implements OnInit {
   }
 
   public get DistplayButton():boolean{
-    if(this._flagViewState==StateView.create)return true;
-    return this._flagViewState==StateView.default?true:false;
+    if((this._flagViewState==StateView.create)&&this._flagAddButton)
+    return true;
+    if((this._flagViewState==StateView.default)&&this._flagAddButton)
+    return true;
+    return false;
   }
+
+
 
   private routedLogins(){
     this.router.navigate(['/account']);

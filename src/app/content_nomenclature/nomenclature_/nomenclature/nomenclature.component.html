@@ -1,10 +1,12 @@
 <div class="navigate">
   <div class="navigate-route" ><span class="navigate-route-hiden"> категории>каталог</span>>номенклатура </div>
-  <div><h4> {{  _katalogN_name }} </h4></div>
+
   <div>
     <a  class="navigate-route-link" (click)="onBackInNavBar()" >назад</a>
   </div>
 </div>
+<div><h4> {{  _katalogN_name }} </h4></div>
+
 <div style="display: flex;width: 100%;justify-content: flex-end;">
   <app-filter-n [_articles]="_articles" [_brands]="_brands" [_colors]="_colors" [_oldNomenclatures]="_nomenclatures"
     (_onFilterNomenclatureChange)="onFilterNomenclatureChange($event)"></app-filter-n>

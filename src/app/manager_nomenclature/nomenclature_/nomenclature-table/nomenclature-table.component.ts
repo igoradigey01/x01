@@ -1,12 +1,12 @@
 import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { Color } from 'src/app/_shared/_interfaces/color.model';
-import { Brand } from 'src/app/_shared/_interfaces/brand.model';
-import { Article } from 'src/app/_shared/_interfaces/article.model';
-import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
+import { Color } from 'src/app/core-nomenclature/_interfaces/color.model';
+import { Brand } from 'src/app/core-nomenclature/_interfaces/brand.model';
+import { Article } from 'src/app/core-nomenclature/_interfaces/article.model';
+import { Nomenclature } from 'src/app/core-nomenclature/_interfaces/nomenclature.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 // import { DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import { DtoFilterN } from 'src/app/ui-front/filter-n/filter-n.component';
-import { StateView } from 'src/app/_shared/_interfaces/state-view';
+import { StateView } from 'src/app/shared/_interfaces/state-view';
 import { NomenclatureService } from '../../shared/services/nomenclature.service';
 import { PriceN } from '../../shared/_interfaces/price-n.model';
 

@@ -3,11 +3,12 @@
 
   <div class="navigate">
     <div class="navigate-route" ><span class="navigate-route-hiden"> категории</span>>каталог</div>
-    <div><h4> {{  _categoriaN_name }}</h4></div>
+
     <div>
       <a  class="navigate-route-link" (click)="onBackInNavBar()" >назад</a>
     </div>
   </div>
+  <div><h4> {{  _categoriaN_name }}</h4></div>
 
   <div class="grid-container">
     <div *ngFor="let item of _katalogNs">
@@ -17,7 +18,7 @@
           <button
             class="btn btn-outline-info"
 
-            [routerLink]="['/content/categoria/katalog', item.id]"
+            [routerLink]="['/content-n/categoria/katalog', item.id]"
             [queryParams]="{ katalog: item.name }"
           >
             {{ item.name }}

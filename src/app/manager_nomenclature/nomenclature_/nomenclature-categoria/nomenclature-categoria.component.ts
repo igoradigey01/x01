@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { StateView } from 'src/app/_shared/_interfaces/state-view';
+import { StateView } from 'src/app/shared/_interfaces/state-view';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
+import { CategoriaN } from 'src/app//core-nomenclature/_interfaces/categoria-n.model';
 import { DtoCategoriaN } from '../../categoria-n_/categoria-n-item/categoria-n-item.component';
 
 @Component({

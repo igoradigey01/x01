@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
+import { KatalogN } from 'src/app/core-nomenclature/_interfaces/katalog-n.model';
 import { KatalogNService } from '../../shared/services/katalog-n.service';
-import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
+import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.service';
 
 @Component({
   selector: 'app-opt-katalog-n',
@@ -17,7 +17,7 @@ export class OptKatalogNComponent implements OnInit {
     private repository: KatalogNService,
     private route: ActivatedRoute,
     private router: Router,
-    private sharedVar: SharedVarService
+    private sharedVar: NomenclatrueVarService
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class OptKatalogNComponent implements OnInit {
 
   public onBackInNavBar() {
     console.log(" onBackInNavBar")
-    this.router.navigateByUrl('/content/opt');
+    this.router.navigateByUrl('/content-n/opt');
 
   }
 

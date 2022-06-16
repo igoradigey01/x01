@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Input, Output, EventEmitter } from '@angular/core';
-import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
 import { ColorNService} from     "../../shared/services/color-n.service";                  //' shared/sevices/katalog.service';
-import { Color } from 'src/app/_shared/_interfaces/color.model';
+import { Color } from 'src/app//core-nomenclature/_interfaces/color.model';
 
 
 export interface DtoColorN {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { StateView } from 'src/app/_shared/_interfaces/state-view';
-import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
+import { StateView } from 'src/app/shared/_interfaces/state-view';
+import { KatalogN } from 'src/app//core-nomenclature/_interfaces/katalog-n.model';
 import { KatalogNService } from '../../shared/services/katalog-n.service';
 import { DtoKatalogN } from '../katalog-n-item/katalog-n-item.component';
-import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
+import { CategoriaN } from 'src/app//core-nomenclature/_interfaces/categoria-n.model';
 import { KatalogUI } from 'src/app/ui/shared/_interfaces/katalog.model';
 
 @Component({

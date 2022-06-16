@@ -14,29 +14,30 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./left-panel-view-element.component.scss'],
 })
 export class LeftPanelViewElementComponent implements OnInit {
-  // @ViewChild('sidenav') _sidenav: MatSidenav|undefined;
-  @Input() public _modul_name: string = '';
-  @Input() public _router_link: string = '';
-  @Input()  public _flagViewState: StateView = StateView.default;
-  @Output() _onChangedViewMode = new EventEmitter<StateView>();
-  @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();
-  public _selectedKagalogUI: KatalogUI = <KatalogUI>{ id: -1, name: '' };
-  @Input() public _katalogUIs: KatalogUI[] | null = null;
-  public _flagStyle: boolean = false;
+   // @ViewChild('sidenav') _sidenav: MatSidenav|undefined;
+   @Input() public _modul_name: string = '';
+   @Input() public _router_link: string = '';
+   @Input() public _flagAddButton:boolean=true;
+   @Input()  public _flagViewState: StateView = StateView.default;
+   @Output() _onChangedViewMode = new EventEmitter<StateView>();
+   @Output() _onChangedKatalogUI = new EventEmitter<KatalogUI>();
+   public _selectedKagalogUI: KatalogUI = <KatalogUI>{ id: -1, name: '' };
+   @Input() public _katalogUIs: KatalogUI[] =[];
+   public _flagStyle: boolean = false;
 
-  constructor(public breakpointObserver: BreakpointObserver) {}
+   constructor(public breakpointObserver: BreakpointObserver) {}
 
-  ngOnInit(): void {}
+   ngOnInit(): void {}
 
-  public onChangedView(event: StateView) {
-    this._flagViewState = event;
-    this._onChangedViewMode.emit(event);
-  }
+   public onChangedView(event: StateView) {
+     this._flagViewState = event;
+     this._onChangedViewMode.emit(event);
+   }
 
-  public onChecks(item: KatalogUI) {
-    this._flagStyle = true;
-    this._selectedKagalogUI = item;
-    this._onChangedKatalogUI.emit(item)
-    // if(this._sidenav) this._sidenav.close();
-  }
+   public onChecks(item: KatalogUI) {
+     this._flagStyle = true;
+     this._selectedKagalogUI = item;
+     this._onChangedKatalogUI.emit(item)
+     // if(this._sidenav) this._sidenav.close();
+   }
 }

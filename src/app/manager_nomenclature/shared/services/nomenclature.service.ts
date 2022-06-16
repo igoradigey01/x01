@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map} from 'rxjs/operators';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { Nomenclature} from 'src/app/_shared/_interfaces/nomenclature.model';
-import { KatalogN } from 'src/app/_shared/_interfaces/katalog-n.model';
-import { Article } from 'src/app/_shared/_interfaces/article.model';
-import {Brand} from 'src/app/_shared/_interfaces/brand.model'
-import {Color} from  'src/app/_shared/_interfaces/color.model'
+//import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { Nomenclature} from 'src/app/core-nomenclature/_interfaces/nomenclature.model';
+import { KatalogN } from 'src/app/core-nomenclature/_interfaces/katalog-n.model';
+import { Article } from 'src/app/core-nomenclature/_interfaces/article.model';
+import {Brand} from 'src/app/core-nomenclature/_interfaces/brand.model'
+import {Color} from  'src/app/core-nomenclature/_interfaces/color.model'
 import { HttpClient, HttpHeaders,  HttpParams } from '@angular/common/http';
 
 import { ManagerServiceModule } from './maneger-service.module';
@@ -15,9 +15,9 @@ import { KatalogNService} from './katalog-n.service';
 import {ArticleNService} from './article-n.service';
 import {BrandNService} from './brand-n.service';
 import {ColorNService} from './color-n.service'
-import { RouteApiService } from 'src/app/_shared/services/route-api.service';
-import { TokenService } from 'src/app/_shared/services/token.service';
-import { CategoriaN } from 'src/app/_shared/_interfaces/categoria-n.model';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
+import { TokenService } from 'src/app/shared/services/token.service';
+import { CategoriaN } from 'src/app/core-nomenclature/_interfaces/categoria-n.model';
 import {PriceN} from './../_interfaces/price-n.model'
 
 enum FlagSendData {
@@ -92,7 +92,7 @@ export class NomenclatureService {
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-    let params:HttpParams=new HttpParams().set('postavchikId',this._url.PostavchikId)
+    let params:HttpParams=new HttpParams().set('postavchikId',this._url.Postavchik_X01_Id)
 
     const httpOptions={headers,params}
     return this._http.get<Nomenclature[]>(this._url.Url, httpOptions) .pipe(
@@ -151,7 +151,7 @@ export class NomenclatureService {
   public NomenclaturePs = (): Observable<Nomenclature[]> => {
     this._url.Controller = 'Nomenclature';
     this._url.Action = 'NomenclaturePs';
-    this._url.ID=this._url.PostavchikId;
+    this._url.ID=this._url.Postavchik_X01_Id;
    // debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -193,7 +193,7 @@ export class NomenclatureService {
     this._url.Controller = 'Nomenclature';
     this._url.Action = 'Create'; //Post
     this._url.ID=null;
-    item.postavchikId=this._url.PostavchikId;
+    item.postavchikId=this._url.Postavchik_X01_Id;
     // debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -355,8 +355,9 @@ export class NomenclatureService {
           return;
         }
 
-        formData.append(key, value);
+        formData.append(key,<string> value); //12.06.22
         // console.log(`${key}: ${value}`)
+
       });
 
       return formData;
@@ -370,7 +371,7 @@ export class NomenclatureService {
         if (key == 'imageBase64') return;
         if (key == 'imageWebp') return;
 
-        formData.append(key, value);
+        formData.append(key,<string> value); //12.06.22
         // console.log(`${key}: ${value}`)
       });
 
@@ -381,14 +382,14 @@ export class NomenclatureService {
       entries.forEach(([key, value]) => {
 
         if(key=='id'){
-          formData.append(key,value);
+          formData.append(key,<string> value); //12.06.22
           return;
         }
 
 
         if(key=='guid'){
 
-          formData.append(key, value);
+          formData.append(key,<string> value); //12.06.22
           return;
 
         }

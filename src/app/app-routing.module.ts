@@ -26,9 +26,19 @@ const routes: Routes = [
       import('./content/content.module').then((m) => m.ContentModule),
   },
   {
+    path: 'content-n',
+    loadChildren: () =>
+      import('./content_nomenclature/content-n.module').then((m) => m.ContentNModule),
+  },
+  {
     path: 'manager',
     loadChildren: () =>
       import('./manager/manager.module').then((m) => m.ManagerModule),
+  },
+  {
+    path: 'manager-n',
+    loadChildren: () =>
+      import('./manager_nomenclature/manager.module').then((m) => m.ManagerModule),
   },
   {
     path: 'admin',

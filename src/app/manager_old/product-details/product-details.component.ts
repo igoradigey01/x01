@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { throwError } from 'rxjs';
 import { CorpImgFile } from '../../manager/shared/_interfaces/crop-img.model';
 import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
-import { ProductDetile } from 'src/app/shared/_interfaces/product-detile.model';
+import { ProductDetile } from 'src/app/manager_old/_shared/_interfaces/product-detile.model';
 import { Katalog } from 'src/app/shared/_interfaces/katalog.model';
 import { Product } from 'src/app/shared/_interfaces/product.model';
 

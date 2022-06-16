@@ -5,10 +5,10 @@ import {
 } from '@angular/common/http';
 //import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
-import {Color} from 'src/app/_shared/_interfaces/color.model';
+import {Color} from 'src/app/core-nomenclature/_interfaces/color.model';
 import { Observable } from 'rxjs';
-import {TokenService} from 'src/app/_shared/services/token.service';
-import { RouteApiService } from 'src/app/_shared/services/route-api.service';
+import {TokenService} from 'src/app/shared/services/token.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 
 @Injectable({
   providedIn: ManagerServiceModule
@@ -31,7 +31,7 @@ export class ColorNService {
   public ColorNs = (): Observable<Color[]> => {
     this._url.Controller = 'ColorN';
     this._url.Action = 'getPostavchik';
-    this._url.ID=this._url.PostavchikId;
+    this._url.ID=this._url.Postavchik_X01_Id;
 
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
@@ -51,7 +51,7 @@ export class ColorNService {
     this._url.Controller = 'ColorN';
     this._url.Action = 'Create';
     this._url.ID=null;
-    item.postavchikId=this._url.PostavchikId;
+    item.postavchikId=this._url.Postavchik_X01_Id;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -75,7 +75,7 @@ export class ColorNService {
    this._url.Controller = 'ColorN';
    this._url.Action = 'Update';
    this._url.ID=item.id;
-   item.postavchikId=this._url.PostavchikId;
+   item.postavchikId=this._url.Postavchik_X01_Id;
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',

@@ -1,16 +1,16 @@
 import { Component, OnInit , SimpleChanges  } from '@angular/core';
-import { Color } from 'src/app/_shared/_interfaces/color.model';
-import { Brand } from 'src/app/_shared/_interfaces/brand.model';
-import { Article } from 'src/app/_shared/_interfaces/article.model';
-import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
+import { Color } from 'src/app/core-nomenclature/_interfaces/color.model';
+import { Brand } from 'src/app/core-nomenclature/_interfaces/brand.model';
+import { Article } from '../../../core-nomenclature/_interfaces/article.model';
+import { Nomenclature } from 'src/app/core-nomenclature/_interfaces/nomenclature.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 import { DtoFilterN } from 'src/app/ui-front/filter-n/filter-n.component';
-import { StateView } from 'src/app/_shared/_interfaces/state-view';
-import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
+import { StateView } from 'src/app/shared/_interfaces/state-view';
+import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { SEO_var } from 'src/app/_shared/_interfaces/SEO-var.models';
-import {NomenclatureService} from './../../shared/services/nomenclature.servise'
+import { SEO_var } from 'src/app/shared/_interfaces/SEO-var.models';
+import {NomenclatureService} from '../../shared/services/nomenclature.servise'
 
 interface NomenclatureP extends Nomenclature {
   check?: boolean;
@@ -42,7 +42,7 @@ export class NomenclatureComponent implements OnInit {
 
 
   constructor(
-    private sharedVar: SharedVarService,
+    private sharedVar: NomenclatrueVarService,
     private route: ActivatedRoute,
     private router: Router,
     private meta: Meta,
@@ -135,15 +135,17 @@ export class NomenclatureComponent implements OnInit {
   }
 
   public onBackInNavBar() {
+   // debugger
     //console.log(" onBackInNavBar")
      if(this.sharedVar.IdCategoria!==-1)
-    this.router.navigateByUrl('/content/categoria/'+this.sharedVar.IdCategoria);
+    this.router.navigateByUrl('/content-n/categoria/'+this.sharedVar.IdCategoria);
     else{
       if(this._nomenclatures.length>0)
       this.repository.KatalogN(this._nomenclatures[0].katalogId).subscribe(
         d=>{
-
-          this.router.navigateByUrl('/content/categoria/'+d.categoriaId);
+          console.log('onBackInNavBar ----- nomenclature')
+          console.log(JSON.stringify(d))
+          this.router.navigateByUrl('/content-n/categoria/'+d.categoriaId);
 
         }
       )

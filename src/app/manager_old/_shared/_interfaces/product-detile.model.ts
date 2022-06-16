@@ -1,5 +1,5 @@
-import {ImageDetile} from  './image-detile.model';
-import { Product } from "./product.model";
+import {ImageDetile} from  '../../../shared/_interfaces/image-detile.model';
+import { Product } from "../../../shared/_interfaces/product.model";
 import {Nomenclature} from './nomenclature.model'
 
 export interface ProductDetile {

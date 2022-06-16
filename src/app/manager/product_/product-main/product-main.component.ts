@@ -16,7 +16,7 @@ import { KatalogUI } from 'src/app/ui/shared/_interfaces/katalog.model';
   styleUrls: ['./product-main.component.scss'],
 })
 export class ProductMainComponent implements OnInit {
-  public _katalogs: Katalog[] | null = null;
+  public _katalogs: Katalog[]  = [];
   public _select_Katalog: Katalog = <Katalog>{ id: -1, name: '' };
   public _modul_name: string = '(менеджер)';
   public _router_link: string = '/manager';

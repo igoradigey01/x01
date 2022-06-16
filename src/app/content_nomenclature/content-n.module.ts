@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { ContentRoutingModule } from './content-routing.module';
-import { KatalogNComponent } from './katalog_/katalog-n/katalog-n.component';
-import {OptKatalogNComponent} from './katalog_/opt-katalog-n/opt-katalog-n.component'
-import { OptCategoriaNComponent } from './categoria_/opt-categoria-n/opt-categoria-n.component';
-import {ManagerServiceModule} from './shared/services/maneger-service.module';
-import {MaterialFrontModule} from 'src/app/material/material-front.module.'
+import { QrCodeModule } from 'ng-qrcode';
+import { UiFrontModule } from '../ui-front/ui-front.module';
+import { MaterialFrontModule } from 'src/app/material/material-front.module.'
+import { ManagerServiceModule } from './shared/services/maneger-service.module';
+import { CoreNomenclatureModule } from 'src/app/core-nomenclature/core-nomenclature.module'
 import { NomenclatureComponent } from './nomenclature_/nomenclature/nomenclature.component';
 import { OptNomenclatureComponent } from './nomenclature_/opt-nomenclature/opt-nomenclature.component'
-import { UiFrontModule} from './../ui-front/ui-front.module';
 import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component';
 import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-item/opt-nomenclature-item.component';
-import {NomenclatureItemResolver} from './shared/resolver/nomenclature-item.resolver'
-import { QrCodeModule } from 'ng-qrcode';
-import { ClipboardModule } from '@angular/cdk/clipboard'
+import { NomenclatureItemResolver } from './shared/resolver/nomenclature-item.resolver'
 
-import { QrCodeComponent } from '../content_/nomenclature_/qr-code/qr-code.component';
+
+import { ClipboardModule } from '@angular/cdk/clipboard'
+import { KatalogNComponent } from './katalog_/katalog-n/katalog-n.component';
+import { OptKatalogNComponent } from './katalog_/opt-katalog-n/opt-katalog-n.component'
+import { OptCategoriaNComponent } from './categoria_/opt-categoria-n/opt-categoria-n.component';
+import {CategoriaNComponent} from './categoria_/categoria-n/categoria-n.component'
+
+
+import { QrCodeComponent } from './nomenclature_/qr-code/qr-code.component'  //  qr-code/qr-code.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,8 @@ import { QrCodeComponent } from '../content_/nomenclature_/qr-code/qr-code.compo
     OptNomenclatureComponent,
     NomenclatureItemComponent,
     OptNomenclatureItemComponent,
-    QrCodeComponent
+    QrCodeComponent,
+    CategoriaNComponent
 
   ],
   imports: [
@@ -36,16 +43,18 @@ import { QrCodeComponent } from '../content_/nomenclature_/qr-code/qr-code.compo
     UiFrontModule,
     MaterialFrontModule,
     QrCodeModule,
-    ClipboardModule
+    ClipboardModule,
+    CoreNomenclatureModule,
+
 
   ],
-  exports:[
+  exports: [
     KatalogNComponent,
     OptCategoriaNComponent,
     OptKatalogNComponent
   ],
-  providers:[
+  providers: [
     NomenclatureItemResolver
   ]
 })
-export class ContentModule { }
+export class ContentNModule { }

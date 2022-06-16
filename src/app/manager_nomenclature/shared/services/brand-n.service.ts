@@ -5,10 +5,10 @@ import {
 } from '@angular/common/http';
 //import { environment } from 'src/environments/environment';
 import { ManagerServiceModule } from './maneger-service.module';
-import {Brand} from 'src/app/_shared/_interfaces/brand.model';
+import {Brand} from 'src/app/core-nomenclature/_interfaces/brand.model';
 import { Observable } from 'rxjs';
-import {TokenService} from 'src/app/_shared/services/token.service';
-import { RouteApiService } from 'src/app/_shared/services/route-api.service';
+import {TokenService} from 'src/app/shared/services/token.service';
+import { RouteApiService } from 'src/app/shared/services/route-api.service';
 
 @Injectable({
   providedIn: ManagerServiceModule
@@ -29,7 +29,7 @@ export class BrandNService {
   public BrandNs = (): Observable<Brand[]> => {
     this._url.Controller = 'BrandN';
     this._url.Action = 'getPostavchik';
-    this._url.ID=this._url.PostavchikId;
+    this._url.ID=this._url.Postavchik_X01_Id;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
        Authorization: 'Bearer ' + this._token.AccessToken,
@@ -48,7 +48,7 @@ export class BrandNService {
     this._url.Controller = 'BrandN';
     this._url.Action = 'Create';
     this._url.ID=null
-    item.postavchikId=this._url.PostavchikId;
+    item.postavchikId=this._url.Postavchik_X01_Id;
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',
       Authorization: 'Bearer ' + this._token.AccessToken,
@@ -72,7 +72,7 @@ export class BrandNService {
    this._url.Controller = 'BrandN';
    this._url.Action = 'Update';
    this._url.ID=item.id;
-   item.postavchikId=this._url.PostavchikId;
+   item.postavchikId=this._url.Postavchik_X01_Id;
  //  debugger
     let headers: HttpHeaders = new HttpHeaders({
       Accept: 'application/json',

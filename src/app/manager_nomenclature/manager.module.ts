@@ -24,6 +24,7 @@ import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nom
 import { NomenclatureCategoriaComponent } from './nomenclature_/nomenclature-categoria/nomenclature-categoria.component';
 import { NomenclatureKatalogComponent } from './nomenclature_/nomenclature-katalog/nomenclature-katalog.component'
 import { UiFrontModule} from './../ui-front/ui-front.module';
+import {CoreNomenclatureModule} from 'src/app/core-nomenclature/core-nomenclature.module'
 
 
 
@@ -61,7 +62,8 @@ import { UiFrontModule} from './../ui-front/ui-front.module';
     ImageCropperModule,
     MaterialModule,
     UiModule,
-    UiFrontModule
+    UiFrontModule,
+    CoreNomenclatureModule
   ]
 })
 export class ManagerModule { }

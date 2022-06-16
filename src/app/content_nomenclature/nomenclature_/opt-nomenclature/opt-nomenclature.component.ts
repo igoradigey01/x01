@@ -1,17 +1,17 @@
 import { Component, OnInit , SimpleChanges  } from '@angular/core';
-import { Color } from 'src/app/_shared/_interfaces/color.model';
-import { Brand } from 'src/app/_shared/_interfaces/brand.model';
-import { Article } from 'src/app/_shared/_interfaces/article.model';
-import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
+import { Color } from 'src/app/core-nomenclature/_interfaces/color.model';
+import { Brand } from 'src/app/core-nomenclature/_interfaces/brand.model';
+import { Article } from '../../../core-nomenclature/_interfaces/article.model';
+import { Nomenclature } from 'src/app/core-nomenclature/_interfaces/nomenclature.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 import { DtoFilterN } from 'src/app/ui-front/filter-n/filter-n.component';
-import { StateView } from 'src/app/_shared/_interfaces/state-view';
-import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
+import { StateView } from 'src/app/shared/_interfaces/state-view';
+import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-import { SEO_var } from 'src/app/_shared/_interfaces/SEO-var.models';
+import { SEO_var } from 'src/app/shared/_interfaces/SEO-var.models';
 import {NomenclatureService} from './../../shared/services/nomenclature.servise'
-import { UserManagerService } from 'src/app/_shared/services/user-manager.service';
+import { UserManagerService } from 'src/app/shared/services/user-manager.service';
 
 interface NomenclatureP extends Nomenclature {
   check?: boolean;
@@ -39,10 +39,10 @@ export class OptNomenclatureComponent implements OnInit {
   public _flagViewState: StateView = StateView.default;
 
   @Output() public _onChangeRow = new EventEmitter<Nomenclature>()
-    
+
 
   constructor(
-    private sharedVar: SharedVarService,
+    private sharedVar: NomenclatrueVarService,
     private route: ActivatedRoute,
     private router: Router,
     private meta: Meta,

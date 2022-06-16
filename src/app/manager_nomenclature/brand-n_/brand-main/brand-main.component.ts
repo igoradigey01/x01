@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {StateView} from 'src/app/_shared/_interfaces/state-view';
+import {StateView} from 'src/app/shared/_interfaces/state-view';
 
 import { BrandNService } from '../../shared/services/brand-n.service';
-import { Brand} from 'src/app/_shared/_interfaces/brand.model';
+import { Brand} from 'src/app//core-nomenclature/_interfaces/brand.model';
 import {DtoBarndN} from '../brand-item/brand-item.component'
 
 @Component({

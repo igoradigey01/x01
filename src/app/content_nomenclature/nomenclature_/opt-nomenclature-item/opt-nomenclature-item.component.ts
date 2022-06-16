@@ -1,10 +1,10 @@
 import { Component, OnInit  } from '@angular/core';
-import { Nomenclature } from 'src/app/_shared/_interfaces/nomenclature.model';
+import { Nomenclature } from 'src/app/core-nomenclature/_interfaces/nomenclature.model';
 import { EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NomenclatureService } from './../../shared/services/nomenclature.servise'
-import { SharedVarService } from 'src/app/_shared/services/shared-var.service';
-import { UserManagerService } from 'src/app/_shared/services/user-manager.service';
+import { NomenclatureService } from '../../shared/services/nomenclature.servise'
+import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.service';
+import { UserManagerService } from 'src/app/shared/services/user-manager.service';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { environment } from 'src/environments/environment';
 
@@ -60,7 +60,7 @@ export class OptNomenclatureItemComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private repository: NomenclatureService,
-    private sharedVar: SharedVarService,
+    private sharedVar: NomenclatrueVarService,
     private _userManager: UserManagerService,
     private clipboard: Clipboard
     ) {
