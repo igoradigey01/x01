@@ -1,15 +1,23 @@
 # X01
-
 Client Basic for apiX01 <br/>
 корпусная мебель и комплектующие - SMC (система управления контентом)<br>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version  13.1.3. <br/>
+sample (front) :<br/>
+https://x-01.ru  <br/>
+
+
+# X01 dependency 
+ https://github.com/Mawi137/ngx-image-cropper <br/>
+ https://github.com/parallax/jsPDF<br/>
+ https://www.npmjs.com/package/ng-qrcode<br/>
+ https://material.angular.io/components/categories <br/>
+
 # image-cropper
  ui/img-render/img-render.component.ts <br/>
  image-cropper is Martijn <br/>
  https://github.com/Mawi137/ngx-image-cropper <br/>
-
-
+ 
  # qr-code
  https://www.npmjs.com/package/ng-qrcode <br/>
  npm install ng-qrcode --save <br/>
@@ -58,4 +66,8 @@ docker volume prune // delete volume <br/>
   add ( declare var font: any; ) header qr-code.component.ts <br/>
   restart ( ng s )<br/>
   or see js-pdf.service.ts<br/>
+  # Docker localHost
+  docker ps <br/>
+  копировать img в контейнер docker <br/>
+  docker cp E:\backup_Host\04-06-22\images  6cd120faec5a:/app/wwwroot/ <br/>
   

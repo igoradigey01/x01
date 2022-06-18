@@ -12,7 +12,7 @@
 }
 .grid-img-view-container {
   display: grid;
-  width: 380px;
+  width: 604px;
   margin-left: auto;
   margin-right: auto;
   grid-template-columns: 33.3% auto 33.3%;
@@ -20,14 +20,14 @@
   grid-auto-rows: max-content;
 }
 .img_block{
-  height: 136px;
+  height: 200px;
 
 }
 
 .img_block-img-view {
   position: relative;
   width: auto;
-  height: 160px;
+  height: 224px;
   float: left;
   margin-bottom: 3px;
 }

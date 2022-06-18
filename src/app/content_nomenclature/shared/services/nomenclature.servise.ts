@@ -29,7 +29,7 @@ export class NomenclatureService {
 
   ){}
 
-    /**Postavchik + Katalog get Nomenclature*/
+    /** http_x01,http_xf01 Postavchik + Katalog get Nomenclature*/
   public NomenclaturePKs = (idKatlaog:number): Observable<Nomenclature[]> => {
     this._url.Controller = 'Nomenclature';
     this._url.Action = 'NomenclaturePKs';
@@ -110,7 +110,7 @@ export class NomenclatureService {
      {
       let x01:Nomenclature[]=d[0];
       let xf01:Nomenclature[]=d[1];
-      
+
 
       return xf01.concat(xf01);
      }
