@@ -7,6 +7,7 @@ import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.s
 @Injectable()
 export class NomenclatureItemResolver implements Resolve<any> {
 
+
   constructor(
     private repository:NomenclatureService,
     private sharedVar: NomenclatrueVarService
@@ -14,13 +15,14 @@ export class NomenclatureItemResolver implements Resolve<any> {
 
   }
 
-
+/**resolver не используется в приложении-
+ * загрузка данных мульти http.get() по потребности-- */
   resolve(): Observable<any> {
-
+         throw "not implect exeption !!!! 20-06-22 "
     // const articles = this.repository.ArticleNs;
     // const brands = this.repository.BrandNs;
     // const colors = this.repository.ColorNs;
-    this.repository.ArticleNs().subscribe((data) => {
+  /*   this.repository.ArticleNs().subscribe((data) => {
       this.sharedVar.ArticleNs = data;
     });
     this.repository.ColorNs().subscribe((data) => {
@@ -31,7 +33,7 @@ export class NomenclatureItemResolver implements Resolve<any> {
       console.log("NomemclatureItem -- BrandNs.lenght---ngOnInit"+this.sharedVar.ColorNs.length)
 
     });
-
+ */
     return  of( true);
     //return of(true);
   }

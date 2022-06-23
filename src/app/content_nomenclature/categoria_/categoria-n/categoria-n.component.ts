@@ -53,7 +53,7 @@ export class CategoriaNComponent implements OnInit {
       (err) => console.log('load katalog err: --' + err)
     );
 
-    this._repository.CategoriaNs().subscribe((data) => {
+  /*   this._repository.CategoriaNs().subscribe((data) => {
       this._categoriaNs = data;
     });
     this._repository.ArticleNs().subscribe((data) => {
@@ -64,7 +64,7 @@ export class CategoriaNComponent implements OnInit {
     });
     this._repository.BrandNs().subscribe((data) => {
       this._sharedVar.BrandNs = data;
-    });
+    }); */
 
   }
 

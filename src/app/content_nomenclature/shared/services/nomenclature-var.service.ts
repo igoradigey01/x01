@@ -13,9 +13,9 @@ import {ManagerServiceModule} from './maneger-service.module'
 export class NomenclatrueVarService {
 
   private _seoVar:SEO_var|undefined;
-  private  _clorNs:Color[]=[];
-  private _brandNs:Brand[]=[];
-  private _articleNs:Article[]=[];
+  // private  _clorNs:Color[]=[];
+  // private _brandNs:Brand[]=[];
+  // private _articleNs:Article[]=[];
   private _katlogNs:KatalogN[]=[];
   private _idCategoria:number=-1;
 
@@ -26,7 +26,7 @@ export class NomenclatrueVarService {
     this._seoVar=seoVar;
   }
 
-  public get ColorNs():Color[]{
+ /*  public get ColorNs():Color[]{
     return this._clorNs;
   }
   public set ColorNs(colorNs:Color[]){
@@ -45,7 +45,7 @@ export class NomenclatrueVarService {
   }
   public set ArticleNs(articleNs:Article[]){
     this._articleNs=articleNs;
-  }
+  } */
 
 
   public get KatalogNs():KatalogN[]{

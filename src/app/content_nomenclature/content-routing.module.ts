@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { KatalogNComponent } from './katalog_/katalog-n/katalog-n.component';
 import { OptKatalogNComponent } from './katalog_/opt-katalog-n/opt-katalog-n.component';
 import { OptCategoriaNComponent } from './categoria_/opt-categoria-n/opt-categoria-n.component';
-import { PrivacyComponent } from './privacy-policy/privacy.component';
-import { NomenclatureComponent } from './nomenclature_/nomenclature/nomenclature.component';
+
+import { NomenclatureComponent } from './nomenclature_/nomenclature/old-nomenclature.component';
 import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component';
 import { OptNomenclatureComponent } from './nomenclature_/opt-nomenclature/opt-nomenclature.component';
 import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-item/opt-nomenclature-item.component';
 import { ContentGuard } from './content.guard';
-import { NomenclatureItemResolver } from './shared/resolver/nomenclature-item.resolver';
+// import { NomenclatureItemResolver } from './shared/resolver/nomenclature-item.resolver';
 import {CategoriaNComponent} from './categoria_/categoria-n/categoria-n.component'
 
 const routes: Routes = [
@@ -25,10 +25,9 @@ const routes: Routes = [
   { path: 'categoria/katalog/:id', component: NomenclatureComponent },
   {
     path: 'categoria/katalog/nomenclature/:id',
-    component: NomenclatureItemComponent,
-    resolve: { multiple_dataNs: NomenclatureItemResolver },
+    component: NomenclatureItemComponent
   },
-  { path: 'privacy', component: PrivacyComponent },
+
   {
     path: 'opt',
     component: OptCategoriaNComponent,
@@ -46,8 +45,8 @@ const routes: Routes = [
   },
   {
     path: 'opt/optkatalog/optnomenclature/:id',
-    component: OptNomenclatureItemComponent,
-    resolve: { multiple_dataNs: NomenclatureItemResolver }
+    component: OptNomenclatureItemComponent
+
    },
 ];
 

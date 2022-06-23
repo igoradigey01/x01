@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NomenclatureComponent } from './nomenclature.component';
+import { NomenclatureComponent } from './old-nomenclature.component';
 
 describe('NomenclatureComponent', () => {
   let component: NomenclatureComponent;

@@ -7,11 +7,11 @@ import { UiFrontModule } from '../ui-front/ui-front.module';
 import { MaterialFrontModule } from 'src/app/material/material-front.module.'
 import { ManagerServiceModule } from './shared/services/maneger-service.module';
 import { CoreNomenclatureModule } from 'src/app/core-nomenclature/core-nomenclature.module'
-import { NomenclatureComponent } from './nomenclature_/nomenclature/nomenclature.component';
+import { NomenclatureComponent } from './nomenclature_/nomenclature/old-nomenclature.component';
 import { OptNomenclatureComponent } from './nomenclature_/opt-nomenclature/opt-nomenclature.component'
 import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component';
 import { OptNomenclatureItemComponent } from './nomenclature_/opt-nomenclature-item/opt-nomenclature-item.component';
-import { NomenclatureItemResolver } from './shared/resolver/nomenclature-item.resolver'
+//import { NomenclatureItemResolver } from './shared/resolver/nomenclature-item.resolver'
 
 
 import { ClipboardModule } from '@angular/cdk/clipboard'
@@ -54,7 +54,7 @@ import { QrCodeComponent } from './nomenclature_/qr-code/qr-code.component'  // 
     OptKatalogNComponent
   ],
   providers: [
-    NomenclatureItemResolver
+  //  NomenclatureItemResolver
   ]
 })
 export class ContentNModule { }
