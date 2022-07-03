@@ -12,7 +12,7 @@ import { ProductMainComponent } from './product_/product-main/product-main.compo
 //import { ProductTableComponent } from './product_/product-table/product-table.component';
 import { CategoriaMainComponent } from './categoria_/categoria-main/categoria-main.component';
 import { ManagerGuard } from './manager.guard';
-import {NomenclatureMainComponent} from './nomenclature_/nomenclature-main/nomenclature-main.component'
+
 
 // table-product , item-product ,details-product
 
@@ -31,10 +31,11 @@ const routes: Routes = [
     canActivate: [ManagerGuard],
   },
   { path: 'info', component: InfoComponent, canActivate: [ManagerGuard] },
+
   {
     path: 'nomenclature',
-    component: NomenclatureMainComponent,
-    canActivate: [ManagerGuard],
+    loadChildren: () =>
+      import('../manager_nomenclature/manager.module').then((m) => m.ManagerModule),
   },
 
   {

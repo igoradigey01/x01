@@ -1,26 +1,26 @@
 <div class="_container">
-  <h4> Модуль менеджера</h4>
-<nav
-  class="navbar navbar-light bg-tools "
->
-<div class="container-fluid justify-content-center">
-  <!-- Links -->
- <span class="nav-item" > <a class="nav-link" routerLink="categoria-n">Категория</a></span>
- <span class="nav-item" > <a class="nav-link" routerLink="katalog-n">Каталог</a></span>
- <span class="nav-item" > <a class="nav-link" routerLink="brand-n">Бренд</a></span>
+  <h4> Модуль Номенклатура  </h4>
 
- <span class="nav-item" > <a class="nav-link" routerLink="color-n">Цвет</a> </span>
- <span class="nav-item" > <a class="nav-link" routerLink='article-n'>Артикул</a></span>
- <span class="nav-item" > <a class="nav-link" routerLink="nomenclature">Номенклатура</a></span>
- <span class="nav-item" > <a class="nav-link" routerLink="info"><img src="../../../assets/icon/info_purple.png" height="24" title="vertion"></a></span>
+  <nav class="navbar navbar-light bg-tools ">
+    <div class="container-fluid justify-content-center">
+      <!-- Links -->
+      <span class="nav-item"> <a class="nav-link" routerLink="categoria-n">Категория</a></span>
+      <span class="nav-item"> <a class="nav-link" routerLink="katalog-n">Каталог</a></span>
+      <span class="nav-item"> <a class="nav-link" routerLink="brand-n">Бренд</a></span>
 
-</div>
-</nav>
-<div class="c-1">
+      <span class="nav-item"> <a class="nav-link" routerLink="color-n">Цвет</a> </span>
+      <span class="nav-item"> <a class="nav-link" routerLink='article-n'>Артикул</a></span>
+      <span class="nav-item"> <a class="nav-link" routerLink="nomenclature">Номенклатура</a></span>
+      <span class="nav-item"> <a class="nav-link" routerLink="/manager"><img src="../../../assets/icon/"
+            height="24" title="vertion"></a></span>
+
+    </div>
+  </nav>
+  <div class="c-1">
 
 
     <div class="button-size-container">
-      <button mat-button color="primary"  (click)="add_Height()" aria-label=" icon button add">
+      <button mat-button color="primary" (click)="add_Height()" aria-label=" icon button add">
         <mat-icon>add_circle_outline</mat-icon>
       </button>
 
@@ -30,11 +30,10 @@
     </div>
 
 
-  <picture >
-    <source srcset="./../../../assets/diagram/db_shema.webp" type="image/webp">
-  <img  height={{_height_img}}
-  class="rounded mx-auto d-block " src="./../../../assets/diagram/db_shema.png" />
-</picture>
+    <picture>
+      <source srcset="./../../../assets/diagram/db_shema.webp" type="image/webp">
+      <img height={{_height_img}} class="rounded mx-auto d-block " src="./../../../assets/diagram/db_shema.png" />
+    </picture>
 
-</div>
+  </div>
 </div>

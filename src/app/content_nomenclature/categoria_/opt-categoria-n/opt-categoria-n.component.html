@@ -7,7 +7,7 @@
     <div *ngFor="let item of _categoriaNs"   >
       <div *ngIf="!item.hidden">
       <div *ngIf="!item.flag_link; else elseLink ">
-    <button   class="btn btn-outline-info s1" (click)="onSharedVarSet(item)" [ngClass]="{s1: flagStyle}" [routerLink]="['/content-n/opt',item.id]" [queryParams]="{'categoria':item.name}"  >
+    <button   class="btn btn-outline-info s1"  [ngClass]="{s1: flagStyle}" [routerLink]="['/content-n/opt',item.id]" [queryParams]="{'categoria':item.name}"  >
 
        {{ item.name }}</button>
 
@@ -17,7 +17,7 @@
       <ng-template #elseLink>
 
         <div *ngIf="!item.flag_href; else else_href " >
-          <button   class="btn btn-outline-info s1"  (click)="onSharedVarSet(item)" [ngClass]="{s1: flagStyle}" [routerLink]="item.link"  >
+          <button   class="btn btn-outline-info s1"  [ngClass]="{s1: flagStyle}" [routerLink]="item.link"  >
 
             {{ item.name }}</button>
 

@@ -35,11 +35,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./manager/manager.module').then((m) => m.ManagerModule),
   },
-  {
-    path: 'manager-n',
-    loadChildren: () =>
-      import('./manager_nomenclature/manager.module').then((m) => m.ManagerModule),
-  },
+ 
   {
     path: 'admin',
     loadChildren: () =>

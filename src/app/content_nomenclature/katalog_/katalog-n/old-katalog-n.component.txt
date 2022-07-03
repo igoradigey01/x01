@@ -5,7 +5,6 @@ import { KatalogNService } from '../../shared/services/katalog-n.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { NomenclatrueVarService } from '../../shared/services/nomenclature-var.service';
 import { SEO_var } from 'src/app/shared/_interfaces/SEO-var.models';
-import {BaseKatalogNComponent} from '../../shared/_class/base-katalog-n.component'
 
 
 @Component({
@@ -13,7 +12,7 @@ import {BaseKatalogNComponent} from '../../shared/_class/base-katalog-n.componen
   templateUrl: './katalog-n.component.html',
   styleUrls: ['./katalog-n.component.scss']
 })
-export class KatalogNComponent extends BaseKatalogNComponent implements OnInit {
+export class OldKatalogNComponent implements OnInit {
 
 
 
@@ -24,24 +23,27 @@ export class KatalogNComponent extends BaseKatalogNComponent implements OnInit {
 
   constructor(
 
-    public repository: KatalogNService,
-    public route: ActivatedRoute,
-    public router: Router,
-    public meta: Meta,
-    public titleMeta: Title,
-    public sharedVar: NomenclatrueVarService
+    private repository: KatalogNService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private meta: Meta,
+    private titleMeta: Title,
+    private sharedVar: NomenclatrueVarService
 
-  ) {
-    super(repository,route,router,sharedVar)
-  }
+  ) { }
 
   ngOnInit(): void {
 
-       super.ngOnInit();
+    const categoriaId: string | null = this.route.snapshot.paramMap.get('id');
+    const id: number = Number(categoriaId) || 0;
+    this.route.queryParams.subscribe((queryParam: any) => {
+      this._categoriaN_name = queryParam['categoria'];
+    });
+    this.sharedVar.IdCategoria=id;
 
-    if (this.sharedVar.SEO_let) this.LoadSEO(this.sharedVar.SEO_let);
+    if (this.sharedVar.SEO_let) this.LoadSEO(this.sharedVar.SEO_let, id);
 
-
+    this.Load(id);
     this.titleMeta.setTitle(this._categoriaN_name);
   }
 
@@ -51,11 +53,22 @@ export class KatalogNComponent extends BaseKatalogNComponent implements OnInit {
 
   }
 
+  
 
- 
 
-  private LoadSEO(item: SEO_var) {
+  private Load(idCategoria: number): void {
+    this.repository.KatalogNs(idCategoria).subscribe(
+      (d) => {
+        this._katalogNs = d;
+      },
+      (err) => {
+        console.log(err);
+      }
+    ); //13.03.21
+  }
 
+  private LoadSEO(item: SEO_var, idCategoria: number) {
+    if (item.id || item.id == idCategoria)
       if (item.decriptSEO) {
         this.meta.updateTag({ name: 'description', content: item.decriptSEO });
       }
