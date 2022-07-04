@@ -194,8 +194,8 @@ export class NomenclatureService {
 
 
               }
-              console.log('JSON.stringify(f)-- get nomencl item --')
-              console.log(JSON.stringify(n))
+            //  console.log('JSON.stringify(f)-- get nomencl item --')
+             // console.log(JSON.stringify(n))
               return n;
             })
           );
@@ -206,36 +206,7 @@ export class NomenclatureService {
     );
 
 
-    /*  return this._http.get<Nomenclature>(this._url.Url, httpOptions) .pipe(
-       map((f: any) => {
-         //  console.log(JSON.stringify(data))
-         return <Nomenclature>{
-             id:f.id,
-             articleId:f. articleId,
-             // not work  ,not load
-           //  articleName:this.sharedVar.ArticleNs.length>0?this.sharedVar.ArticleNs.find(d=>d.id===f.articleId)?.name:undefined,
-             brandId:f.brandId,
-          //  brandName:this.sharedVar.BrandNs.length>0?this.sharedVar.BrandNs.find(d=>d.id===f.articleId)?.name:undefined,
-             colorId:f.colorId,
-         //    colorName:this.sharedVar.ColorNs.length>0?this.sharedVar.ColorNs.find(d=>d.id===f.articleId)?.name:undefined,
-             description:f.description,
-             guid:f.guid,
-             hidden:f.hidden,
-             inStock:f.inStock,
-             sale:f.sale,
-             katalogId:f.katalogId,
-            // katalogName:this.sharedVar.
-             markup:f.markup,
-             postavchikId:f.postavchikId,
-             name:f.name,
-             position:f.position,
-             price:f.price,
-
-             wwwroot: this._url.WWWroot,
-           };
-
-       })
-     ); */
+    
   };
 
   ///  for: nomenclatureItem  ___________________

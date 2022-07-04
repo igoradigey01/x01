@@ -16,7 +16,7 @@ https://material.angular.io/components/categories <br/>
 
 # diagrams
 
-open file \*.drawio in prodject <br/>
+open file *.drawio in prodject <br/>
 add extensions on the VS Code Marketplace :( Draw.io Integration ) <br/>
 
 # image-cropper
@@ -44,10 +44,13 @@ module ;<br/>
 include mime.types; <br/>
 
 # Angular HOST on VPS
-
+// ---------------- <br/>
+ssh root@--.--.--.--  <br/>
 // deploy <br/>
 ng build <br/>
-scp -r C:\Users\Ks34\Documents\AngularProject\xf01\dist\xf01 root@46.---.---.---:~/myapp/nginx/data <br/>
+ firebase deploy <br/>
+  или <br/>
+scp -r C:\Users\Ks34\Documents\AngularProject\xf01\dist\xf01 root@--.---.---.---:~/myapp/nginx/data <br/>
 // backup <br/>
 scp -r root@--.--.--.---:~/myapp/ E:\Backup_Host\12-05-22 <br/>
 //---- docker-отчет об использовании дискового пространства <br/>
@@ -84,3 +87,11 @@ or see js-pdf.service.ts<br/>
 docker ps <br/>
 копировать img в контейнер docker <br/>
 docker cp E:\backup_Host\04-06-22\images 6cd120faec5a:/app/wwwroot/ <br/>
+1. остановка контейнера докеров <br/>
+docker stop container-id <br/>
+2. удаление док-контейнера <br/>
+docker rm container-id <br/>
+3. удаление образа докера <br/>
+docker rmi igoradigey01/shopapi_web:latest <br/>
+4. снова собрать контейнер <br/>
+docker-compose up web <br/>

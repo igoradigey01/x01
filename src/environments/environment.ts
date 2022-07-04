@@ -6,7 +6,7 @@ export const environment = {
    production: false,
 
    clientRoot:  'http://localhost:4200/', //'https://x-01.ru/',       //  Host client
-   serverRoot: 'http://localhost:8080/',  //'https://s.x-01.ru/',               //
+   serverRoot: 'http://localhost:5010/',  //            //'https://s.x-01.ru/',  //
    serverAuthority:'http://localhost:5010/',//'https://s.x-01.ru/',             //
    clientId:'angular-client',
    postavchik_XF01_Id:'1',// postavchikId:'1',//xf-01.ru

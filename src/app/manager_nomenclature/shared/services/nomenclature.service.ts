@@ -124,28 +124,7 @@ export class NomenclatureService {
   };
 
 
-         /**data.map((f: any)*/
-   /*  this._http.get<Product[]>(url, { headers }).pipe(
-      map((data: any) => {
-        //  console.log(JSON.stringify(data))
-        return data.map((f: any) => {
-          return <Product>{
-            id: f.id,
-            name: f.name,
-            katalogId: f.katalogId,
-            katalogName: nameKatalog,
-            materialId: f.typeProductId,
-            price: f.price,
-            markup: f.markup,
-            description: f.description,
-            //            -------------
-            imgName: f.image,
-            rootImgSrc: this._url.RootImage,
-          };
-        });
-      })
-    ); */
-
+ 
 
    /**pastavchik get Nomenclature */
   public NomenclaturePs = (): Observable<Nomenclature[]> => {

@@ -30,7 +30,7 @@ export class CategoriaNComponent extends BaseCategoriaNComponent  implements OnI
 
   ngOnInit(): void {
 
-    super.ngOnInit();
+   super.ngOnInit();
 
     this._titleMeta.setTitle('XF-01  Ханская Комплектующие Мебель | цены в интернет-магазине | Доставка     ');
     this._meta.addTag({name: "description", content: "мебельная фурнитура для кухни спальни прихожей .Наполнение для шкафов и гардеробных комнат .XF-01  интернет-магазин недорогой Номенклатуры для мебели  . Оперативная  аккуратная доставка ."})

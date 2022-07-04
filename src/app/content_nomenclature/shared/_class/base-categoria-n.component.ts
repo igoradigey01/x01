@@ -13,37 +13,19 @@ import {NomenclatrueVarService} from '../../shared/services/nomenclature-var.ser
 export class BaseCategoriaNComponent implements OnInit {
 
 
-  _categoriaNs: CategoriaN[] | null = null;
+ public _categoriaNs: CategoriaN[] | null = null;
 
 
-
-
- 
-
-  //-------------------
   constructor(
     public _repository:  CategoriaNService,
-    public _sharedVar:NomenclatrueVarService,
-
-
-    ) {
-
-
-
-    }
+    public _sharedVar:NomenclatrueVarService
+      ) { }
 
   ngOnInit(): void {
-
-
-
-
-
-
-
     this._repository.CategoriaNs().subscribe(
       (data) => {
         this._categoriaNs = data;
-        console.log(this._categoriaNs);
+     //  console.log(this._categoriaNs);
       },
       (err) => console.log('load katalog err: --' + err)
     );
