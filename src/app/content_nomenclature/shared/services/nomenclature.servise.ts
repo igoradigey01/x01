@@ -17,6 +17,7 @@ import { KatalogN } from 'src/app/core-nomenclature/_interfaces/katalog-n.model'
 
 
 
+
 @Injectable({
   providedIn: ManagerServiceModule
 })
@@ -110,9 +111,10 @@ export class NomenclatureService {
       map((d) => {
         let x01: Nomenclature[] = d[0];
         let xf01: Nomenclature[] = d[1];
+        xf01.concat(xf01);
+        //console.log(JSON.stringify(xf01));
 
-
-        return xf01.concat(xf01);
+        return xf01;
       }
       )
     )
@@ -206,7 +208,7 @@ export class NomenclatureService {
     );
 
 
-    
+
   };
 
   ///  for: nomenclatureItem  ___________________
