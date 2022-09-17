@@ -4,9 +4,12 @@ import { Product } from '../../../shared/_interfaces/product.model';
 import { Material } from '../../../shared/_interfaces/material.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RouteApiService } from 'src/app/shared/services/route-api.service';
+import {ManagerServiceModule} from './maneger-service.module'
 import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: ManagerServiceModule
+})
 export class ProductDataService {
   //readonly _url:string="Type";
 
@@ -29,6 +32,7 @@ export class ProductDataService {
 
   //-------------------
   public Products(idKatalog: number,nameKatalog:string|undefined): Observable<Product[]> {
+   
     this._url.Controller = 'product';
     this._url.Action = '';
 
@@ -36,7 +40,7 @@ export class ProductDataService {
       Accept: 'application/json',
       //  Authorization: 'Bearer ' + token,
     });
-
+      console.log("product serveise --- ok ")
     return this._http.get<Product[]>(this._url.Url + '/' + idKatalog, {
       headers,
     }).pipe(
@@ -53,7 +57,8 @@ export class ProductDataService {
             markup: f.markup,
             description: f.description,
             //            -------------
-            guid: f.imageGuid,
+          
+            imageGuid: f.imageGuid,
             wwwroot: this._url.WWWroot,
           };
         });

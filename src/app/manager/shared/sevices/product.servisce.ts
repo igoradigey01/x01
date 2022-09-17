@@ -89,7 +89,7 @@ export class ProductService {
             markup: f.markup,
             description: f.description,
             //            -------------
-            guid: f.imageGuid,
+            imageGuid: f.imageGuid,
             wwwroot: this._url.WWWroot,
           };
         });
@@ -158,7 +158,7 @@ export class ProductService {
 
    new Response(fd).text().then(console.log);
 
-    return this._http.put(this._url.Url + '/' + item.guid, fd, {
+    return this._http.put(this._url.Url + '/' + item.imageGuid, fd, {
       reportProgress: true,
       observe: 'events',
       headers,

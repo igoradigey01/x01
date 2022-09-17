@@ -40,7 +40,7 @@ export class ProductMainComponent implements OnInit {
       materialId: -1,
       description: '',
       name: '',
-      guid: '',
+      imageGuid: '',
       markup: 20,
       price: -1,
     };
@@ -81,7 +81,7 @@ export class ProductMainComponent implements OnInit {
         materialId: -1,
         description: '',
         name: '',
-        guid: '',
+        imageGuid: '',
         markup: 20,
         price: -1,
       };

@@ -11,7 +11,7 @@ export interface Product {
   price?: number;
   markup?: number; //Торговая наценка
   description?: string;
-  guid: string; // name -- img getServer(wwwroot/image)
+  imageGuid: string; // name -- img getServer(wwwroot/image)
   wwwroot?:string; //url for  server-folder wwwroot/
   imageWebp?: Blob; // именованая ссылка на Blob  window.URL.createObjectURL(d)
   wwwrootOK?:boolean; // change  img on server (wwwroot/image)

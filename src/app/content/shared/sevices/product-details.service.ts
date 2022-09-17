@@ -3,8 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ImageDetile } from 'src/app/shared/_interfaces/image-detile.model';
 import { RouteApiService } from 'src/app/shared/services/route-api.service';
+import {ManagerServiceModule} from './maneger-service.module'
 
-@Injectable()
+@Injectable({
+  providedIn: ManagerServiceModule
+})
 export class ProductDetailsService {
   constructor(
     private _http: HttpClient,

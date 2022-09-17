@@ -20,7 +20,7 @@ export class ProductTableComponent implements OnInit {
   public  ImgObj(product:Product):string{
 
     let root=product.wwwroot?product.wwwroot:'';
-    root=root+'S'+product.guid+'.webp';
+    root=root+'S'+product.imageGuid+'.webp';
    // console.log(root);
     if(!product.wwwrootOK){
    return  root;

@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
     katalogId: -1,
     materialId: -1,
     description: '',
-    guid: '',
+    imageGuid: '',
     markup: 0,
     imageBase64: '',
     imageWebp: undefined,
@@ -115,7 +115,7 @@ export class ProductDetailsComponent implements OnInit {
 
   private Load(item: ProductDetile): void {
     //  if(item.image)
-    this._currentImage.name =  item.image![0].name = item.product.guid || this._notFoundImage.name; // 'not_found.png';
+    this._currentImage.name =  item.image![0].name = item.product.imageGuid || this._notFoundImage.name; // 'not_found.png';
     console.log('Load()--item.image![0].name=' + item.image![0].name);
     this.repository.GetImages(item.product.id).subscribe(
       (d) => {

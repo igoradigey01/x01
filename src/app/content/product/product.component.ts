@@ -55,12 +55,14 @@ export class ProductComponent implements OnInit {
 
   // загрузить данные подКаталога по id
   private Load(idKatalog: number, katalogName: string): void {
+    
     this._repository.Products(idKatalog, katalogName).subscribe(
       (d) => {
         this._products = d;
+        console.log(JSON.stringify(d));
       },
       (err) => {
-        console.log(err);
+        console.error(err);
       }
     ); //13.03.21
   }

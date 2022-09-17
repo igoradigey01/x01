@@ -7,7 +7,8 @@ import { ProductDataService } from './shared/sevices/product.servisce';
 import { ProductDetailsService } from './shared/sevices/product-details.service';
 import {PrivacyComponent}  from './privacy-policy/privacy.component';
 import { OptKatalogComponent } from './opt-katalog/opt-katalog.component';
-import { OptProductComponent } from './opt-product/opt-product.component'
+import { OptProductComponent } from './opt-product/opt-product.component';
+import { ManagerServiceModule } from "./shared/sevices/maneger-service.module";
 
 @NgModule({
   declarations: [
@@ -20,10 +21,9 @@ import { OptProductComponent } from './opt-product/opt-product.component'
   imports: [
     CommonModule,
     ContentRoutingModule,
-  ],
-  providers: [
-    ProductDataService,
-    ProductDetailsService,
+    ManagerServiceModule
+    ],
+  providers: [  
 
   ],
   exports: [

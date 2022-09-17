@@ -68,7 +68,7 @@ export class ItemProductComponent implements OnInit {
       categoriaId:-1,
       description: '',
       name: '',
-      guid: '',
+      imageGuid: '',
       markup: 20,
       price: -1,
     };
@@ -122,7 +122,7 @@ export class ItemProductComponent implements OnInit {
       //   this._flagInvalid = true;
       return;
     }
-    console.log("img name--"+ this._select_Product.guid);
+    console.log("img name--"+ this._select_Product.imageGuid);
 
     if (this._flagViewMode == StateView.edit) {
       // ---- start edit -------
@@ -310,7 +310,7 @@ export class ItemProductComponent implements OnInit {
               this._errorMgs = [];
               this._flagError = false;
 
-              this._select_Product.guid=data.body.image // on server imgName ==Image
+              this._select_Product.imageGuid=data.body.image // on server imgName ==Image
               this._select_Product.id=data.body.id;
               this._select_Product.wwwroot=this._repository.WWWroot;
 
