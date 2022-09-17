@@ -26,8 +26,7 @@ import { MaterialMainComponent } from './material_/material-main/material-main.c
 import { MaterialItemComponent } from './material_/material-item/material-item.component';
 import { CategoriaItemComponent } from './categoria_/categoria-item/categoria-item.component';
 import { CategoriaMainComponent } from './categoria_/categoria-main/categoria-main.component';
-import { NomenclatureMainComponent } from './nomenclature_/nomenclature-main/nomenclature-main.component';
-import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nomenclature-item.component';
+
 
 @NgModule({
   declarations: [
@@ -45,9 +44,8 @@ import { NomenclatureItemComponent } from './nomenclature_/nomenclature-item/nom
     MaterialMainComponent,
     MaterialItemComponent,
     CategoriaMainComponent,
-    CategoriaItemComponent,
-    NomenclatureMainComponent,
-    NomenclatureItemComponent,
+    CategoriaItemComponent
+
   ],
   imports: [
     CommonModule,

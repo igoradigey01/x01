@@ -59,7 +59,7 @@ export class ArticleNService {
 
     let fd = this.createFormData(item);
 
-    new Response(fd).text().then(console.log);
+   // new Response(fd).text().then(console.log);
 
     return this._http.post(this._url.Url, fd,{
       reportProgress: true,
@@ -83,7 +83,7 @@ export class ArticleNService {
     });
     let fd = this.createFormData(item);
 
-    new Response(fd).text().then(console.log);
+   // new Response(fd).text().then(console.log);
     return this._http.put(this._url.Url, fd,{
       reportProgress: true,
       observe: 'events',

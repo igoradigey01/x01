@@ -53,7 +53,7 @@ export class ProductDataService {
             markup: f.markup,
             description: f.description,
             //            -------------
-            guid: f.image,
+            guid: f.imageGuid,
             wwwroot: this._url.WWWroot,
           };
         });

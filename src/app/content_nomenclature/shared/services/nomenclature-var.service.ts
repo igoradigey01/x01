@@ -19,13 +19,13 @@ export class NomenclatrueVarService {
     this._seoVar = seoVar;
   }
 
-  public get KatalogNs(): KatalogN[] {
+  /* public get KatalogNs(): KatalogN[] {
     return this._katlogNs;
   }
   public set KatalogNs(katalogNs: KatalogN[]) {
     if (katalogNs) this._katlogNs = katalogNs;
   }
-
+ */
   public set IdCategoria(id: number) {
     this._idCategoria = id;
   }

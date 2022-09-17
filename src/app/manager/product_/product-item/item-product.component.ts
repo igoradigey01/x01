@@ -261,7 +261,7 @@ export class ItemProductComponent implements OnInit {
 
     this._flagInvalid = true;
     this._flag_sendServerData = true;
-     // debugger
+    // debugger
     this._errorMgs = [];
     if (this._select_Product.katalogId == -1) {
       // this._flagInvalid = true;

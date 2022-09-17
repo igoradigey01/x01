@@ -7,7 +7,9 @@
     <div *ngFor="let item of _categoriaNs"   >
       <div *ngIf="!item.hidden">
       <div *ngIf="!item.flag_link; else elseLink ">
-    <button   class="btn btn-outline-info s1"  [routerLink]="['/content-n/opt',item.id]" [queryParams]="{'categoria':item.name}"  >
+    <button   class="btn btn-outline-info s1"
+    [ngClass]="{'postavshik_x01': IsPostavchikX01(item)}"
+    [routerLink]="['/content-n/opt',item.id]" [queryParams]="{'categoria':item.name}"  >
 
        {{ item.name }}</button>
 

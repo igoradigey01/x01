@@ -48,7 +48,7 @@ include mime.types; <br/>
 ssh root@--.--.--.--  <br/>
 // deploy <br/>
 ng build <br/>
- firebase deploy <br/>
+ firebase deploy or yarn firebase deploy  <br/>
   или <br/>
 scp -r C:\Users\Ks34\Documents\AngularProject\xf01\dist\xf01 root@--.---.---.---:~/myapp/nginx/data <br/>
 // backup <br/>
@@ -70,6 +70,7 @@ npm install -g yarn<br/>
 help : https://mrrio.github.io/jsPDF/examples/basic.html <br>
 npm install -g yarn<br/>
 yarn add jspdf <br/>
+yarn add firebase-tools or (npm install -g firebase-tools)<br/>
 //download fonts <br/>
 https://fonts.google.com/ <br/>
 //unzip <br/>
@@ -95,3 +96,6 @@ docker rm container-id <br/>
 docker rmi igoradigey01/shopapi_web:latest <br/>
 4. снова собрать контейнер <br/>
 docker-compose up web <br/>
+
+# microfone
+run : ms-settings:sound <br/>

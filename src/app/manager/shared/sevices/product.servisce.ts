@@ -89,7 +89,7 @@ export class ProductService {
             markup: f.markup,
             description: f.description,
             //            -------------
-            guid: f.image,
+            guid: f.imageGuid,
             wwwroot: this._url.WWWroot,
           };
         });
@@ -166,6 +166,7 @@ export class ProductService {
   };
 
   public UpdateIgnoreImg = (item: Product): Observable<any> => {
+    //debugger
     this._url.Controller = 'product';
     this._url.Action = 'UpdateIgnoreImg';
 
@@ -232,7 +233,7 @@ export class ProductService {
         if (key == 'categoriaName') return;
         if (key == 'materialName') return;
         // if (key == 'imgName') return;
-        if (key == 'rootImgSrc') return;
+        if (key == 'wwwroot') return;
         if (key == 'imageBase64') return;
         if (key == 'imageWebp') {
           let f = value as File;
@@ -241,7 +242,7 @@ export class ProductService {
         }
 
         formData.append(key, value);
-        // console.log(`${key}: ${value}`)
+         console.log(`${key}: ${value}`)
       });
 
       return formData;
@@ -252,7 +253,7 @@ export class ProductService {
         if (key == 'categoriaName') return;
         if (key == 'materialName') return;
         // if (key == 'imgName') return;
-        if (key == 'rootImgSrc') return;
+        if (key == 'wwwroot') return;
         if (key == 'imageBase64') return;
         if (key == 'imageWebp') return;
 
@@ -267,7 +268,7 @@ export class ProductService {
       entries.forEach(([key, value]) => {
 
 
-        if(key=='imgName'){
+        if(key=='guid'){
 
           formData.append(key, value);
           return;

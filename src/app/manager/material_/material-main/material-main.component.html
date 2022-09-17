@@ -29,13 +29,13 @@
       </div>
     </ng-template>
     <!--  Create template -->
-    <ng-template name="Create" ngSwitchCase="4">
+    <ng-template name="Create" ngSwitchCase="5">
       <div class="edit-create">
         <h4>Создать Позицию Материала</h4>
 
         <app-material-item
           [_select_material]="_select_material"
-          [_flagViewState]="4"
+          [_flagViewState]="5"
           (_onChangeStateView)="onChangeStateView($event)"
           (_onMaterialChange)="onChangedMaterial($event)"
         >
@@ -44,12 +44,12 @@
     </ng-template>
 
     <!--  Edit -Delete template -->
-    <ng-template name="Edit" ngSwitchCase="3">
+    <ng-template name="Edit" ngSwitchCase="4">
       <div class="edit-create">
         <h4>Редактировать Позицию Материала</h4>
         <app-material-item
           [_select_material]="_select_material"
-          [_flagViewState]="3"
+          [_flagViewState]="4"
           (_onChangeStateView)="onChangeStateView($event)"
           (_onMaterialChange)="onChangedMaterial($event)"
         >

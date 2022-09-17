@@ -18,20 +18,20 @@
         </app-product-table>
       </ng-template>
       <ng-template name="editTable" ngSwitchCase="2"> </ng-template>
-      <ng-template name="Edit" ngSwitchCase="3">
+      <ng-template name="Edit" ngSwitchCase="4">
         <!-- edit template-->
         <h4>Редактировать Позицию Товара</h4>
         <app-item-product
           [_select_Product]="_select_Product"
           [_materials]="_materials"
           [_categorias]="_categorias"
-          [_flagViewMode]="3"
+          [_flagViewMode]="4"
           (_onChangeStateView)="onChangedViewMode($event)"
           (_onProductChange)="onChangedProducts($event)"
         >
         </app-item-product>
       </ng-template>
-      <ng-template name="Create" ngSwitchCase="4">
+      <ng-template name="Create" ngSwitchCase="5">
         <h4>Создать Позицию Товара</h4>
 
         <app-item-product
@@ -39,7 +39,7 @@
           [_materials]="_materials"
           [_categorias]="_categorias"
           [_select_katalog]="_select_Katalog"
-          [_flagViewMode]="4"
+          [_flagViewMode]="5"
           (_onChangeStateView)="onChangedViewMode($event)"
           (_onProductChange)="onChangedProducts($event)"
         >
